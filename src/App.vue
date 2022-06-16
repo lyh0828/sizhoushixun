@@ -37,6 +37,9 @@ export default {
 </script>
 
 <style scoped>
+.app-container{
+    padding-top: 40px;
+}
 /* .v-enter{
     opacity: 0;
     transform: translateX(100%);

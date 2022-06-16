@@ -1,41 +1,254 @@
 <template>
   <div class="home">
     <div class="topbar">
-      <img src="../../images/L1.jpg">
-    </div>
-    <div class="header">
-  
+      <img class="topbar-img" src="../../images/09.png"/>
+
     </div>
 
     <!-- 轮播图 -->
-    <!-- <mt-swipe :auto="4000">
+    <mt-swipe :auto="4000">
       <mt-swipe-item>
-          <img src="http://gw.alicdn.com/imgextra/i4/2212399693216/O1CN01cYB1SH1ZcyVQT4Hcp_!!2212399693216-0-alimamacc.jpg_q90.jpg_.webp">
+        <img
+          src="https://img1.baidu.com/it/u=1308062,1060823281&fm=253&fmt=auto&app=138&f=JPEG?w=499&h=188"
+        />
       </mt-swipe-item>
       <mt-swipe-item>
-          <img src="http://gw.alicdn.com/imgextra/i2/6000000000464/O1CN01sN115O1FIYXD0CFkY_!!6000000000464-0-lubanimage.jpg_q90.jpg_.webp">
+        <img
+          src="https://img0.baidu.com/it/u=1275718207,2852747973&fm=253&fmt=auto&app=138&f=JPEG?w=970&h=448"
+        />
       </mt-swipe-item>
       <mt-swipe-item>
-          <img src="http://gw.alicdn.com/imgextra/i4/6000000004690/O1CN01SWdh931kW4JBWbFjF_!!6000000004690-0-lubanimage.jpg_q90.jpg_.webp">
+        <img src="http://img.boqiicdn.com/Data/U/P/img7231595305e41e14f.jpg" />
       </mt-swipe-item>
-    </mt-swipe> -->
+    </mt-swipe>
+    <!-- 栅格系统 -->
+    <div class="list">
+      <ul class="mui-table-view mui-grid-view mui-grid-9">
+        <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+          <a href="#">
+            <img src="../../images/01.png">
+            <div class="mui-media-body">我的宠物</div>
+          </a>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+          <a href="#">
+            <img src="../../images/02.png">
+            <div class="mui-media-body">添加提醒</div>
+          </a>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+          <a href="#">
+            <img src="../../images/03.png">
+            <div class="mui-media-body">宠物新闻</div>
+          </a>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+          <a href="#">
+            <img src="../../images/04.png">
+            <div class="mui-media-body">宠物案例</div>
+          </a>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+          <a href="#">
+            <img src="../../images/05.png">
+            <div class="mui-media-body">共养动态</div>
+          </a>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+          <a href="#">
+            <img src="../../images/06.png">
+            <div class="mui-media-body">上门喂养</div></a
+          >
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+          <a href="#">
+            <img src="../../images/07.png">
+            <div class="mui-media-body">家庭寄养</div></a
+          >
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+          <a href="#">
+            <img src="../../images/08.png">
+            <div class="mui-media-body">宠帮运</div></a
+          >
+        </li>
+      </ul>
+    </div>
+    <!-- 栅格系统 -->
+    <div class="middle">
+      <ul class="mui-table-view mui-grid-view mui-grid-9">
+        <li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-2">
+          <router-link to="">
+            <img
+              src="https://img0.baidu.com/it/u=2774035686,2091476564&fm=253&fmt=auto&app=138&f=JPEG?w=642&h=500"
+            />
+            <div class="mui-media-body">宠物日常</div>
+          </router-link>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-2">
+          <router-link to="">
+            <img
+              src="https://img1.baidu.com/it/u=3935860372,2123648088&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500"
+            />
+            <div class="mui-media-body">宠物用品销售</div>
+          </router-link>
+        </li>
+      </ul>
+    </div>
+    <!-- 热门活动 -->
+    <div></div>
+    <!-- 社区论坛 -->
+    <div class="bottom">
+      <div class="text">
+        <span class="text1">社区论坛</span>
+        <a><span class="text2">查看全部 ></span></a>
+      </div>
+      <div class="all">
+        <div class="author">
+          <img
+            class="author-img"
+            src="https://img1.baidu.com/it/u=3368527245,2581594750&fm=253&fmt=auto&app=138&f=JPEG?w=400&h=400"
+          />
+          <div class="author-info">
+            <span class="name">愤怒的皮蛋</span>
+            <span class="time">12小时前发布</span>
+          </div>
+        </div>
+        <div class="content">
+          <span class="title">请问一个月大的猫不吃东西怎么办？</span>
+          <span class="bottom-content"
+            >才断奶没几天，朋友那儿报的，买了脱脂羊奶也不喝，猫粮也不吃，喂它也不吃，怎么办？在线求助！</span
+          >
+        </div>
+      </div>
+    </div>
   </div>
-  <!-- 商品页 -->
 </template>
 
 <script>
-
-export default {
-
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>
-// .home {
-//   background-color: snow;
-//   margin: 0px;
-//   padding: 0px;
-// }
-
-
+.home {
+  margin: 0px;
+  padding: 0px;
+  background-color: rgb(244, 244, 244);
+  .topbar-img {
+    width: 100%;
+    height: 100px;
+    
+  }
+  .mint-swipe {
+    width: 100%;
+    height: 200px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  // list
+  .list{
+    margin-top: 5px;
+    .mui-table-view.mui-grid-view.mui-grid-9 {
+    background: snow;
+    border: none;
+    width: 100%;
+    height: 100%;
+    li {
+      border: none;
+      width: 25%;
+      height: 100%;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 10%;
+    }
+    .mui-media-body {
+      font-size: 14px;
+    }
+  }
+  }
+  .middle{
+    margin-top: 5px;
+    .mui-table-view.mui-grid-view.mui-grid-9 {
+    background: snow;
+    border: none;
+    li {
+      border: none;
+      width: 50%;
+      height: 200px;
+    }
+    img {
+      width: 100%;
+      height: 130px;
+      border-radius: 10%;
+    }
+    .mui-media-body {
+      font-size: 14px;
+    }
+  }
+  }
+  .bottom {
+    width: 100%;
+    padding: 5px 10px 10px 10px;
+    .text {
+      margin: 5px 0 10px 0;
+      .text1 {
+        font-weight: 600;
+        font-size: 18px;
+      }
+      .text2 {
+        margin-left: 220px;
+        font-size: 15px;
+        color: red;
+      }
+    }
+    .all {
+      background: snow;
+      border-radius: 5%;
+      .author {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+        margin: 10px 10px 10px 10px;
+        .author-img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
+        .author-info {
+          display: flex;
+          flex-direction: column;
+          margin-left: 10px;
+          .name {
+            font-size: 14px;
+            color: dimgray;
+          }
+          .time {
+            margin-top: 5px;
+            font-size: 13px;
+            color: #808080;
+          }
+        }
+      }
+      .content {
+        display: flex;
+        flex-direction: column;
+        margin: 10px 10px 10px 10px;
+        .title {
+          font-size: 16px;
+          letter-spacing: 1px;
+        }
+        .bottom-content {
+          margin-top: 8px;
+          font-size: 14px;
+          color: #808080;
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+}
 </style>
