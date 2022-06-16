@@ -86,7 +86,7 @@ export default {
     flex-direction: row;
     margin-right:10px;
     margin-left:10px;
-    margin-top:50px;
+    // margin-top:50px;
     margin-bottom:10px;
     height:40px;
     // border:1px solid red;

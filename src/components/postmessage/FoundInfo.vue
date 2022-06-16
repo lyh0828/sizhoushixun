@@ -110,7 +110,7 @@ export default {
 .info-header{
     margin-right:10px;
     margin-left:10px;
-    margin-top:50px;
+    // margin-top:50px;
     margin-bottom:10px;
     width:100%;
     height:40px;
