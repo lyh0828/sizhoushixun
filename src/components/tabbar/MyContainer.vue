@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>我的淘宝组件</h2>
+        <h2>我的组件</h2>
     </div>
 </template>
 <script>

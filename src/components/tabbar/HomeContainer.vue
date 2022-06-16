@@ -137,7 +137,6 @@ export default {};
   .topbar-img {
     width: 100%;
     height: 100px;
-    
   }
   .mint-swipe {
     width: 100%;
