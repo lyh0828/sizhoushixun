@@ -111,8 +111,8 @@ export default {
 // 			}
 .info-header{
     margin-right:10px;
-    margin-left:10px;
-    // margin-top:50px;
+    margin-left:15px;
+    margin-top:10px;
     margin-bottom:10px;
     width:100%;
     height:40px;
