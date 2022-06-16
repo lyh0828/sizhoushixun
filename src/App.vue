@@ -1,7 +1,21 @@
 <template>
     <div class="app-container">
         <!-- 顶部区域 -->
-        <mt-header fixed title="爱宠之家平台"></mt-header>
+        <header class="mint-header">
+          <div class="mint-header-button is-left">
+              <a href="#/" class="router-link-active">
+                <mt-button icon="back" @click="$router.back(-1)"></mt-button>
+              </a>
+          </div>
+                <h1 class="mint-header-title">爱宠之家平台</h1> 
+                <div class="mint-header-button is-right">
+                    <button class="mint-button mint-button--default mint-button--normal">
+                    <span class="mint-button-icon"><i class="mintui mintui-more"></i></span>
+                    <label class="mint-button-text"></label>
+                    </button>
+                </div>
+        </header>
+        <!-- <mt-header fixed title="爱宠之家平台"></mt-header> -->
         
         <!-- 中间内容 -->
         <transition mode="out-in">
@@ -36,9 +50,15 @@ export default {
 </script>
 
 <style scoped>
-.app-container{
+ .mint-header{
+    height:40px;
+    line-height:50px;
+    width:100%;
+    /* margin-bottom:-14px; */
+  }
+/* .app-container{
     padding-top: 40px;
-}
+} */
 /* .v-enter{
     opacity: 0;
     transform: translateX(100%);
