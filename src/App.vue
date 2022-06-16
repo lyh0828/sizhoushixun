@@ -3,9 +3,6 @@
         <!-- 顶部区域 -->
         
         <mt-header fixed title="爱宠之家平台"></mt-header>
-        <div class="header">
-            <img src="./images/L1.jpg">
-        </div>
 
         <!-- 中间内容 -->
         <transition mode="out-in">
@@ -40,6 +37,9 @@ export default {
 </script>
 
 <style scoped>
+.app-container{
+    padding-top: 40px;
+}
 /* .v-enter{
     opacity: 0;
     transform: translateX(100%);
