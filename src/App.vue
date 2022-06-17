@@ -7,7 +7,8 @@
                 <mt-button icon="back" @click="$router.back(-1)"></mt-button>
               </a>
           </div>
-                <h1 class="mint-header-title">爱宠之家平台</h1> 
+                <mt-header fixed title="爱宠之家平台"></mt-header>
+                <!-- <h1 class="mint-header-title">爱宠之家平台</h1>  -->
                 <div class="mint-header-button is-right">
                     <button class="mint-button mint-button--default mint-button--normal">
                     <span class="mint-button-icon"><i class="mintui mintui-more"></i></span>
@@ -54,7 +55,6 @@ export default {
     height:40px;
     line-height:50px;
     width:100%;
-    /* margin-bottom:-14px; */
   }
 /* .app-container{
     padding-top: 40px;

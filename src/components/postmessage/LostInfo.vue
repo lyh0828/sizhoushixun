@@ -86,7 +86,7 @@
 			</div>
         </div>
         <div class="btn">
-            <router-link to="/petclaimed">
+            <router-link to="/petlost">
                  <button type="button" class="mui-btn mui-btn-primary mui-btn-block">发布</button>
             </router-link>
         </div>
