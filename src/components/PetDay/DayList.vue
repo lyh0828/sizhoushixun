@@ -27,6 +27,7 @@ export default {
 
 <style lang="scss" scoped>
 .con{
+    margin-top: 40px;
     .top{
         height: 50px;
         background-color: snow;
@@ -38,6 +39,8 @@ export default {
         .topFont{
             font-size: 30px;
             font-style: floor($number: 0);
+            line-height: normal;
+            
         }
     }
     .main{
