@@ -154,6 +154,9 @@ export default {};
   margin: 0px;
   padding: 0px;
   background-color: rgb(244, 244, 244);
+  .topbar{
+    margin-top:40px;
+  }
   .topbar-img {
     width: 100%;
     height: 100px;

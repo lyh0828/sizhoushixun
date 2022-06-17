@@ -203,7 +203,10 @@ export default {
     }
     .file{
           border:1px solid red;
+         position: relative;
         .update{
+            position: absolute;
+            top:0px;
             width:100px;
             height:100px;
             border:1px solid red;
