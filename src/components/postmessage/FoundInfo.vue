@@ -69,7 +69,7 @@
 			</div>
         </div>
         <div class="photos">
-            <p class="title">请上传照片</p>
+            <p class="title">请上传图片</p>
             <hr>
                 <div class="file">
                     <input type="file"  class="update" accept="image/*" @change="change($event)"  ref="updata">
@@ -113,7 +113,7 @@ export default {
 
     },
     created(){
-        this.baseImg=require('../../images/L1.jpg')
+        this.baseImg=require('../../images/photo.jpg')
     }
 
 }
@@ -132,7 +132,7 @@ export default {
     margin-left:15px;
     margin-top:50px;
     margin-bottom:10px;
-    width:100%;
+    width:90%;
     height:40px;
     // border:1px solid red;
     float:left;
@@ -146,7 +146,7 @@ export default {
         height:40px;
     }
     .mui-btn{
-        margin-right:70px;
+        margin-right:50px;
     }
 }
 .info-messages{
@@ -157,9 +157,11 @@ export default {
     // border:1px solid red;
     background-color:#FFF;
     // border-radius: 15px;
+    color:#808080;
     hr{
         width:95%;
         margin-left:5px;
+        color:#808080;
     }
     .line{
         width:95%;
@@ -194,24 +196,36 @@ export default {
     margin-bottom:10px;
     width:100%;
     height:200px;
-    border:1px solid red;
+    // border:1px solid red;
     background-color:#FFF;
     // border-radius:15px;
+    .title{
+        display:block;
+        font-size:16px;
+        margin-left:10px;
+        padding-top:10px;
+    }
     hr{
         width:95%;
         margin-left:5px;
+        color:#808080;
     }
     .file{
-          border:1px solid red;
+        margin-left:10px;
+        // border:1px solid red;
          position: relative;
         .update{
             position: absolute;
             top:0px;
             width:100px;
             height:100px;
-            border:1px solid red;
+            // border:1px solid red;
+            z-index: 10;
+            opacity: 0;
         }
         .img{
+            position: absolute;
+            top:0px;
             width:100px;
             height:100px;
 

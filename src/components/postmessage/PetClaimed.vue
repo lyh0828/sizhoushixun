@@ -1,12 +1,11 @@
 <template>
-    <div>
+    <div class="center">
        <div class="search">
             <div class="search-left">
-                <div class="mint-header-button">
 					<a href="#/" class="router-link-active">
-						<mt-button id="btn0" icon="back" ></mt-button>
+                        <img class="aczj-icon" src="../../images/icon.png" alt="">
+						<!-- <mt-button id="btn0" icon="back" ></mt-button> -->
 					</a>
-				</div>
             </div>
             <div class="search-right">
                <input class="text" type="text" placeholder="请输入宠物种类">
@@ -82,34 +81,45 @@ export default {
 </script>
 <style  lang="scss" scoped>
 .search{
-    display:flex;
-    flex-direction: row;
+    position: relative;
     margin-right:10px;
     margin-left:10px;
-    // margin-top:50px;
-    margin-bottom:10px;
-    height:40px;
-    // border:1px solid red;
-    .search-left{
-        margin-right:80px;
-        .mint-header-button{
-            border-radius: 20px;
-        }
+    margin-top:50px;
+//     margin-bottom:10px;
+//     height:40px;
+    //  border:1px solid red;
+     .search-left{
+        width:20%;
+        margin-left:10px;
+     }
+    .aczj-icon{
+        width:50px;
+        height:40px;
+        border-radius: 10px;
     }
     .search-right{  
+        position: absolute;
+        top:0px;
+        left:80px;
+        width:80%;
          display:flex;
          flex-direction: row;
+        padding-left:70px;
+
         .text{
             border-radius: 20px;
             width:250px;
         }
         .search-btn{
-            width:75px;
+            // display:block;
+            width:100px;
+            // padding-left:10px;
+            //  padding-right:10px;
             height:38px;
             position: relative;
-            left:-76px;
+            left:-40px;
             top:1px;
-             border-radius: 20px;
+            border-radius: 20px;
             background-color: ivory;
             font-size:14px;
             color:#808080;
@@ -119,6 +129,7 @@ export default {
     }
 }
 .search-species{
+    width:90%;
     height:40px;
     // border:1px solid red;
     display:flex;
@@ -152,7 +163,7 @@ export default {
     }
     .mui-table-view{
         background-color:#efeff4;
-        margin-left:15px;
+        padding-left:15px;
     }
     .mui-table-view:before {
          background-color:#efeff4;
@@ -160,7 +171,7 @@ export default {
     .mui-table-view-cell.mui-media.mui-col-xs-6{
         // border:1px solid red;
         // margin:10px 10px 10px 10px;
-        margin-right:15px;
+        margin-right:18px;
         margin-bottom:10px;
         width:45%;
         height:270px;
