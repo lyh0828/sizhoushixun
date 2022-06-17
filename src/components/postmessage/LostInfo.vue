@@ -119,7 +119,7 @@ export default {
     margin-left:15px;
     margin-top:50px;
     margin-bottom:10px;
-    width:100%;
+    width:90%;
     height:40px;
     // border:1px solid red;
     float:left;
@@ -133,7 +133,7 @@ export default {
         height:40px;
     }
     .mui-btn{
-        margin-right:70px;
+        margin-right:50px;
     }
 }
 .info-messages{
