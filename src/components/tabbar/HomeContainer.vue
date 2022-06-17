@@ -86,7 +86,7 @@
           </router-link>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-2">
-          <router-link to="">
+          <router-link to="/petproducts">
             <img
               src="https://img1.baidu.com/it/u=3935860372,2123648088&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500"
             />

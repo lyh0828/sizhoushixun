@@ -3,7 +3,7 @@
        <header class="header">
            <div class="top_left">
                <div class="left1">
-                   <img src="https://gw.alicdn.com/sns_logo/TB1ZbSH4AL0gK0jSZFtXXXQCXXa-240-240.png_120x120.jpg" alt=""></img>
+                   <img src="https://gw.alicdn.com/sns_logo/TB1ZbSH4AL0gK0jSZFtXXXQCXXa-240-240.png_120x120.jpg" alt="">
                </div>
                <div class="left2">
                     <h4>我的昵称</h4>

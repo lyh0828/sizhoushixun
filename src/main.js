@@ -10,6 +10,7 @@ import router from './router';
 import VueResource from 'vue-resource';
 //导入mint-ui组件库
  import MintUi from 'mint-ui';
+
  //将VueResource安装到vue
  Vue.use(VueResource)
  //设置API请求的根路径
@@ -19,6 +20,8 @@ import VueResource from 'vue-resource';
 import 'mint-ui/lib/style.css';
 //导入主css样式
 import './css/sass/index.scss';
+ // 引入图标css
+ import './css/iconfont.css'
 //mui的导入
 import './lib/mui/css/mui.css';
 import './lib/mui/css/icons-extra.css';
