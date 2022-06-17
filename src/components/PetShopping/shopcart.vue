@@ -1,5 +1,5 @@
 <template>
-  <div class="shopcart" style="position: relatives;margin-top:45px;">
+  <div class="shopcart" style="position: relatives;margin-top:40px;">
     <div class="background">
       <div class="title">
         <!-- <img src="../../images/shopcart.jpg" style="width:30%;"  alt=""> -->
