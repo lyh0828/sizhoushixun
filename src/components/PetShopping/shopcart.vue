@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="shopcart" style="position: relatives;margin-top:45px;">
     <div class="background">
       <div class="title">
+        <!-- <img src="../../images/shopcart.jpg" style="width:30%;"  alt=""> -->
         <span style="font-size: 26px">购物车</span>
-        <span>降价</span>
-        <span>常购</span>
+        <span class="iconfont icon-gouwuchekong gouwuche"> </span>
       </div>
     </div>
     <div class="mui-card">
@@ -22,6 +22,7 @@
                     <p class="mui-ellipsis">
                       伟嘉 海洋鱼味妙鲜包 成猫 85g*12袋
                     </p>
+                    <p style="font-size:20px; color:rgb(38, 162, 255);padding-top:10px;">￥34.90</p>
                   </div>
                 </a>
               </li>
@@ -58,6 +59,25 @@
         </div>
       </form>
     </div>
+
+    <div class="mui-bar mui-bar-tab quanxuan" style="margin-bottom: 50px ">
+      <div class="mui-content">
+        <div class="mui-card">
+          <form class="mui-input-group">
+            <div class="mui-input-row mui-radio mui-left">
+              <label style="display:inline;font-size:16px;padding-right:69px; line-height:40px;">全选</label>
+              <span
+                >合计：
+                <span> ￥34.90</span>
+              </span>
+              <button style="width:130px; background-color:rgb(38, 162, 255);height: 100%;
+    border-radius: 10px;">结算（1）</button>
+              <input name="radio1" type="radio" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -85,8 +105,10 @@ export default {
 <style lang="less" scoped>
 .background {
   width: 100%;
-  height: 220px;
-  background-color: rgb(241, 176, 170);
+  height: 50px;
+  background-color: rgb(38, 162, 255);
+  // background-image: url(../../images/shopcart.jpg);
+  border-radius: 0 0 45px 45px;
 }
 .title {
   width: 100%;
@@ -95,8 +117,12 @@ export default {
   position: absolute;
   margin-top: 20px;
   span {
-    padding: 10px;
+    padding: 30px;
     font-size: 20px;
+  }
+  .icon-gouwuchekong:before {
+    content: "\e600";
+    margin-left: 181px;
   }
 }
 /* .mui-input-group .mui-input-row {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="margin-top:45px;">
     <div class="wrapper">
       <ul class="mui-table-view mui-grid-view mui-grid-9">
         <li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
@@ -163,7 +163,7 @@ img {
 
   margin-left: 1%;
   margin-right: 2%;
-  width: 97%;
+  width: 98%;
   li {
     // border: none;
     width: 50%;

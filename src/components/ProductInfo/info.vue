@@ -1,5 +1,5 @@
 <template>
-<div>
+<div style="margin-top:45px;"> 
 <div class="mui-card">
 				<div class="mui-card-header mui-card-media" style="height:40vw;">
           <img src="../../images/catinfo01.png" alt="" style="width:100%;height:200%;">
