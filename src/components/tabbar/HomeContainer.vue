@@ -78,7 +78,7 @@
     <div class="middle">
       <ul class="mui-table-view mui-grid-view mui-grid-9">
         <li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-2">
-          <router-link to="">
+          <router-link to="/daylist">
             <img
               src="https://img0.baidu.com/it/u=2774035686,2091476564&fm=253&fmt=auto&app=138&f=JPEG?w=642&h=500"
             />

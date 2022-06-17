@@ -14,6 +14,9 @@ import CatDaily from './components/PetProducts/CatDaily.vue' ;               //4
 import CatToy from './components/PetProducts/CatToy.vue' ;               //4.1宠物用品--猫玩具
 import info from './components/ProductInfo/info.vue' ;                //4.1.1宠物用品详情
 import shopcart from './components/PetShopping/shopcart.vue' ;                //4.1.1宠物用品详情
+import daylist from './components/PetDay/DayList.vue';                      //5宠物日常
+import dayinfo from './components/PetDay/DayInfo.vue';                      //5.1宠物日常--详情页
+import perhome from './components/PetDay/PerHone.vue';                      //5.1.1宠物日常--详情页--个人主页
 
 
 //通过Vue使用路由（手动安装）
@@ -34,6 +37,9 @@ const router = new VueRouter({
        {path:'/petproducts/cattoy',component:CatToy} ,   //4.1宠物用品--猫玩具
        {path:'/productinfo',component:info} ,   //4.1.1宠物用品详情
        {path:'/petshopping/shopcart',component:shopcart} ,   //4.1.1宠物用品详情
+       {path:'/daylist',component:daylist},                 //5宠物日常
+       {path:'/dayinfo',component:dayinfo},                 //5.1宠物日常--详情页
+       {path:'/perhome',component:perhome},                 //5.1.1宠物日常--详情页--个人主页
 
     
     ],
