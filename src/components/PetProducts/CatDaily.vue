@@ -1,5 +1,5 @@
 <template>
-<div>
+<div style="margin-top:45px;">
 
 <h2>猫咪日常</h2>
 
