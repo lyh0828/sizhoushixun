@@ -7,8 +7,7 @@
                 <mt-button icon="back" @click="$router.back(-1)"></mt-button>
               </a>
           </div>
-                <mt-header fixed title="爱宠之家平台"></mt-header>
-                <!-- <h1 class="mint-header-title">爱宠之家平台</h1>  -->
+                <h1 class="mint-header-title">爱宠之家平台</h1> 
                 <div class="mint-header-button is-right">
                     <button class="mint-button mint-button--default mint-button--normal">
                     <span class="mint-button-icon"><i class="mintui mintui-more"></i></span>
@@ -16,6 +15,7 @@
                     </button>
                 </div>
         </header>
+
         <!-- <mt-header fixed title="爱宠之家平台"></mt-header> -->
         
         <!-- 中间内容 -->
@@ -60,8 +60,8 @@ export default {
      /* overflow: hidden; */
      top:0;
     /* margin-bottom:-14px; */
-
   }
+
 /* .app-container{
     padding-top: 40px;
 } */
