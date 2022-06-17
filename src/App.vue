@@ -1,7 +1,7 @@
 <template>
     <div class="app-container">
         <!-- 顶部区域 -->
-        <header class="mint-header">
+        <header class="mint-header" >
           <div class="mint-header-button is-left">
               <a href="#/" class="router-link-active">
                 <mt-button icon="back" @click="$router.back(-1)"></mt-button>
@@ -15,6 +15,7 @@
                     </button>
                 </div>
         </header>
+
         <!-- <mt-header fixed title="爱宠之家平台"></mt-header> -->
         
         <!-- 中间内容 -->
@@ -51,11 +52,16 @@ export default {
 
 <style scoped>
  .mint-header{
+    z-index: 100;
     height:40px;
     line-height:50px;
     width:100%;
+    position: fixed;
+     /* overflow: hidden; */
+     top:0;
     /* margin-bottom:-14px; */
   }
+
 /* .app-container{
     padding-top: 40px;
 } */

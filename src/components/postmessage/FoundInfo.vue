@@ -22,7 +22,8 @@
                 <label>标题</label>
                 <input type="text" class="mui-input-clear" placeholder="请输入" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
 			    </div>
-                <div class="line"></div>
+                <hr>
+                <!-- <div class="line"></div> -->
                 <div class="mui-input-row">
                    <label>宠物种类</label>
                 <!-- <select class="species">
@@ -33,7 +34,8 @@
                 <input type="text" class="mui-input-clear" placeholder="请输入" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
 
 			</div>
-            <div class="line"></div>
+            <hr>
+            <!-- <div class="line"></div> -->
             <div class="mui-input-row">
                 <label>宠物性别</label>
                 <div class="sexcontainer">
@@ -46,30 +48,36 @@
 						<option value="dog">母</option>
 				</select> -->
 			</div>
-            <div class="line"></div>
+            <hr>
+            <!-- <div class="line"></div> -->
             <div class="mui-input-row">
                 <label>捡到的地点</label>
                 <input type="text" class="mui-input-clear" placeholder="请输入" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
 			</div>
-            <div class="line"></div>
+            <hr>
+            <!-- <div class="line"></div> -->
             <div class="mui-input-row">
                 <label>捡到的时间</label>
                 <!-- <button id="demo1" data-options="{}" class="btn mui-btn mui-btn-block">选择日期时间 ...</button> -->
                 <input type="text" class="mui-input-clear" placeholder="请输入" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
 			</div>
-            <div class="line"></div>
+            <hr>
+            <!-- <div class="line"></div> -->
             <div class="mui-input-row" >
                 <label>详情</label>
 				<textarea id="textarea" rows="5" placeholder="不要着急，尽可能的把信息描述详尽，以便于尽快找到！好运~~"></textarea>
 			</div>
         </div>
         <div class="photos">
-            <p>请上传照片</p>
-            <form class="container" enctype="multipart/form-data" method="post" id='formBox' name="form"> 
-                <input type="file" id="chooseImage" name="file">
-                 <!-- 保存用户自定义的背景图片 -->
-                 <!-- <img id="cropedBigImg" value='custom' alt="lorem ipsum dolor sit" data-address='' title="自定义背景"/> -->
-            </form>
+            <p class="title">请上传照片</p>
+            <hr>
+                <div class="file">
+                    <input type="file"  class="update" accept="image/*" @change="change($event)"  ref="updata">
+                    <img :src="imageUrl?imageUrl:baseImg" alt="" class="img">
+                </div>
+                
+                
+          
         </div>
         <div class="phone">
             <div   class="mui-input-row">
@@ -95,7 +103,19 @@
 </template>
 <script>
 export default {
-    
+    data(){
+        return {
+            imageUrl:'',//上传的图片
+            baseImg:'' //默认的图片
+        }
+    },
+    methods:{
+
+    },
+    created(){
+        this.baseImg=require('../../images/L1.jpg')
+    }
+
 }
 </script>
 <style  lang="scss" scoped>
@@ -110,7 +130,7 @@ export default {
 .info-header{
     margin-right:10px;
     margin-left:15px;
-    margin-top:10px;
+    margin-top:50px;
     margin-bottom:10px;
     width:100%;
     height:40px;
@@ -130,13 +150,17 @@ export default {
     }
 }
 .info-messages{
-    margin-left:15px;
+    // margin-left:15px;
     clear:both;
-    width:90%;
-    height:400px;
+    width:100%;
+    height:450px;
     // border:1px solid red;
     background-color:#FFF;
-    border-radius: 15px;
+    // border-radius: 15px;
+    hr{
+        width:95%;
+        margin-left:5px;
+    }
     .line{
         width:95%;
         margin:auto;
@@ -166,14 +190,33 @@ export default {
    }
 }
 .photos{
-    margin-left:15px;
-
     margin-top:10px;
     margin-bottom:10px;
-    width:90%;
-    height:150px;
+    width:100%;
+    height:200px;
     border:1px solid red;
-    border-radius:15px;
+    background-color:#FFF;
+    // border-radius:15px;
+    hr{
+        width:95%;
+        margin-left:5px;
+    }
+    .file{
+          border:1px solid red;
+         position: relative;
+        .update{
+            position: absolute;
+            top:0px;
+            width:100px;
+            height:100px;
+            border:1px solid red;
+        }
+        .img{
+            width:100px;
+            height:100px;
+
+        }
+    }
 }
 .phone{
     .lb{

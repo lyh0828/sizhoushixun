@@ -2,7 +2,6 @@
   <div class="home">
     <div class="topbar">
       <img class="topbar-img" src="../../images/10.png"/>
-
     </div>
 
     <!-- 轮播图 -->
@@ -121,6 +120,26 @@
           >
         </div>
       </div>
+
+<div class="all">
+        <div class="author">
+          <img
+            class="author-img"
+            src="https://img1.baidu.com/it/u=857954094,2202868374&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=866"
+          />
+          <div class="author-info">
+            <span class="name">愤怒的皮蛋</span>
+            <span class="time">12小时前发布</span>
+          </div>
+        </div>
+        <div class="content">
+          <span class="title">请问一个月大的猫不吃东西怎么办？</span>
+          <span class="bottom-content"
+            >才断奶没几天，朋友那儿报的，买了脱脂羊奶也不喝，猫粮也不吃，喂它也不吃，怎么办？在线求助！</span
+          >
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
@@ -134,6 +153,9 @@ export default {};
   margin: 0px;
   padding: 0px;
   background-color: rgb(244, 244, 244);
+  .topbar{
+    margin-top:40px;
+  }
   .topbar-img {
     width: 100%;
     height: 100px;
@@ -191,7 +213,8 @@ export default {};
   }
   .bottom {
     width: 100%;
-    padding: 5px 10px 10px 10px;
+    height: 375px;
+    padding: 5px 15px 10px 13px;
     .text {
       margin: 5px 0 10px 0;
       .text1 {
@@ -205,7 +228,7 @@ export default {};
       }
     }
     .all {
-      background: snow;
+      background:snow;
       border-radius: 5%;
       .author {
         display: flex;
