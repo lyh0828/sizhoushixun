@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="topbar">
-      <img class="topbar-img" src="../../images/09.png"/>
+      <img class="topbar-img" src="../../images/10.png"/>
 
     </div>
 
@@ -137,7 +137,6 @@ export default {};
   .topbar-img {
     width: 100%;
     height: 100px;
-    
   }
   .mint-swipe {
     width: 100%;

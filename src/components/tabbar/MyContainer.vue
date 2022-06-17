@@ -95,7 +95,7 @@ export default {
 </script>
 <style lang="scss" scoped>
  .header{
-      margin-top:50px;
+    //   margin-top:50px;
      z-index: 2;
      padding:10px ;
         width:100%;
