@@ -39,8 +39,8 @@
             <div class="mui-input-row">
                 <label>宠物性别</label>
                 <div class="sexcontainer">
-                     <input class="sex" type="radio" name="sex" value="male">公
-                     <input class="sex"  type="radio" name="sex" value="female">母 
+                     <input class="sex" type="radio" name="sex" value="male"  v-model='gender'>公
+                     <input class="sex"  type="radio" name="sex" value="female"  v-model='gender'>母 
                 </div>
                   
                  <!-- <select class="species">
@@ -52,20 +52,20 @@
             <!-- <div class="line"></div> -->
             <div class="mui-input-row">
                 <label>捡到的地点</label>
-                <input type="text" class="mui-input-clear" placeholder="请输入" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+                <input type="text" class="mui-input-clear" placeholder="请输入" data-input-clear="5" v-model="found_address"><span class="mui-icon mui-icon-clear mui-hidden"></span>
 			</div>
             <hr>
             <!-- <div class="line"></div> -->
             <div class="mui-input-row">
                 <label>捡到的时间</label>
                 <!-- <button id="demo1" data-options="{}" class="btn mui-btn mui-btn-block">选择日期时间 ...</button> -->
-                <input type="text" class="mui-input-clear" placeholder="请输入" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+                <input type="text" class="mui-input-clear" placeholder="请输入" data-input-clear="5" v-model="found_time"><span class="mui-icon mui-icon-clear mui-hidden"></span>
 			</div>
             <hr>
             <!-- <div class="line"></div> -->
             <div class="mui-input-row" >
                 <label>详情</label>
-				<textarea id="textarea" rows="5" placeholder="不要着急，尽可能的把信息描述详尽，以便于尽快找到！好运~~"></textarea>
+				<textarea id="textarea" rows="5" v-model="details" placeholder="不要着急，尽可能的把信息描述详尽，以便于尽快找到！好运~~"></textarea>
 			</div>
         </div>
         <div class="photos">
@@ -84,18 +84,18 @@
                 <label class="lb">
                     <a id="icon-phone"><span class="mui-icon mui-icon-phone"></span></a>
                 </label>
-                <input type="text" class="mui-input-clear" placeholder="请输入你的手机号" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+                <input type="text" class="mui-input-clear" placeholder="请输入你的手机号" data-input-clear="5" v-model="tel"><span class="mui-icon mui-icon-clear mui-hidden"></span>
 			</div>
             <div class="mui-input-row">
                 <label class="lb">
                     <a><span class="mui-icon mui-icon-weixin"></span></a>
                 </label>
-                <input type="text" class="mui-input-clear" placeholder="请填写你的微信号" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+                <input type="text" class="mui-input-clear" placeholder="请填写你的微信号" data-input-clear="5" v-model="weixin"><span class="mui-icon mui-icon-clear mui-hidden"></span>
 			</div>
         </div>
         <div class="btn">
             <router-link to="/petclaimed">
-                 <button type="button" class="mui-btn mui-btn-primary mui-btn-block">发布</button>
+                 <button type="submit" class="mui-btn mui-btn-primary mui-btn-block" v-on:click="addInfo">发布</button>
             </router-link>
         </div>
 
@@ -106,10 +106,32 @@ export default {
     data(){
         return {
             imageUrl:'',//上传的图片
-            baseImg:'' //默认的图片
+            baseImg:'', //默认的图片
         }
     },
     methods:{
+        addInfo(){
+					this.$http.post('students/new',{
+					title:this.title,
+					species:this.species,
+					gender:this.gender,
+					found_address:this.found_address,
+					found_time:this.found_time,
+                    details:this.details,
+                    img:this.img,
+                    tel:this.tel,
+                    weixin:this.weiixn
+				 },{emulateJSON:true}).then(res=>{
+					// if(res.body.status==0)
+					// {
+					// 	window.history.back(-1);
+					// 	alert('成功');
+					// }
+					// else{alert('失败')}
+					
+					this.list=res.body
+				   })
+				},
 
     },
     created(){

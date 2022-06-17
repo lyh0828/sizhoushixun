@@ -27,19 +27,19 @@
 			<div>
 				<h4 class="title">宠物认领</h4>  
                 <ul class="mui-table-view mui-grid-view ">
-					<li class="mui-table-view-cell mui-media mui-col-xs-6" v-for="item in PetInfoList" :key="item.id">
-		                 <router-link :to="'/home/goodsinfo/'+item.id">
-		                    <img class="mui-media-object" :src="item.img_url">
+					<li class="mui-table-view-cell mui-media mui-col-xs-6" v-for="item in PetInfoList" :key="item._id">
+		                 <router-link :to="'/home/goodsinfo/'+item._id">
+		                    <img class="mui-media-object" :src="item.img">
                             <div class="info">
                                 <div >
                                    <p class="title">{{item.title}}</p> 
                                 </div>
                                 <div class="time_sex">
                                     <div class="sex-btn">
-                                        <p class='sex'>宠物性别:{{item.click}}</p>
+                                        <p class='sex'>宠物性别:{{item.gender}}</p>
                                         <a  class="search-btn" >认领中 </a>
                                     </div>
-                                    <p class='time'>时间:{{item.add_time| dateFormat}}</p>
+                                    <p class='time'>时间:{{item.found_time}}</p>
                                 </div>
                             </div>
                         </router-link>
@@ -55,6 +55,7 @@ export default {
         return{
             PetInfoList:[],
             value:true,
+            name:''
         }
     },
     created(){
@@ -62,13 +63,14 @@ export default {
     },
     methods:{
         getPetInfo(){
-            this.$http.get("students").then(result=>{
+            this.$http.get("aaa").then(result=>{
                 console.log(result.body)
-                if(result.body.status===0){
-                    this.PetInfoList=result.body.message
-                }else{
-                    console.log('获取数据失败')
-                }
+                // if(result.body.status===0){
+                    // this.PetInfoList=result.body
+                    this.PetInfoList=result.body
+                // }else{
+                //     console.log('获取数据失败')
+                // }
             })
         }
     },
@@ -85,8 +87,8 @@ export default {
     margin-right:10px;
     margin-left:10px;
     margin-top:50px;
-//     margin-bottom:10px;
-//     height:40px;
+// margin-bottom:10px;
+// height:40px;
     //  border:1px solid red;
      .search-left{
         width:20%;
@@ -112,7 +114,7 @@ export default {
         }
         .search-btn{
             // display:block;
-            width:100px;
+            width:60px;
             // padding-left:10px;
             //  padding-right:10px;
             height:38px;
@@ -178,6 +180,8 @@ export default {
         background-color:#fff;
         border-radius: 15px;
         img{
+        height:120px;
+        width:150px;
           border-radius: 15px;
           margin-left:-15px;
         }
