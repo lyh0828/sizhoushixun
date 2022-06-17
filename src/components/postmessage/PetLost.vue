@@ -20,20 +20,20 @@
         <div class="content">
             <div class="content-time">
                 <span class="shijian">走失时间：</span>
-                <span class="font">2021.8.5上午2-10点</span>
+                <span class="lost-time">2021.8.5上午2-10点</span>
             </div>
             <div class="address">
                 <span class="shijian">走失地址：</span>
-                <span class="font">天津市大学软件学院</span>
+                <span class="lost-address">天津市大学软件学院</span>
             </div>
             <div>
                 <span class="shijian">宠物特征：</span>
-                <span class="font">肚子下被剃毛了，身上有芯片...</span>
+                <span class="special">肚子下被剃毛了，身上有芯片...</span>
             </div>
             <div class="picture">
-                <img src="https://img0.baidu.com/it/u=3048947508,3919270582&fm=253&fmt=auto&app=138&f=JPEG?w=600&h=485">
-                <img src="https://img2.baidu.com/it/u=2066877075,4169070272&fm=253&fmt=auto&app=138&f=JPEG?w=679&h=500">
-                <img src="https://img0.baidu.com/it/u=960501234,1772203118&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=329">
+                <img class="picture1" src="https://img0.baidu.com/it/u=3048947508,3919270582&fm=253&fmt=auto&app=138&f=JPEG?w=600&h=485">
+                <img  class="picture1" src="https://img2.baidu.com/it/u=2066877075,4169070272&fm=253&fmt=auto&app=138&f=JPEG?w=679&h=500">
+                <img  class="picture1" src="https://img0.baidu.com/it/u=960501234,1772203118&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=329">
             </div>
             <div class="location">
                 <span class="mui-icon mui-icon-location"></span>
