@@ -62,7 +62,7 @@ export default {
     },
     methods:{
         getPetInfo(){
-            this.$http.get("api/getgoods?pageindex=1").then(result=>{
+            this.$http.get("students").then(result=>{
                 console.log(result.body)
                 if(result.body.status===0){
                     this.PetInfoList=result.body.message
