@@ -85,8 +85,8 @@ export default {
     margin-right:10px;
     margin-left:10px;
     margin-top:50px;
-//     margin-bottom:10px;
-//     height:40px;
+// margin-bottom:10px;
+// height:40px;
     //  border:1px solid red;
      .search-left{
         width:20%;
@@ -112,7 +112,7 @@ export default {
         }
         .search-btn{
             // display:block;
-            width:100px;
+            width:60px;
             // padding-left:10px;
             //  padding-right:10px;
             height:38px;
