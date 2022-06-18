@@ -1,3 +1,11 @@
+/*
+ * @Author: caoYaNan 2419612936@qq.com
+ * @Date: 2022-06-15 15:02:28
+ * @LastEditors: caoYaNan 2419612936@qq.com
+ * @LastEditTime: 2022-06-18 22:28:00
+ * @FilePath: \sizhoushixun\src\router.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 //导入vue插件
 import Vue from 'vue'
 //导入vue路由插件
@@ -39,9 +47,9 @@ const router = new VueRouter({
        {path:'/petproducts/cattoy',component:CatToy} ,   //4.1宠物用品--猫玩具
        {path:'/productinfo',component:info} ,   //4.1.1宠物用品详情
        {path:'/petshopping/shopcart',component:shopcart} ,   //4.1.1宠物用品详情
-       {path:'/daylist',component:daylist},                 //5宠物日常
-       {path:'/dayinfo',component:dayinfo},                 //5.1宠物日常--详情页
-       {path:'/perhome',component:perhome},                 //5.1.1宠物日常--详情页--个人主页
+       {path:'/home/daylist',component:daylist},                 //5宠物日常
+       {path:'/home/daylist/dayinfo/:id',component:dayinfo},                 //5.1宠物日常--详情页
+       {path:'/home/daylist/perhome',component:perhome},                 //5.1.1宠物日常--详情页--个人主页
 
     
     ],

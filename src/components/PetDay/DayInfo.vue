@@ -7,18 +7,16 @@
             <a class="iconSearch"><span class="mui-icon mui-icon-search"></span></a>
         </div>
         <div class="main">
-            <img class="imgMain"
-                src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg2.niutuku.com%2Fdesk%2F1208%2F0731%2Fbizhi-0731-7777.jpg&refer=http%3A%2F%2Fimg2.niutuku.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1658041598&t=e84feb81bb0122c32055de4a4a20d631">
+            <img class="imgMain" src="../../images/petday1.jpg">
             <div class="mainInfo">
-                <p class="mainInfoT">标题</p>
-                <p class="mainInfoM">这是一个长长的详情</p>
+                <p class="mainInfoT">{{ title }}</p>
+                <p class="mainInfoM">{{ content }}</p>
                 <div>
-                    <a class="iconTime"><span class="mui-icon-extra mui-icon-extra-outline">三小时前 </span></a>
-                    <a id="icon-person" class="iconPeople"><span class="mui-icon mui-icon-person">9人看过</span></a>
+                    <a class="iconTime"><span class="mui-icon-extra mui-icon-extra-outline">{{ time }} </span></a>
+                    <a id="icon-person" class="iconPeople"><span class="mui-icon mui-icon-person">{{ click }}人看过</span></a>
                 </div>
-                <router-link to="/perhome" class="mainInfoPic" >
-                        <img
-                        src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg2.niutuku.com%2Fdesk%2F1208%2F0731%2Fbizhi-0731-7777.jpg&refer=http%3A%2F%2Fimg2.niutuku.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1658041598&t=e84feb81bb0122c32055de4a4a20d631">
+                <router-link to="/home/daylist/perhome" class="mainInfoPic" >
+                        <img src="../../images/petday1.jpg">
                     <div>昵称</div>
                 </router-link>
                 <hr>
@@ -43,13 +41,38 @@
         </div>
     </div>
 </template>
-
 <script>
 export default {
-    data() {
-        return {}
+     data() {
+        return {
+            title:'',
+            time:'',
+            click:'',
+            content:'',
+        }
     },
-    methods: {},
+    //生命周期(页面一展示就执行)
+    created() {
+        //调用此方法
+        this.getdayinfo()
+    },
+    methods: {
+        //获取新闻列表数据的方法
+        getdayinfo(){
+            this.$http.get("api/getnew/"+this.$route.params.id).then(result =>{
+                console.log(result.body)
+                if (result.body.status === 0){
+                    this.title = result.body.message[0].title
+                    this.time = result.body.message[0].add_time
+                    this.click = result.body.message[0].click
+                    this.content = result.body.message[0].content
+                }else{
+
+                    console.log('数据加载失败')
+                }
+            })
+        }
+    },
 }
 </script>
 

@@ -43,7 +43,7 @@
                 </div>
                 <div class="mainInfo2">
                     <img
-                        src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg2.niutuku.com%2Fdesk%2F1208%2F0731%2Fbizhi-0731-7777.jpg&refer=http%3A%2F%2Fimg2.niutuku.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1658041598&t=e84feb81bb0122c32055de4a4a20d631">
+                        src="../../images/petday1.jpg">
                     <br>
                     <span class="mainInfo2name">昵称</span>
                 </div>
@@ -57,8 +57,7 @@
 export default {
     data() {
         return {}
-    },
-    methods: {},
+    }
 }
 </script>
 

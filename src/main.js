@@ -1,3 +1,4 @@
+
 //此处作为项目的入口文件
 //导入vue插件
 import Vue from 'vue'
@@ -14,7 +15,7 @@ import VueResource from 'vue-resource';
  //将VueResource安装到vue
  Vue.use(VueResource)
  //设置API请求的根路径
- Vue.http.options.root="http://36.138.183.223:3000/"
+ Vue.http.options.root="http://www.liulongbin.top:3005/"
  Vue.http.options.emulateJSON = true;//全局启用emulateJSON选项，post请求时使用
 //导入mint-ui的样式
 import 'mint-ui/lib/style.css';
