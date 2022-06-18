@@ -2,7 +2,7 @@
  * @Author: caoYaNan 2419612936@qq.com
  * @Date: 2022-06-17 10:19:48
  * @LastEditors: caoYaNan 2419612936@qq.com
- * @LastEditTime: 2022-06-17 16:40:18
+ * @LastEditTime: 2022-06-17 20:53:52
  * @FilePath: \sizhoushixun\src\components\PetDay\DayList.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -18,9 +18,12 @@
             <p class="mainTitle">宠物的日记</p>
             <ul>
                 <li>
-                    <img
+                    <router-link to="/dayinfo">
+                        <img
                         src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg2.niutuku.com%2Fdesk%2F1208%2F0731%2Fbizhi-0731-7777.jpg&refer=http%3A%2F%2Fimg2.niutuku.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1658041598&t=e84feb81bb0122c32055de4a4a20d631">
                         <span>标题1</span>
+                    </router-link>
+                    
                 </li>
                 <li><img
                         src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2018-04-24%2F5adf0cd1a98af.jpg&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1658041846&t=51cbe23b17cadf9f103f7952b3851f2a">
@@ -62,14 +65,13 @@ export default {
 
 <style lang="scss" scoped>
 .con {
+    margin-top: 40px;
+    margin-bottom: 50px;
     ul {
         li {
             list-style: none;
         }
     }
-
-    ;
-    margin-top: 40px;
 
     .top {
         height: 40px;
@@ -134,8 +136,11 @@ export default {
                 }
                 span{
                     display: inline-block;
+                    line-height: 35px;
                     height: 35px;
                     text-align: center;
+                    width: 190px;
+                    color: black;
                 }
             }
         }
