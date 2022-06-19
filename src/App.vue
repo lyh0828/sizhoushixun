@@ -30,7 +30,7 @@
 				<span class="mui-tab-label">首页</span>
 			</router-link>
 			<router-link class="mui-tab-item" to="/info">
-				<span class="mui-icon mui-icon-plusempty"></span>
+				<span class="mui-icon mui-icon-plus"></span>
 				<span class="mui-tab-label">发布信息</span>
 			</router-link>
 			<router-link class="mui-tab-item" to="/my">
