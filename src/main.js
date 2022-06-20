@@ -23,8 +23,17 @@ import './css/sass/index.scss';
  // 引入图标css
  import './css/iconfont.css'
 //mui的导入
+// import  './lib/mui/js/mui.min.js';
+// import './lib/mui/js/mui.picker.min.js';
+
 import './lib/mui/css/mui.css';
 import './lib/mui/css/icons-extra.css';
+
+import './lib/mui/css/app.css';
+import './lib/mui/css/mui.picker.min.css';
+
+Vue.prototype.mui=mui;
+
 //将mint-ui安装到vue中
 Vue.use(MintUi)
 //按需引入mint-ui中的组件

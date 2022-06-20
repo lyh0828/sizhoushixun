@@ -6,7 +6,8 @@ import VueRouter from 'vue-router';
 import HomeContainer from './components/tabbar/HomeContainer.vue';        //1.首页
 import LostInfo from './components/postmessage/LostInfo.vue';              //2.发布信息 和2.1 我丢失了的信息登记 同一个
 import FoundInfo from './components/postmessage/FoundInfo.vue';             //2.2我捡到了的信息登记
-import PetClaimed from './components/postmessage/PetClaimed.vue';         //2.1.1宠物认领
+import PetClaimed from './components/postmessage/PetClaimed.vue';         //2.1.1宠物认领页
+import PetClaimedDetails from './components/postmessage/PetClaimedDetails.vue'; //2.1.1.1 每一个宠物的详细信息
 import PetLost from './components/postmessage/PetLost.vue';               //2.1.2宠物丢失
 import MyContainer from './components/tabbar/MyContainer.vue';            //3.我的
 import PetProduct from './components/PetProducts/index.vue' ;               //4.宠物用品销售主页
@@ -31,6 +32,7 @@ const router = new VueRouter({
        {path:'/lostinfo',component:LostInfo},    //2.1 我丢失了的信息登记
        {path:'/foundinfo',component:FoundInfo},       //2.2我捡到了的信息登记
        {path:'/petclaimed',component:PetClaimed},      //2.1.1 宠物认领
+       {path:'/petclaimeddetails/:id',component:PetClaimedDetails},       //2.1.1.1 每一个宠物的详细信息
        {path:'/petlost',component:PetLost},            //2.1.2宠物丢失
        {path:'/my',component:MyContainer} ,          //3.我的
        {path:'/petproducts',component:PetProduct},    //4.宠物用品销售主页

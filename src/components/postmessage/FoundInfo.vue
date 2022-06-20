@@ -20,7 +20,7 @@
             <div class="info-messages">
                 <div class="mui-input-row">
                 <label>标题</label>
-                <input type="text" class="mui-input-clear" placeholder="请输入" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+                <input type="text" class="mui-input-clear" placeholder="请输入" v-model='title' data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
 			    </div>
                 <hr>
                 <!-- <div class="line"></div> -->
@@ -31,7 +31,7 @@
 						<option value="dog">狗狗</option>
                         <option value="qita">其他爱宠</option>
 				</select> -->
-                <input type="text" class="mui-input-clear" placeholder="请输入" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+                <input type="text" class="mui-input-clear" placeholder="请输入" v-model='species' data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
 
 			</div>
             <hr>
@@ -39,8 +39,8 @@
             <div class="mui-input-row">
                 <label>宠物性别</label>
                 <div class="sexcontainer">
-                     <input class="sex" type="radio" name="sex" value="male"  v-model='gender'>公
-                     <input class="sex"  type="radio" name="sex" value="female"  v-model='gender'>母 
+                     <input class="sex" type="radio" name="sex" value="公"  v-model='gender'>公
+                     <input class="sex"  type="radio" name="sex" value="母"  v-model='gender'>母 
                 </div>
                   
                  <!-- <select class="species">
@@ -58,14 +58,17 @@
             <!-- <div class="line"></div> -->
             <div class="mui-input-row">
                 <label>捡到的时间</label>
+                
+                <input type="text" class="mui-input-clear" placeholder="请输入" data-input-clear="5" v-model="found_time">
                 <!-- <button id="demo1" data-options="{}" class="btn mui-btn mui-btn-block">选择日期时间 ...</button> -->
-                <input type="text" class="mui-input-clear" placeholder="请输入" data-input-clear="5" v-model="found_time"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+                <div id='result' class="ui-alert"></div>
+                <span class="mui-icon mui-icon-clear mui-hidden"></span>
 			</div>
             <hr>
             <!-- <div class="line"></div> -->
             <div class="mui-input-row" >
                 <label>详情</label>
-				<textarea id="textarea" rows="5" v-model="details" placeholder="不要着急，尽可能的把信息描述详尽，以便于尽快找到！好运~~"></textarea>
+				<textarea id="textarea" rows="5" v-model="details" placeholder="尽可能把宠物特征描写详细,方便宠物找到主人"></textarea>
 			</div>
         </div>
         <div class="photos">
@@ -75,22 +78,19 @@
                     <input type="file"  class="update" accept="image/*" @change="change($event)"  ref="updata">
                     <img :src="imageUrl?imageUrl:baseImg" alt="" class="img">
                 </div>
-                
-                
-          
         </div>
         <div class="phone">
             <div   class="mui-input-row">
                 <label class="lb">
                     <a id="icon-phone"><span class="mui-icon mui-icon-phone"></span></a>
                 </label>
-                <input type="text" class="mui-input-clear" placeholder="请输入你的手机号" data-input-clear="5" v-model="tel"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+                <input type="text" class="mui-input-clear" placeholder="请输入你的手机号" data-input-clear="5" v-model="tel">
 			</div>
             <div class="mui-input-row">
                 <label class="lb">
                     <a><span class="mui-icon mui-icon-weixin"></span></a>
                 </label>
-                <input type="text" class="mui-input-clear" placeholder="请填写你的微信号" data-input-clear="5" v-model="weixin"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+                <input type="text" class="mui-input-clear" placeholder="请填写你的微信号" data-input-clear="5" v-model="weixin">
 			</div>
         </div>
         <div class="btn">
@@ -107,9 +107,44 @@ export default {
         return {
             imageUrl:'',//上传的图片
             baseImg:'', //默认的图片
+            details:'',
+            found_address:'',
+            found_time:'',
+            gender:'',
+            img:'',
+            species:'',
+            tel:'',
+            weixin:'',
+            title:'',
         }
     },
     methods:{
+           change(e) {
+      console.log(e.target.files[0].name);
+      // 判断是不是规定格式
+      // let name  =  e.target.files[0].name
+
+      // 获取到第一张图片
+      let file = e.target.files[0]
+
+      // 创建文件读取对象
+      var reader = new FileReader()
+      var that = this 
+
+      //  将文件读取为DataURL
+      reader.readAsDataURL(file)
+
+      // 读取成功调用方法
+      reader.onload = e => {
+        console.log('读取成功');
+
+        // e.target.result 获取 读取成功后的  文件DataURL
+        that.imageUrl = e.target.result
+
+        // 如果要将图片上传服务器，就在这里调用后台方法
+      }
+
+     },
         addInfo(){
 					this.$http.post('students/new',{
 					title:this.title,
@@ -120,7 +155,7 @@ export default {
                     details:this.details,
                     img:this.img,
                     tel:this.tel,
-                    weixin:this.weiixn
+                    weixin:this.weixin
 				 },{emulateJSON:true}).then(res=>{
 					// if(res.body.status==0)
 					// {
@@ -140,6 +175,7 @@ export default {
 
 }
 </script>
+
 <style  lang="scss" scoped>
 
 // .v-enter,.v-leave-to{
