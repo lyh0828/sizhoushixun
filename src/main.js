@@ -9,13 +9,16 @@ import app from './App.vue'
 import router from './router';
 //导入vue的ajax插件
 import VueResource from 'vue-resource';
+import mui from './lib/mui/js/mui.js';
+Vue.prototype.mui=mui
+
 //导入mint-ui组件库
  import MintUi from 'mint-ui';
 
  //将VueResource安装到vue
  Vue.use(VueResource)
  //设置API请求的根路径
- Vue.http.options.root="http://www.liulongbin.top:3005/"
+ Vue.http.options.root="http://localhost:8000/"
  Vue.http.options.emulateJSON = true;//全局启用emulateJSON选项，post请求时使用
 //导入mint-ui的样式
 import 'mint-ui/lib/style.css';
@@ -24,10 +27,16 @@ import './css/sass/index.scss';
  // 引入图标css
  import './css/iconfont.css'
 //mui的导入
+
+// import  './lib/mui/js/mui.picker.min.js'
 import './lib/mui/css/mui.css';
 import './lib/mui/css/icons-extra.css';
+// import './lib/mui/css/mui.picker.min.css';
+// import './lib/mui/css/mui.min.css';
+
 //将mint-ui安装到vue中
 Vue.use(MintUi)
+
 //按需引入mint-ui中的组件
 // import { Header } from 'mint-ui';
 //以组件的形式引用给vue

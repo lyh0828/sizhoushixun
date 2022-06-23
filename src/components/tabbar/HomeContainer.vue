@@ -7,9 +7,11 @@
     <!-- 轮播图 -->
     <mt-swipe :auto="4000">
       <mt-swipe-item>
+        <router-link to="/home/banner">
         <img
           src="https://img1.baidu.com/it/u=1308062,1060823281&fm=253&fmt=auto&app=138&f=JPEG?w=499&h=188"
         />
+        </router-link>
       </mt-swipe-item>
       <mt-swipe-item>
         <img
@@ -30,10 +32,10 @@
           </a>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
-          <a href="#">
+          <router-link to="/addremind">
             <img src="../../images/02.png">
             <div class="mui-media-body">添加提醒</div>
-          </a>
+          </router-link>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
           <a href="#">

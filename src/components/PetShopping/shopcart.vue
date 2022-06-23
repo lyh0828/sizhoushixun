@@ -9,26 +9,28 @@
     </div>
     <div class="mui-card">
       <form class="mui-input-group">
-        <div class="mui-input-row mui-radio mui-left" style="height: 140px">
+        <!-- <div class="mui-input-row mui-radio mui-left" style="height: 140px"> -->
+       
           <label>
+            <input type="checkbox" style="width: 25px;  height: 25px; margin-top:20px; margin-left:20px;"  v-model="checkedNames"  @change="change_select"  >
             <ul class="mui-table-view">
               <li class="mui-table-view-cell mui-media">
                 <a href="javascript:;">
                   <img
                     class="mui-media-object mui-pull-left"
-                    src="../../images/cat01.png"
+                    :src="img"
                   />
                   <div class="mui-media-body">
                     <p class="mui-ellipsis">
-                      伟嘉 海洋鱼味妙鲜包 成猫 85g*12袋
+                     {{title}}
                     </p>
-                    <p style="font-size:20px; color:rgb(38, 162, 255);padding-top:10px;">￥34.90</p>
+                    <p style="font-size:20px; color:rgb(38, 162, 255);padding-top:10px;">￥{{price}}</p>
                   </div>
                 </a>
               </li>
             </ul>
           </label>
-          <input name="radio1" type="radio" checked />
+
           <div class="mui-card">
             <form class="mui-input-group">
               <div class="mui-input-row">
@@ -56,7 +58,7 @@
               </div>
             </form>
           </div>
-        </div>
+        
       </form>
     </div>
 
@@ -64,16 +66,17 @@
       <div class="mui-content">
         <div class="mui-card">
           <form class="mui-input-group">
-            <div class="mui-input-row mui-radio mui-left">
-              <label style="display:inline;font-size:16px;padding-right:69px; line-height:40px;">全选</label>
+              <input type="checkbox" style="width:20px; height: 20px;" name="vehicle" value="" v-model="commonList2" @change="all_select_button"   /> 
+              
+              <label style="display:inline;font-size:16px;padding-right:95px; line-height:40px;" >全选</label>
               <span
                 >合计：
-                <span> ￥34.90</span>
+                <span> ￥{{price}}</span>
               </span>
               <button style="width:130px; background-color:rgb(38, 162, 255);height: 100%;
     border-radius: 10px;">结算（1）</button>
-              <input name="radio1" type="radio" />
-            </div>
+           
+            
           </form>
         </div>
       </div>
@@ -85,9 +88,19 @@ export default {
   data() {
     return {
       value: 1,
+      title:"",
+      price:"",
+      img:"",
+    commonList2:[],
+    checkedNames: [],
+       dianji: 0,
+      
     };
   },
-
+created() {
+  this.getcartinfo()
+  
+},
   methods: {
     add() {
       this.value += 1;
@@ -99,7 +112,44 @@ export default {
         this.value == 1;
       }
     },
+      getcartinfo() {
+      this.$http
+        .get("products/shopcart/" + '?id='+this.$route.params.id)
+        .then((result) => {
+          console.log(result.body)
+     
+          this.title = result.body.Title;
+          this.price = result.body.Price;
+          this.img = result.body.Img;
+  
+        })
+        .catch((err) => {});
+    },
+     all_select_button() {
+                //                获取复选框是true还是false。如果是true的话就把created函数中保存的对象赋值，否则就把空数组赋值
+                //                                var check = document.getElementsByTagName('input')[0].checked;
+                //                                if(check == true) {
+                //                                    this.checkedNames = this.commonList2;
+                //                                } else {
+                //                                    this.checkedNames = [];
+                //                                }
+                this.checkedNames = [],
+                    this.dianji++;
+                if(this.dianji % 2 != 0) {
+                    for(let i = 0; i < this.commonList2.length - 1; i++) {
+                        this.checkedNames.push(this.commonList2[i]);
+                    }
+                } else {
+                    this.checkedNames = [];
+                }
+         
+            },
+
+
   },
+  watch:{
+    
+  }
 };
 </script>
 <style lang="less" scoped>
