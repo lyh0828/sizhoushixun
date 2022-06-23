@@ -104,7 +104,7 @@
 </template>
 <script>
 
-// import Classify from "../PetProducts/classify.vue";
+
 
 export default {
   name: "Classify",
@@ -115,23 +115,23 @@ export default {
 // Classify
   
   },
-  created() {
-    mui.init({
-      swipeBack: true, //启用右滑关闭功能
-    });
-    var slider = mui("#slider");
-    document.getElementById("switch").addEventListener("toggle", function (e) {
-      if (e.detail.isActive) {
-        slider.slider({
-          interval: 5000,
-        });
-      } else {
-        slider.slider({
-          interval: 0,
-        });
-      }
-    });
-  },
+  // created() {
+  //   mui.init({
+  //     swipeBack: true, //启用右滑关闭功能
+  //   })
+  //   var slider = mui("#slider");
+  //   document.getElementById("switch").addEventListener("toggle", function (e) {
+  //     if (e.detail.isActive) {
+  //       slider.slider({
+  //         interval: 5000,
+  //       });
+  //     } else {
+  //       slider.slider({
+  //         interval: 0,
+  //       });
+  //     }
+  //   });
+  // },
 };
 </script>
 <style lang="scss" >

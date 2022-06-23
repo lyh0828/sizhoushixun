@@ -1,8 +1,17 @@
 <template>
 <div style="margin-top:45px;">
 
-<h2>猫咪粮食</h2>
-
+   <!-- <div class="header" > -->
+    
+<h2 >猫咪粮食</h2>
+<!-- <img src="../../images/info.png" alt="" style="width:70px; height:25px; padding-left:10px;margin-top:10px;"> -->
+ 	 <!-- <span class="iconfont icon-maoliang" style="color:rgb(247,153,159);"></span> -->
+    <!-- <input type="text"  placeholder="寻找商品"> -->
+ <!--   <button type="button" class="mui-btn mui-btn-primary mui-icon mui-icon-search">
+		            搜索
+		        </button> -->
+    <!-- </div> -->
+    
 
 
          <div class="mui-content" style="background-color:#fff">
@@ -11,7 +20,8 @@
 		        <li class="mui-table-view-cell mui-media mui-col-xs-6">
 		            <router-link to="/productinfo">
                           <div class="mui-media-body">加拿大原装进口纽顿nutram number T24鲑鱼&鳟鱼配方猫粮</div>
-		                <img class="mui-media-object" src="../../images/cat09.png">
+		                <!-- <img class="mui-media-object" src="../../images/cat09.png"> -->
+                    <img src="https://img.alicdn.com/imgextra/i4/1475430176/O1CN01h7cbMk1DAeSb6lTD0_!!0-saturn_solar.jpg_468x468q75.jpg_.webp" alt="">
 		              </router-link>
                       <span style=" padding-top:10px;	color: #FF7F50;" >￥198.00元
                           <p style="color: #D9D9D9; display:inline-block;">1200人购买</p>
@@ -119,7 +129,11 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style scoped lang="scss" >
+
+   
+
+
 .doglist {
   width: 700px;
   height: 600px;
