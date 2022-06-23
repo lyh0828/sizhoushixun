@@ -1,23 +1,24 @@
-
 <template>
     <div class="con">
         <div class="top">
             <img src="../../images/logo.jpg">
             <span class="topFont">宠物日常</span>
-            <a class="iconSearch"><span class="mui-icon mui-icon-search"></span></a>
+            <div class="mui-input-row mui-search">
+					<input type="search" class="mui-input-clear" placeholder="搜索">
+			</div>
         </div>
         <div class="main">
-            <img class="imgMain" src="../../images/petday1.jpg">
+            <img class="imgMain" :src="img_url">
             <div class="mainInfo">
                 <p class="mainInfoT">{{ title }}</p>
                 <p class="mainInfoM">{{ content }}</p>
                 <div>
                     <a class="iconTime"><span class="mui-icon-extra mui-icon-extra-outline">{{ time }} </span></a>
-                    <a id="icon-person" class="iconPeople"><span class="mui-icon mui-icon-person">{{ click }}人看过</span></a>
+                    <a id="icon-person" class="iconPeople"><span class="mui-icon mui-icon-person">{{ seen }}人看过</span></a>
                 </div>
-                <router-link to="/home/daylist/perhome" class="mainInfoPic" >
-                        <img src="../../images/petday1.jpg">
-                    <div>昵称</div>
+                <router-link :to="'/home/daylist/perhome/'+dayinfo._id" class="mainInfoPic" >
+                        <img :src="headimg_url">
+                    <div>{{ nickname }}</div>
                 </router-link>
                 <hr>
                 <a class="iconD">
@@ -28,8 +29,8 @@
                     <textarea id="textarea" rows="5" placeholder="在这里留下您的评论" style=" border-radius: 30px;"></textarea>
                 </div>
                 <router-link to="">
-                    <button id="ok" class="mint-button mint-button--primary mint-button--normal">
-                        <label class="mint-button-text">确定</label>
+                    <button @click="go" id="ok" class="mint-button mint-button--primary mint-button--normal">
+                        <label class="mint-button-text" >确定</label>
                     </button>
                 </router-link>
                 
@@ -45,34 +46,39 @@
 export default {
      data() {
         return {
-            title:'',
-            time:'',
-            click:'',
-            content:'',
+            dayinfo:[],
+            title:""
         }
     },
-    //生命周期(页面一展示就执行)
     created() {
-        //调用此方法
         this.getdayinfo()
     },
     methods: {
-        //获取新闻列表数据的方法
         getdayinfo(){
-            this.$http.get("api/getnew/"+this.$route.params.id).then(result =>{
+            this.$http.get("dayinfos/info"+ '?id=' + this.$route.params.id).then(result =>{
                 console.log(result.body)
-                if (result.body.status === 0){
-                    this.title = result.body.message[0].title
-                    this.time = result.body.message[0].add_time
-                    this.click = result.body.message[0].click
-                    this.content = result.body.message[0].content
-                }else{
+               // if (result.body.status === 0){
+                    this.dayinfo = result.body
+                    this.title = result.body.title;
+                    this.img_url = result.body.img_url;
+                    this.time = result.body.time;
+                    this.seen = result.body.seen;
+                    this.nickname = result.body.nickname;
+                    this.headimg_url = result.body.headimg_url;
+               // }else{
 
-                    console.log('数据加载失败')
-                }
+                //    console.log('数据加载失败')
+               // }
             })
+        },
+        go() {
+            this.$toast({
+                message: '添加成功',
+                position: 'center',
+                duration: 3000
+            });
         }
-    },
+    }
 }
 </script>
 
@@ -95,7 +101,7 @@ export default {
 
         img {
             height: 40px;
-            margin: 5px -27px 0 5px;
+            margin: 5px -10px 0 5px;
             border-radius: 50px;
         }
 
@@ -105,6 +111,18 @@ export default {
             vertical-align: middle;
             display: table-cell;
             font-weight: bold;
+        }
+        div{
+            float: right;
+            width: 150px;
+            height: 50px;
+            margin: 2px 20px 0 0;
+            padding-top: 12px;
+            input{
+                border-radius: 45px;
+                background-color: snow;
+                border:.5px solid #fad7be;
+            }
         }
 
         .iconSearch {
@@ -141,7 +159,7 @@ export default {
             }
 
             .mainInfoM {
-                margin: -10px 0 10px 17px;
+                margin: -10px 15px 10px 17px;
             }
 
             .iconTime {
@@ -169,6 +187,7 @@ export default {
                 img {
                     height: 50px;
                     width: 50px;
+                    float: left;
                     border-radius: 50%;
                     margin: 20px 20px 0 10px;
 
@@ -176,10 +195,11 @@ export default {
 
                 div {
                     color: black;
+                    width: 300px;
                     font-size: 20px;
-                    float: right;
-                    margin-right: 292px;
-                    margin-top: 36px;
+                    float: left;
+                    margin: 35px 0 0 -5px;
+                    
                 }
             }
 
@@ -216,4 +236,4 @@ export default {
         }
     }
 }
-</style>
+</style> 

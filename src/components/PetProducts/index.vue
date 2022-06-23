@@ -1,3 +1,4 @@
+
 <template>
   <div style="margin-top:45px;">
     <div class="wrapper">
@@ -133,7 +134,6 @@ export default {
   // },
 };
 </script>
-
 <style lang="scss" >
 .el-carousel__item:nth-child(2n) {
   background-color: #99a9bf;
@@ -234,3 +234,4 @@ img {
 }
 
 </style>
+

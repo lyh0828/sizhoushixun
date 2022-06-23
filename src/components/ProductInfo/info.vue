@@ -15,7 +15,11 @@
         </div>
       </div>
       <div class="mui-card-footer">
+
         <a class="mui-card-link">❤推荐</a>
+
+        <a class="mui-card-link">推荐</a>
+
      
         <router-link :to="'/petshopping/shopcart/'+id" class="mui-card-link"
           >+加入购物车</router-link
@@ -81,7 +85,11 @@ export default {
     // 获取新闻列表数据的方法
     getgoodsinfo() {
       this.$http
+
         .get("products/info/" + '?id='+this.$route.params.id)
+
+        
+
         .then((result) => {
           console.log(result.body)
           this.id=result.body._id;
@@ -116,4 +124,6 @@ export default {
   font-size: 20px;
   color: red;
 }
+
 </style>
+
