@@ -1,3 +1,4 @@
+
 <template>
   <div style="margin-top:45px;">
     <div class="wrapper">
@@ -34,7 +35,9 @@
       </ul>
     </div>
     <div class="classify">
-      <h3>分类专区</h3>
+     <router-link to="/petproducts/goods">
+     <h3> 用品小店铺</h3>
+     </router-link>
     </div>
    
    <div class="wrapper2">
@@ -131,7 +134,6 @@ export default {
   },
 };
 </script>
-
 <style lang="scss" >
 .el-carousel__item:nth-child(2n) {
   background-color: #99a9bf;
@@ -192,6 +194,7 @@ img {
   width: 100%;
   height: 60px;
   h3 {
+    color: black;
     letter-spacing: 6px;
     text-align: center;
     line-height: 60px;
@@ -231,3 +234,4 @@ img {
 }
 
 </style>
+

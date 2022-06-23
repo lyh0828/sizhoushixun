@@ -2,21 +2,22 @@
     <div class="center">
        <div class="search">
             <div class="search-left">
-					<a href="#/" class="router-link-active">
+					<a href="#/foundinfo" class="router-link-active">
                         <img class="aczj-icon" src="../../images/icon.png" alt="">
 						<!-- <mt-button id="btn0" icon="back" ></mt-button> -->
 					</a>
             </div>
             <div class="search-right">
-               <input class="text" type="text" placeholder="请输入宠物种类">
-               <a to="/home/search" class="search-btn" >搜索
+               <input class="text" type="text" placeholder="请输入宠物种类" v-model="keywords">
+               <a  class="search-btn"  >搜索
                 </a>
             </div>
        </div>
        <div class="search-species">
-            <a to="/home/search" class="search-btn" >猫咪 </a>
-            <a to="/home/search" class="search-btn" >狗狗 </a>
-            <a to="/home/search" class="search-btn" >其他宠物 </a>
+            <!-- <input class="text"  v-model="keywords" >猫咪 -->
+            <a  class="search-btn" >猫咪 </a>
+            <a  class="search-btn" >狗狗 </a>
+            <a  class="search-btn" >其他宠物 </a>
        </div>
        <div class="switch">
             
@@ -27,9 +28,11 @@
 			<div>
 				<h4 class="title">宠物认领</h4>  
                 <ul class="mui-table-view mui-grid-view ">
-					<li class="mui-table-view-cell mui-media mui-col-xs-6" v-for="item in PetInfoList" :key="item._id">
-		                 <router-link :to="'/home/goodsinfo/'+item._id">
+					<li class="mui-table-view-cell mui-media mui-col-xs-6" v-for="item in search(keywords)" :key="item._id">
+		                 <router-link :to="'/petclaimeddetails/'+item._id">
+                         
 		                    <img class="mui-media-object" :src="item.img">
+            
                             <div class="info">
                                 <div >
                                    <p class="title">{{item.title}}</p> 
@@ -37,9 +40,13 @@
                                 <div class="time_sex">
                                     <div class="sex-btn">
                                         <p class='sex'>宠物性别:{{item.gender}}</p>
-                                        <a  class="search-btn" >认领中 </a>
+      
+                                             <a  class="search-btn" >认领中 </a>
+                                       
+                                       
                                     </div>
-                                    <p class='time'>时间:{{item.found_time}}</p>
+                                    <p class='time'>时间:{{item.found_time | dateFormat}}</p>
+                                    <p class='address'>捡到地点:{{item.found_address}}</p>
                                 </div>
                             </div>
                         </router-link>
@@ -55,7 +62,8 @@ export default {
         return{
             PetInfoList:[],
             value:true,
-            name:''
+            name:'',
+            keywords:''
         }
     },
     created(){
@@ -63,16 +71,29 @@ export default {
     },
     methods:{
         getPetInfo(){
-            this.$http.get("aaa").then(result=>{
+            this.$http.get("petclamiedinfo").then(result=>{
                 console.log(result.body)
+                // console.log(result.body.'imgdata1[]')
                 // if(result.body.status===0){
-                    // this.PetInfoList=result.body
                     this.PetInfoList=result.body
                 // }else{
                 //     console.log('获取数据失败')
                 // }
             })
-        }
+        },
+         search(keywords){
+					// console.log(keywords)
+					var newList=[];
+					this.PetInfoList.forEach(item=>{
+						if(item.title.indexOf(keywords)!=-1){
+							// console.log(item.name.indexOf(keywords))
+							console.log(item)
+							newList.push(item)
+						}
+					})
+					return newList;
+				}
+      
     },
      filters:{
         dateFormat:function renderTime(date){
@@ -82,6 +103,9 @@ export default {
 }
 </script>
 <style  lang="scss" scoped>
+.center{
+      background-color:#f4f4f4;
+}
 .search{
     position: relative;
     margin-right:10px;
@@ -166,6 +190,7 @@ export default {
     .mui-table-view{
         background-color:#efeff4;
         padding-left:15px;
+        // height:1000px;
     }
     .mui-table-view:before {
          background-color:#efeff4;
@@ -215,6 +240,11 @@ export default {
             }
             .time{
                  margin-top:0px;
+            }
+            .address{
+                 overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
             }
 
         }

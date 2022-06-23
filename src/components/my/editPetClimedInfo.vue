@@ -1,26 +1,12 @@
 <template>
     <div>
-        <div class="info-header">
-            <a   id="icon-person" class="active">
-                <span class="mui-icon mui-icon-person-filled"></span>
-            </a>
-            <router-link to="/foundinfo"  >
-                 <button  type="button" class="mui-btn mui-active">
-					我捡到了
-			</button>
-            </router-link>
-
-           <router-link to="/lostinfo" >
-                <button type="button" class="mui-btn">
-                    我丢失了
-            </button>
-           </router-link>
-        </div>
-
+        
             <div class="info-messages">
                 <div class="mui-input-row">
                 <label>标题</label>
-                <input type="text" class="mui-input-clear" placeholder="请输入" v-model='title' data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+                <input type="text" class="mui-input-clear"  placeholder="请输入" v-model='title' data-input-clear="5">
+                <!-- <span class="title">{{title}}</span> -->
+                <span class="mui-icon mui-icon-clear mui-hidden"></span>
 			    </div>
                 <hr>
                 <!-- <div class="line"></div> -->
@@ -52,7 +38,7 @@
             <!-- <div class="line"></div> -->
             <div class="mui-input-row">
                 <label>捡到的地点</label>
-                <input type="text" class="mui-input-clear" placeholder="请输入" data-input-clear="5" v-model="found_address"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+                <input type="text" class="mui-input-clear" placeholder="请输入" data-input-clear="5" value="found_address" v-model="found_address"><span class="mui-icon mui-icon-clear mui-hidden"></span>
 			</div>
             <hr>
             <!-- <div class="line"></div> -->
@@ -98,7 +84,7 @@
 			</div>
         </div>
         <div class="btn">
-            <router-link to="/petclaimed">
+            <router-link to="/fabu">
                  <button type="submit" class="mui-btn mui-btn-primary mui-btn-block" v-on:click="addInfo">发布</button>
             </router-link>
         </div>
@@ -112,17 +98,22 @@ export default {
         return {
             imageUrl:'',//上传的图片
             baseImg:'', //默认的图片
-            details:'',
-            found_address:'',
-              found_time:'',
-            gender:'',
-            // img:'',
-            species:'',
-            tel:'',
-            weixin:'',
-            title:'',
+            id:'',
+           details:'',
+           found_address:'',
+           found_time:'',
+           gender:'',
+           img:'',
+           species:'',
+           tel:'',
+           weixin:'',
+           title:'',
         }
     
+    },
+    created(){
+        this.getPetInfo();
+         this.baseImg=require('../../images/photo.jpg')
     },
     methods:{
            change(e) {
@@ -151,8 +142,27 @@ export default {
       }
 
      },
-        addInfo(){
-					this.$http.post('petclamiedinfo/new',{
+            getPetInfo(){
+            this.$http.get("petclamiedinfo/edit?id="+this.$route.params.id).then(result=>{
+                console.log(result.body)
+                // if(result.body.status===0){
+                     this.id=result.body._id
+                      this.details=result.body.details
+                       this.found_address=result.body.found_address
+                        this.found_time=result.body.found_time
+                         this.gender=result.body.gender
+                          this.img=result.body.img
+                           this.species=result.body.species
+                            this.tel=result.body.tel
+                             this.weixin=result.body.weixin
+                               this.title=result.body.title
+
+
+             
+            })
+        },
+       addInfo(){
+					this.$http.post('petclamiedinfo/edit',{
 					title:this.title,
 					species:this.species,
 					gender:this.gender,
@@ -172,13 +182,9 @@ export default {
 					
 					this.list=res.body
 				   })
-				},
+				}
 
-    },
-    created(){
-        this.baseImg=require('../../images/photo.jpg')
     }
-
 }
 </script>
 <style  lang="scss" scoped>
@@ -191,29 +197,30 @@ export default {
 // 				transition: all 0.5s ease;
 // 			}
 
-.info-header{
-    margin-right:10px;
-    margin-left:15px;
-    margin-top:50px;
-    margin-bottom:10px;
-    width:90%;
-    height:40px;
-    // border:1px solid red;
-    float:left;
+// .info-header{
+//     margin-right:10px;
+//     margin-left:15px;
+//     margin-top:50px;
+//     margin-bottom:10px;
+//     width:90%;
+//     height:40px;
+//     // border:1px solid red;
+//     float:left;
 
-    .active{
-        margin-right:60px;
-        .mui-icon.mui-icon-person-filled{
-          font-size:30px;
-        }
-        width:50px;
-        height:40px;
-    }
-    .mui-btn{
-        margin-right:50px;
-    }
-}
+//     .active{
+//         margin-right:60px;
+//         .mui-icon.mui-icon-person-filled{
+//           font-size:30px;
+//         }
+//         width:50px;
+//         height:40px;
+//     }
+//     .mui-btn{
+//         margin-right:50px;
+//     }
+// }
 .info-messages{
+    margin-top:50px;
     // margin-left:15px;
     clear:both;
     width:100%;

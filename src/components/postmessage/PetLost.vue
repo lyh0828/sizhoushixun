@@ -20,7 +20,7 @@
         <div class="content">
             <div class="content-time">
                 <span class="shijian">走失时间：</span>
-                <span class="lost-time">{{ item.time1 }}</span>
+                <span class="lost-time">{{ item.time1|dateFormat }}</span>
             </div>
             <div class="address">
                 <span class="shijian">走失地址：</span>
@@ -62,7 +62,7 @@ export default {
     methods: {
         //获取宠物丢失列表
         getpetlostlist(){
-            this.$http.get("lostinfo").then(result =>{
+            this.$http.get("lostinfos").then(result =>{
                 console.log(result.body)
                 this.petlostList=result.body
                 // if(result.body.status == 0){
@@ -73,6 +73,12 @@ export default {
             })
         }
     },
+    filters:{
+        dateFormat:function renderTime(date){
+        var dates = new Date(date).toJSON();
+        return new Date(+new Date(dates) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')  }
+         }
+
 };
 </script>
 <style lang="scss" scoped>

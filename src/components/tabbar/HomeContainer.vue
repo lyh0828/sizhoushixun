@@ -35,17 +35,19 @@
             <div class="mui-media-body">添加提醒</div>
           </a>
         </li>
-        <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
-          <a href="#">
-            <img src="../../images/03.png">
-            <div class="mui-media-body">宠物新闻</div>
-          </a>
+         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+          <router-link to="/petnews">
+              <img src="../../images/03.png">
+              <div class="mui-media-body">宠物新闻</div>
+          </router-link>
+          
         </li>
+
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
-          <a href="#">
+          <router-link to="serverinfo">
             <img src="../../images/04.png">
-            <div class="mui-media-body">宠物案例</div>
-          </a>
+            <div class="mui-media-body">服务</div>
+          </router-link>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
           <a href="#">
@@ -94,13 +96,16 @@
         </li>
       </ul>
     </div>
-    <!-- 热门活动 -->
-    <div></div>
     <!-- 社区论坛 -->
     <div class="bottom">
       <div class="text">
-        <span class="text1">社区论坛</span>
-        <a><span class="text2">查看全部 ></span></a>
+          <span class="text1">社区论坛</span>
+          <!-- <router-link to="zonginfo">
+            <span class="text2" >综合</span>
+          </router-link>
+          <router-link to="">
+            <span class="text3">笔记攻略</span>
+          </router-link> -->
       </div>
       <div class="all" v-for="item in newsList" :key="item._id">
         <div class="author">
@@ -137,7 +142,7 @@ export default {
   methods: {
     //获取社区论坛信息的方法
     getnewslist(){
-      this.$http.get("lostinfo").then(result =>{
+      this.$http.get("lostinfos").then(result =>{
         console.log(result.body)
         this.newsList=result.body
       })
@@ -217,14 +222,16 @@ export default {
     padding: 5px 15px 10px 13px;
     .text {
       margin: 5px 0 10px 0;
+      font-weight: 500;
+      font-size: 17px;
       .text1 {
-        font-weight: 600;
-        font-size: 18px;
+        margin-left: 15px;
       }
-      .text2 {
-        margin-left: 220px;
-        font-size: 15px;
-        color: red;
+      .text2{
+        margin-left: 80px;
+      }
+      .text3{
+        margin-left: 80px;
       }
     }
     .all {
