@@ -52,10 +52,10 @@
           </router-link>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
-          <a href="#">
+          <router-link to="/home/raiselist">
             <img src="../../images/05.png">
-            <div class="mui-media-body">共养动态</div>
-          </a>
+            <div class="mui-media-body">领养动态</div>
+          </router-link>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
           <a href="#">

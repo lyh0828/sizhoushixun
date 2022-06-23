@@ -1,3 +1,12 @@
+/*
+ * @Author: caoYaNan 2419612936@qq.com
+ * @Date: 2022-06-15 15:02:28
+ * @LastEditors: caoYaNan 2419612936@qq.com
+ * @LastEditTime: 2022-06-23 15:43:02
+ * @FilePath: \sizhoushixun\src\router.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
+
 //导入vue插件
 import Vue from 'vue'
 //导入vue路由插件
@@ -27,9 +36,14 @@ import daylist from './components/PetDay/DayList.vue';                      //5�
 import dayinfo from './components/PetDay/DayInfo.vue';                      //5.1宠物日常--详情页
 import perhome from './components/PetDay/PerHone.vue';                      //5.1.1宠物日常--详情页--个人主页
 
+
 import addremind from './components/Remind/addremind.vue'
 import remindinfo from './components/Remind/remindinfo.vue'
 import banner01 from './components/Banner/banner01.vue'
+
+
+import raiselist from './components/PetDay/RaiseList.vue';                  //1.5 共养动态
+import raiseinfo from './components/PetDay/RaiseInfo.vue';                    //1.5.1共养动态--详情页
 
 import ServerInfo from './components/Content/ServerInfo.vue';                 //6.1服务
 import PetNews from './components/AboutPet/petnews.vue';         //6.3宠物新闻
@@ -62,6 +76,13 @@ const router = new VueRouter({
        {path:'/petproducts/catsnacks',component:CatSnacks},    //4.1宠物用品--猫粮
        {path:'/petproducts/catdaily',component:CatDaily},    //4.1宠物用品--猫日用
        {path:'/petproducts/cattoy',component:CatToy} ,   //4.1宠物用品--猫玩具
+       {path:'/productinfo',component:info} ,   //4.1.1宠物用品详情
+       {path:'/petshopping/shopcart',component:shopcart} ,   //4.1.1宠物用品详情
+       {path:'/home/daylist',component:daylist},                 //5宠物日常
+       {path:'/home/daylist/dayinfo/:id',component:dayinfo},       //5.1宠物日常--详情页
+       {path:'/home/daylist/perhome/:id',component:perhome},       //5.1.1宠物日常--详情页--个人主页
+       {path:'/home/raiselist',component:raiselist},                //1.5领养动态
+       {path:'/home/raiselist/raiseinfo',component:raiseinfo},    //1.5.1共养动态--详情页
        {path:'/productinfo/:id',component:info} ,   //4.1.1宠物用品详情
        {path:'/petshopping/shopcart/:id',component:shopcart} ,   //4.1.1宠物用品详情
 
