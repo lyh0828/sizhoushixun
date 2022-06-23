@@ -2,13 +2,13 @@
     <div class="container">
          <div class="header">
             <div class="header-left">
-                <a href="#/petclaimed" class="router-link-active">
+                <a href="#/petnews" class="router-link-active">
                               <img class="aczj-icon" src="../../images/icon.png" alt="">
                   <!-- <mt-button id="btn0" icon="back" ></mt-button> -->
                 </a>
             </div>
             <div class="header-right">
-               <h4 class="title">宠物认领详情</h4>  
+               <h4 class="title">宠物新闻详情</h4>  
             </div>
        </div>
        <div class="content">
@@ -16,23 +16,14 @@
             <p class="bt"> 标题 | <span class="title">{{title}}</span></p>
              <img  :src="img">
              <p class="bt">备注详情 | <span class="title">{{details}}</span></p>
-          </div>
-          <div class="content23">
-              <div class="content2">
-                <p class="bt">宠物品种:<span class="title">{{species}}</span></p>
+              <p class="bt">宠物品种:<span class="title">{{species}}</span></p>
                 <p class="bt"> 宠物性别:<span class="title">{{gender}}</span></p>
                 <p class='bt'>捡到时间:<span class="title">{{found_time |dateFormat}}</span></p>
                 <p ><span class="mui-icon mui-icon-location"></span><span class="title">{{found_address}}</span></p>
-
-
-              </div>
-              <div class="content3">
-                <p class="tip">认领请联系</p>
+                 <p class="tip">认领请联系</p>
                 <p  class="bt"><span class="mui-icon mui-icon-phone"></span><span class="title">{{tel}}</span></p>
                <p  class="bt"><span class="mui-icon mui-icon-weixin"></span><span class="title">{{weixin}}</span></p>
-              </div>
           </div>
-          
 
        </div>
                           
@@ -52,9 +43,6 @@ export default {
            tel:'',
            weixin:'',
            title:'',
-
-
-
         }
     },
     created(){
@@ -105,6 +93,7 @@ export default {
          .title{
           color:#808080;
             font-size:16px;
+            
          }
 .header{
   margin-top:50px;
@@ -125,19 +114,26 @@ export default {
     margin-left:100px;
     .title{
       color:black;
+      font-size:16px;
+      display:block;
+            width:200px;
+            border-radius:15px;
+            background-color:antiquewhite;
+            line-height: 40px;
+            height:40px;
+            text-align: center;
 
     }
   }
-
 }
 .content{
   //  border:1px solid red;
-     margin-top:20px;
+     margin-top:10px;
     width:100%;
     //  padding-left:20px;
      .content1{
         //  border:1px solid red;
-         margin-top:20px;
+         margin-top:10px;
          width:95%;
          margin:auto;
          height:auto;
@@ -152,47 +148,21 @@ export default {
           border-radius: 15px;
         //   margin-left:-15px;
         }
-     }
-     .content23{
-        padding-bottom:20px;
-
-      .bt{
+        .tip{
+        margin-top:20px;
+        color:black;
+        font-size:18px;
+        }
+        .bt{
         display:block;
-        margin-top:25px;
+        margin-top:15px;
         
          }
           .title{
           color:#808080;
           font-size:16px;
          }
-
-      display:flex;
-      flex-direction: row;
-       width:95%;
-         margin:auto;
-        //  border:1px solid red;
-
-      .content2,.content3{
-        margin-top:20px;
-        padding-left:10px;
-        padding-top:10px;
-        padding-bottom:20px;
-        width:47%;
-        height:250px;
-        background-color:#fff;
-        border-radius: 10px;
-      }
-      .content2{
-        margin-right:40px;
-      }
-      .content3{
-        .tip{
-        margin-top:20px;
-
-        }
-      }
      }
-
 }
 
 </style>

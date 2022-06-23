@@ -10,7 +10,17 @@ import router from './router';
 import VueResource from 'vue-resource';
 //导入mint-ui组件库
  import MintUi from 'mint-ui';
+//导入element-ui组件库
+ import ElementUI from 'element-ui';
+ //导入ElementUI的样式
+import 'element-ui/lib/theme-chalk/index.css';
+ //将ElementUI安装到vue
+Vue.use(ElementUI);
 
+import { Dialog, Upload,DatePicker} from 'element-ui';
+Vue.component(Dialog);
+Vue.component(Upload);
+Vue.component(DatePicker);
  //将VueResource安装到vue
  Vue.use(VueResource)
  //设置API请求的根路径
@@ -22,6 +32,7 @@ import 'mint-ui/lib/style.css';
 import './css/sass/index.scss';
  // 引入图标css
  import './css/iconfont.css'
+
 //mui的导入
 // import  './lib/mui/js/mui.min.js';
 // import './lib/mui/js/mui.picker.min.js';
@@ -29,11 +40,10 @@ import './css/sass/index.scss';
 import './lib/mui/css/mui.css';
 import './lib/mui/css/icons-extra.css';
 
-import './lib/mui/css/app.css';
-import './lib/mui/css/mui.picker.min.css';
+// import './lib/mui/css/app.css';
+// import './lib/mui/css/mui.picker.min.css';
 
-Vue.prototype.mui=mui;
-
+Vue.config.devtools = true;
 //将mint-ui安装到vue中
 Vue.use(MintUi)
 //按需引入mint-ui中的组件

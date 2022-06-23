@@ -36,10 +36,13 @@
           </a>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
-          <a href="#">
-            <img src="../../images/03.png">
-            <div class="mui-media-body">宠物新闻</div>
-          </a>
+          <router-link to="/petnews">
+              <!-- <a href="#" > -->
+              <img src="../../images/03.png">
+              <div class="mui-media-body">宠物新闻</div>
+          <!-- </a> -->
+          </router-link>
+          
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
           <a href="#">

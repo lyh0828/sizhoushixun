@@ -1,11 +1,11 @@
 <template>
-    <div>
-          <div class="info-header">
+<div>
+        <div class="info-header">
             <a   id="icon-person" class="active">
                 <span class="mui-icon mui-icon-person-filled"></span>
             </a>
             <router-link to="/foundinfo"  >
-                 <button  type="button" class="mui-btn  " >
+                 <button  type="button" class="mui-btn">
 					我捡到了
 			</button>
             </router-link>
@@ -17,21 +17,21 @@
            </router-link>
         </div>
 
-        <div class="info-messages">
-            <div class="mui-input-row">
+            <div class="info-messages">
+                <div class="mui-input-row">
                 <label>标题</label>
-                <input type="text" class="mui-input-clear" placeholder="请输入" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
-			</div>
-            <hr>
-            <!-- <div class="line"></div> -->
-            <div class="mui-input-row">
-                <label>宠物种类</label>
+                <input type="text" class="mui-input-clear" placeholder="请输入" v-model='title' data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+			    </div>
+                <hr>
+                <!-- <div class="line"></div> -->
+                <div class="mui-input-row">
+                   <label>宠物种类</label>
                 <!-- <select class="species">
 						<option value="cat">猫咪</option>
 						<option value="dog">狗狗</option>
                         <option value="qita">其他爱宠</option>
 				</select> -->
-                <input type="text" class="mui-input-clear" placeholder="请输入" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+                <input type="text" class="mui-input-clear" placeholder="请输入" v-model='species' data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
 
 			</div>
             <hr>
@@ -39,8 +39,8 @@
             <div class="mui-input-row">
                 <label>宠物性别</label>
                 <div class="sexcontainer">
-                     <input class="sex" type="radio" name="sex" value="male">公
-                     <input class="sex"  type="radio" name="sex" value="female">母 
+                     <input class="sex" type="radio" name="sex" value="公"  v-model='gender'>公
+                     <input class="sex"  type="radio" name="sex" value="母"  v-model='gender'>母 
                 </div>
                   
                  <!-- <select class="species">
@@ -52,68 +52,252 @@
             <!-- <div class="line"></div> -->
             <div class="mui-input-row">
                 <label>丢失的地点</label>
-                <input type="text" class="mui-input-clear" placeholder="请输入" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+                <input type="text" class="mui-input-clear" placeholder="请输入" data-input-clear="5" v-model="found_address"><span class="mui-icon mui-icon-clear mui-hidden"></span>
 			</div>
             <hr>
             <!-- <div class="line"></div> -->
             <div class="mui-input-row">
                 <label>丢失的时间</label>
-                <!-- <button id="demo1" data-options="{}" class="btn mui-btn mui-btn-block">选择日期时间 ...</button> -->
-                <input type="text" class="mui-input-clear" placeholder="请输入" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+                
+                    <el-date-picker
+            v-model="found_time"
+            value-format="timestamp"
+            type="datetime"
+            placeholder="选择日期时间"
+            >
+            </el-date-picker>
 			</div>
             <hr>
             <!-- <div class="line"></div> -->
             <div class="mui-input-row" >
                 <label>详情</label>
-				<textarea id="textarea" rows="5" placeholder="不要着急，尽可能的把信息描述详尽，以便于尽快找到！好运~~"></textarea>
+				<textarea id="textarea" rows="5" v-model="details" placeholder="尽可能把宠物特征描写详细,以便找到自己的宠物，祝好运哦~~~"></textarea>
 			</div>
+
         </div>
         <div class="photos">
-            <p>请上传照片</p>
-            <form class="container" enctype="multipart/form-data" method="post" id='formBox' name="form"> 
-                <input type="file" id="chooseImage" name="file">
-                 <!-- 保存用户自定义的背景图片 -->
-                 <!-- <img id="cropedBigImg" value='custom' alt="lorem ipsum dolor sit" data-address='' title="自定义背景"/> -->
-            </form>
+            <p class="title">请上传图片</p>
+            <!-- <el-form ref="form" :model="Form" label-width="80px">
+             <el-upload class="a" action="students/new" list-type="picture-card"  :auto-upload="true" :limit="4" :before-upload="beforeProductUpload" :on-exceed="handleExceed">
+             <i slot="default" class="el-icon-plus"></i> -->
+            <!-- <div  slot-scope="{file}">
+            <img style="width:100px;height:100px;" class="el-upload-list__item-thumbnail" :src="file.url" alt="" >
+            <span style="width:100px;height:100px;" class="el-upload-list__item-actions">
+                <span
+                class="el-upload-list__item-preview"
+                @click="handlePictureCardPreview(file)"
+                >
+                <i class="el-icon-zoom-in"></i>
+                </span>
+                <span
+                v-if="!disabled"
+                class="el-upload-list__item-delete"
+                @click="handleDownload(file)"
+                >
+                <i class="el-icon-download"></i>
+                </span>
+                <span
+                v-if="!disabled"
+                class="el-upload-list__item-delete"
+                @click="handleRemove(file)"
+                >
+                <i class="el-icon-delete"></i>
+                </span>
+            </span>
+            </div> -->
+        <!-- </el-upload>
+        <el-dialog :visible.sync="dialogVisible" id="dialog">
+            <img width="100%" :src="dialogImageUrl" alt="">
+        </el-dialog>
+            </el-form>     -->
+
+             <div class="file">
+                    <input type="file" class="update" accept="image/*" @change="change($event)"  ref="updata">
+                    <img :src="imageUrl?imageUrl:baseImg" alt="" class="img">
+                </div>
         </div>
         <div class="phone">
             <div   class="mui-input-row">
                 <label class="lb">
                     <a id="icon-phone"><span class="mui-icon mui-icon-phone"></span></a>
                 </label>
-                <input type="text" class="mui-input-clear" placeholder="请输入你的手机号" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+                <input type="text" class="mui-input-clear" placeholder="请输入你的手机号" data-input-clear="5" v-model="tel">
 			</div>
             <div class="mui-input-row">
                 <label class="lb">
                     <a><span class="mui-icon mui-icon-weixin"></span></a>
                 </label>
-                <input type="text" class="mui-input-clear" placeholder="请填写你的微信号" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+                <input type="text" class="mui-input-clear" placeholder="请填写你的微信号" data-input-clear="5" v-model="weixin">
 			</div>
         </div>
         <div class="btn">
-            <router-link to="/petlost">
-                 <button type="button" class="mui-btn mui-btn-primary mui-btn-block">发布</button>
+            <router-link to="/petclaimed">
+              <button type="submit" class="mui-btn mui-btn-primary mui-btn-block" @click="addInfo">发布</button>
             </router-link>
         </div>
 
-
     </div>
-
 </template>
 <script>
 export default {
-    
+     data() {
+      return {
+          imageUrl:'',//上传的图片
+            baseImg:'', //默认的图片
+        // Form:{
+        //     imageurl:[],
+        // },
+        // dialogImageUrl: '',
+        // dialogVisible: false,
+        // disabled: false,
+        details:'',
+        found_address:'',
+        found_time:'',
+        gender:'',
+        species:'',
+        tel:'',
+        weixin:'',
+        title:''
+       
+      };
+    },
+     created(){
+        this.baseImg=require('../../images/photo.jpg')
+    },
+    methods: {
+         change(e) {
+      console.log(e.target.files[0].name);
+      // 判断是不是规定格式
+      // let name  =  e.target.files[0].name
+
+      // 获取到第一张图片
+      let file = e.target.files[0]
+
+      // 创建文件读取对象
+      var reader = new FileReader()
+      var that = this 
+
+      //  将文件读取为DataURL
+      reader.readAsDataURL(file)
+
+      // 读取成功调用方法
+      reader.onload = e => {
+        console.log('读取成功');
+
+        // e.target.result 获取 读取成功后的  文件DataURL
+        that.imageUrl = e.target.result
+
+        // 如果要将图片上传服务器，就在这里调用后台方法
+      }
+
+     },
+       
+    //  handleRemove(file,fileList) {
+    //     console.log(file,fileList);
+    //   },
+    //   handlePictureCardPreview(file) {
+    //     this.dialogImageUrl = file.url;
+    //     this.dialogVisible = true;
+    //   },
+    //   handleDownload(file) {
+    //     console.log(file);
+    //   },
+    //   handleExceed(files, fileList) {
+    //     this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+    //   },
+    //  beforeProductUpload(file){
+    //       var _this = this
+    //     return new Promise(function(resolve, reject) {
+    //       var reader = new FileReader()
+    //      reader.readAsDataURL(file)// 这里是最关键的一步，转换成base64
+    //       reader.onload = function(event) {
+    //         _this.Form.imageurl.push(event.target.result) //定义参数获取图片路径
+    //         console.log(event.target.result)
+    //         console.log(_this.Form.imageurl)
+    //       }
+    //     //   console.log("-------------")
+    //     //   console.log(this.Form.imageurl)
+    //     })
+         
+    //   },
+      addInfo(){
+        // console.log(this.Form.imageUrl)
+        var form = {
+            title:this.title,
+					species:this.species,
+					gender:this.gender,
+					found_address:this.found_address,
+					found_time:this.found_time,
+                    details:this.details,
+                    img:this.imageUrl,
+                    // imgdata1:this.Form.imageurl,
+                    tel:this.tel,
+                    weixin:this.weixin
+        }
+				this.$http.post('petclamiedinfo/new',form).then(res=>{
+					// if(res.body.status==0)
+					// {
+					// 	window.history.back(-1);
+					// 	alert('成功');
+					// }
+					// else{alert('失败')}
+                    console.log(res.body)
+                    // this.$message('发布成功')
+                    // this.Form = ''
+                    // console.log('上传成功')
+					this.list=res.body
+                },err =>{
+
+                })
+				}
+    }
 }
+    
+
+
+
 </script>
 
 <style  lang="scss" scoped>
-// .v-enter,.v-leave-to{
-// 				opacity: 0;
-// 				transform: translateX(50px);
-// 			}
-// 			.v-enter-active,.v-leave-active{
-// 				transition: all 0.5s ease;
-// 			}
+
+.file{
+        margin-left:10px;
+        // border:1px solid red;
+         position: relative;
+        .update{
+            position: absolute;
+            top:0px;
+            width:100px;
+            height:100px;
+            // border:1px solid red;
+            z-index: 10;
+            opacity: 0;
+        }
+        .img{
+            position: absolute;
+            top:0px;
+            width:100px;
+            height:100px;
+
+        }
+    }
+
+
+
+.a{
+    height:100px;
+    padding-left:20px;
+}
+.a>>>.el-upload--picture-card{
+    width:100px;
+    height:100px;
+    line-height:100px;
+    
+}
+.a>>>.el-upload-list__item{
+ width:100px;
+    height:100px;
+}
 .info-header{
     margin-right:10px;
     margin-left:15px;
@@ -144,9 +328,11 @@ export default {
     // border:1px solid red;
     background-color:#FFF;
     // border-radius: 15px;
+    color:#808080;
     hr{
         width:95%;
         margin-left:5px;
+        color:#808080;
     }
     .line{
         width:95%;
@@ -180,27 +366,30 @@ export default {
     margin-top:10px;
     margin-bottom:10px;
     width:100%;
+    // height:260px;
     height:200px;
-    border:1px solid red;
+
+    // border:1px solid red;
     background-color:#FFF;
     // border-radius:15px;
+    .title{
+        display:block;
+        font-size:16px;
+        margin-left:10px;
+        padding-top:10px;
+    }
     hr{
         width:95%;
         margin-left:5px;
+        color:#808080;
     }
-    .file{
-          border:1px solid red;
-        .update{
-            width:100px;
-            height:100px;
-            border:1px solid red;
-        }
+
         .img{
             width:100px;
             height:100px;
 
         }
-    }
+    
 }
 .phone{
     .lb{
