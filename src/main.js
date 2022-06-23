@@ -30,7 +30,7 @@ Vue.component(DatePicker);
  Vue.use(VueResource)
  //设置API请求的根路径
 
- Vue.http.options.root="http://localhost:8000/"
+ //Vue.http.options.root="http://localhost:8000/"
 
  Vue.http.options.root="http://36.133.47.7:4000/"
 
