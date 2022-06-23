@@ -71,7 +71,6 @@
             <!-- <div class="line"></div> -->
             <div class="mui-input-row" >
 
-                <label>详情</label>
 
            <label>详情</label>
 
@@ -81,6 +80,7 @@
         </div>
         <div class="photos">
             <p class="title">请上传图片</p>
+            <hr>
             <!-- <el-form ref="form" :model="Form" label-width="80px">
              <el-upload class="a" action="students/new" list-type="picture-card"  :auto-upload="true" :limit="4" :before-upload="beforeProductUpload" :on-exceed="handleExceed">
              <i slot="default" class="el-icon-plus"></i> -->
