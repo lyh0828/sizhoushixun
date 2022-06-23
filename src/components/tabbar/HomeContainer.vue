@@ -35,17 +35,19 @@
             <div class="mui-media-body">添加提醒</div>
           </a>
         </li>
-        <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
-          <a href="#">
-            <img src="../../images/03.png">
-            <div class="mui-media-body">宠物新闻</div>
-          </a>
+         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+          <router-link to="/petnews">
+              <img src="../../images/03.png">
+              <div class="mui-media-body">宠物新闻</div>
+          </router-link>
+          
         </li>
+
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
-          <a href="#">
+          <router-link to="serverinfo">
             <img src="../../images/04.png">
-            <div class="mui-media-body">宠物案例</div>
-          </a>
+            <div class="mui-media-body">服务</div>
+          </router-link>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
           <router-link to="/home/raiselist">
@@ -56,20 +58,20 @@
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
           <a href="#">
             <img src="../../images/06.png">
-            <div class="mui-media-body">上门喂养</div></a
-          >
+            <div class="mui-media-body">上门喂养</div>
+          </a>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
           <a href="#">
             <img src="../../images/07.png">
-            <div class="mui-media-body">家庭寄养</div></a
-          >
+            <div class="mui-media-body">家庭寄养</div>
+          </a>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
           <a href="#">
             <img src="../../images/08.png">
-            <div class="mui-media-body">宠帮运</div></a
-          >
+            <div class="mui-media-body">宠帮运</div>
+          </a>
         </li>
       </ul>
     </div>
@@ -77,7 +79,7 @@
     <div class="middle">
       <ul class="mui-table-view mui-grid-view mui-grid-9">
         <li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-2">
-          <router-link to="/home/daylist">
+          <router-link to="/daylist">
             <img
               src="https://img0.baidu.com/it/u=2774035686,2091476564&fm=253&fmt=auto&app=138&f=JPEG?w=642&h=500"
             />
@@ -94,58 +96,59 @@
         </li>
       </ul>
     </div>
-    <!-- 热门活动 -->
-    <div></div>
     <!-- 社区论坛 -->
     <div class="bottom">
       <div class="text">
-        <span class="text1">社区论坛</span>
-        <a><span class="text2">查看全部 ></span></a>
+          <span class="text1">社区论坛</span>
+          <!-- <router-link to="zonginfo">
+            <span class="text2" >综合</span>
+          </router-link>
+          <router-link to="">
+            <span class="text3">笔记攻略</span>
+          </router-link> -->
       </div>
-      <div class="all">
+      <div class="all" v-for="item in newsList" :key="item._id">
         <div class="author">
-          <img
-            class="author-img"
-            src="https://img1.baidu.com/it/u=3368527245,2581594750&fm=253&fmt=auto&app=138&f=JPEG?w=400&h=400"
-          />
+          <img class="author-img" :src="item.picture" />
           <div class="author-info">
-            <span class="name">愤怒的皮蛋</span>
-            <span class="time">12小时前发布</span>
+            <span class="name">{{ item.name }}</span>
+            <span class="time">{{ item.time }}</span>
           </div>
         </div>
         <div class="content">
-          <span class="title">请问一个月大的猫不吃东西怎么办？</span>
-          <span class="bottom-content"
-            >才断奶没几天，朋友那儿报的，买了脱脂羊奶也不喝，猫粮也不吃，喂它也不吃，怎么办？在线求助！</span
-          >
+          <span class="title">{{ item.title }}</span>
+          <span class="bottom-content">{{ item.content }}</span>
         </div>
+        <div class="zan">
+                <span>{{item.zan}}</span>
+                <img :src="item.img">
+                <img :src="item.picture1">
+            </div>
       </div>
-
-<div class="all">
-        <div class="author">
-          <img
-            class="author-img"
-            src="https://img1.baidu.com/it/u=857954094,2202868374&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=866"
-          />
-          <div class="author-info">
-            <span class="name">愤怒的皮蛋</span>
-            <span class="time">12小时前发布</span>
-          </div>
-        </div>
-        <div class="content">
-          <span class="title">请问一个月大的猫不吃东西怎么办？</span>
-          <span class="bottom-content"
-            >才断奶没几天，朋友那儿报的，买了脱脂羊奶也不喝，猫粮也不吃，喂它也不吃，怎么办？在线求助！</span
-          >
-        </div>
-      </div>
-
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      newsList:[]
+    }
+  },
+  created(){
+    this.getnewslist()
+  },
+  methods: {
+    //获取社区论坛信息的方法
+    getnewslist(){
+      this.$http.get("lostinfos").then(result =>{
+        console.log(result.body)
+        this.newsList=result.body
+      })
+    }
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -179,7 +182,8 @@ export default {};
     li {
       border: none;
       width: 25%;
-      height: 100%;
+      height: 140px;
+      margin-top: -15px;
     }
     img {
       width: 100%;
@@ -200,6 +204,7 @@ export default {};
       border: none;
       width: 50%;
       height: 200px;
+      margin-top: 2px;
     }
     img {
       width: 100%;
@@ -217,18 +222,22 @@ export default {};
     padding: 5px 15px 10px 13px;
     .text {
       margin: 5px 0 10px 0;
+      font-weight: 500;
+      font-size: 17px;
       .text1 {
-        font-weight: 600;
-        font-size: 18px;
+        margin-left: 15px;
       }
-      .text2 {
-        margin-left: 220px;
-        font-size: 15px;
-        color: red;
+      .text2{
+        margin-left: 80px;
+      }
+      .text3{
+        margin-left: 80px;
       }
     }
     .all {
-      background:snow;
+      width: 100%;
+      height: 240px;
+      background:floralwhite;
       border-radius: 5%;
       .author {
         display: flex;
@@ -265,10 +274,30 @@ export default {};
         }
         .bottom-content {
           margin-top: 8px;
-          font-size: 14px;
+          font-size: 16px;
           color: #808080;
           letter-spacing: 1px;
         }
+      }
+      .zan{
+          display: flex;
+          flex-direction: row;
+          width: 384px;
+          height: 45px;
+          border: 1px solid floralwhite;
+          background:cornsilk;
+          border-radius: 5%;
+          color: #808080;
+          span{
+              margin: 10px 5px 0 5px;
+              font-size: 16px;
+          }
+          img{
+              width: 43px;
+              height: 43px;
+              border-radius: 50%;
+              margin-left: 8px;
+          }
       }
     }
   }

@@ -1,4 +1,3 @@
-
 <template>
     <div class="con">
         <div class="top">
@@ -237,4 +236,4 @@ export default {
         }
     }
 }
-</style>
+</style> 

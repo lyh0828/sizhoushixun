@@ -5,11 +5,11 @@
       <img class="lost-img1" src="../../images/L2.png" />
       <img class="lost-img2" src="../../images/11.png" />
     </div>
-    <div class="author">
+    <div class="author" v-for="item in petlostList" :key="item._id">
         <div class="author-img">
-            <img class="img1" src="../../images/01.png">
+            <img class="img1" :src="item.picture">
             <img class="img2" src="../../images/L3.png">
-            <span class="name">小饼干</span>
+            <span class="name">{{ item.name }}</span>
             <div class="detail">
                 <router-link to="">
                   <span>查看详情</span>
@@ -20,37 +20,66 @@
         <div class="content">
             <div class="content-time">
                 <span class="shijian">走失时间：</span>
-                <span class="lost-time">2021.8.5上午2-10点</span>
+                <span class="lost-time">{{ item.time1|dateFormat }}</span>
             </div>
             <div class="address">
                 <span class="shijian">走失地址：</span>
-                <span class="lost-address">天津市大学软件学院</span>
+                <span class="lost-address">{{ item.address }}</span>
             </div>
             <div>
                 <span class="shijian">宠物特征：</span>
-                <span class="special">肚子下被剃毛了，身上有芯片...</span>
+                <span class="special">{{ item.special}}</span>
             </div>
             <div class="picture">
-                <img class="picture1" src="https://img0.baidu.com/it/u=3048947508,3919270582&fm=253&fmt=auto&app=138&f=JPEG?w=600&h=485">
-                <img  class="picture1" src="https://img2.baidu.com/it/u=2066877075,4169070272&fm=253&fmt=auto&app=138&f=JPEG?w=679&h=500">
-                <img  class="picture1" src="https://img0.baidu.com/it/u=960501234,1772203118&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=329">
+                <img class="picture1" :src="item.picture1">
+                <img  class="picture1" :src="item.picture2">
+                <img  class="picture1" :src="item.picture3">
             </div>
             <div class="location">
                 <span class="mui-icon mui-icon-location"></span>
-                <span>深圳市南山区</span>
-                <span class="kilometer">距您~641.6km</span>
+                <span>{{item.address}}</span>
+                <span class="kilometer">{{item.kilometer}}</span>
             </div>
-            <span class="see">7229人浏览昨天10:48</span>
+            <span class="see">{{item.see}}</span>
             <div class="zan">
-                <span>1人点赞</span>
-                <img src="../../images/02.png">
+                <span>{{item.zan}}</span>
+                <img :src="item.img">
             </div>
         </div>
     </div>
   </div>
 </template>
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            petlostList:[]
+        }
+    },
+    created() {
+        this.getpetlostlist()
+    },
+    methods: {
+        //获取宠物丢失列表
+        getpetlostlist(){
+            this.$http.get("lostinfos").then(result =>{
+                console.log(result.body)
+                this.petlostList=result.body
+                // if(result.body.status == 0){
+                //     this.petlostlist = result.body.message
+                // }else{
+                //     console.log("数据加载失败！")
+                // }
+            })
+        }
+    },
+    filters:{
+        dateFormat:function renderTime(date){
+        var dates = new Date(date).toJSON();
+        return new Date(+new Date(dates) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')  }
+         }
+
+};
 </script>
 <style lang="scss" scoped>
 .lost-container {
@@ -74,6 +103,8 @@ export default {};
   .author{
       display: flex;
       flex-direction: column;
+      width: 100%;
+      height: 490px;
       background: snow;
       margin-top: 1px;
       .author-img{
@@ -100,7 +131,7 @@ export default {};
           .detail{
               font-size: 14px;
               margin-top: 10px;
-              margin-left: 125px;
+              margin-left: 100px;
               color:#808080;
           }
       }
@@ -110,11 +141,26 @@ export default {};
           margin: 0 10px 10px 10px;
           font-size: 18px;
           .content-time{
-              font-size: 18px;
+              font-size: 17px;
           }
           .shijian{
               color:crimson;
               font-weight:500;
+          }
+          .lost-time{
+              font-size: 17px;
+              color: darkslategrey;
+              letter-spacing: 1px;
+          }
+          .lost-address{
+              font-size: 16px;
+              color: darkslategrey;
+              letter-spacing: 1px;
+          }
+          .special{
+              font-size: 16px;
+              color: darkslategrey;
+              letter-spacing: 1px;
           }
           .address{
               margin: 7px 0 7px 0;
@@ -135,7 +181,7 @@ export default {};
           color:cadetblue;
           font-size: 15px;
           .kilometer{
-              margin-left: 140px;
+              margin-left: 110px;
           }
       }
       .see{
@@ -154,10 +200,11 @@ export default {};
           color: #808080;
           span{
               margin: 10px 5px 0 5px;
+              font-size: 16px;
           }
           img{
-              width: 38px;
-              width: 38px;
+              width: 43px;
+              height: 43px;
               border-radius: 50%;
               margin-left: 8px;
           }
