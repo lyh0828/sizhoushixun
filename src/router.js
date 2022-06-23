@@ -2,7 +2,7 @@
  * @Author: caoYaNan 2419612936@qq.com
  * @Date: 2022-06-15 15:02:28
  * @LastEditors: caoYaNan 2419612936@qq.com
- * @LastEditTime: 2022-06-18 22:28:00
+ * @LastEditTime: 2022-06-23 10:16:54
  * @FilePath: \sizhoushixun\src\router.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -26,6 +26,8 @@ import shopcart from './components/PetShopping/shopcart.vue' ;                //
 import daylist from './components/PetDay/DayList.vue';                      //5宠物日常
 import dayinfo from './components/PetDay/DayInfo.vue';                      //5.1宠物日常--详情页
 import perhome from './components/PetDay/PerHone.vue';                      //5.1.1宠物日常--详情页--个人主页
+import raiselist from './components/PetDay/RaiseList.vue';                  //1.5 共养动态
+import raiseinfo from './components/PetDay/RaiseInfo.vue';                    //1.5.1共养动态--详情页
 
 
 //通过Vue使用路由（手动安装）
@@ -48,8 +50,10 @@ const router = new VueRouter({
        {path:'/productinfo',component:info} ,   //4.1.1宠物用品详情
        {path:'/petshopping/shopcart',component:shopcart} ,   //4.1.1宠物用品详情
        {path:'/home/daylist',component:daylist},                 //5宠物日常
-       {path:'/home/daylist/dayinfo/:id',component:dayinfo},                 //5.1宠物日常--详情页
-       {path:'/home/daylist/perhome',component:perhome},                 //5.1.1宠物日常--详情页--个人主页
+       {path:'/home/daylist/dayinfo/:id',component:dayinfo},       //5.1宠物日常--详情页
+       {path:'/home/daylist/perhome/:id',component:perhome},       //5.1.1宠物日常--详情页--个人主页
+       {path:'/home/raiselist',component:raiselist},                //1.5领养动态
+       {path:'/home/raiselist/raiseinfo',component:raiseinfo}     //1.5.1共养动态--详情页
 
     
     ],

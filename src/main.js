@@ -1,4 +1,11 @@
-
+/*
+ * @Author: caoYaNan 2419612936@qq.com
+ * @Date: 2022-06-15 15:02:28
+ * @LastEditors: caoYaNan 2419612936@qq.com
+ * @LastEditTime: 2022-06-22 09:17:56
+ * @FilePath: \sizhoushixun\src\main.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 //此处作为项目的入口文件
 //导入vue插件
 import Vue from 'vue'
@@ -15,7 +22,7 @@ import VueResource from 'vue-resource';
  //将VueResource安装到vue
  Vue.use(VueResource)
  //设置API请求的根路径
- Vue.http.options.root="http://www.liulongbin.top:3005/"
+ Vue.http.options.root="http://localhost:4000/"
  Vue.http.options.emulateJSON = true;//全局启用emulateJSON选项，post请求时使用
 //导入mint-ui的样式
 import 'mint-ui/lib/style.css';

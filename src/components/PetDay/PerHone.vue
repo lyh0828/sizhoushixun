@@ -3,7 +3,9 @@
         <div class="top">
             <img src="../../images/logo.jpg">
             <span class="topFont">宠物日常</span>
-            <a class="iconSearch"><span class="mui-icon mui-icon-search"></span></a>
+            <router-link to="">
+                <a id="icon-gear"><span class="mui-icon mui-icon-gear"></span></a>
+            </router-link>
         </div>
         <div class="main">
             <div class="mainBcg">
@@ -17,7 +19,7 @@
                             <div>
                                 <span class="mainInfoT">性别:</span>
                                 <br>
-                                <span class="mainInfoN">女</span>
+                                <span class="mainInfoN">{{ sex }}</span>
                             </div>
 
                         </li>
@@ -26,7 +28,7 @@
                             <div>
                                 <span class="mainInfoT">年龄:</span>
                                 <br>
-                                <span class="mainInfoN">18</span>
+                                <span class="mainInfoN">{{ age }}</span>
                             </div>
 
                         </li>
@@ -35,17 +37,16 @@
                             <div>
                                 <span class="mainInfoT">简介:</span>
                                 <br>
-                                <span class="mainInfoN">这是我的简介哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</span>
+                                <span class="mainInfoN">{{ introduction }}</span>
                             </div>
 
                         </li>
                     </ul>
                 </div>
                 <div class="mainInfo2">
-                    <img
-                        src="../../images/petday1.jpg">
+                    <img :src="headimg_url">
                     <br>
-                    <span class="mainInfo2name">昵称</span>
+                    <span class="mainInfo2name">{{ nickname }}</span>
                 </div>
             </div>
 
@@ -55,9 +56,36 @@
 
 <script>
 export default {
-    data() {
-        return {}
-    }
+     data() {
+        return {
+            nickname:'',
+            headimg_url:'',
+            age:'',
+            sex:'',
+            content:'',
+            introduction:''
+        }
+    },
+    created() {
+        this.getdayinfo()
+    },
+    methods: {
+        getdayinfo(){
+            this.$http.get("dayinfos/info"+ '?id=' + this.$route.params.id).then(result =>{
+                console.log(result.body)
+                //if (result.body.status === 0){
+                    this.nickname = result.body.nickname
+                    this.headimg_url = result.body.headimg_url
+                    this.sex = result.body.sex
+                    this.age = result.body.age
+                    this.introduction = result.body.introduction
+                //}else{
+
+                //    console.log('数据加载失败')
+                //}
+            })
+        }
+    },
 }
 </script>
 
@@ -92,13 +120,14 @@ export default {
             font-weight: bold;
         }
 
-        .iconSearch {
+        #icon-gear {
             vertical-align: middle;
             display: table-cell;
-
             span {
                 font-size: 30px;
                 font-weight: bold;
+                display: block;
+                margin-top: -35px;
             }
         }
     }

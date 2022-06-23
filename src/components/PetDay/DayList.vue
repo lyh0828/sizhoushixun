@@ -4,13 +4,17 @@
         <div class="top">
             <img src="../../images/logo.jpg">
             <span class="topFont">宠物日常</span>
-            <a class="iconSearch"><span class="mui-icon mui-icon-search"></span></a>
+            <div class="mui-input-row mui-search">
+					<input type="search" class="mui-input-clear" placeholder="搜索">
+			</div>
         </div>
+        
         <div class="main">
-            <p class="mainTitle">宠物的日记</p>
+            <p class="mainTitle" >宠物的日记</p>
+            
             <ul>
                 <li v-for="item in daylist" :key="item.id">
-                    <router-link :to="'/home/daylist/dayinfo/'+item.id">
+                    <router-link :to="'/home/daylist/dayinfo/'+item._id">
                         <img :src="item.img_url">
                         <span>{{ item.title }}</span>
                     </router-link>
@@ -27,25 +31,23 @@ export default {
             daylist: []
         }
     },
-    //生命周期(页面一展示就执行)
     created() {
-        //调用此方法
         this.getdaylist()
     },
     methods: {
-        //获取新闻列表数据的方法
         getdaylist() {
-            this.$http.get("api/getnewslist").then(result => {
+            this.$http.get("dayinfos").then(result => {
                 console.log(result.body)
-                if (result.body.status === 0) {
-                    this.daylist = result.body.message
-                } else {
-                    console.log('数据加载失败')
-                }
+                //if (result.body.status === 0) {
+                    this.daylist = result.body
+               // } else {
+                  //  console.log('数据加载失败')
+               // }
             })
         }
-    },
+    }
 }
+
 </script>
 
 <style lang="scss" scoped>
@@ -66,7 +68,7 @@ export default {
 
         img {
             height: 40px;
-            margin: 5px -27px 0 5px;
+            margin: 5px -10px 0 5px;
             border-radius: 50px;
         }
 
@@ -76,6 +78,18 @@ export default {
             vertical-align: middle;
             display: table-cell;
             font-weight: bold;
+        }
+        div{
+            float: right;
+            width: 150px;
+            height: 50px;
+            margin: 2px 20px 0 0;
+            padding-top: 12px;
+            input{
+                border-radius: 45px;
+                background-color: snow;
+                border:.5px solid #fad7be;
+            }
         }
 
         .iconSearch {
@@ -94,17 +108,20 @@ export default {
 
         .mainTitle {
             padding-top: 50px;
-            margin-bottom: 35px;
+            padding-bottom: 35px;
             text-align: center;
             font-size: 33px;
             color: #3e1e07;
         }
 
         ul {
-            margin: 0 10px 300px -30px;
+            margin: 0 10px 0px -30px;
+            background-color: #FCF5F0;
+            overflow:hidden;
             li {
                 float: left;
-                width: 190px;;
+                width: 190px;
+                height: 100%;
                 background-color: snow;
                 box-shadow:0px 0px 5px 0px #aaa;
                 border-radius: 10px;
