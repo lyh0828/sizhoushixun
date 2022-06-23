@@ -192,7 +192,10 @@ export default {
     .mui-table-view{
         background-color:#efeff4;
         padding-left:15px;
+
         margin-bottom:20px;
+
+
         // height:1000px;
     }
     .mui-table-view:before {

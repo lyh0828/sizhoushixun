@@ -106,10 +106,15 @@ padding-bottom:20px;
             height:80px;
              line-height: 42px;
              max-width: 80px;
+
              border-radius: 10px;
+
+
         }
   }
 }
 }
 
+
 </style>
+

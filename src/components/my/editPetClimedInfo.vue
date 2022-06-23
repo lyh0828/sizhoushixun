@@ -96,6 +96,7 @@
 
     </div>
 </template>
+
 <!-- <script>
  var dtpicker = new mui.DtPicker({ 
     "type": "time",
@@ -110,6 +111,8 @@ dtpicker.show(function(e) {
     console.log(e); 
 })
 </script> -->
+
+
 <script>
 export default {
    
@@ -180,9 +183,11 @@ export default {
              
             })
         },
-      addInfo(){
+
+
+       addInfo(){
 					this.$http.post('petclamiedinfo/edit',{
-                    id:this.id,
+ id:this.id,
 					title:this.title,
 					species:this.species,
 					gender:this.gender,
@@ -192,21 +197,23 @@ export default {
                     img:this.imageUrl,
                     tel:this.tel,
                     weixin:this.weixin
+
 				 }).then(res=>{
-					// if(res.body.status==0)
-					// {
-					// 	window.history.back(-1);
-					// 	alert('成功');
-					// }
-					// else{alert('失败')}
+
+				 },{emulateJSON:true}).then(res=>{
+
+			
 					
 					this.list=res.body
 				   })
 				}
 
+                    
     }
-}
+      }
+
 </script>
+
 
 <style  lang="scss" scoped>
 
@@ -346,4 +353,6 @@ export default {
     width:80%;
     height:100px;
  }
+
 </style>
+
