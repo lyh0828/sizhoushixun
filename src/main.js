@@ -20,11 +20,11 @@ import 'element-ui/lib/theme-chalk/index.css';
  //将ElementUI安装到vue
 Vue.use(ElementUI);
 
-import { Dialog, Upload,DatePicker} from 'element-ui';
+import { Dialog, Upload,DatePicker,TabPane} from 'element-ui';
 Vue.component(Dialog);
 Vue.component(Upload);
 Vue.component(DatePicker);
-
+Vue.component(TabPane);
 
  //将VueResource安装到vue
  Vue.use(VueResource)
