@@ -18,7 +18,8 @@ import FoundInfo from './components/postmessage/FoundInfo.vue';             //2.
 import PetClaimed from './components/postmessage/PetClaimed.vue';         //2.1.1宠物认领
 import PetClaimedDetails from './components/postmessage/PetClaimedDetails.vue'; //2.1.1.1 每一个宠物的详细信息
 import PetLost from './components/postmessage/PetLost.vue';               //2.1.2宠物丢失
-import Login from './components/tabbar/login.vue'                 //3.登录
+import resiger from './components/tabbar/resiger.vue' ;              //3.注册
+import Login from './components/tabbar/login.vue';                 //3.登录
 import MyContainer from './components/tabbar/MyContainer.vue';            //3.1我的
 import fabu from './components/my/fabu.vue'                    //3.1我的发布
 import editPetClimedInfo from  './components/my/editPetClimedInfo.vue';  //3.1.1我的发布信息的修改
@@ -69,6 +70,7 @@ const router = new VueRouter({
        {path:'/petclaimed',component:PetClaimed},      //2.1.1 宠物认领
        {path:'/petclaimeddetails/:id',component:PetClaimedDetails},       //2.1.1.1 每一个宠物的详细信息
        {path:'/petlost',component:PetLost},            //2.1.2宠物丢失
+       {path:'/resiger',component:resiger} ,          //3注册
        {path:'/login',component:Login} ,          //3登录
        {path:'/my',component:MyContainer} ,          //3.1我的
        {path:'/fabu',component:fabu},     //3.1 我的发布

@@ -1,109 +1,100 @@
 <template>
-    		<div class="container">
-				<header>
-					<h3>爱宠之家</h3>
-				</header>
-				<main>
-					<h4>账号登录</h4>
-					<hr />
-					<form action="">
-						<div class="form-group">
-							<label for="card"> 
-                                 <a   id="icon-person" class="active">
-                <span class="mui-icon mui-icon-person-filled"></span>
-            </a></label>
-						<input type="text" id="card" name="card" placeholder="请输入账号"/><br />
-						</div>
-						<div class="form-group">
-							<label for="password">图片</label>
-						<input type="text" id="password" name="password" placeholder="请输入密码"/><br />
-						</div>
-						<div class="form-check">
-							<input type="checkbox" />
-							<label for="password">记住账号</label><br />
-							
-						</div>
-						<div class="form-submit">
-                            <router-link to="/my">
-                                 <input type="submit" value="登录"/>
-                            </router-link>
-                        
-						 
+  <div class="l">
+        <mt-header fixed title="登录"></mt-header>
+        
+        <div class="img">
+          <!-- <img :src="pic" width="120" height="120"/> -->
+        </div>
 
-						</div>			
-					</form>
-				</main>
-		</div>
-</template>
-<script>
-export default {
+        <p class="title">游客登录</p>
+
+        
+        <br>
+
+        <div class="l">
+
+          <mt-field label="用户名" placeholder="请输入用户名" v-model="username"></mt-field>
+
+          <br/>
+
+          <mt-field label="密码" placeholder="请输入密码" v-model="password"></mt-field>
+			<router-link to="/my">
+          <mt-button type="primary" @click="login" size="small" class="pos">登录</mt-button>
+
+			</router-link>
+        </div>
     
+  </div>
+</template>
+
+<script>
+// import vue from '../main'
+export default {
+  data() {
+    return {
+      // pic:require("../assets/1.jpg"),
+      username:"",
+      password:""
+    }
+  },
+  watch:{
+    username(newVal, oldVal){
+      if(newVal == ""){
+        alert('用户名不能为空');
+      }
+    },
+
+    password(newVal, oldVal){
+      if(newVal == ""){
+        alert('密码不能为空');
+      }
+    }
+
+  },
+  methods: {
+    login(){
+      if(this.username == localStorage.getItem("username") && 
+      this.password == localStorage.getItem("password")){
+        vue.$router.push("/home")
+      }else{
+        alert("用户名或密码不正确!")
+      }
+    }
+  }
 }
 </script>
-<style scoped >
 
-*{
-				margin:0px;
-				padding:0px;
-			}
-			header{
-				text-align: center;
-				padding:100px 0px;
-				
-			}
-			.container{
-				width:412px;
-				margin:auto;
-				/*border:1px solid red;*/
-				/* height:800px; */
-				/* background: url(img/11.webp)  no-repeat; */
-                /* background-color:bisque; */
-				position:relative;
-			}
-			main{
-				width:360px;
-				position:absolute;
-				left:30px;
-				top:200px;
-				/*border:1px solid red;*/
-				padding:20px;
-				background-color:snow;
+<style lang="scss" scoped>
+.l{
+  width: 100vw;
+  height: 100vh;
+//   background: url(../assets/images/bg.jpg) no-repeat;
+.img{
+  width: 100%;
+  height:200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img{
+    border-radius: 50%;
+    margin-top: 36px;
+  }
+}
 
-			}
-			main>h4{
-				text-align: left;
-			}
-			main>hr{
-				position: absolute;
-				left:0px;
-				width:100%;
-			}
-			.form-group{
-				width:100%;
-				margin:20px 0px;
-			}
-			.form-group label{	
-				height:30px;
-				width:20%;
-				font-size:14px;
-			}
-			.form-group input{	
-				height:30px;
-				width:80%;
-				font-size:14px;
-				background: rgba(255,255,255,0.4);
-				color:black;
-				border:0px;
-				outline:none;
-			}
-			.form-submit input{
-				display: block;
-				margin:20px 0px;
-				width:100%;
-				height:30px;
-				border:0px;
-				cursor: pointer;
-			}
+.title{
+  text-align: center;
+  color:#fff
+}
 
+.l{
+  margin: 30px 10px;
+}
 
-</style>
+.pos{
+  position: relative;
+  left:20px;
+  top:30px;
+}
+}
+
+</style> 
