@@ -13,18 +13,18 @@
         </div>
         <div class="pingjia">
             <img src="../../images/fw3.png" alt="">
-            <span>5.0</span>
-            <span>43次服务次数</span>
+            <span>{{ item.pingfen }}</span>
+            <span>{{ item.cishu }}</span>
         </div>
         <div class="serve-duixiang">
             <span>服务对象</span>
-            <span class="lei">犬类</span>
-            <span class="lei">猫类</span>
+            <span class="lei">{{ item.dog }}</span>
+            <span class="lei">{{ item.cat }}</span>
         </div>
         <div class="serve-shan">
             <span>专家擅长</span>
-            <span class="bing">犬猫传染病</span>
-            <span class="bing">皮肤病</span>
+            <span class="bing">{{ item.bing1 }}</span>
+            <span class="bing">{{ item.bing2 }}</span>
         </div>
         </div>
     </div>
