@@ -70,13 +70,17 @@
             <hr>
             <!-- <div class="line"></div> -->
             <div class="mui-input-row" >
+
+
            <label>详情</label>
+
 				<textarea id="textarea" rows="5" v-model="details" placeholder="尽可能把宠物特征描写详细,以便找到自己的宠物，祝好运哦~~~"></textarea>
 			</div>
 
         </div>
         <div class="photos">
             <p class="title">请上传图片</p>
+            <hr>
             <!-- <el-form ref="form" :model="Form" label-width="80px">
              <el-upload class="a" action="students/new" list-type="picture-card"  :auto-upload="true" :limit="4" :before-upload="beforeProductUpload" :on-exceed="handleExceed">
              <i slot="default" class="el-icon-plus"></i> -->
@@ -131,7 +135,11 @@
 			</div>
         </div>
         <div class="btn">
+
+            <!-- <router-link to="/petclaimed"> -->
+
             <router-link to="/petlost">
+
               <button type="submit" class="mui-btn mui-btn-primary mui-btn-block" @click="addInfo">发布</button>
             </router-link>
         </div>
@@ -150,6 +158,16 @@ export default {
         // dialogImageUrl: '',
         // dialogVisible: false,
         // disabled: false,
+
+        details:'',
+        found_address:'',
+        found_time:'',
+        gender:'',
+        species:'',
+        tel:'',
+        weixin:'',
+        title:'',
+
         picture:'https://img1.baidu.com/it/u=3368527245,2581594750&fm=253&fmt=auto&app=138&f=JPEG?w=400&h=400"',
         name:'她她她',
         details:'',
@@ -166,6 +184,7 @@ export default {
         see:'7229人浏览昨天10:48',
         zan:'10人点赞',
         img:'https://img1.baidu.com/it/u=592570905,1313515675&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500'
+
        
       };
     },
@@ -228,7 +247,7 @@ export default {
     //     })
          
     //   },
-      addInfo(){
+     addInfo(){
         // console.log(this.Form.imageUrl)
         var form = {
             // title:this.title,
@@ -429,3 +448,4 @@ export default {
     height:100px;
  }
 </style>
+ 

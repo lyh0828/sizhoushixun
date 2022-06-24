@@ -2,6 +2,11 @@
     <div>
         
             <div class="info-messages">
+                <!-- <div class="mui-input-row">
+                <label>id</label>
+                <input type="text" class="mui-input-clear"  placeholder="请输入" v-model='id' data-input-clear="5">
+                <span class="mui-icon mui-icon-clear mui-hidden"></span>
+			    </div> -->
                 <div class="mui-input-row">
                 <label>标题</label>
                 <input type="text" class="mui-input-clear"  placeholder="请输入" v-model='title' data-input-clear="5">
@@ -91,6 +96,23 @@
 
     </div>
 </template>
+
+<!-- <script>
+ var dtpicker = new mui.DtPicker({ 
+    "type": "time",
+    "customData": {
+        "h": [ 
+            { value: "am", text: "上午" },
+            { value: "pm", text: "下午" },
+        ]
+    } 
+})
+dtpicker.show(function(e) { 
+    console.log(e); 
+})
+</script> -->
+
+
 <script>
 export default {
    
@@ -161,8 +183,11 @@ export default {
              
             })
         },
+
+
        addInfo(){
 					this.$http.post('petclamiedinfo/edit',{
+ id:this.id,
 					title:this.title,
 					species:this.species,
 					gender:this.gender,
@@ -172,21 +197,24 @@ export default {
                     img:this.imageUrl,
                     tel:this.tel,
                     weixin:this.weixin
+
+				 }).then(res=>{
+
 				 },{emulateJSON:true}).then(res=>{
-					// if(res.body.status==0)
-					// {
-					// 	window.history.back(-1);
-					// 	alert('成功');
-					// }
-					// else{alert('失败')}
+
+			
 					
 					this.list=res.body
 				   })
 				}
 
+                    
     }
-}
+      }
+
 </script>
+
+
 <style  lang="scss" scoped>
 
 // .v-enter,.v-leave-to{
@@ -325,4 +353,6 @@ export default {
     width:80%;
     height:100px;
  }
+
 </style>
+

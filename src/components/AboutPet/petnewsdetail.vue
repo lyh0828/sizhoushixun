@@ -128,7 +128,11 @@ export default {
 }
 .content{
   //  border:1px solid red;
+
+     margin-top:10px;
+
      margin-top:20px;
+
     width:100%;
     //  padding-left:20px;
      .content1{
@@ -164,5 +168,8 @@ export default {
          }
      }
 }
+
+
+
 
 </style>
