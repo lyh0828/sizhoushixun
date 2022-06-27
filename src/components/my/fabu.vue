@@ -46,14 +46,14 @@ export default {
     methods:{
         del(id) {
                 // console.log(this.month)
-				var btnArray = ['是', '否'];
+				var btnArray = ['否', '是'];
 				mui.confirm('删除这条信息，确认？', '删除', btnArray, (e)=> {
-					if (e.index == 0) {
+					if (e.index == 1) {
+                        mui.toast('删除成功',{ duration:'short', type:'div' })
                         this.$http.get('petclamiedinfo/delete', {params: {id: id}}).then(function(res){
 						this.newsList=res.body
-                        
 					});
-                      mui.toast('删除成功',{ duration:'short', type:'div' })
+                     
 					} else {
                           mui.toast('已取消',{ duration:'short', type:'div' })
 					}
@@ -108,6 +108,26 @@ export default {
 
         margin-bottom:10px;
       }
+      .mui-table-view::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  content: '';
+//   background-color: #c8c7cc;
+}
+.mui-table-view::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+//   height: 1px;
+//   content: '';
+//   -webkit-transform: scaleY(.5);
+//   transform: scaleY(.5);
+//   background-color: #c8c7cc;
+}
 .mui-table-view{
 padding-bottom:20px;
  background-color:#f4f4f4;

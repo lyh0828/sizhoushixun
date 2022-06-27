@@ -81,7 +81,6 @@
                     <input type="file" class="update" accept="image/*" @change="change($event)"  ref="updata">
                     <img :src="imageUrl?imageUrl:baseImg" alt="" class="img">
                 </div>
-                
         </div>
         <div class="phone">
             <div   class="mui-input-row">

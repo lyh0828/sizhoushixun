@@ -1,4 +1,7 @@
 //此处作为项目的入口文件
+
+Vue.config.devtools = true;
+
 //导入vue插件
 import Vue from 'vue'
 
@@ -13,6 +16,8 @@ Vue.prototype.mui=mui
 
 //导入mint-ui组件库
  import MintUi from 'mint-ui';
+ import { Progress } from 'mint-ui';
+Vue.component(Progress.name, Progress);
  import { MessageBox } from 'mint-ui';
  Vue.component(MessageBox);
  //导入element-ui组件库
@@ -22,11 +27,12 @@ import 'element-ui/lib/theme-chalk/index.css';
  //将ElementUI安装到vue
 Vue.use(ElementUI);
 
-import { Dialog, Upload,DatePicker,TabPane} from 'element-ui';
+import { Dialog, Upload,DatePicker,TabPane,Backtop} from 'element-ui';
 Vue.component(Dialog);
 Vue.component(Upload);
 Vue.component(DatePicker);
 Vue.component(TabPane);
+Vue.component(Backtop);
 
  //将VueResource安装到vue
  Vue.use(VueResource)

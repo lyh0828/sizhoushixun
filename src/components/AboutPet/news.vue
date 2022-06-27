@@ -34,12 +34,10 @@
 						<div class="mui-media-body">
 							{{item.title}}
 							<p class='mui-ellipsis'>
-                                 <span >{{item.click}}</span>
-                                
-                                <span >时间：{{item.time1 | dateFormat}}</span>
-                                <br>
-                                <span><span class="mui-icon-extra mui-icon-extra-like"></span>{{item.zan}}</span>
-                            </p>
+                  <span >时间：{{item.time1 | dateFormat}}</span>
+                  <br>
+                  <span><span class="mui-icon-extra mui-icon-extra-like"></span>{{item.zan}}</span>
+               </p>
 						</div>
 					<!-- </router-link> -->
 				</li>

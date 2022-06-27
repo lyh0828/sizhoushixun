@@ -16,7 +16,11 @@ import HomeContainer from './components/tabbar/HomeContainer.vue';        //1.�
 import LostInfo from './components/postmessage/LostInfo.vue';              //2.发布信息 和2.1 我丢失了的信息登记 同一个
 import FoundInfo from './components/postmessage/FoundInfo.vue';             //2.2我捡到了的信息登记
 import PetClaimed from './components/postmessage/PetClaimed.vue';         //2.1.1宠物认领
-import PetClaimedDetails from './components/postmessage/PetClaimedDetails.vue'; //2.1.1.1 每一个宠物的详细信息
+import PetClaimedDetails from './components/postmessage/PetClaimedDetails.vue'; //2.1.1.1 每一个宠物的详细信息          
+import Goodscomments from './components/comments/Goodscomments.vue';           //展示留言信息
+import Addcomments from './components/comments/Addcomments.vue';               //2.1.1.1.1 进行添加留言
+
+
 import PetLost from './components/postmessage/PetLost.vue';               //2.1.2宠物丢失
 import resiger from './components/tabbar/resiger.vue' ;              //3.注册
 import Login from './components/tabbar/login.vue';                 //3.登录
@@ -55,6 +59,7 @@ import PetNewsDetails from './components/AboutPet/petnewsdetail.vue';   //6.3.1�
 
 
 
+
 //通过Vue使用路由（手动安装）
 Vue.use(VueRouter)
 //创建路由对象
@@ -68,7 +73,10 @@ const router = new VueRouter({
        {path:'/lostinfo',component:LostInfo},    //2.1 我丢失了的信息登记
        {path:'/foundinfo',component:FoundInfo},       //2.2我捡到了的信息登记
        {path:'/petclaimed',component:PetClaimed},      //2.1.1 宠物认领
-       {path:'/petclaimeddetails/:id',component:PetClaimedDetails},       //2.1.1.1 每一个宠物的详细信息
+       {path:'/petclaimeddetails/:id',component:PetClaimedDetails},       //2.1.1.1 每一个宠物的详细信息     
+       {path:'/goodscomments',component:Goodscomments},   //2.1.1.1.1展示留言
+       {path:'/addcomments',component:Addcomments},   //2.1.1.1.1进行添加留言
+
        {path:'/petlost',component:PetLost},            //2.1.2宠物丢失
        {path:'/resiger',component:resiger} ,          //3注册
        {path:'/login',component:Login} ,          //3登录
@@ -105,9 +113,6 @@ const router = new VueRouter({
        {path:'/petnews',component:PetNews},     //6.3宠物新闻
        {path:'/petnewsdetails/:id',component:PetNewsDetails},       //6.3.1 每一个宠物的详细信息
        {path:'/editPetClimedInfo/:id',component:editPetClimedInfo},       //6.3.1 每一个宠物的信息修改
-
-
-
     
     ],
     linkActiveClass:'mui-active'

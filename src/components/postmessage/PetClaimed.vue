@@ -1,5 +1,7 @@
 <template>
+
     <div class="center">
+        
        <div class="search">
             <div class="search-left">
 					<a href="#/foundinfo" class="router-link-active">
@@ -20,7 +22,6 @@
             <a  class="search-btn" >其他宠物 </a>
        </div>
        <div class="switch">
-            
             <p class="switch-tip">是否隐藏已被认领的宠物</p>
             <mt-switch v-model="value"></mt-switch>
        </div>
@@ -54,6 +55,7 @@
 				</ul>
 			</div>
 		</div>
+       
     </div>
 </template>
 <script>

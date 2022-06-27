@@ -28,8 +28,12 @@
               </div>
               <div class="content3">
                 <p class="tip">认领请联系</p>
-                <p  class="bt"><span class="mui-icon mui-icon-phone"></span><span class="title">{{tel}}</span></p>
+                <mt-button  @click.native="sheetVisible = true" class="btn"><span class="mui-icon mui-icon-phone"></span><span class="title">{{tel}}</span></mt-button>
+                <mt-actionsheet :actions="actions" v-model="sheetVisible"></mt-actionsheet>
                <p  class="bt"><span class="mui-icon mui-icon-weixin"></span><span class="title">{{weixin}}</span></p>
+               <router-link to="/goodscomments">
+                 <i class="el-icon-edit" style="font-size:16px;color:blueviolet">留言</i>
+               </router-link>
               </div>
           </div>
           
@@ -39,6 +43,7 @@
     </div>
 </template>
 <script>
+import mui from '../../lib/mui/js/mui.js' 
 export default {
      data(){
         return{
@@ -52,14 +57,33 @@ export default {
            tel:'',
            weixin:'',
            title:'',
-
+  sheetVisible: false,
+             actions: []
 
 
         }
     },
+        mounted() {
+      this.actions = [
+        {
+        name: '复制',
+        method: this.copy
+         }, 
+        {
+        name: '呼叫',
+        method: this.call
+        },
+         {
+        name: '添加到手机通讯录',
+        method: this.add
+        }
+     ]
+
+    },
     created(){
         this.getPetInfo();
     },
+
     methods:{
         getPetInfo(){
             this.$http.get("petclamiedinfo/show?id="+this.$route.params.id).then(result=>{
@@ -75,11 +99,21 @@ export default {
                             this.tel=result.body.tel
                              this.weixin=result.body.weixin
                                this.title=result.body.title
-
-
-             
             })
-        }
+        },
+        copy() {
+       mui.toast('复制成功',{ duration:'short', type:'div' })
+      },
+      call() {
+               mui.toast('即将跳转',{ duration:'short', type:'div' })
+
+      },
+      add(){
+              mui.toast('即将跳转',{ duration:'short', type:'div' })
+
+      }
+
+
     },
      filters:{
         dateFormat:function renderTime(date){
@@ -132,7 +166,7 @@ export default {
 }
 .content{
   //  border:1px solid red;
-     margin-top:20px;
+     margin-top:10px;
     width:100%;
     //  padding-left:20px;
      .content1{
@@ -190,6 +224,7 @@ export default {
         margin-top:20px;
 
         }
+
       }
      }
 
