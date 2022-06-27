@@ -37,10 +37,15 @@
             <div class="mui-media-body">添加提醒</div>
           </router-link>
         </li>
-         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
-          <router-link to="/petnews">
+
+       
+        <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+          <router-link to="/news">
+
+          <!-- <router-link to="/petnews"> -->
               <img src="../../images/03.png">
               <div class="mui-media-body">宠物新闻</div>
+
           </router-link>
           
         </li>

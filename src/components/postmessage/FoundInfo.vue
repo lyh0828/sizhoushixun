@@ -105,6 +105,20 @@
 
     </div>
 </template>
+<!-- <script>
+ var dtpicker = new mui.DtPicker({ 
+    "type": "time",
+    "customData": {
+        "h": [ 
+            { value: "am", text: "上午" },
+            { value: "pm", text: "下午" },
+        ]
+    } 
+})
+dtpicker.show(function(e) { 
+    console.log(e); 
+})
+</script> -->
 <script>
 export default {
    
@@ -172,7 +186,7 @@ export default {
 					
 					this.list=res.body
 				   })
-				},
+				}
 
     },
     created(){
@@ -181,6 +195,7 @@ export default {
 
 }
 </script>
+
 <style  lang="scss" scoped>
 
 // .v-enter,.v-leave-to{

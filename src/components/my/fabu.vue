@@ -6,7 +6,7 @@
         </div>
         </router-link>
         
-        <h4 class="title">我的发布</h4>
+        <h3 class="title">我的发布</h3>
          <ul class="mui-table-view">
 				<li class="mui-table-view-cell mui-media" v-for='item in newsList' :key="item._id">
 						<img class="mui-media-object mui-pull-left" :src="item.img">
@@ -14,13 +14,14 @@
 							<!-- {{item.title}} -->
 							<p class='mui-ellipsis'>
                                 
-                                 <span >标题:{{item.title}}</span>
+                                 <span class="tip">标题:{{item.title}}</span>
                                  <br>
-                                <span >时间：{{item.found_time | dateFormat}}</span>
+                                <span>时间：{{item.found_time | dateFormat}}</span>
                                 <br>
                                 <span>捡到地点:{{item.found_address}}</span>
                             </p>
-                            <a><span class="mui-icon mui-icon-trash" @click="del(item._id)"></span></a> 
+                            <a class="color"><span class="mui-icon mui-icon-trash" @click="del(item._id)"></span></a> 
+                            <span class="kg"></span>
                             <router-link :to="'/editPetClimedInfo/'+item._id" >
                                 <a><span class="mui-icon mui-icon-compose" ></span></a>
                             </router-link>
@@ -29,6 +30,7 @@
 		</ul>
     </div>
 </template>
+
 <script>
 export default {
      data(){
@@ -90,6 +92,15 @@ export default {
 .mui-table-view{
 padding-bottom:20px;
  background-color:#f4f4f4;
+ .kg{
+    // display:block;
+    padding-left:30px;
+    width:80px;
+    background-color:#fff;
+ }
+ .color{
+    color:red;
+ }
     li{
         width:380px;
         margin:auto;
@@ -105,9 +116,17 @@ padding-bottom:20px;
             height:80px;
              line-height: 42px;
              max-width: 80px;
+             border-radius: 10px;
+        }
+        .tip{
+            color:black;
+            font-size:16px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         }
   }
 }
 }
 
+
 </style>
+

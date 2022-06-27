@@ -53,21 +53,26 @@ export default {
 <style scoped lang="scss">
 .center{
       background-color:#f4f4f4;
-      margin-top:40px;
+      margin-top:45px;
 .mui-table-view{
 
     li{
-        font-size: 12px;
-        color:rgb(118,12,240);
+        font-size: 16px;
+        color:black;
         // display:flex;
         img{
             width:80;
             height:80px;
              line-height: 42px;
              max-width: 80px;
+             border-radius:15px;
         }
   }
 }
 }
 
+
 </style>
+
+
+
