@@ -13,6 +13,8 @@ Vue.prototype.mui=mui
 
 //导入mint-ui组件库
  import MintUi from 'mint-ui';
+ import { MessageBox } from 'mint-ui';
+ Vue.component(MessageBox);
  //导入element-ui组件库
  import ElementUI from 'element-ui';
  //导入ElementUI的样式
@@ -30,7 +32,7 @@ Vue.component(TabPane);
  Vue.use(VueResource)
  //设置API请求的根路径
 
- Vue.http.options.root="http://localhost:8000/"
+//  Vue.http.options.root="http://localhost:8000/"
 
  Vue.http.options.root="http://36.133.47.7:4000/"
 

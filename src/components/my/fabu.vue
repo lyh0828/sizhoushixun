@@ -21,6 +21,7 @@
                                 <span>捡到地点:{{item.found_address}}</span>
                             </p>
                             <a class="color"><span class="mui-icon mui-icon-trash" @click="del(item._id)"></span></a> 
+                        
                             <span class="kg"></span>
                             <router-link :to="'/editPetClimedInfo/'+item._id" >
                                 <a><span class="mui-icon mui-icon-compose" ></span></a>
@@ -32,6 +33,7 @@
 </template>
 
 <script>
+import mui from '../../lib/mui/js/mui.js' 
 export default {
      data(){
         return{
@@ -42,6 +44,21 @@ export default {
         this.getnewslist()
     },
     methods:{
+        del(id) {
+                // console.log(this.month)
+				var btnArray = ['是', '否'];
+				mui.confirm('删除这条信息，确认？', '删除', btnArray, (e)=> {
+					if (e.index == 0) {
+                        this.$http.get('petclamiedinfo/delete', {params: {id: id}}).then(function(res){
+						this.newsList=res.body
+                        
+					});
+                      mui.toast('删除成功',{ duration:'short', type:'div' })
+					} else {
+                          mui.toast('已取消',{ duration:'short', type:'div' })
+					}
+				},'div')
+			} ,
         getnewslist(){
             this.$http.get('petclamiedinfo').then(result=>{
                  console.log(result.body)
@@ -52,12 +69,14 @@ export default {
                 // }
             })
         },
-        del(id){
-            this.$http.get('petclamiedinfo/delete', {params: {id: id}}).then(function(res){
-						this.newsList=res.body
-					})
-        },
+        // del(id){
+        //     this.$http.get('petclamiedinfo/delete', {params: {id: id}}).then(function(res){
+		// 				this.newsList=res.body
+		// 			})
+        // },
+
     },
+    
     filters:{
         dateFormat:function renderTime(date){
         var dates = new Date(date).toJSON();
@@ -124,8 +143,7 @@ padding-bottom:20px;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         }
   }
-}
-}
+}}
 
 
 </style>
