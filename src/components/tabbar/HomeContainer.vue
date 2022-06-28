@@ -70,8 +70,10 @@
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
           <a href="#">
-            <img src="../../images/07.png">
-            <div class="mui-media-body">家庭寄养</div>
+            <router-link to="/petsmart">
+                <img src="../../images/07.png">
+                <div class="mui-media-body">宠物智能</div>
+            </router-link>  
           </a>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">

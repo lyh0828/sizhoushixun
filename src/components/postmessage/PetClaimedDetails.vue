@@ -27,7 +27,7 @@
 
               </div>
               <div class="content3">
-                <p class="tip">认领请联系</p>
+                <p class="tip">认领请联系|留言</p>
                 <mt-button  @click.native="sheetVisible = true" class="btn"><span class="mui-icon mui-icon-phone"></span><span class="title">{{tel}}</span></mt-button>
                 <mt-actionsheet :actions="actions" v-model="sheetVisible"></mt-actionsheet>
                <p  class="bt"><span class="mui-icon mui-icon-weixin"></span><span class="title">{{weixin}}</span></p>
@@ -192,7 +192,7 @@ export default {
 
       .bt{
         display:block;
-        margin-top:25px;
+        margin-top:15px;
         
          }
           .title{
@@ -217,7 +217,7 @@ export default {
         border-radius: 10px;
       }
       .content2{
-        margin-right:40px;
+        margin-right:20px;
       }
       .content3{
         .tip{
