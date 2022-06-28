@@ -1,4 +1,7 @@
 //此处作为项目的入口文件
+
+Vue.config.devtools = true;
+
 //导入vue插件
 import Vue from 'vue'
 
@@ -13,6 +16,10 @@ Vue.prototype.mui=mui
 
 //导入mint-ui组件库
  import MintUi from 'mint-ui';
+ import { Progress } from 'mint-ui';
+Vue.component(Progress.name, Progress);
+ import { MessageBox } from 'mint-ui';
+ Vue.component(MessageBox);
  //导入element-ui组件库
  import ElementUI from 'element-ui';
  //导入ElementUI的样式
@@ -23,17 +30,18 @@ import { Field } from 'mint-ui';
 
 Vue.component(Field.name, Field);
 
-import { Dialog, Upload,DatePicker,TabPane} from 'element-ui';
+import { Dialog, Upload,DatePicker,TabPane,Backtop} from 'element-ui';
 Vue.component(Dialog);
 Vue.component(Upload);
 Vue.component(DatePicker);
 Vue.component(TabPane);
+Vue.component(Backtop);
 
  //将VueResource安装到vue
  Vue.use(VueResource)
  //设置API请求的根路径
 
- Vue.http.options.root="http://localhost:8000/"
+//  Vue.http.options.root="http://localhost:8000/"
 
  Vue.http.options.root="http://36.133.47.7:4000/"
 

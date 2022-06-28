@@ -16,7 +16,11 @@ import HomeContainer from './components/tabbar/HomeContainer.vue';        //1.�
 import LostInfo from './components/postmessage/LostInfo.vue';              //2.发布信息 和2.1 我丢失了的信息登记 同一个
 import FoundInfo from './components/postmessage/FoundInfo.vue';             //2.2我捡到了的信息登记
 import PetClaimed from './components/postmessage/PetClaimed.vue';         //2.1.1宠物认领
-import PetClaimedDetails from './components/postmessage/PetClaimedDetails.vue'; //2.1.1.1 每一个宠物的详细信息
+import PetClaimedDetails from './components/postmessage/PetClaimedDetails.vue'; //2.1.1.1 每一个宠物的详细信息          
+import Goodscomments from './components/comments/Goodscomments.vue';           //展示留言信息
+import Addcomments from './components/comments/Addcomments.vue';               //2.1.1.1.1 进行添加留言
+
+
 import PetLost from './components/postmessage/PetLost.vue';               //2.1.2宠物丢失
 import resiger from './components/tabbar/resiger.vue' ;              //3.注册
 import Login from './components/tabbar/login.vue';                 //3.登录
@@ -48,11 +52,16 @@ import raiselist from './components/PetDay/RaiseList.vue';                  //1.
 import raiseinfo from './components/PetDay/RaiseInfo.vue';                    //1.5.1共养动态--详情页
 
 import ServerInfo from './components/Content/ServerInfo.vue';                 //6.1服务
+
+import PetSmart from './components/PetSmart/petsmart.vue';         //6.7 宠物智能
+import PetShop from './components/PetSmart/petshop.vue';         //6.7.1 宠物智能--宠物店
+
 import News from './components/AboutPet/news.vue';         //6.3()宠物新闻
 
 import PetNews from './components/AboutPet/petnews.vue';         //6.3宠物新闻
 import PetNewsDetails from './components/AboutPet/petnewsdetail.vue';   //6.3.1宠物新闻的详情
 import sort from './components/sort/sort.vue';//7.宠物分类
+
 
 
 
@@ -69,7 +78,10 @@ const router = new VueRouter({
        {path:'/lostinfo',component:LostInfo},    //2.1 我丢失了的信息登记
        {path:'/foundinfo',component:FoundInfo},       //2.2我捡到了的信息登记
        {path:'/petclaimed',component:PetClaimed},      //2.1.1 宠物认领
-       {path:'/petclaimeddetails/:id',component:PetClaimedDetails},       //2.1.1.1 每一个宠物的详细信息
+       {path:'/petclaimeddetails/:id',component:PetClaimedDetails},       //2.1.1.1 每一个宠物的详细信息     
+       {path:'/goodscomments',component:Goodscomments},   //2.1.1.1.1展示留言
+       {path:'/addcomments',component:Addcomments},   //2.1.1.1.1进行添加留言
+
        {path:'/petlost',component:PetLost},            //2.1.2宠物丢失
        {path:'/resiger',component:resiger} ,          //3注册
        {path:'/login',component:Login} ,          //3登录
@@ -102,14 +114,17 @@ const router = new VueRouter({
        {path:'/home/daylist/perhome/:id',component:perhome},                 //5.1.1宠物日常--详情页--个人主页
        {path:'/home/daylist/dayinfo/:id',component:dayinfo},                 //5.1宠物日常--详情页 
        {path:'/serverinfo',component:ServerInfo},            //6.1服务
+
+
+       {path:'/petsmart',component:PetSmart},     //6.7宠物智能
+       {path:'/petshop/:id',component:PetShop},     //6.7.1宠物智能--宠物店详情
+
        {path:'/news',component:News},     //6.3()宠物新闻
        {path:'/petnews',component:PetNews},     //6.3宠物新闻
        {path:'/petnewsdetails/:id',component:PetNewsDetails},       //6.3.1 每一个宠物的详细信息
        {path:'/editPetClimedInfo/:id',component:editPetClimedInfo},       //6.3.1 每一个宠物的信息修改
+
        {path:'/sort',component:sort},//7.宠物分类
-
-
-
     
     ],
     linkActiveClass:'mui-active'
