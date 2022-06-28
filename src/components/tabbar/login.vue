@@ -53,7 +53,7 @@ export default {
     login(){
       if(this.username == localStorage.getItem("username") && 
       this.password == localStorage.getItem("password")){
-        vue.$router.push("/home")
+        this.$router.push("/my")
       }else{
         alert("用户名或密码不正确!")
       }
