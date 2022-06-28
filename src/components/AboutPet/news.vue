@@ -1,5 +1,5 @@
 <template>
-  <el-tabs v-model="activeName" @tab-click="handleClick">
+  <el-tabs stretch  v-model="activeName" @tab-click="handleClick">
     <el-tab-pane label="热点新闻" name="first">
          <div class="center">
            <ul class="mui-table-view">
