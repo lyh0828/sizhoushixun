@@ -46,7 +46,7 @@ export default {
     },
     methods:{
         getPetInfo(){
-            this.$http.get("http://36.138.183.223:3000/petsmartinfo/show?id="+this.$route.params.id).then(result=>{
+            this.$http.get("petsmartinfo/show?id="+this.$route.params.id).then(result=>{
                 console.log(result.body)
                     this.details=result.body.details
                     this.address=result.body.address
