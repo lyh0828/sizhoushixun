@@ -52,6 +52,7 @@ import News from './components/AboutPet/news.vue';         //6.3()宠物新闻
 
 import PetNews from './components/AboutPet/petnews.vue';         //6.3宠物新闻
 import PetNewsDetails from './components/AboutPet/petnewsdetail.vue';   //6.3.1宠物新闻的详情
+import sort from './components/sort/sort.vue';//7.宠物分类
 
 
 
@@ -105,6 +106,7 @@ const router = new VueRouter({
        {path:'/petnews',component:PetNews},     //6.3宠物新闻
        {path:'/petnewsdetails/:id',component:PetNewsDetails},       //6.3.1 每一个宠物的详细信息
        {path:'/editPetClimedInfo/:id',component:editPetClimedInfo},       //6.3.1 每一个宠物的信息修改
+       {path:'/sort',component:sort},//7.宠物分类
 
 
 

@@ -19,6 +19,9 @@ Vue.prototype.mui=mui
 import 'element-ui/lib/theme-chalk/index.css';
  //将ElementUI安装到vue
 Vue.use(ElementUI);
+import { Field } from 'mint-ui';
+
+Vue.component(Field.name, Field);
 
 import { Dialog, Upload,DatePicker,TabPane} from 'element-ui';
 Vue.component(Dialog);
