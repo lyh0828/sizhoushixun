@@ -1,6 +1,6 @@
 <template>
 
- <el-tabs v-model="activeName" @tab-click="handleClick">
+ <el-tabs stretch  v-model="activeName" @tab-click="handleClick">
     <el-tab-pane label="宠物店" name="first">
          <div class="center">
             <div class="header">
@@ -117,8 +117,7 @@ export default {
       };
     },
      created(){
-        this.getnewslist(),
-        this.getnewslist2()
+        this.getnewslist()
 
     },
     methods: {
