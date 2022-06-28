@@ -30,7 +30,7 @@ Vue.component(DatePicker);
  Vue.use(VueResource)
  //设置API请求的根路径
 
- Vue.http.options.root="http://localhost:8000/"
+//  Vue.http.options.root="http://localhost:8000/"
 
  Vue.http.options.root="http://36.133.47.7:4000/"
 
@@ -43,15 +43,20 @@ import './css/sass/index.scss';
  import './css/iconfont.css'
 //mui的导入
 
-// import  './lib/mui/js/mui.picker.min.js'
+
 import './lib/mui/css/mui.css';
 import './lib/mui/css/icons-extra.css';
-// import './lib/mui/css/mui.picker.min.css';
-// import './lib/mui/css/mui.min.css';
+
+
+
+
+
 
 //将mint-ui安装到vue中
 Vue.use(MintUi)
+import { Picker } from 'mint-ui';
 
+Vue.component(Picker.name, Picker);
 //按需引入mint-ui中的组件
 // import { Header } from 'mint-ui';
 //以组件的形式引用给vue
