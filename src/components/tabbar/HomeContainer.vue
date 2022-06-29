@@ -34,10 +34,10 @@
     <div class="list">
       <ul class="mui-table-view mui-grid-view mui-grid-9">
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
-          <a href="#">
+          <router-link to="/mypet">
             <img src="../../images/01.png" />
             <div class="mui-media-body">我的宠物</div>
-          </a>
+          </router-link>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
           <router-link to="/addremind">

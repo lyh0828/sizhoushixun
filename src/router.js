@@ -70,6 +70,7 @@ import News from './components/AboutPet/news.vue';         //6.3()宠物新闻
 import PetNews from './components/AboutPet/petnews.vue';         //6.3宠物新闻
 import PetNewsDetails from './components/AboutPet/petnewsdetail.vue';   //6.3.1宠物新闻的详情
 import sort from './components/sort/sort.vue';//7.宠物分类
+import mypet from './components/Content/mypet.vue';  //8.我的宠物
 
 
 import group from './components/group/group.vue';                       //1.6群聊
@@ -190,6 +191,7 @@ const router = new VueRouter({
        {path:'/home/group/groupinfo/report',component:report},              //1.趣味逗宠--趣味逗宠详情
 
        {path:'/sort',component:sort},//7.宠物分类
+       {path:'/mypet',component:mypet} //8.我的宠物
     
 
     ],
