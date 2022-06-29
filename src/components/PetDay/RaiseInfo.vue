@@ -13,8 +13,9 @@
                 <p>￥9.90</p>
                 <div>
                     <span>哈比的猫小院</span>
-                    <span class="mainFewTwo">指定领养</span>
-                    <span class="mainFewOme">剩余0只</span>
+                    <router-link to="/home/raiselist/raiseinfo/raisemore">
+                    <span class="mainFewTwo">指定领养</span></router-link>
+                    <span class="mainFewOme">剩余8只</span>
                 </div>
             </div>
 
@@ -22,22 +23,35 @@
                 <p>点击“领养一只”，你即可获得本小院剩余宠物中的任意一只（此为“随机领养”模式，享受首周9.9元的体验价）；还可以“指定领养”，找到你所喜欢的宠物，专门“领养它”。</p>
             </div>
             <div class="mainCompany">
-                <p>机构信息</p>
-                <p>
+                <p class="pOne">机构信息</p>
+                <p class="pTwo">
                     <a id="icon-location"><span class="mui-icon mui-icon-location"></span></a>
                     <span>山东省烟台市芝罘区</span>
                 </p>
-                <p>
+                <p class="pThree">
                     <a><span class="mui-icon-extra mui-icon-extra-cate"></span></a>
                     <span>哈比的猫小院</span>
                 </p>
-                
-                
+            </div>
+            <div class="mainIntro">
+                <div class="mainIntroTitle">
+                    <p>
+                        哈比的猫小院
+                    </p>
+
+                </div>
+                <div class="mainIntroMain">
+                    <p>
+                        小院成立在2020.11.17，因为一车火腿肠猫，
+                        有了如今的小院，前期一百多只，分流跟领养后，小院还剩52只，加上后期收养，小院现有60猫，一狗，往后的日子我们可能还会给更多的流浪猫孩子一个家，也希望更多的好心一起参与进来。
+                    </p>
+                </div>
             </div>
         </div>
         <div class="bottom">
             <span class="bottomA">￥9.9</span>
-            <span class="bottomB">领养一只</span>
+            <router-link to="/home/raiselist/raiseinfo/raiseone">
+            <span class="bottomB">领养一只</span></router-link>
         </div>
     </div>
 </template>
@@ -49,14 +63,21 @@
     margin-top: 40px;
 
     .top {
-        background-color: snow;
-        height: 50px;
-        text-align: center;
-        line-height: 50px;
+        span {
+            position: fixed;
+            top: 35px;
+            background-color: snow;
+            height: 50px;
+            width: 100%;
+            text-align: center;
+            line-height: 50px;
+        }
+
+
     }
 
     .main {
-        margin-bottom: 100px;
+        margin-bottom: 120px;
 
         .imgMain {
             width: 100%;
@@ -113,7 +134,76 @@
 
             }
         }
-        
+
+        .mainCompany {
+            background-color: snow;
+            height: 100px;
+
+            .mui-icon-location {
+                font-size: 15px;
+                color: #6FB1A5;
+            }
+
+            .mui-icon-extra-cate {
+                font-size: 15px;
+                color: #6FB1A5;
+            }
+
+            .pOne {
+                color: black;
+                margin: 0px 0 5px 20px;
+                padding-top: 15px;
+
+            }
+
+            .pTwo {
+                margin-left: 20px;
+                color: #6FB1A5;
+            }
+
+            .pThree {
+                margin: -10px 0 30px 20px;
+            }
+        }
+
+        .mainIntro {
+            margin-top: 10px;
+            padding-top: 30px;
+            background-color: snow;
+            height: 100%;
+
+            .mainIntroTitle {
+                width: 90%;
+                background-color: #EBF5F4;
+                margin: auto;
+                border-radius: 7px;
+
+                p {
+                    color: #6FB1A5;
+                    font-size: 18px;
+                    height: 37px;
+                    line-height: 30px;
+                    text-align: center;
+                }
+
+            }
+
+            .mainIntroMain {
+                margin: 500px 0 10px 50px;
+                height: 100%;
+                width: 90%;
+                background-color: #EBF5F4;
+                margin: auto;
+                border-radius: 7px;
+
+                p {
+                    font-size: 15px;
+                    text-align: center;
+                    color: #6FB1A5;
+                }
+            }
+        }
+
     }
 
     .bottom {
@@ -123,7 +213,7 @@
         width: 100%;
         border-top: 2px solid #6FB1A5;
         line-height: 55px;
-        background-color: cadetblue;
+        background-color: #EFEFF4;
 
         .bottomA {
             margin-left: 10px;

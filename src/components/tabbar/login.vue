@@ -13,6 +13,7 @@
 
         <div class="l">
 
+
           <mt-field label="用户名" placeholder="请输入用户名" v-model="username"></mt-field>
 
           <br/>
@@ -26,6 +27,7 @@
 </template>
 
 <script>
+
 // import vue from '../main'
 export default {
   data() {
@@ -63,6 +65,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.mint-cell-wrapper{
+  height:100px;
+}
+.mint-field-core{
+
+  border: none;
+  height: 200px;
+}
 .l{
   // width: 100vw;
   height: 100vh;
