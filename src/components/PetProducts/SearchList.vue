@@ -3,7 +3,7 @@
     <div class="headers">
 
       <Header/>
-      <div class="searchinput">
+      <!-- <div class="searchinput">
     <form
       action=""
       onsubmit="return false"
@@ -16,11 +16,11 @@
         placeholder="搜索您喜欢的产品"
         v-model="searchValue"
       />
-      <!-- <router-link to="/search/list" > -->
+      
       <div class="search-btn" @click="GoToSearchList">搜索</div>
-      <!-- </router-link> -->
+      
     </form>
-  </div>
+  </div> -->
 
       <ul>
         <li

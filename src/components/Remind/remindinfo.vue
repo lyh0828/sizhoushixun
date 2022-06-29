@@ -266,6 +266,7 @@ export default {
                     return {'x': x, 'y': y};
             };
         },
+        // mui组件 添加提醒
         	AddRemind() {
                 // console.log(this.month)
 				var btnArray = ['否', '是'];
