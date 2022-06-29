@@ -12,8 +12,8 @@
         <br>
 
         <div class="l">
-<mt-field label="邮箱" placeholder="请输入邮箱" type="email" v-model="email"></mt-field>
-<br>
+
+
           <mt-field label="用户名" placeholder="请输入用户名" v-model="username"></mt-field>
 
           <br/>
