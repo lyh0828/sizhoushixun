@@ -1,7 +1,7 @@
 <template>
   <div class="searchlist">
     <div class="headers">
-      <Header />
+      <Header/>
 
       <ul>
         <li
@@ -16,12 +16,12 @@
             <i
               class="iconfont icon-arrow_up_fat"
               :class="item.status == 1 ? 'active' : ''"
-              @click="priceasc"
+           
             ></i>
             <i
               class="iconfont icon-arrow_down_fat"
               :class="item.status == 2 ? 'active' : ''"
-              @click="pricedesc"
+              
             ></i>
           </div>
         </li>
@@ -75,17 +75,7 @@ export default {
   created() {
     this.GetData();
   },
-  //   computed:{
-  // orderBy(){
-  //   // 知道当前是哪一个对象
-  //   let obj=this.headerList.data[this.searchList.currentIndex]
-  //   // 针对状态 判断是升序还是降序
-  //   let val=obj.status=='1'?'asc':'desc';
-  //   return{
-  //     [obj.key]:val
-  //   }
-  // }
-  //   },
+
   methods: {
     GetData() {
       this.$http
@@ -95,26 +85,8 @@ export default {
         })
         .catch((err) => {});
     },
-    // GetData() {
-    //   this.$http
-    //     .get("products/search",{ searchName:this.$route.query.key})
-    //     .then((result) => {
-
-    //       console.log(result.body);
-
-    //     })
-    //     .catch((err) => {});
-    // },
-    // GetData(){
-    //   this.$http.get({
-    //     url:"products/search",
-    //     params:{
-    //       searchName:this.$route.query.key
-    //     }
-    //   }).then((res)=>{
-    //     console.log(res)
-    //   })
-    // },
+   
+   
     // 切换综合，销量，价格高亮
     changeTab(index) {
       // console.log(index)
@@ -133,18 +105,11 @@ export default {
       // 发送数据请求进行数据排序
       this.GetData();
     },
-//     priceasc() {
-//       console.log("111");
-//    this.priceList.sort((a,b)=>{
-// return a-b
-//    })
+
 
     
    
-//     },
-//     pricedesc() {
-//       console.log("222");
-//     },
+
   },
 };
 </script>

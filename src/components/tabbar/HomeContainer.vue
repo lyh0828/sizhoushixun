@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <div class="topbar">
+    <!-- <div class="topbar">
       <img class="topbar-img" src="../../images/10.png" />
-    </div>
+    </div> -->
 
     <!-- 轮播图 -->
     <mt-swipe :auto="4000">
@@ -245,16 +245,17 @@ export default {
       }
     }
   }
-  .topbar {
-    margin-top: 40px;
-  }
-  .topbar-img {
-    width: 100%;
-    height: 100px;
-  }
+  // .topbar {
+  //   margin-top: 40px;
+  // }
+  // .topbar-img {
+  //   width: 100%;
+  //   height: 100px;
+  // }
   .mint-swipe {
     width: 100%;
     height: 200px;
+    margin-top: 40px;
     img {
       width: 100%;
       height: 100%;
