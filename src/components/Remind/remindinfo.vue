@@ -10,14 +10,18 @@
 <transition name="DTpicker">
         
     <div id="DTpicker" class="DTpicker" >
-       
+       <!-- 日期头部左右按动 年份月份显示 -->
         <div class="DTpicker_t">
             <p>{{ year }}&nbsp;&nbsp;{{ monthList[month -1] }}月</p>
+            <!-- 左边按钮 点击月份减1 -->
             <span class="DTpicker_t_l" @click="changeMonth(-1)"> &lsaquo; </span>
+            <!-- 右边按钮 点击月份加1 -->
             <span class="DTpicker_t_r"  @click="changeMonth(1)"> &rsaquo; </span>
         </div>
         <table class="DTpicker_m">
+            <!-- 日历 采用表格布局 -->
             <thead>
+                <!-- 日历头部直接遍历weekList数组显示 -->
                 <tr key="thead">
                     <th v-for="w in weekList" :key="w">{{w}}</th>
                 </tr>
@@ -36,6 +40,7 @@
     </div>
     </transition>
     </div>
+    <!-- mui组件 添加提醒弹出框 -->
 <div class="mui-content">
 			<div class="mui-content-padded" style="margin: 5px;text-align: center;">
 			
@@ -54,7 +59,7 @@ export default {
     data(){
         return {
             weekList:['日','一','二','三','四','五','六'],
-            // monthList:['January','February','March','April','May','June','July','August','September','October','November','December'],
+           
             monthList:[1,2,3,4,5,6,7,8,9,10,11,12],
             month:0,
             year:0,
