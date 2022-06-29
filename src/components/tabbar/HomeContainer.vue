@@ -22,7 +22,7 @@
           src="https://img0.baidu.com/it/u=1275718207,2852747973&fm=253&fmt=auto&app=138&f=JPEG?w=970&h=448"
 
         />
-        
+         </router-link>
       </mt-swipe-item>
       <mt-swipe-item>
         <router-link to="/sort">
