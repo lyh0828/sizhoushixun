@@ -96,7 +96,7 @@ export default {
 					return newList;
 				},
         cat(){
-            this.keywords='猫咪'
+            this.keywords='猫'
         },
         dog(){
             this.keywords='狗'
