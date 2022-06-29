@@ -1,12 +1,3 @@
-/*
- * @Author: caoYaNan 2419612936@qq.com
- * @Date: 2022-06-15 15:02:28
- * @LastEditors: caoYaNan 2419612936@qq.com
- * @LastEditTime: 2022-06-29 14:34:44
- * @FilePath: \sizhoushixun\src\main.js
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
-//此处作为项目的入口文件
 
 Vue.config.devtools = true;
 
@@ -28,6 +19,7 @@ Vue.prototype.mui=mui
 Vue.component(Progress.name, Progress);
  import { MessageBox } from 'mint-ui';
  Vue.component(MessageBox);
+ import './lib/mui/css/mui.min.css';
  //导入element-ui组件库
  import ElementUI from 'element-ui';
  //导入ElementUI的样式
@@ -49,7 +41,7 @@ Vue.component(Backtop);
  //设置API请求的根路径
 
  //Vue.http.options.root="http://localhost:4000/"
-//  Vue.http.options.root="http://localhost:8000/"
+ //Vue.http.options.root="http://localhost:8000/"
 
  Vue.http.options.root="http://36.133.47.7:4000/"
 
@@ -63,11 +55,11 @@ import './css/sass/index.scss';
 //mui的导入
 
 
-import './lib/mui/css/mui.css';
-import './lib/mui/css/mui.min.css';
+
+
 
 import './lib/mui/css/icons-extra.css';
-
+import './lib/mui/css/mui.css';
 
 
 
@@ -80,6 +72,9 @@ Vue.component(Picker.name, Picker);
 
 import VDistpicker from 'v-distpicker'
 Vue.component('v-distpicker', VDistpicker);
+import { Popup } from 'mint-ui';
+
+Vue.component(Popup.name, Popup);
 //按需引入mint-ui中的组件
 // import { Header } from 'mint-ui';
 //以组件的形式引用给vue

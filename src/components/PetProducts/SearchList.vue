@@ -1,7 +1,26 @@
 <template>
   <div class="searchlist">
     <div class="headers">
+
       <Header/>
+      <div class="searchinput">
+    <form
+      action=""
+      onsubmit="return false"
+      style="display: inline-block; background-color: rgb(38, 162, 255)"
+      @keyup.enter="GoToSearchList"
+    >
+      <span>🐕</span>
+      <input
+        type="search"
+        placeholder="搜索您喜欢的产品"
+        v-model="searchValue"
+      />
+      <!-- <router-link to="/search/list" > -->
+      <div class="search-btn" @click="GoToSearchList">搜索</div>
+      <!-- </router-link> -->
+    </form>
+  </div>
 
       <ul>
         <li
@@ -21,7 +40,6 @@
             <i
               class="iconfont icon-arrow_down_fat"
               :class="item.status == 2 ? 'active' : ''"
-              
             ></i>
           </div>
         </li>
@@ -29,7 +47,7 @@
     </div>
     <section>
       <ul>
-        <li v-for="item in searchList" :key="item.id">
+        <li v-for="item in search(searchValue)" :key="item.id">
           <router-link :to="'/productinfo/' + item._id">
             <img :src="item.Img" alt="" />
             <h3>{{ item.Title }}</h3>
@@ -53,8 +71,11 @@ import Header from "../PetProducts/Header.vue";
 export default {
   data() {
     return {
-      
-      // searchName:'',
+        searchValue: this.$route.query.key || "",
+      searchArr: [],
+      // searchValue:'',
+     Title:"",
+      newList:[],
       searchList: [],
       headerList: {
         currentIndex: 0,
@@ -73,6 +94,7 @@ export default {
     Header,
   },
   created() {
+     this.searchArr = JSON.parse(localStorage.getItem("searchList"));
     this.GetData();
   },
 
@@ -81,12 +103,33 @@ export default {
       this.$http
         .get("products")
         .then((result) => {
+          this.searchList = result.body;
+       
+          // this.priceList.push(parseFloat(result.body[0].Price))
+          //  this.priceList.push(parseFloat(result.body[1].Price) )
+          //  this.priceList.push(parseFloat(result.body[2].Price) )
+          //  this.priceList.push(parseFloat(result.body[3].Price) )
+          //  this.priceList.push(parseFloat(result.body[4].Price) )
+          //  this.priceList.push(parseFloat(result.body[5].Price) )
+          //  this.priceList.push(parseFloat(result.body[6].Price))
+          //  this.priceList.push(parseFloat(result.body[7].Price) )
+          //  this.priceList.push(parseFloat(result.body[8].Price) )
+          //  this.priceList.push(parseFloat(result.body[9].Price) )
+          //  this.priceList.push(parseFloat(result.body[10].Price) )
+          //  this.priceList.push(parseFloat(result.body[11].Price) )
+          // for (var i = 0;i <= result.body.length; i++) {
+           
+          //   // console.log(result.body[i].Price)
+          //   this.priceList.push(parseFloat(result.body[i].Price) );
+          
+          // }
+            //console.log(this.priceList)
+        
           this.searchList = result.body;        
         })
         .catch((err) => {});
     },
-   
-   
+
     // 切换综合，销量，价格高亮
     changeTab(index) {
       // console.log(index)
@@ -106,7 +149,57 @@ export default {
       this.GetData();
     },
 
-
+search(searchValue) {
+				console.log(searchValue)
+				var newList = []
+				this.searchList.forEach(item => {
+					// 如果keywords为空,item.name.indexOf(keywords)=0,也满足条件 所以会将list中的数据全部遍历出来
+					if (item.Title.indexOf(searchValue) != -1) {
+						newList.push(item)
+					}
+				})
+				return newList
+			},
+          // 搜索按钮的方法
+    GoToSearchList() {
+      console.log(this.searchValue);
+    
+      //  如果搜索的关键词为空，则不跳转
+      if (!this.searchValue) return;
+      //  判断之前有没有搜索的本地存储
+      if (!localStorage.getItem("searchList")) {
+        localStorage.setItem("searchList", "[]");
+      } else {
+        this.searchArr = JSON.parse(localStorage.getItem("searchList"));
+      }
+      // 增加数据
+      this.searchArr.unshift(this.searchValue);
+      // 给本地存储赋值
+      localStorage.setItem("searchList", JSON.stringify(this.searchArr));
+     //   路径如果没有变化不跳转
+    if(this.searchValue===this.$route.query.key) return
+     // 跳转页面
+      this.$router.push({
+        name: "list",
+        query: {
+          key: this.searchValue,
+        },
+      });
+    },
+    // 清除历史记录
+    deleteStorage() {
+      MessageBox({
+        title: "提示",
+        message: "确定执行此操作?",
+        showCancelButton: true,
+      }).then((res) => {
+        if (res == "confirm") {
+          localStorage.removeItem("searchList");
+          //清除数据
+          this.searchArr = [];
+        }
+      });
+    },
     
    
 
@@ -114,6 +207,21 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.searchinput {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  input {
+    line-height: 50px;
+    background-color: #fff;
+    margin-top: 8px;
+    width: 82%;
+  }
+  .search-btn {
+    display: inline-block;
+    color: #fff;
+  }
+}
 .search {
   input {
     line-height: 50px;

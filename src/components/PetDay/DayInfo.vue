@@ -117,7 +117,7 @@ export default {
             width: 150px;
             height: 50px;
             margin: 2px 20px 0 0;
-            padding-top: 12px;
+            padding-top: 8px;
             input{
                 border-radius: 45px;
                 background-color: snow;
