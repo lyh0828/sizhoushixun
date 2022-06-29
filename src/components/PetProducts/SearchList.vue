@@ -16,12 +16,12 @@
             <i
               class="iconfont icon-arrow_up_fat"
               :class="item.status == 1 ? 'active' : ''"
-              @click="priceasc"
+           
             ></i>
             <i
               class="iconfont icon-arrow_down_fat"
               :class="item.status == 2 ? 'active' : ''"
-              @click="pricedesc"
+           
             ></i>
           </div>
         </li>
@@ -53,7 +53,7 @@ import Header from "../PetProducts/Header.vue";
 export default {
   data() {
     return {
-      priceList: [],
+      
       // searchName:'',
       searchList: [],
       headerList: {
@@ -113,29 +113,12 @@ export default {
           // }
             //console.log(this.priceList)
         
+          this.searchList = result.body;        
         })
         .catch((err) => {});
     },
-    // GetData() {
-    //   this.$http
-    //     .get("products/search",{ searchName:this.$route.query.key})
-    //     .then((result) => {
 
-    //       console.log(result.body);
 
-    //     })
-    //     .catch((err) => {});
-    // },
-    // GetData(){
-    //   this.$http.get({
-    //     url:"products/search",
-    //     params:{
-    //       searchName:this.$route.query.key
-    //     }
-    //   }).then((res)=>{
-    //     console.log(res)
-    //   })
-    // },
     // 切换综合，销量，价格高亮
     changeTab(index) {
       // console.log(index)

@@ -28,8 +28,13 @@
               </div>
               <div class="content3">
                 <p class="tip">认领请联系|留言</p>
-                <mt-button  @click.native="sheetVisible = true" class="btn"><span class="mui-icon mui-icon-phone"></span><span class="title">{{tel}}</span></mt-button>
+
+                <mt-button  @click.native="sheetVisible = true" class="btn">
+                    <span class="mui-icon mui-icon-phone"></span>
+                    <span class="title">{{tel}}</span>
+                </mt-button>
                 <mt-actionsheet :actions="actions" v-model="sheetVisible"></mt-actionsheet>
+
                <p  class="bt"><span class="mui-icon mui-icon-weixin"></span><span class="title">{{weixin}}</span></p>
                <router-link to="/goodscomments">
                  <i class="el-icon-edit" style="font-size:16px;color:blueviolet">留言</i>
@@ -57,6 +62,7 @@ export default {
            tel:'',
            weixin:'',
            title:'',
+  
   sheetVisible: false,
              actions: []
 
@@ -101,7 +107,7 @@ export default {
                                this.title=result.body.title
             })
         },
-        copy() {
+      copy() {
        mui.toast('复制成功',{ duration:'short', type:'div' })
       },
       call() {

@@ -28,7 +28,7 @@
         
         <!-- 中间内容 -->
         <transition mode="out-in">
-            <router-view></router-view>
+            <router-view v-if="isRouterAlive"></router-view>
         </transition>
 
         <!-- 底部导航 -->
@@ -51,10 +51,28 @@
 
 <script>
 export default {
-  data() {
-        return {}
+    name:'App',
+    components:{},
+    provide(){
+        return{
+            reload:this.reload
+        }
     },
-    methods: {},
+  data() {
+        return {
+            isRouterAlive:true
+
+        }
+        
+    },
+    methods: {
+         reload(){
+            this.isRouterAlive=false;
+            this.$nextTick(function(){
+                this.isRouterAlive=true;
+            })
+        }
+    },
     
 }
 //window.addEventListener('touchmove', func, { passive: false })

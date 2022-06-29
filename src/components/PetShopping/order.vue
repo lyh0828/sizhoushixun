@@ -9,20 +9,24 @@
             <span>1332728190432</span>
           </div>
           <div>
-              <div>
-	      <button @click="choose" style="display:inline-block;">选择收货地址:</button>
-	      <p style="display:inline-block;margin-top:-6px;"><span>{{txt1}}</span><span>{{txt2}}</span><span>{{txt3}}</span></p>
-	      <p class="pwrap" v-if="show">
-	        <v-distpicker type="mobile" @province="onChangeProvince" @city="onChangeCity" @area="onChangeArea"></v-distpicker>
-	      </p>
-	    </div>
-
-            <!-- <v-distpicker hide-area @selected="sel" :province='province' :city='myaddress'></v-distpicker> -->
-
-            <!-- <span @click="toAddress">{{ city }}</span> -->
-            <!-- <span>收货地址：北京市朝阳区向阳小区十二号楼1门602</span> -->
-            <!-- <span class="pathgoods">收货地址:{{shengshi}}  {{quyu}}</span>
-            <mt-picker :slots="slots" @change="onValuesChange"></mt-picker> -->
+            <div>
+              <button @click="choose" style="display: inline-block">
+                选择收货地址:
+              </button>
+              <p style="display: inline-block; margin-top: -6px">
+                <span>{{ txt1 }}</span
+                ><span>{{ txt2 }}</span
+                ><span>{{ txt3 }}</span>
+              </p>
+              <p class="pwrap" v-if="show">
+                <v-distpicker
+                  type="mobile"
+                  @province="onChangeProvince"
+                  @city="onChangeCity"
+                  @area="onChangeArea"
+                ></v-distpicker>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -47,8 +51,7 @@
         </div>
       </div>
 
-     
-       <!-- <div class="mui-input-row" style="margin: 10px 5px">
+      <!-- <div class="mui-input-row" style="margin: 10px 5px">
             <textarea
               id="textarea"
               rows="5"
@@ -83,6 +86,15 @@
         <em>￥{{ price }}</em>
       </div>
       <div class="topay">提交订单</div>
+       <mt-button @click.native="sheetVisible = true" class="btn">
+                            <span class="mui-icon mui-icon-phone"></span>      
+                      <span class="title">{{ tel }}</span>                
+      </mt-button>
+                     
+      <mt-actionsheet
+        :actions="actions"
+        v-model="sheetVisible"
+      ></mt-actionsheet>
     </footer>
   </div>
 </template>
@@ -94,65 +106,63 @@ export default {
 
   data() {
     return {
-        show:false,
-        txt1:'',
-        txt2:'',
-        txt3:'',   
+      show: false,
+      txt1: "",
+      txt2: "",
+      txt3: "",
       city: "请选择",
-
       addInp: false,
-
       mask: false,
       title: "",
       price: "",
       img: "",
       shengshi: "",
       quyu: "",
-      //     slots: [
-      //   {
-      //     flex: 1,
-      //     values: ['广东', '上海', '江苏', '辽宁', '四川', '河北'],
-      //     className: 'slot1',
-      //     textAlign: 'right'
-      //   }, {
-      //     divider: true,
-      //     content: '-',
-      //     className: 'slot2'
-      //   }, {
-      //     flex: 1,
-      //     values: ['广州', '深圳', '珠海', '汕头', '韶关', '佛山','沈阳', '大连', '鞍山', '南京', '苏州', '无锡','武汉', '黄石', '十堰', '成都', '攀枝花', '西安','铜川', '宝鸡', '石家庄', '唐山', '秦皇岛', '沧州'],
-      //     className: 'slot3',
-      //     textAlign: 'left'
-      //   }
-      // ]
+      sheetVisible: false,
+       actions: []
     };
   },
   created() {
     this.gotopayment();
   },
-  methods: {
-    sel(data){
-	console.log(data)   	//使用value值
-},
- choose(){
-        this.show=!this.show
-      },
-      onChangeProvince(a){
-        console.log(a) 
-        this.txt1 = a.value + '-'
-      },    
-      onChangeCity(a){
-        console.log(a)    
-        this.txt2 = a.value + '-'    
-      },
-      onChangeArea(a){
-        console.log(a)  
-        this.txt3 = a.value
-        this.show=false
-      }   ,   
+  mounted() {
+      this.actions = [
+        {
+        name: '复制',
+        method: this.copy
+         }, 
+        {
+        name: '呼叫',
+        method: this.call
+        },
+         {
+        name: '添加到手机通讯录',
+        method: this.add
+        }
+     ]
 
-   
-    
+    },
+  methods: {
+    sel(data) {
+      console.log(data); //使用value值
+    },
+    choose() {
+      this.show = !this.show;
+    },
+    onChangeProvince(a) {
+      console.log(a);
+      this.txt1 = a.value + "-";
+    },
+    onChangeCity(a) {
+      console.log(a);
+      this.txt2 = a.value + "-";
+    },
+    onChangeArea(a) {
+      console.log(a);
+      this.txt3 = a.value;
+      this.show = false;
+    },
+
     onValuesChange(picker, values) {
       console.log(picker);
       console.log(values);
@@ -171,6 +181,17 @@ export default {
         })
         .catch((err) => {});
     },
+      copy() {
+       mui.toast('复制成功',{ duration:'short', type:'div' })
+      },
+      call() {
+               mui.toast('即将跳转',{ duration:'short', type:'div' })
+
+      },
+      add(){
+              mui.toast('即将跳转',{ duration:'short', type:'div' })
+
+      }
   },
 };
 </script>
@@ -295,62 +316,49 @@ footer {
     background-color: rgb(38, 162, 255);
   }
 }
-.pwrap{
+.pwrap {
+  height: 400px;
 
-    height: 400px;
+  overflow-y: auto;
 
-    overflow-y: auto;
+  position: fixed;
 
-    position: fixed;
+  left: 0;
 
-    left: 0;
+  bottom: 0;
 
-    bottom: 0;
+  width: 100%;
+}
 
-    width: 100%;
+.pwrap >>> .distpicker-address-wrapper {
+  color: #999;
+}
 
-  }
+.pwrap >>> .address-header {
+  position: fixed;
 
-  .pwrap>>>.distpicker-address-wrapper{
+  bottom: 400px;
 
-    color: #999;
+  width: 100%;
 
-  }
+  background: #000;
 
-  .pwrap>>>.address-header{
+  color: #fff;
+}
 
-    position: fixed;
+.pwrap >>> .address-header ul li {
+  flex-grow: 1;
 
-    bottom: 400px;
+  text-align: center;
+}
 
-    width: 100%;
+.pwrap >>> .address-header .active {
+  color: #fff;
 
-    background: #000;
+  border-bottom: #666 solid 8px;
+}
 
-    color:#fff;
-
-  }
-
-  .pwrap>>>.address-header ul li{
-
-    flex-grow: 1;
-
-    text-align: center;
-
-  }
-
-  .pwrap>>>.address-header .active{
-
-    color: #fff;
-
-    border-bottom:#666 solid 8px
-
-  }
-
-  .pwrap>>>.address-container .active{
-
-    color: #000;
-
-  }
-
+.pwrap >>> .address-container .active {
+  color: #000;
+}
 </style>
