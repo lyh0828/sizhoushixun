@@ -35,6 +35,7 @@
 <script>
 import mui from '../../lib/mui/js/mui.js' 
 export default {
+    inject:["reload"],
      data(){
         return{
             newsList:[]
