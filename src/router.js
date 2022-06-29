@@ -127,7 +127,6 @@ const router = new VueRouter({
         { path: '/home/daylist', component: daylist },                 //5宠物日常
         { path: '/home/daylist/dayinfo/:id', component: dayinfo },                 //5.1宠物日常--详情页
         { path: '/home/daylist/perhome', component: perhome },                 //5.1.1宠物日常--详情页--个人主页
-        { path: '/home/banner', component: banner01 },                      //轮播图详情页
 
 
         { path: '/petproducts/goods', component: Goods },    //4.宠物用品销售   
