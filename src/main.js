@@ -63,9 +63,6 @@ import './lib/mui/css/icons-extra.css';
 
 
 
-import { Field } from 'mint-ui';
-
-Vue.component(Field.name, Field);
 
 //将mint-ui安装到vue中
 Vue.use(MintUi)
