@@ -186,7 +186,7 @@ export default {
 }
 .about{
    width:95%;
-   height:400px;
+   height:280px;
 //    border:1px solid red;
    border-radius:20px;
    margin-left:10px;
