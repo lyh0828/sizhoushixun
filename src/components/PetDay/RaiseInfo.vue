@@ -13,7 +13,8 @@
                 <p>￥9.90</p>
                 <div>
                     <span>哈比的猫小院</span>
-                    <span class="mainFewTwo">指定领养</span>
+                    <router-link to="/home/raiselist/raiseinfo/raisemore">
+                    <span class="mainFewTwo">指定领养</span></router-link>
                     <span class="mainFewOme">剩余8只</span>
                 </div>
             </div>
@@ -49,7 +50,8 @@
         </div>
         <div class="bottom">
             <span class="bottomA">￥9.9</span>
-            <span class="bottomB">领养一只</span>
+            <router-link to="/home/raiselist/raiseinfo/raiseone">
+            <span class="bottomB">领养一只</span></router-link>
         </div>
     </div>
 </template>

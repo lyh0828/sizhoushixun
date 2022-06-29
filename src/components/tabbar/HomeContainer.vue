@@ -64,8 +64,10 @@
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
           <a href="#">
+            <router-link to="/home/group">
             <img src="../../images/06.png">
-            <div class="mui-media-body">上门喂养</div>
+            <div class="mui-media-body">趣味逗宠</div>
+            </router-link>
           </a>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">

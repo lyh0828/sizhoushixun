@@ -2,7 +2,7 @@
  * @Author: caoYaNan 2419612936@qq.com
  * @Date: 2022-06-15 15:02:28
  * @LastEditors: caoYaNan 2419612936@qq.com
- * @LastEditTime: 2022-06-24 09:56:01
+ * @LastEditTime: 2022-06-28 17:43:59
  * @FilePath: \sizhoushixun\src\main.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -26,13 +26,14 @@ Vue.prototype.mui=mui
  //导入ElementUI的样式
 import 'element-ui/lib/theme-chalk/index.css';
  //将ElementUI安装到vue
-Vue.use(ElementUI);
+Vue.use(ElementUI)
 
-import { Dialog, Upload,DatePicker,TabPane} from 'element-ui';
+import { Dialog, Upload,DatePicker,TabPane,dropdown} from 'element-ui';
 Vue.component(Dialog);
 Vue.component(Upload);
 Vue.component(DatePicker);
 Vue.component(TabPane);
+Vue.component(dropdown);
 
  //将VueResource安装到vue
  Vue.use(VueResource)
