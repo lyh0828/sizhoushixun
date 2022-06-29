@@ -120,6 +120,7 @@ dtpicker.show(function(e) {
 </script> -->
 <script>
 export default {
+    inject:["reload"],
    
     data(){
         return {
@@ -182,8 +183,11 @@ export default {
 					// 	alert('成功');
 					// }
 					// else{alert('失败')}
+                        //  this.$router.push("/petclaimed")
+
+                        this.reload()
 					
-					this.list=res.body
+					// this.list=res.body
 				   })
 				}
 

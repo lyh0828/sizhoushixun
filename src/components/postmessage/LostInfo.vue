@@ -148,6 +148,8 @@
 </template>
 <script>
 export default {
+    inject:["reload"],
+
      data() {
       return {
           imageUrl:'',//上传的图片
@@ -280,7 +282,9 @@ export default {
                     // this.$message('发布成功')
                     // this.Form = ''
                     // console.log('上传成功')
-					this.list=res.body
+                        this.reload()
+
+					// this.list=res.body
                 },err =>{
 
                 })
