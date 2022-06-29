@@ -262,7 +262,7 @@ export default {
             };
         },
         	AddRemind() {
-                console.log(this.month)
+                // console.log(this.month)
 				var btnArray = ['否', '是'];
 				mui.confirm('添加此时间提醒，确认？', '添加', btnArray, (e)=> {
 					if (e.index == 1) {

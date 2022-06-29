@@ -7,6 +7,9 @@
     <!-- 轮播图 -->
     <mt-swipe :auto="4000">
       <mt-swipe-item>
+
+      
+        
         <router-link to="/sort">
           <img
             src="https://img1.baidu.com/it/u=1308062,1060823281&fm=253&fmt=auto&app=138&f=JPEG?w=499&h=188"
@@ -17,8 +20,9 @@
         <router-link to="/sort">
           <img
           src="https://img0.baidu.com/it/u=1275718207,2852747973&fm=253&fmt=auto&app=138&f=JPEG?w=970&h=448"
+
         />
-        </router-link>
+         </router-link>
       </mt-swipe-item>
       <mt-swipe-item>
         <router-link to="/sort">
@@ -64,6 +68,10 @@
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
           <a href="#">
+            <router-link to="/home/group">
+            <img src="../../images/06.png">
+            <div class="mui-media-body">趣味逗宠</div>
+            </router-link>
             <img src="../../images/06.png" />
             <div class="mui-media-body">上门喂养</div>
           </a>
@@ -77,10 +85,19 @@
           </a>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+
+          <router-link  to="/home/peteat">
+  <img src="../../images/08.png">
+            <div class="mui-media-body">宠物饮食</div>
+          </router-link>
+          
+          
+
           <a href="#">
             <img src="../../images/08.png" />
             <div class="mui-media-body">宠帮运</div>
           </a>
+
         </li>
       </ul>
     </div>
@@ -212,6 +229,7 @@ export default {
 
 <style lang="scss" scoped>
 .home {
+  touch-action: none;
   margin: 0px;
   padding: 0px;
   background-color: rgb(244, 244, 244);

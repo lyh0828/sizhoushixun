@@ -18,7 +18,7 @@
 
         <a class="mui-card-link">❤推荐</a>
 
-        <a class="mui-card-link">推荐</a>
+        
 
      
         <router-link :to="'/petshopping/shopcart/'+id" class="mui-card-link"

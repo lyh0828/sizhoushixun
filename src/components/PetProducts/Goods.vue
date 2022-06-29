@@ -1,23 +1,37 @@
 <template>
   <div class="con">
     <div class="main">
-      <p class="mainTitle">小店铺</p>
-      <ul>
+      <p class="mainTitle"></p>
+      <router-link  to="/search"
+      >
+        <input type="search" placeholder="搜索您喜欢的产品">
+      <div class="search-btn" >🔍</div>
+      </router-link>
+
+ 
+ <ul class="goodslist"  >
         <li v-for="item in GoodsList" :key="item.id">
           <router-link :to="'/productinfo/'+item._id">
-           <!-- <router-link > -->
+         
 
             <img :src="item.Img" />
-            <span>{{ item.Title }}</span>
+            <span class="goodlisttitle">{{ item.Title }}</span>
             <span style="color: red">￥{{ item.Price }}</span>
             <span style="color: lightgray">销售量:{{ item.Quantity }}</span>
           </router-link>
         </li>
       </ul>
+    
+     
     </div>
   </div>
 </template>
 <script>
+
+
+
+
+
 export default {
   name: "Goods",
   data() {
@@ -25,8 +39,13 @@ export default {
       GoodsList: [],
     };
   },
-  created() {
-    this.getproductslist();
+created() {
+  this.getproductslist()
+},
+ updated() {
+    // console.log(this.$refs.Title.innerHTML)
+    
+ 
   },
   methods: {
     getproductslist() {
@@ -39,6 +58,7 @@ export default {
         })
         .catch((err) => {});
     },
+    
   },
 };
 </script>
@@ -47,19 +67,25 @@ export default {
   background-color: rgb(255, 230, 231);
 }
 .main {
-  // background-color: rgb(255, 230, 231);
-
+  input{
+    width: 90%;
+  }
+  .search-btn{
+display: inline-block;
+color: #f1b0aa;
+  }
   .mainTitle {
     padding-top: 50px;
     margin-bottom: 35px;
-    text-align: center;
-    font-size: 33px;
-    color: #3e1e07;
+    display: inline-block;
+    font-size: 26px;
+    color: #f1b0aa;
+    line-height: 50px;
   }
   ul {
     margin: 0 10px 300px -30px;
     li {
-      float: left;
+     display: inline-block;
       width: 190px;
       background-color: snow;
       box-shadow: 0px 0px 5px 0px #aaa;
@@ -82,9 +108,18 @@ export default {
         color: black;
       }
     }
+    
   }
 }
-
+.goodslist{
+  height: 200px;
+}
+.goodlisttitle{
+  overflow: hidden;
+  text-overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 </style>
 
 

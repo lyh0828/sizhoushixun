@@ -1,3 +1,11 @@
+<!--
+ * @Author: caoYaNan 2419612936@qq.com
+ * @Date: 2022-06-15 15:02:28
+ * @LastEditors: caoYaNan 2419612936@qq.com
+ * @LastEditTime: 2022-06-23 18:03:21
+ * @FilePath: \sizhoushixun\src\App.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
     <div class="app-container">
         <!-- 顶部区域 -->
@@ -43,14 +51,19 @@
 
 <script>
 export default {
-    data() {
+  data() {
         return {}
     },
     methods: {},
+    
 }
+//window.addEventListener('touchmove', func, { passive: false })
 </script>
 
 <style scoped>
+.app-container{
+    touch-action: none;
+} 
  .mint-header{
     z-index: 100;
     height:40px;
@@ -61,10 +74,9 @@ export default {
      top:0;
     /* margin-bottom:-14px; */
   }
+  
 
-/* .app-container{
-    padding-top: 40px;
-} */
+
 /* .v-enter{
     opacity: 0;
     transform: translateX(100%);
@@ -77,4 +89,4 @@ export default {
 .v-enter-active,.v-leave-active{
     transition: all 0.5s ease;
 } */
-</style>
+</style> 
