@@ -2,7 +2,7 @@
  * @Author: caoYaNan 2419612936@qq.com
  * @Date: 2022-06-15 15:02:28
  * @LastEditors: caoYaNan 2419612936@qq.com
- * @LastEditTime: 2022-06-23 15:43:02
+ * @LastEditTime: 2022-06-29 14:31:23
  * @FilePath: \sizhoushixun\src\router.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -44,7 +44,6 @@ import CatToy from './components/PetProducts/CatToy.vue';               //4.1宠
 import info from './components/ProductInfo/info.vue';                //4.1.1宠物用品详情
 import shopcart from './components/PetShopping/shopcart.vue';                //4.1.1宠物用品详情
 import order from './components/PetShopping/order.vue';                //4.1.1宠物用品详情
-
 import daylist from './components/PetDay/DayList.vue';                      //5宠物日常
 import dayinfo from './components/PetDay/DayInfo.vue';                      //5.1宠物日常--详情页
 import perhome from './components/PetDay/PerHone.vue';                      //5.1.1宠物日常--详情页--个人主页
@@ -55,8 +54,11 @@ import remindinfo from './components/Remind/remindinfo.vue'
 import peteat from './components/Eat/peteat.vue'
 
 
-import raiselist from './components/PetDay/RaiseList.vue';                  //1.5 共养动态
-import raiseinfo from './components/PetDay/RaiseInfo.vue';                    //1.5.1共养动态--详情页
+import raiselist from './components/PetDay/RaiseList.vue';                  //1.5 领养动态
+import raiseinfo from './components/PetDay/RaiseInfo.vue';                  //1.5.1领养动态--领养详情页
+import raisemore from './components/PetDay/RaiseMore.vue';                  //1.5.1.1领养动态--领养详情页--指定领养页
+import raiseone from './components/PetDay/RaiseOne.vue';                    //1.5.1.2领养动态--领养详情页--领养一只
+
 
 import ServerInfo from './components/Content/ServerInfo.vue';                 //6.1服务
 
@@ -69,6 +71,10 @@ import PetNews from './components/AboutPet/petnews.vue';         //6.3宠物新�
 import PetNewsDetails from './components/AboutPet/petnewsdetail.vue';   //6.3.1宠物新闻的详情
 import sort from './components/sort/sort.vue';//7.宠物分类
 
+
+import group from './components/group/group.vue';                       //1.6群聊
+import groupinfo from './components/group/groupInfo.vue';                       //1.趣味逗宠--趣味逗宠
+import report from './components/group/report.vue';                            //1.趣味逗宠--趣味逗宠详情--举报
 
 
 
@@ -98,6 +104,30 @@ const router = new VueRouter({
        {path:'/my',component:MyContainer} ,          //3.1我的
        {path:'/fabu',component:fabu},     //3.1 我的发布
        {path:'/petproducts',component:PetProduct},    //4.宠物用品销售主页
+
+        { path: '/petproducts/goods', component: Goods },    //4.宠物用品销售   
+        { path: '/petproducts/goods', component: Goods },    //4.宠物用品销售
+
+        { path: '/petproducts/catsnacks', component: CatSnacks },    //4.1宠物用品--猫粮
+        { path: '/petproducts/catdaily', component: CatDaily },    //4.1宠物用品--猫日用
+        { path: '/petproducts/cattoy', component: CatToy },   //4.1宠物用品--猫玩具
+        { path: '/productinfo', component: info },   //4.1.1宠物用品详情
+        { path: '/petshopping/shopcart', component: shopcart },   //4.1.1宠物用品详情
+        { path: '/home/daylist', component: daylist },                 //5宠物日常
+        { path: '/home/daylist/dayinfo/:id', component: dayinfo },       //5.1宠物日常--详情页
+        { path: '/home/daylist/perhome/:id', component: perhome },       //5.1.1宠物日常--详情页--个人主页
+        { path: '/home/raiselist', component: raiselist },                //1.5领养动态
+        { path: '/home/raiselist/raiseinfo', component: raiseinfo },    //1.5.1领养动态--领养详情页
+        {path:'/home/raiselist/raiseinfo/raisemore',component:raisemore},  //1.5.1.1领养动态--领养详情页--指定领养页
+        {path:'/home/raiselist/raiseinfo/raiseone',component:raiseone},   //1.5.1.2领养动态--领养详情页--领养一只
+
+        { path: '/productinfo/:id', component: info },   //4.1.1宠物用品详情
+        { path: '/petshopping/shopcart/:id', component: shopcart },   //4.1.1宠物用品详情
+
+        { path: '/home/daylist', component: daylist },                 //5宠物日常
+        { path: '/home/daylist/dayinfo/:id', component: dayinfo },                 //5.1宠物日常--详情页
+        { path: '/home/daylist/perhome', component: perhome },                 //5.1.1宠物日常--详情页--个人主页
+        { path: '/home/banner', component: banner01 },                      //轮播图详情页
 
 
         { path: '/petproducts/goods', component: Goods },    //4.宠物用品销售   
@@ -155,6 +185,10 @@ const router = new VueRouter({
        {path:'/petnews',component:PetNews},     //6.3宠物新闻
        {path:'/petnewsdetails/:id',component:PetNewsDetails},       //6.3.1 每一个宠物的详细信息
        {path:'/editPetClimedInfo/:id',component:editPetClimedInfo},       //6.3.1 每一个宠物的信息修改
+
+       {path:'/home/group',component:group},                             //1.趣味逗宠
+       {path:'/home/group/groupinfo',component:groupinfo},              //1.趣味逗宠--趣味逗宠详情
+       {path:'/home/group/groupinfo/report',component:report},              //1.趣味逗宠--趣味逗宠详情
 
        {path:'/sort',component:sort},//7.宠物分类
     
