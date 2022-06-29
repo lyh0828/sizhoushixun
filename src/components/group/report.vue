@@ -48,7 +48,7 @@
         <p class="lianxi">联系方式</p>
         <el-input class="lxinput" rows="5" v-model="input" clearable="true" placeholder="请留下任意一种联系方式 微信、电话。QQ">
         </el-input>
-        <el-button class="buttonlx" round>圆角按钮</el-button>
+        <el-button class="buttonlx" round>提交</el-button>
     </div>
 </template>
 <script>
