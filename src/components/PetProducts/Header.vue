@@ -6,7 +6,7 @@
       style="display: inline-block; background-color: rgb(38, 162, 255)"
       @keyup.enter="GoToSearchList"
     >
-      <span>🐕</span>
+      <span>01D2B55B.png</span>
       <input
         type="search"
         placeholder="搜索您喜欢的产品"

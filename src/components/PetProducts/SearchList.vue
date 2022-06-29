@@ -1,6 +1,8 @@
 <template>
   <div class="searchlist">
     <div class="headers">
+
+      <Header/>
       <div class="searchinput">
     <form
       action=""
@@ -38,7 +40,6 @@
             <i
               class="iconfont icon-arrow_down_fat"
               :class="item.status == 2 ? 'active' : ''"
-           
             ></i>
           </div>
         </li>
@@ -96,17 +97,7 @@ export default {
      this.searchArr = JSON.parse(localStorage.getItem("searchList"));
     this.GetData();
   },
-  //   computed:{
-  // orderBy(){
-  //   // 知道当前是哪一个对象
-  //   let obj=this.headerList.data[this.searchList.currentIndex]
-  //   // 针对状态 判断是升序还是降序
-  //   let val=obj.status=='1'?'asc':'desc';
-  //   return{
-  //     [obj.key]:val
-  //   }
-  // }
-  //   },
+
   methods: {
     GetData() {
       this.$http
@@ -138,7 +129,6 @@ export default {
         })
         .catch((err) => {});
     },
-
 
     // 切换综合，销量，价格高亮
     changeTab(index) {
