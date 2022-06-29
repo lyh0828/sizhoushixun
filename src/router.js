@@ -59,10 +59,15 @@ import raiselist from './components/PetDay/RaiseList.vue';                  //1.
 import raiseinfo from './components/PetDay/RaiseInfo.vue';                    //1.5.1共养动态--详情页
 
 import ServerInfo from './components/Content/ServerInfo.vue';                 //6.1服务
+
+import PetSmart from './components/PetSmart/petsmart.vue';         //6.7 宠物智能
+import PetShop from './components/PetSmart/petshop.vue';         //6.7.1 宠物智能--宠物店
+
 import News from './components/AboutPet/news.vue';         //6.3()宠物新闻
 
 import PetNews from './components/AboutPet/petnews.vue';         //6.3宠物新闻
 import PetNewsDetails from './components/AboutPet/petnewsdetail.vue';   //6.3.1宠物新闻的详情
+import sort from './components/sort/sort.vue';//7.宠物分类
 
 
 
@@ -141,10 +146,17 @@ const router = new VueRouter({
        {path:'/home/daylist/perhome/:id',component:perhome},                 //5.1.1宠物日常--详情页--个人主页
        {path:'/home/daylist/dayinfo/:id',component:dayinfo},                 //5.1宠物日常--详情页 
        {path:'/serverinfo',component:ServerInfo},            //6.1服务
+
+
+       {path:'/petsmart',component:PetSmart},     //6.7宠物智能
+       {path:'/petshop/:id',component:PetShop},     //6.7.1宠物智能--宠物店详情
+
        {path:'/news',component:News},     //6.3()宠物新闻
        {path:'/petnews',component:PetNews},     //6.3宠物新闻
        {path:'/petnewsdetails/:id',component:PetNewsDetails},       //6.3.1 每一个宠物的详细信息
        {path:'/editPetClimedInfo/:id',component:editPetClimedInfo},       //6.3.1 每一个宠物的信息修改
+
+       {path:'/sort',component:sort},//7.宠物分类
     
 
     ],

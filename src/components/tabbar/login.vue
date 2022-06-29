@@ -6,7 +6,7 @@
           <!-- <img :src="pic" width="120" height="120"/> -->
         </div>
 
-        <p class="title">游客登录</p>
+        <p class="title">登录</p>
 
         
         <br>
@@ -19,10 +19,8 @@
           <br/>
 
           <mt-field label="密码" placeholder="请输入密码" v-model="password"></mt-field>
-			<router-link to="/my">
-          <mt-button type="primary" @click="login" size="small" class="pos">登录</mt-button>
 
-			</router-link>
+          <mt-button type="primary" @click="login" size="small" class="pos">登录</mt-button>
         </div>
     
   </div>
@@ -57,7 +55,7 @@ export default {
     login(){
       if(this.username == localStorage.getItem("username") && 
       this.password == localStorage.getItem("password")){
-        vue.$router.push("/home")
+        this.$router.push("/my")
       }else{
         alert("用户名或密码不正确!")
       }
@@ -76,9 +74,10 @@ export default {
   height: 200px;
 }
 .l{
-  width: 100vw;
+  // width: 100vw;
   height: 100vh;
-//   background: url(../assets/images/bg.jpg) no-repeat;
+  background: url(../../images/login.jpg) no-repeat;
+  background-size: 100% 100%;
 .img{
   width: 100%;
   height:200px;
@@ -90,10 +89,16 @@ export default {
     margin-top: 36px;
   }
 }
+.mint-cell-wrapper{
+  width: 100px;
+  height: 50px;
+}
 
 .title{
   text-align: center;
-  color:#fff
+  font-size: 30px;
+  margin-top: -80px;
+  color:black
 }
 
 .l{
@@ -102,9 +107,15 @@ export default {
 
 .pos{
   position: relative;
-  left:20px;
   top:30px;
 }
 }
-
-</style> 
+.l>>> input {
+  margin-bottom: unset;
+  border: none;
+}
+.mint-button--small {
+  display: block;
+  margin: 0 auto;
+}
+</style>
