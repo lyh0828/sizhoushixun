@@ -38,9 +38,9 @@
                 <span>￥</span>
                 <b>{{ item.Price }}</b>
               </div>
-              <router-link :to="'/petshopping/shopcart/' + item._id">
+              <!-- <router-link :to="'/petshopping/shopcart/' + item._id">
                 <div>立即购买</div>
-              </router-link>
+              </router-link> -->
             </div>
           </router-link>
         </li>
