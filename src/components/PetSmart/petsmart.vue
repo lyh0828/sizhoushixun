@@ -4,7 +4,7 @@
     <el-tab-pane label="宠物店" name="first">
          <div class="center">
             <div class="header">
-                 <mt-swipe :auto="3000">
+                 <mt-swipe :auto="2000">
                     <mt-swipe-item>
                       <img src="../../images/h1.webp" alt="">
                     </mt-swipe-item>

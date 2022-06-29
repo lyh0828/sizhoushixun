@@ -115,6 +115,7 @@ dtpicker.show(function(e) {
 
 <script>
 export default {
+    inject:["reload"],
    
     data(){
         return {
@@ -202,9 +203,10 @@ export default {
 
 				 },{emulateJSON:true}).then(res=>{
 
+                        this.reload()
 			
 					
-					this.list=res.body
+					// this.list=res.body
 				   })
 				}
 

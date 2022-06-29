@@ -7,7 +7,7 @@
         </router-link>
         
         <h3 class="title">我的发布</h3>
-         <ul class="mui-table-view">
+         <ul class="mui-table-view" >
 				<li class="mui-table-view-cell mui-media" v-for='item in newsList' :key="item._id">
 						<img class="mui-media-object mui-pull-left" :src="item.img">
 						<div class="mui-media-body">
@@ -38,13 +38,15 @@ export default {
     inject:["reload"],
      data(){
         return{
-            newsList:[]
+            newsList:[],
+     
         }
     },
     created(){
         this.getnewslist()
     },
     methods:{
+
         del(id) {
                 // console.log(this.month)
 				var btnArray = ['否', '是'];
@@ -54,6 +56,7 @@ export default {
                         this.$http.get('petclamiedinfo/delete', {params: {id: id}}).then(function(res){
 						this.newsList=res.body
 					});
+                        this.reload()
                      
 					} else {
                           mui.toast('已取消',{ duration:'short', type:'div' })
