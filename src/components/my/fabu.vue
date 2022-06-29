@@ -21,6 +21,7 @@
                                 <span>捡到地点:{{item.found_address}}</span>
                             </p>
                             <a class="color"><span class="mui-icon mui-icon-trash" @click="del(item._id)"></span></a> 
+                        
                             <span class="kg"></span>
                             <router-link :to="'/editPetClimedInfo/'+item._id" >
                                 <a><span class="mui-icon mui-icon-compose" ></span></a>
@@ -32,7 +33,9 @@
 </template>
 
 <script>
+import mui from '../../lib/mui/js/mui.js' 
 export default {
+    inject:["reload"],
      data(){
         return{
             newsList:[]
@@ -42,6 +45,21 @@ export default {
         this.getnewslist()
     },
     methods:{
+        del(id) {
+                // console.log(this.month)
+				var btnArray = ['否', '是'];
+				mui.confirm('删除这条信息，确认？', '删除', btnArray, (e)=> {
+					if (e.index == 1) {
+                        mui.toast('删除成功',{ duration:'short', type:'div' })
+                        this.$http.get('petclamiedinfo/delete', {params: {id: id}}).then(function(res){
+						this.newsList=res.body
+					});
+                     
+					} else {
+                          mui.toast('已取消',{ duration:'short', type:'div' })
+					}
+				},'div')
+			} ,
         getnewslist(){
             this.$http.get('petclamiedinfo').then(result=>{
                  console.log(result.body)
@@ -52,12 +70,14 @@ export default {
                 // }
             })
         },
-        del(id){
-            this.$http.get('petclamiedinfo/delete', {params: {id: id}}).then(function(res){
-						this.newsList=res.body
-					})
-        },
+        // del(id){
+        //     this.$http.get('petclamiedinfo/delete', {params: {id: id}}).then(function(res){
+		// 				this.newsList=res.body
+		// 			})
+        // },
+
     },
+    
     filters:{
         dateFormat:function renderTime(date){
         var dates = new Date(date).toJSON();
@@ -89,6 +109,26 @@ export default {
 
         margin-bottom:10px;
       }
+      .mui-table-view::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  content: '';
+//   background-color: #c8c7cc;
+}
+.mui-table-view::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+//   height: 1px;
+//   content: '';
+//   -webkit-transform: scaleY(.5);
+//   transform: scaleY(.5);
+//   background-color: #c8c7cc;
+}
 .mui-table-view{
 padding-bottom:20px;
  background-color:#f4f4f4;
@@ -124,8 +164,7 @@ padding-bottom:20px;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         }
   }
-}
-}
+}}
 
 
 </style>

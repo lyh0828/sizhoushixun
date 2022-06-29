@@ -1,53 +1,47 @@
 <template>
-
-  <el-tabs v-model="activeName" @tab-click="handleClick">
+  <el-tabs stretch  v-model="activeName" @tab-click="handleClick">
     <el-tab-pane label="热点新闻" name="first">
-      
-        <div class="center">
-         <ul class="mui-table-view">
-				<li class="mui-table-view-cell mui-media" v-for='item in newsList' :key="item._id">
-					 	<router-link :to="'/petnewsdetails/'+item._id">
-						<img class="mui-media-object mui-pull-left" :src="item.img">
-						<div class="mui-media-body">
-							{{item.title}}
-							<p class='mui-ellipsis'>
-                                 <span >宠物性别:{{item.gender}}</span>
-                                 <br>
-                                <span >时间：{{item.found_time | dateFormat}}</span>
-                                <br>
-                                <span>捡到地点:{{item.found_address}}</span>
-                            </p>
-						</div>
-					</router-link>
-				</li>
-		</ul>
-    </div>
-        
-    </el-tab-pane>
-    <el-tab-pane label="话题新闻" name="second">
+         <div class="center">
+           <ul class="mui-table-view">
+            <li class="mui-table-view-cell mui-media" v-for='item in newsList' :key="item._id">
+                <router-link :to="'/petnewsdetails/'+item._id">
+                <img class="mui-media-object mui-pull-left" :src="item.img">
+                <div class="mui-media-body">
+                  {{item.title}}
+                  <p class='mui-ellipsis'>
+                                    <span >宠物性别:{{item.gender}}</span>
+                                    <br>
+                                    <span >时间：{{item.found_time | dateFormat}}</span>
+                                    <br>
+                                    <span>捡到地点:{{item.found_address}}</span>
+                                </p>
+                </div>
+              </router-link>
+            </li>
+        </ul>
+        </div> 
+      </el-tab-pane>
 
-        <div class="center">
-         <ul class="mui-table-view">
-				<li class="mui-table-view-cell mui-media" v-for='item in newsList2' :key="item._id">
-					 <!-- <router-link :to="'/petnewsdetails/'+item._id"> -->
-						<img class="mui-media-object mui-pull-left" :src="item.picture1">
-						<div class="mui-media-body">
-							{{item.title}}
-							<p class='mui-ellipsis'>
-                                 <span >{{item.click}}</span>
-                                
-                                <span >时间：{{item.time1 | dateFormat}}</span>
-                                <br>
-                                <span><span class="mui-icon-extra mui-icon-extra-like"></span>{{item.zan}}</span>
-                            </p>
-						</div>
-					<!-- </router-link> -->
-				</li>
-		</ul>
-    </div>
-
-    </el-tab-pane>
-  </el-tabs>
+        <el-tab-pane label="话题新闻" name="second">
+              <div class="center">
+              <ul class="mui-table-view">
+              <li class="mui-table-view-cell mui-media" v-for='item in newsList2' :key="item._id">
+                <!-- <router-link :to="'/petnewsdetails/'+item._id"> -->
+                  <img class="mui-media-object mui-pull-left" :src="item.picture1">
+                  <div class="mui-media-body">
+                    {{item.title}}
+                    <p class='mui-ellipsis'>
+                        <span >时间：{{item.time1 | dateFormat}}</span>
+                        <br>
+                        <span><span class="mui-icon-extra mui-icon-extra-like"></span>{{item.zan}}</span>
+                    </p>
+                  </div>
+                <!-- </router-link> -->
+              </li>
+          </ul>
+          </div>
+        </el-tab-pane>
+    </el-tabs>
 </template>
 <script>
   export default {

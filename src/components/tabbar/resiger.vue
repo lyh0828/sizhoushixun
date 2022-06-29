@@ -7,7 +7,7 @@
         <!-- <img :src="pic" width="120" height="120"/> -->
      </div>
 
-     <p class="title">游客注册</p>
+     <p class="title">注册</p>
 
       <br>
 
@@ -22,16 +22,14 @@
           <br/>
 
           <mt-field label="确认密码" placeholder="请输入确认密码" v-model="chPsw"></mt-field>
-<router-link to="/login" >
-          <mt-button @click="register" type="primary" size="small" class="pos">注册</mt-button>
 
-</router-link>
+          <mt-button  style="margin-left:130px" @click="register" type="primary" size="small" class="pos">注册</mt-button>
         </div>
   </div>
 </template>
 
 <script>
-// import vue from '../main'
+// import vue from '../../../src/main'
 export default {
   data() {
     return {
@@ -71,7 +69,8 @@ export default {
         return;
       }
       alert("注册成功!");
-      vue.$router.push("/login")
+      this.$router.push('/login')
+      // vue.$router.push("/login")
     }
   }
 };
@@ -81,7 +80,8 @@ export default {
 .r{
   width: 100vw;
   height: 100vh;
-//   background: url(../assets/images/bg.jpg) no-repeat;
+  background: url(../../images/login.jpg) repeat;
+  background-size: 100% 100%;
 
   .img{
   width: 100%;
@@ -95,13 +95,18 @@ export default {
   }
 }
 
+
 .title{
   text-align: center;
-  color:#fff
+  font-size: 30px;
+  margin-top: -80px;
+  color:black
 }
 
 .l{
-  margin: 30px 10px;
+  margin: 30px 30px;
+  margin-top: -10px;
+  // border: 1px solid #fff
 }
 
 .pos{
@@ -110,4 +115,9 @@ export default {
   top:30px;
 }
 }
+.l >>> input {
+  margin-bottom:unset;
+  border: none;
+}
+
 </style> 

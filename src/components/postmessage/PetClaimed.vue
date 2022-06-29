@@ -1,5 +1,7 @@
 <template>
+
     <div class="center">
+        
        <div class="search">
             <div class="search-left">
 					<a href="#/foundinfo" class="router-link-active">
@@ -15,12 +17,11 @@
        </div>
        <div class="search-species">
             <!-- <input class="text"  v-model="keywords" >猫咪 -->
-            <a  class="search-btn" >猫咪 </a>
-            <a  class="search-btn" >狗狗 </a>
-            <a  class="search-btn" >其他宠物 </a>
+            <a  class="search-btn" @click="cat" >猫咪 </a>
+            <a  class="search-btn" @click="dog">狗狗</a>
+            <a  class="search-btn" @click="qita">其他宠物 </a>
        </div>
        <div class="switch">
-            
             <p class="switch-tip">是否隐藏已被认领的宠物</p>
             <mt-switch v-model="value"></mt-switch>
        </div>
@@ -54,6 +55,7 @@
 				</ul>
 			</div>
 		</div>
+       
     </div>
 </template>
 <script>
@@ -92,7 +94,16 @@ export default {
 						}
 					})
 					return newList;
-				}
+				},
+        cat(){
+            this.keywords='猫咪'
+        },
+        dog(){
+            this.keywords='狗'
+        },
+        qita(){
+            this.keywords='小乌龟'
+        },
       
     },
      filters:{
@@ -190,7 +201,7 @@ export default {
         margin-left: 20px;
     }
     .mui-table-view{
-        background-color:#efeff4;
+        background-color:#F4F4F4;
         padding-left:15px;
 
         margin-bottom:20px;
@@ -199,8 +210,11 @@ export default {
         // height:1000px;
     }
     .mui-table-view:before {
-         background-color:#efeff4;
+         background-color:#F4F4F4;
     }
+    .mui-table-view::after {
+  background-color: #F4F4F4;
+}
     .mui-table-view-cell.mui-media.mui-col-xs-6{
         // border:1px solid red;
         // margin:10px 10px 10px 10px;
