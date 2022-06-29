@@ -16,12 +16,12 @@
             <i
               class="iconfont icon-arrow_up_fat"
               :class="item.status == 1 ? 'active' : ''"
-              @click="priceasc"
+           
             ></i>
             <i
               class="iconfont icon-arrow_down_fat"
               :class="item.status == 2 ? 'active' : ''"
-              @click="pricedesc"
+           
             ></i>
           </div>
         </li>
@@ -38,9 +38,9 @@
                 <span>￥</span>
                 <b>{{ item.Price }}</b>
               </div>
-              <!-- <router-link :to="'/petshopping/shopcart/' + item._id">
+              <router-link :to="'/petshopping/shopcart/' + item._id">
                 <div>立即购买</div>
-              </router-link> -->
+              </router-link>
             </div>
           </router-link>
         </li>
@@ -95,26 +95,8 @@ export default {
         })
         .catch((err) => {});
     },
-    // GetData() {
-    //   this.$http
-    //     .get("products/search",{ searchName:this.$route.query.key})
-    //     .then((result) => {
 
-    //       console.log(result.body);
 
-    //     })
-    //     .catch((err) => {});
-    // },
-    // GetData(){
-    //   this.$http.get({
-    //     url:"products/search",
-    //     params:{
-    //       searchName:this.$route.query.key
-    //     }
-    //   }).then((res)=>{
-    //     console.log(res)
-    //   })
-    // },
     // 切换综合，销量，价格高亮
     changeTab(index) {
       // console.log(index)
