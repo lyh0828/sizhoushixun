@@ -83,16 +83,9 @@
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
 
           <router-link  to="/home/peteat">
-  <img src="../../images/08.png">
+            <img src="../../images/08.png">
             <div class="mui-media-body">宠物饮食</div>
           </router-link>
-          
-          
-
-          <a href="#">
-            <img src="../../images/08.png" />
-            <div class="mui-media-body">宠帮运</div>
-          </a>
 
         </li>
       </ul>
