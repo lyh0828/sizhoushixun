@@ -85,21 +85,27 @@
         <span>总金额:</span>
         <em>￥{{ price }}</em>
       </div>
+
       <div class="topay">提交订单</div>
-       <mt-button @click.native="sheetVisible = true" class="btn">
-                            <span class="mui-icon mui-icon-phone"></span>      
-                      <span class="title">{{ tel }}</span>                
-      </mt-button>
-                     
-      <mt-actionsheet
+
+
+
+
+
+
+                       
+      <!-- <mt-actionsheet
         :actions="actions"
         v-model="sheetVisible"
-      ></mt-actionsheet>
+      ></mt-actionsheet> -->
     </footer>
   </div>
 </template>
 <script>
-// import mui from '../../lib/mui/js/mui.js'
+import mui from '../../lib/mui/js/mui.js'
+
+
+// import { Toast } from 'mint-ui';
 import VDistpicker from "v-distpicker";
 export default {
   components: { VDistpicker },
@@ -124,25 +130,33 @@ export default {
   },
   created() {
     this.gotopayment();
+    
   },
-  mounted() {
-      this.actions = [
-        {
-        name: '复制',
-        method: this.copy
-         }, 
-        {
-        name: '呼叫',
-        method: this.call
-        },
-         {
-        name: '添加到手机通讯录',
-        method: this.add
-        }
-     ]
+   mounted() {
+  
+  // mui('body').on('tap', '.mui-popover-action li>a', function() {
+	// 			var a = this,
+	// 				parent;
+	// 			//根据点击按钮，反推当前是哪个actionsheet,一直推到actionsheet节点为止,parent为#delete/#forward/#picture,目的是找到这个actionsheet,接下来进行显示和隐藏操作
+	// 			for (parent = a.parentNode; parent != document.body; parent = parent.parentNode) {
+	// 				// 循环到#delete/#forward/#picture节点时,退出循环
+	// 				if (parent.classList.contains('mui-popover-action')) {
+	// 					break;
+	// 				}
+	// 			}
+	// 			//关闭actionsheet,显示和隐藏操作
+	// 			mui('#' + parent.id).popover('toggle');
+	// 		})
 
-    },
+
+   
+
+
+   },
   methods: {
+      showPop(){
+  mui('#sheet1').popover('toggle');
+    },
     sel(data) {
       console.log(data); //使用value值
     },
@@ -181,17 +195,11 @@ export default {
         })
         .catch((err) => {});
     },
-      copy() {
-       mui.toast('复制成功',{ duration:'short', type:'div' })
-      },
-      call() {
-               mui.toast('即将跳转',{ duration:'short', type:'div' })
+   
+	
+	
+	
 
-      },
-      add(){
-              mui.toast('即将跳转',{ duration:'short', type:'div' })
-
-      }
   },
 };
 </script>
@@ -243,6 +251,12 @@ section {
 .mui-navigate-right {
   display: -webkit-inline-flex;
 }
+	span.mui-icon {
+				font-size: 14px;
+				color: #007aff;
+				margin-left: -15px;
+				padding-right: 10px;
+  }
 // 商品信息样式
 .goods {
   padding: 0.16rem 0.4rem;
@@ -316,6 +330,9 @@ footer {
     background-color: rgb(38, 162, 255);
   }
 }
+.mint-button--normal {
+  background-color: rgb(38, 162, 255);
+}
 .pwrap {
   height: 400px;
 
@@ -360,5 +377,17 @@ footer {
 
 .pwrap >>> .address-container .active {
   color: #000;
+}
+p {
+  text-indent: 22px;
+}
+span.mui-icon {
+  font-size: 14px;
+  color: #007aff;
+  margin-left: -15px;
+  padding-right: 10px;
+}
+#info {
+  padding: 20px 10px;
 }
 </style>

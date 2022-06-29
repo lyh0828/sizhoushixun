@@ -28,6 +28,7 @@ Vue.prototype.mui=mui
 Vue.component(Progress.name, Progress);
  import { MessageBox } from 'mint-ui';
  Vue.component(MessageBox);
+ import './lib/mui/css/mui.min.css';
  //导入element-ui组件库
  import ElementUI from 'element-ui';
  //导入ElementUI的样式
@@ -63,11 +64,11 @@ import './css/sass/index.scss';
 //mui的导入
 
 
-import './lib/mui/css/mui.css';
-import './lib/mui/css/mui.min.css';
+
+
 
 import './lib/mui/css/icons-extra.css';
-
+import './lib/mui/css/mui.css';
 
 
 
@@ -80,6 +81,9 @@ Vue.component(Picker.name, Picker);
 
 import VDistpicker from 'v-distpicker'
 Vue.component('v-distpicker', VDistpicker);
+import { Popup } from 'mint-ui';
+
+Vue.component(Popup.name, Popup);
 //按需引入mint-ui中的组件
 // import { Header } from 'mint-ui';
 //以组件的形式引用给vue
