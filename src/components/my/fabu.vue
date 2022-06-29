@@ -6,7 +6,7 @@
         </div>
         </router-link>
         
-        <h4 class="title">我的发布</h4>
+        <h3 class="title">我的发布</h3>
          <ul class="mui-table-view">
 				<li class="mui-table-view-cell mui-media" v-for='item in newsList' :key="item._id">
 						<img class="mui-media-object mui-pull-left" :src="item.img">
@@ -14,13 +14,15 @@
 							<!-- {{item.title}} -->
 							<p class='mui-ellipsis'>
                                 
-                                 <span >标题:{{item.title}}</span>
+                                 <span class="tip">标题:{{item.title}}</span>
                                  <br>
-                                <span >时间：{{item.found_time | dateFormat}}</span>
+                                <span>时间：{{item.found_time | dateFormat}}</span>
                                 <br>
                                 <span>捡到地点:{{item.found_address}}</span>
                             </p>
-                            <a><span class="mui-icon mui-icon-trash" @click="del(item._id)"></span></a> 
+                            <a class="color"><span class="mui-icon mui-icon-trash" @click="del(item._id)"></span></a> 
+                        
+                            <span class="kg"></span>
                             <router-link :to="'/editPetClimedInfo/'+item._id" >
                                 <a><span class="mui-icon mui-icon-compose" ></span></a>
                             </router-link>
@@ -29,7 +31,9 @@
 		</ul>
     </div>
 </template>
+
 <script>
+import mui from '../../lib/mui/js/mui.js' 
 export default {
      data(){
         return{
@@ -40,6 +44,21 @@ export default {
         this.getnewslist()
     },
     methods:{
+        del(id) {
+                // console.log(this.month)
+				var btnArray = ['否', '是'];
+				mui.confirm('删除这条信息，确认？', '删除', btnArray, (e)=> {
+					if (e.index == 1) {
+                        mui.toast('删除成功',{ duration:'short', type:'div' })
+                        this.$http.get('petclamiedinfo/delete', {params: {id: id}}).then(function(res){
+						this.newsList=res.body
+					});
+                     
+					} else {
+                          mui.toast('已取消',{ duration:'short', type:'div' })
+					}
+				},'div')
+			} ,
         getnewslist(){
             this.$http.get('petclamiedinfo').then(result=>{
                  console.log(result.body)
@@ -50,12 +69,14 @@ export default {
                 // }
             })
         },
-        del(id){
-            this.$http.get('petclamiedinfo/delete', {params: {id: id}}).then(function(res){
-						this.newsList=res.body
-					})
-        },
+        // del(id){
+        //     this.$http.get('petclamiedinfo/delete', {params: {id: id}}).then(function(res){
+		// 				this.newsList=res.body
+		// 			})
+        // },
+
     },
+    
     filters:{
         dateFormat:function renderTime(date){
         var dates = new Date(date).toJSON();
@@ -87,9 +108,38 @@ export default {
 
         margin-bottom:10px;
       }
+      .mui-table-view::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  content: '';
+//   background-color: #c8c7cc;
+}
+.mui-table-view::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+//   height: 1px;
+//   content: '';
+//   -webkit-transform: scaleY(.5);
+//   transform: scaleY(.5);
+//   background-color: #c8c7cc;
+}
 .mui-table-view{
 padding-bottom:20px;
  background-color:#f4f4f4;
+ .kg{
+    // display:block;
+    padding-left:30px;
+    width:80px;
+    background-color:#fff;
+ }
+ .color{
+    color:red;
+ }
     li{
         width:380px;
         margin:auto;
@@ -105,9 +155,16 @@ padding-bottom:20px;
             height:80px;
              line-height: 42px;
              max-width: 80px;
+             border-radius: 10px;
+        }
+        .tip{
+            color:black;
+            font-size:16px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         }
   }
-}
-}
+}}
+
 
 </style>
+

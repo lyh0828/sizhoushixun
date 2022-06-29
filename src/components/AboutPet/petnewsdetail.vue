@@ -13,7 +13,7 @@
        </div>
        <div class="content">
           <div class="content1">
-            <p class="bt"> 标题 | <span class="title">{{title}}</span></p>
+            <p > 标题 | <span class="title">{{title}}</span></p>
              <img  :src="img">
              <p class="bt">备注详情 | <span class="title">{{details}}</span></p>
               <p class="bt">宠物品种:<span class="title">{{species}}</span></p>
@@ -21,7 +21,10 @@
                 <p class='bt'>捡到时间:<span class="title">{{found_time |dateFormat}}</span></p>
                 <p ><span class="mui-icon mui-icon-location"></span><span class="title">{{found_address}}</span></p>
                  <p class="tip">认领请联系</p>
-                <p  class="bt"><span class="mui-icon mui-icon-phone"></span><span class="title">{{tel}}</span></p>
+                <!-- <p  class="bt"><span class="mui-icon mui-icon-phone"></span><span class="title">{{tel}}</span></p> -->
+                
+                 <mt-button  @click.native="sheetVisible = true" class="btn"><span class="mui-icon mui-icon-phone"></span><span class="title">{{tel}}</span></mt-button>
+                 <mt-actionsheet :actions="actions" v-model="sheetVisible"></mt-actionsheet>
                <p  class="bt"><span class="mui-icon mui-icon-weixin"></span><span class="title">{{weixin}}</span></p>
           </div>
 
@@ -30,6 +33,7 @@
     </div>
 </template>
 <script>
+import mui from '../../lib/mui/js/mui.js' 
 export default {
      data(){
         return{
@@ -43,7 +47,27 @@ export default {
            tel:'',
            weixin:'',
            title:'',
+            sheetVisible: false,
+             actions: []
+
         }
+    },
+    mounted() {
+      this.actions = [
+        {
+        name: '复制',
+        method: this.copy
+         }, 
+        {
+        name: '呼叫',
+        method: this.call
+        },
+         {
+        name: '添加到手机通讯录',
+        method: this.add
+        }
+     ]
+
     },
     created(){
         this.getPetInfo();
@@ -64,10 +88,19 @@ export default {
                              this.weixin=result.body.weixin
                                this.title=result.body.title
 
-
-             
             })
-        }
+        },
+          copy() {
+       mui.toast('复制成功',{ duration:'short', type:'div' })
+      },
+      call() {
+               mui.toast('即将跳转',{ duration:'short', type:'div' })
+
+      },
+      add(){
+              mui.toast('即将跳转',{ duration:'short', type:'div' })
+
+      }
     },
      filters:{
         dateFormat:function renderTime(date){
@@ -127,8 +160,7 @@ export default {
   }
 }
 .content{
-  //  border:1px solid red;
-     margin-top:20px;
+     margin-top:8px;
     width:100%;
     //  padding-left:20px;
      .content1{
@@ -138,10 +170,10 @@ export default {
          margin:auto;
          height:auto;
          background-color:#fff;
-         border-radius: 10px;
+         border-radius:20px;
          padding-top:10px;
          padding-left:10px;
-        padding-bottom:10px;
+         padding-bottom:10px;
          img{
         height:150px;
         width:200px;
@@ -164,5 +196,8 @@ export default {
          }
      }
 }
+
+
+
 
 </style>

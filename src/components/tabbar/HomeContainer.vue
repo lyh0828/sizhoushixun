@@ -7,11 +7,11 @@
     <!-- 轮播图 -->
     <mt-swipe :auto="4000">
       <mt-swipe-item>
-        <router-link to="/home/banner">
+      
         <img
           src="https://img1.baidu.com/it/u=1308062,1060823281&fm=253&fmt=auto&app=138&f=JPEG?w=499&h=188"
         />
-        </router-link>
+        
       </mt-swipe-item>
       <mt-swipe-item>
         <img
@@ -37,10 +37,15 @@
             <div class="mui-media-body">添加提醒</div>
           </router-link>
         </li>
-         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
-          <router-link to="/petnews">
+
+       
+        <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+          <router-link to="/news">
+
+          <!-- <router-link to="/petnews"> -->
               <img src="../../images/03.png">
               <div class="mui-media-body">宠物新闻</div>
+
           </router-link>
           
         </li>
@@ -70,10 +75,12 @@
           </a>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
-          <a href="#">
-            <img src="../../images/08.png">
-            <div class="mui-media-body">宠帮运</div>
-          </a>
+          <router-link  to="/home/peteat">
+  <img src="../../images/08.png">
+            <div class="mui-media-body">宠物饮食</div>
+          </router-link>
+          
+          
         </li>
       </ul>
     </div>
@@ -155,6 +162,7 @@ export default {
 
 <style lang="scss" scoped>
 .home {
+  touch-action: none;
   margin: 0px;
   padding: 0px;
   background-color: rgb(244, 244, 244);

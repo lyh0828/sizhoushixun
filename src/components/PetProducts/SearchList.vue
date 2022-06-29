@@ -16,10 +16,12 @@
             <i
               class="iconfont icon-arrow_up_fat"
               :class="item.status == 1 ? 'active' : ''"
+              @click="priceasc"
             ></i>
             <i
               class="iconfont icon-arrow_down_fat"
-              :class="item.status == 2? 'active' : ''"
+              :class="item.status == 2 ? 'active' : ''"
+              @click="pricedesc"
             ></i>
           </div>
         </li>
@@ -28,25 +30,19 @@
     <section>
       <ul>
         <li v-for="item in searchList" :key="item.id">
-          <router-link :to="'/productinfo/'+item._id"
-          >
+          <router-link :to="'/productinfo/' + item._id">
             <img :src="item.Img" alt="" />
-          <h3>{{ item.Title }}</h3>
-           <div class="price">
-            <div>
-              <span>￥</span>
-              <b>{{ item.Price }}</b>
+            <h3>{{ item.Title }}</h3>
+            <div class="price">
+              <div>
+                <span>￥</span>
+                <b>{{ item.Price }}</b>
+              </div>
+              <router-link :to="'/petshopping/shopcart/' + item._id">
+                <div>立即购买</div>
+              </router-link>
             </div>
-            <router-link  :to="'/petshopping/shopcart/'+item._id"
-            >
-             <div>立即购买</div>
-            </router-link>
-
-           
-          </div>
           </router-link>
-        
-         
         </li>
       </ul>
     </section>
@@ -57,6 +53,8 @@ import Header from "../PetProducts/Header.vue";
 export default {
   data() {
     return {
+      priceList: [],
+      // searchName:'',
       searchList: [],
       headerList: {
         currentIndex: 0,
@@ -65,8 +63,8 @@ export default {
           // status：1 上箭头亮
           // status：2 下箭头亮
           { name: "综合" },
-          { name: "价格", status: 0,key:'price' },
-          { name: "销量", status: 0,key:'num'}
+          { name: "价格", status: 0, key: "price" },
+          { name: "销量", status: 0, key: "num" },
         ],
       },
     };
@@ -77,32 +75,73 @@ export default {
   created() {
     this.GetData();
   },
-  // computed:{
-// orderBy(){
-//   let obj=this.headerList.data[this.searchList.currentIndex]
-//   // 针对状态 判断是升序还是降序
-//   let val=obj.status=='1'?'asc':'desc';
-//   return{
-//     [obj.key]:val
-//   }
-// }
-//   },
+  //   computed:{
+  // orderBy(){
+  //   // 知道当前是哪一个对象
+  //   let obj=this.headerList.data[this.searchList.currentIndex]
+  //   // 针对状态 判断是升序还是降序
+  //   let val=obj.status=='1'?'asc':'desc';
+  //   return{
+  //     [obj.key]:val
+  //   }
+  // }
+  //   },
   methods: {
     GetData() {
       this.$http
         .get("products")
         .then((result) => {
-          console.log(result.body);
-
           this.searchList = result.body;
+       
+          // this.priceList.push(parseFloat(result.body[0].Price))
+          //  this.priceList.push(parseFloat(result.body[1].Price) )
+          //  this.priceList.push(parseFloat(result.body[2].Price) )
+          //  this.priceList.push(parseFloat(result.body[3].Price) )
+          //  this.priceList.push(parseFloat(result.body[4].Price) )
+          //  this.priceList.push(parseFloat(result.body[5].Price) )
+          //  this.priceList.push(parseFloat(result.body[6].Price))
+          //  this.priceList.push(parseFloat(result.body[7].Price) )
+          //  this.priceList.push(parseFloat(result.body[8].Price) )
+          //  this.priceList.push(parseFloat(result.body[9].Price) )
+          //  this.priceList.push(parseFloat(result.body[10].Price) )
+          //  this.priceList.push(parseFloat(result.body[11].Price) )
+          // for (var i = 0;i <= result.body.length; i++) {
+           
+          //   // console.log(result.body[i].Price)
+          //   this.priceList.push(parseFloat(result.body[i].Price) );
+          
+          // }
+            console.log(this.priceList)
+        
         })
         .catch((err) => {});
     },
+    // GetData() {
+    //   this.$http
+    //     .get("products/search",{ searchName:this.$route.query.key})
+    //     .then((result) => {
+
+    //       console.log(result.body);
+
+    //     })
+    //     .catch((err) => {});
+    // },
+    // GetData(){
+    //   this.$http.get({
+    //     url:"products/search",
+    //     params:{
+    //       searchName:this.$route.query.key
+    //     }
+    //   }).then((res)=>{
+    //     console.log(res)
+    //   })
+    // },
     // 切换综合，销量，价格高亮
     changeTab(index) {
       // console.log(index)
       this.headerList.currentIndex = index;
       let item = this.headerList.data[index];
+      //  取消所有的状态值
       this.headerList.data.forEach((v, i) => {
         if (i != index) {
           v.status = 0;
@@ -113,7 +152,20 @@ export default {
         item.status = item.status == 1 ? 2 : 1;
       }
       // 发送数据请求进行数据排序
+      this.GetData();
     },
+//     priceasc() {
+//       console.log("111");
+//    this.priceList.sort((a,b)=>{
+// return a-b
+//    })
+
+    
+   
+//     },
+//     pricedesc() {
+//       console.log("222");
+//     },
   },
 };
 </script>

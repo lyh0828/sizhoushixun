@@ -1,5 +1,7 @@
 <template>
+
     <div class="center">
+        
        <div class="search">
             <div class="search-left">
 					<a href="#/foundinfo" class="router-link-active">
@@ -20,7 +22,6 @@
             <a  class="search-btn" >其他宠物 </a>
        </div>
        <div class="switch">
-            
             <p class="switch-tip">是否隐藏已被认领的宠物</p>
             <mt-switch v-model="value"></mt-switch>
        </div>
@@ -54,6 +55,7 @@
 				</ul>
 			</div>
 		</div>
+       
     </div>
 </template>
 <script>
@@ -184,12 +186,18 @@ export default {
     }
  }
 .container{
+        padding-bottom:30px;
+
     h4{
         margin-left: 20px;
     }
     .mui-table-view{
         background-color:#efeff4;
         padding-left:15px;
+
+        margin-bottom:20px;
+
+
         // height:1000px;
     }
     .mui-table-view:before {

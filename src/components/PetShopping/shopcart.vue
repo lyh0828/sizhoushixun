@@ -129,7 +129,7 @@
 export default {
   data() {
     return {
- 
+ id:"",
       value: 1,
       title: "",
       price: "",
@@ -192,7 +192,7 @@ export default {
         .get("products/shopcart/" + "?id=" + this.$route.params.id)
         .then((result) => {
           console.log(result.body);
-
+this.id=result.body._id;
           this.title = result.body.Title;
           this.price = result.body.Price;
           this.img = result.body.Img;
