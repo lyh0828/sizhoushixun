@@ -53,7 +53,7 @@ import Header from "../PetProducts/Header.vue";
 export default {
   data() {
     return {
-      priceList: [],
+      
       // searchName:'',
       searchList: [],
       headerList: {
@@ -91,28 +91,7 @@ export default {
       this.$http
         .get("products")
         .then((result) => {
-          this.searchList = result.body;
-       
-          // this.priceList.push(parseFloat(result.body[0].Price))
-          //  this.priceList.push(parseFloat(result.body[1].Price) )
-          //  this.priceList.push(parseFloat(result.body[2].Price) )
-          //  this.priceList.push(parseFloat(result.body[3].Price) )
-          //  this.priceList.push(parseFloat(result.body[4].Price) )
-          //  this.priceList.push(parseFloat(result.body[5].Price) )
-          //  this.priceList.push(parseFloat(result.body[6].Price))
-          //  this.priceList.push(parseFloat(result.body[7].Price) )
-          //  this.priceList.push(parseFloat(result.body[8].Price) )
-          //  this.priceList.push(parseFloat(result.body[9].Price) )
-          //  this.priceList.push(parseFloat(result.body[10].Price) )
-          //  this.priceList.push(parseFloat(result.body[11].Price) )
-          // for (var i = 0;i <= result.body.length; i++) {
-           
-          //   // console.log(result.body[i].Price)
-          //   this.priceList.push(parseFloat(result.body[i].Price) );
-          
-          // }
-            console.log(this.priceList)
-        
+          this.searchList = result.body;        
         })
         .catch((err) => {});
     },
