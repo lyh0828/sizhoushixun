@@ -2,7 +2,7 @@
  * @Author: caoYaNan 2419612936@qq.com
  * @Date: 2022-06-15 15:02:28
  * @LastEditors: caoYaNan 2419612936@qq.com
- * @LastEditTime: 2022-06-29 14:31:23
+ * @LastEditTime: 2022-06-29 14:41:06
  * @FilePath: \sizhoushixun\src\router.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -127,7 +127,6 @@ const router = new VueRouter({
         { path: '/home/daylist', component: daylist },                 //5宠物日常
         { path: '/home/daylist/dayinfo/:id', component: dayinfo },                 //5.1宠物日常--详情页
         { path: '/home/daylist/perhome', component: perhome },                 //5.1.1宠物日常--详情页--个人主页
-        { path: '/home/banner', component: banner01 },                      //轮播图详情页
 
 
         { path: '/petproducts/goods', component: Goods },    //4.宠物用品销售   

@@ -111,7 +111,7 @@ export default {
           //   this.priceList.push(parseFloat(result.body[i].Price) );
           
           // }
-            console.log(this.priceList)
+            //console.log(this.priceList)
         
         })
         .catch((err) => {});
