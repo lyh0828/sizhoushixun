@@ -1,4 +1,4 @@
-刘亚红
+
 <template>
   <div class="r">
     <mt-header fixed title="注册"></mt-header>
@@ -72,7 +72,11 @@ export default {
       this.$router.push('/login')
       // vue.$router.push("/login")
     }
-  }
+  },
+  // deactivated:{
+  //   this.$destroy('componentName')
+  // }
+
 };
 </script>
 
