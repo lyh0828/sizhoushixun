@@ -48,7 +48,8 @@
         <p class="lianxi">联系方式</p>
         <el-input class="lxinput" rows="5" v-model="input" clearable="true" placeholder="请留下任意一种联系方式 微信、电话。QQ">
         </el-input>
-        <el-button class="buttonlx" round>提交</el-button>
+        <router-link to="/home/group/groupinfo">
+        <el-button class="buttonlx" @click="up" round>提交</el-button></router-link>
     </div>
 </template>
 <script>
@@ -60,6 +61,13 @@ export default {
         };
     },
     methods: {
+        up(){
+            this.$toast({
+                message: '反馈成功',
+                position: 'center',
+                duration: 3000
+            });
+    }
     }
 };
 </script>
