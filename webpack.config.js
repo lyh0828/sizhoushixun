@@ -52,7 +52,7 @@ module.exports = {
                 }
             },
             {//针对字体文件的匹配规则
-                test: /\.(ttf|woff|woff2)$/,
+                test: /\.(ttf|woff|woff2?|mp3|mp4|avi)$/,
                 type: 'asset/resource',
                 generator: {
                   filename: 'static/media/[hash:10][ext][query]'
@@ -68,7 +68,10 @@ module.exports = {
                 //   }
                 }
               },
-              {test: /\.vue$/,use: 'vue-loader' }//处理vue文件的规则
+
+              {test: /\.vue$/,use: 'vue-loader' },//处理vue文件的规则
+              { test: /\.js|jsx$/, use: 'babel-loader', 
+              exclude: /node_modules/ }
         ]
     },
     resolve:{//做解释用

@@ -24,6 +24,7 @@
         <router-link :to="'/petshopping/shopcart/'+id" class="mui-card-link"
           >+加入购物车</router-link
         >
+      <!-- <span @click="addshopcart(this.img,this.title,this.price)">+加入购物车</span> -->
       </div>
     </div>
 
@@ -76,6 +77,7 @@ export default {
       img1: "",
       img2: "",
       img3: "",
+      shopcartList:[]
     };
   },
   created() {
@@ -102,6 +104,7 @@ export default {
         })
         .catch((err) => {});
     },
+    
   },
 };
 </script>
