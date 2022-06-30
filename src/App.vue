@@ -41,7 +41,7 @@
 				<span class="mui-icon mui-icon-plus"></span>
 				<span class="mui-tab-label">发布信息</span>
 			</router-link>
-			<router-link class="mui-tab-item" to="/resiger">
+			<router-link class="mui-tab-item" to="/host">
 				<span class="mui-icon mui-icon-contact"></span>
 				<span class="mui-tab-label">我的</span>
 			</router-link>

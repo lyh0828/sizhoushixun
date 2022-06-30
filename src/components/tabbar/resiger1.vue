@@ -1,4 +1,3 @@
-刘亚红
 <template>
   <div class="r">
     <mt-header fixed title="注册"></mt-header>
