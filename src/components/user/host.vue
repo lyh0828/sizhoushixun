@@ -106,7 +106,7 @@ export default {
     name:'host',
     data(){
       return{//获取用户信息到主页
-        sname:localStorage.getItem('name'),
+        sname:localStorage.getItem('name'),//读取本地数据
         smail:localStorage.getItem('mail'),
         stel:localStorage.getItem('tel'),
         // isAuth:"",//是否保持登录状态
