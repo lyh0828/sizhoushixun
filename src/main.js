@@ -62,7 +62,7 @@ import './lib/mui/css/icons-extra.css';
 import './lib/mui/css/mui.css';
 
 
-
+import echarts from 'echarts'
 
 //将mint-ui安装到vue中
 Vue.use(MintUi)
