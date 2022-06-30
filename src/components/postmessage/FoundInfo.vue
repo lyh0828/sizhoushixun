@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="info-header">
-            <a   id="icon-person" class="active">
+            <a  href="#/home"  id="icon-person" class="active">
                 <span class="mui-icon mui-icon-person-filled"></span>
             </a>
             <router-link to="/foundinfo"  >
