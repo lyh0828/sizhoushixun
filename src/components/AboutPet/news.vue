@@ -7,13 +7,14 @@
                 <router-link :to="'/petnewsdetails/'+item._id">
                 <img class="mui-media-object mui-pull-left" :src="item.img">
                 <div class="mui-media-body">
-                  {{item.title}}
+                 <div class="title">{{item.title}}</div> 
                   <p class='mui-ellipsis'>
-                                    <span >宠物性别:{{item.gender}}</span>
+                                    <span>事件地点:{{item.address}}</span>
+                                
                                     <br>
-                                    <span >时间：{{item.found_time | dateFormat}}</span>
+                                    <span >时间:{{item.time }}</span>
                                     <br>
-                                    <span>捡到地点:{{item.found_address}}</span>
+                                    <span >点赞{{item.click}}</span>
                                 </p>
                 </div>
               </router-link>
@@ -59,7 +60,7 @@
     },
     methods: {
     getnewslist(){
-            this.$http.get('petclamiedinfo').then(result=>{
+            this.$http.get('http://36.138.183.223:3000/petnewsinfo').then(result=>{
                  console.log(result.body)
                 // if(result.body.status===0){
                    this.newsList= result.body
@@ -126,6 +127,10 @@ margin-bottom:10px;
   }
 }
 }
-
+.title{
+         white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+}
 
 </style>

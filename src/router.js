@@ -24,8 +24,8 @@ import Addcomments from './components/comments/Addcomments.vue';               /
 
 
 import PetLost from './components/postmessage/PetLost.vue';               //2.1.2宠物丢失
-import resiger from './components/tabbar/resiger.vue' ;              //3.注册
-import Login from './components/tabbar/login.vue';                 //3.登录
+// import resiger from './components/tabbar/resiger.vue' ;              //3.注册
+// import Login from './components/tabbar/login.vue';                 //3.登录
 import MyContainer from './components/tabbar/MyContainer.vue';            //3.1我的
 import fabu from './components/my/fabu.vue'                    //3.1我的发布
 import editPetClimedInfo from './components/my/editPetClimedInfo.vue';  //3.1.1我的发布信息的修改
@@ -77,14 +77,16 @@ import group from './components/group/group.vue';                       //1.6群
 import groupinfo from './components/group/groupInfo.vue';                       //1.趣味逗宠--趣味逗宠
 import report from './components/group/report.vue';                            //1.趣味逗宠--趣味逗宠详情--举报
 
-
+import host from "./components/user/host.vue";
+import login from "./components/user/login.vue";
+import register from './components/user/register.vue';
 
 //通过Vue使用路由（手动安装）
 Vue.use(VueRouter)
 //创建路由对象
 const router = new VueRouter({
 
-  
+    mode:'history',
 
     routes:[//匹配路由规则
        {path:'/',redirect:'/home'},                 //0.默认
@@ -100,8 +102,8 @@ const router = new VueRouter({
        {path:'/addcomments',component:Addcomments},   //2.1.1.1.1进行添加留言
 
        {path:'/petlost',component:PetLost},            //2.1.2宠物丢失
-       {path:'/resiger',component:resiger} ,          //3注册
-       {path:'/login',component:Login} ,          //3登录
+    //    {path:'/resiger',component:resiger} ,          //3注册
+    //    {path:'/login',component:Login} ,          //3登录
        {path:'/my',component:MyContainer} ,          //3.1我的
        {path:'/fabu',component:fabu},     //3.1 我的发布
        {path:'/petproducts',component:PetProduct},    //4.宠物用品销售主页
@@ -191,11 +193,89 @@ const router = new VueRouter({
        {path:'/home/group/groupinfo/report',component:report},              //1.趣味逗宠--趣味逗宠详情
 
        {path:'/sort',component:sort},//7.宠物分类
-       {path:'/mypet',component:mypet} //8.我的宠物
-    
+       {path:'/mypet',component:mypet}, //8.我的宠物
+       {
+        //这里需要将根目录默认为Home，方便实现用户在保持登录 状态下再次登录时直接跳转至主页面
+          path:"/",
+          redirect:{
+            name:"host"
+          }
+        },
+        {
+          path: "/host",
+          name: "host",
+          component: host,
+        },
+        {
+          path: "/login",
+          name: "login",
+          component:login
+          
+        }
+        ,{
+          path: "/register",
+          name: "register",
+          component:register
+            
+        }
 
     ],
     linkActiveClass: 'mui-active'
 })
+router.beforeEach(function(to,from,next) {
+    if(to.path === '/host') {
+        const token = localStorage.getItem('s')
+        if(token) {
+            next()
+        } else {
+            next('/login')
+        }
+    } else {
+        next()
+    }
+})
+// router.beforeEach((to,from,next)=>
+// {
+//   if(to.path == 'host') {
+
+  
+//     //登录及注册页面可以直接进入,而主页面需要分情况
+//   const token = localStorage.getItem('s')
+// // i  to.path=='/login'
+//   if(token)
+//   {
+//     next();
+//     console.log(localStorage.s);
+//   }
+//   else {
+//       next('/login')
+//   }
+// }
+// })
+//   else if(to.path=='/register')
+//   {
+//     next();
+//   }
+//   else
+//   {
+//     if(from.path=="/login")//从登录页面可以直接通过登录进入主页面
+//     {
+//       next();
+//     }
+//     else{
+//     	//从/进入,如果登录状态是true，则直接next进入主页面
+//         // localStorage.s === "true"
+// 	      if(token)
+// 		    {
+// 		      next();
+// 		      console.log(localStorage['s'])
+// 		    }
+// 	    else {//如果登录状态是false，那么跳转至登录页面,需要登录才能进入主页面
+// 	      next('/login');
+// 	      console.log("需要登录")
+// 	    }
+//     }
+//   }
+
 //暴露路由
 export default router 
