@@ -1,106 +1,85 @@
 <template>
     <div class="container">
-         <div class="header">
-            <div class="header-left">
-                <a href="#/petnews" class="router-link-active">
-                              <img class="aczj-icon" src="../../images/icon.png" alt="">
-                  <!-- <mt-button id="btn0" icon="back" ></mt-button> -->
-                </a>
-            </div>
-            <div class="header-right">
-               <h4 class="title">宠物新闻详情</h4>  
-            </div>
-       </div>
-       <div class="content">
-          <div class="content1">
-            <p > 标题 | <span class="title">{{title}}</span></p>
-             <img  :src="img">
-             <p class="bt">备注详情 | <span class="title">{{details}}</span></p>
-              <p class="bt">宠物品种:<span class="title">{{species}}</span></p>
-                <p class="bt"> 宠物性别:<span class="title">{{gender}}</span></p>
-                <p class='bt'>捡到时间:<span class="title">{{found_time |dateFormat}}</span></p>
-                <p ><span class="mui-icon mui-icon-location"></span><span class="title">{{found_address}}</span></p>
-                 <p class="tip">认领请联系</p>
-                <!-- <p  class="bt"><span class="mui-icon mui-icon-phone"></span><span class="title">{{tel}}</span></p> -->
-                
-                 <mt-button  @click.native="sheetVisible = true" class="btn"><span class="mui-icon mui-icon-phone"></span><span class="title">{{tel}}</span></mt-button>
-                 <mt-actionsheet :actions="actions" v-model="sheetVisible"></mt-actionsheet>
-               <p  class="bt"><span class="mui-icon mui-icon-weixin"></span><span class="title">{{weixin}}</span></p>
-          </div>
+         <div class="center">
+    <div class="title">{{title}}</div>
+    <img  class="img" :src="img">
+    <div class="detail">{{details}}</div>
+    <div class="t-a">
+      <div class="time">{{time}}</div>
+      <span class="mui-icon mui-icon-location"></span>
+       <div class="address">{{address}}</div>
+    </div>
+    <div class="t-b">
+      <span class="mui-icon-extra mui-icon-extra-heart"></span>
+        <div class="tel">{{click}}</div>
 
-       </div>
-                          
+    </div>
+</div>        
     </div>
 </template>
 <script>
-import mui from '../../lib/mui/js/mui.js' 
+// import mui from '../../lib/mui/js/mui.js' 
 export default {
      data(){
         return{
-           id:'',
+          //  id:'',
            details:'',
-           found_address:'',
-           found_time:'',
-           gender:'',
+           address:'',
+           time:'',
            img:'',
-           species:'',
-           tel:'',
-           weixin:'',
+           click:'',
            title:'',
-            sheetVisible: false,
-             actions: []
+            // sheetVisible: false,
+            //  actions: []
 
         }
     },
-    mounted() {
-      this.actions = [
-        {
-        name: '复制',
-        method: this.copy
-         }, 
-        {
-        name: '呼叫',
-        method: this.call
-        },
-         {
-        name: '添加到手机通讯录',
-        method: this.add
-        }
-     ]
+    // mounted() {
+    //   this.actions = [
+    //     {
+    //     name: '复制',
+    //     method: this.copy
+    //      }, 
+    //     {
+    //     name: '呼叫',
+    //     method: this.call
+    //     },
+    //      {
+    //     name: '添加到手机通讯录',
+    //     method: this.add
+    //     }
+    //  ]
 
-    },
+    // },
     created(){
         this.getPetInfo();
     },
     methods:{
         getPetInfo(){
-            this.$http.get("petclamiedinfo/show?id="+this.$route.params.id).then(result=>{
+            this.$http.get("http://36.138.183.223:3000/petnewsinfo/show?id="+this.$route.params.id).then(result=>{
                 console.log(result.body)
                 // if(result.body.status===0){
-                     this.id=result.body._id
+                    //  this.id=result.body._id
                       this.details=result.body.details
-                       this.found_address=result.body.found_address
-                        this.found_time=result.body.found_time
-                         this.gender=result.body.gender
+                       this.address=result.body.address
+                        this.time=result.body.time
                           this.img=result.body.img
-                           this.species=result.body.species
-                            this.tel=result.body.tel
-                             this.weixin=result.body.weixin
+                             this.click=result.body.click
                                this.title=result.body.title
 
             })
         },
-          copy() {
-       mui.toast('复制成功',{ duration:'short', type:'div' })
-      },
-      call() {
-               mui.toast('即将跳转',{ duration:'short', type:'div' })
+      //     copy() {
+      //  mui.toast('复制成功',{ duration:'short', type:'div' })
+      // },
+      // call() {
+      //          mui.toast('即将跳转',{ duration:'short', type:'div' })
 
-      },
-      add(){
-              mui.toast('即将跳转',{ duration:'short', type:'div' })
+      // },
+      // add(){
+      //         mui.toast('即将跳转',{ duration:'short', type:'div' })
 
-      }
+      // }
     },
      filters:{
         dateFormat:function renderTime(date){
@@ -111,93 +90,55 @@ export default {
 </script>
 <style scoped lang="scss">
 .container{
-  font: 14px/1.5 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
-
-  background-color:#f4f4f4;
+  margin-top:40px;
+  margin-right:10px;
 }
- p{
-  font-size:16px;
-  color:#808080;
-  }
-   .bt{
-          color:black;
-          font-size:18px;
-         }
-         .title{
-          color:#808080;
-            font-size:16px;
-            
-         }
-.header{
-  margin-top:50px;
-  width:100%;
-  padding-left:20px;
-  // border:1px solid red;
-  display:flex;
-  flex-direction: row;
-  .header-left{
-   margin-left:10px;
-    .aczj-icon{
-        width:50px;
-        height:40px;
-        border-radius: 10px;
-    }
-  }
-  .header-right{
-    margin-left:100px;
-    .title{
-      color:black;
-      font-size:16px;
-      display:block;
-            width:200px;
-            border-radius:15px;
-            background-color:antiquewhite;
-            line-height: 40px;
-            height:40px;
-            text-align: center;
-
-    }
-  }
-}
-.content{
-     margin-top:8px;
-    width:100%;
-    //  padding-left:20px;
-     .content1{
-        //  border:1px solid red;
-         margin-top:10px;
-         width:95%;
-         margin:auto;
-         height:auto;
-         background-color:#fff;
-         border-radius:20px;
-         padding-top:10px;
-         padding-left:10px;
-         padding-bottom:10px;
-         img{
-        height:150px;
-        width:200px;
-          border-radius: 15px;
-        //   margin-left:-15px;
-        }
-        .tip{
-        margin-top:20px;
-        color:black;
-        font-size:18px;
-        }
-        .bt{
-        display:block;
-        margin-top:15px;
+.center{
+        width:412px;
+        /* border:1px solid red; */
+        margin:auto;
+        padding-top: 10px;
+        padding-bottom: 50px;
+      }
+      .title{
+        font-size: 20px;
+        font-weight: 800;
+        color:#808080;
+        margin:auto;
+        padding-bottom: 20px;
+        width:400px;
+      }
+      .img{
+        width:410px;
+        height:250px;
+        margin:auto;
+      }
+      .detail{
+        width:410px;
+        height:auto;
+        padding-bottom:5px;
+        margin-top:10px;
+        margin-bottom:10px;
+        line-height: 30px;
+        font-size: 18px;
+      }
+      .t-a{
+        display:flex;
+        flex-direction: row;
+        margin-bottom:25px;
         
-         }
-          .title{
-          color:#808080;
-          font-size:16px;
-         }
-     }
-}
-
-
-
-
+      }
+      .t-b{
+        display:flex;
+        flex-direction: row;
+     
+        
+      }
+      .time{
+        padding-right:125px;
+      }
+      .tel{
+        padding-right:30px;
+      }
+          
 </style>
