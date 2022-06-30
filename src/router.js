@@ -194,13 +194,13 @@ const router = new VueRouter({
 
        {path:'/sort',component:sort},//7.宠物分类
        {path:'/mypet',component:mypet}, //8.我的宠物
-       {
-        //这里需要将根目录默认为Home，方便实现用户在保持登录 状态下再次登录时直接跳转至主页面
-          path:"/",
-          redirect:{
-            name:"host"
-          }
-        },
+      //  {
+      //   //这里需要将根目录默认为Home，方便实现用户在保持登录 状态下再次登录时直接跳转至主页面
+      //     path:"/",
+      //     redirect:{
+      //       name:"host"
+      //     }
+      //   },
         {
           path: "/host",
           name: "host",

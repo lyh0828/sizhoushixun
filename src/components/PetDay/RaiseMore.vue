@@ -12,7 +12,7 @@
                     </div>
                     <p>
                         <span>毛毛</span>
-                        <button type="button" class="mui-btn" data-loading-text="123" @click="showR">领养它</button>
+                        <button type="button" class="mui-btn" @click="actionSheet" data-loading-text="123">领养它</button>
                     </p>
                     <div>
                         <p class="p1">编号：syhbm1</p>
@@ -31,7 +31,7 @@
                     </div>
                     <p>
                         <span>小鼻子</span>
-                        <button type="button" class="mui-btn" data-loading-text="123" @click="showR">领养它</button>
+                        <button type="button" class="mui-btn" @click="actionSheet" data-loading-text="123">领养它</button>
                     </p>
                     <div>
                         <p class="p1">编号：syhbm2</p>
@@ -50,7 +50,7 @@
                     </div>
                     <p>
                         <span>闪电</span>
-                        <button type="button" class="mui-btn" data-loading-text="123" @click="showR">领养它</button>
+                        <button type="button" class="mui-btn" @click="actionSheet" data-loading-text="123">领养它</button>
                     </p>
                     <div>
                         <p class="p1">编号：syhbm3</p>
@@ -69,7 +69,7 @@
                     </div>
                     <p>
                         <span>蛋黄</span>
-                        <button type="button" class="mui-btn" data-loading-text="123" @click="showR">领养它</button>
+                        <button type="button" class="mui-btn" @click="actionSheet" data-loading-text="123">领养它</button>
                     </p>
                     <div>
                         <p class="p1">编号：syhbm4</p>
@@ -88,7 +88,7 @@
                     </div>
                     <p>
                         <span>大漂亮</span>
-                        <button type="button" class="mui-btn" data-loading-text="123" @click="showR">领养它</button>
+                        <button type="button" class="mui-btn" @click="actionSheet" data-loading-text="123">领养它</button>
                     </p>
                     <div>
                         <p class="p1">编号：syhbm5</p>
@@ -109,7 +109,7 @@
                     </div>
                     <p>
                         <span>小橘子</span>
-                        <button type="button" class="mui-btn" data-loading-text="123" @click="showR">领养它</button>
+                        <button type="button" class="mui-btn" @click="actionSheet" data-loading-text="123">领养它</button>
                     </p>
                     <div>
                         <p class="p1">编号：syhbm6</p>
@@ -128,7 +128,7 @@
                     </div>
                     <p>
                         <span>奶茶</span>
-                        <button type="button" class="mui-btn" data-loading-text="123" @click="showR">领养它</button>
+                        <button type="button" class="mui-btn" @click="actionSheet" data-loading-text="123">领养它</button>
                     </p>
                     <div>
                         <p class="p1">编号：syhbm7</p>
@@ -147,7 +147,7 @@
                     </div>
                     <p>
                         <span>卓别林</span>
-                        <button type="button" class="mui-btn" data-loading-text="123" @click="showR">领养它</button>
+                        <button type="button" class="mui-btn" @click="actionSheet" data-loading-text="123">领养它</button>
                     </p>
                     <div>
                         <p class="p1">编号：syhbm8</p>
@@ -166,7 +166,7 @@
                     </div>
                     <p>
                         <span>阿福</span>
-                        <button type="button" class="mui-btn" data-loading-text="123" @click="showR">领养它</button>
+                        <button type="button" class="mui-btn" @click="actionSheet" data-loading-text="123">领养它</button>
                     </p>
                     <div>
                         <p class="p1">编号：syhbm9</p>
@@ -176,20 +176,36 @@
                 <hr>
             </li>
         </ul>
+        <mt-actionsheet :actions="data" v-model="sheetVisible">
+        </mt-actionsheet>
     </div>
 </template>
 <script>
 export default {
     data() {
-        return {};
+        return {
+            data: [ {
+                name: '电话领养',
+                method: this.getLibrary	// 调用methods中的函数
+            }],
+            // action sheet 默认不显示，为false。操作sheetVisible可以控制显示与隐藏
+            sheetVisible: false
+        };
     },
     created() {
     },
     methods: {
         showR() {
             mui.confirm('确认领养了吗？', '提示', new Array('是的', '再想想'));
+        },
+        actionSheet: function () {
+            // 打开action sheet
+            this.sheetVisible = true;
+        },
+        getLibrary: function () {
+            console.log("电话领养")
         }
-    },
+    }
 };
 import mui from '../../lib/mui/js/mui.js';
 
@@ -268,6 +284,10 @@ import mui from '../../lib/mui/js/mui.js';
                 }
             }
         }
+    }
+
+    .mui-content {
+        bottom: 0;
     }
 }
 </style>

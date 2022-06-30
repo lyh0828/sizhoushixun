@@ -2,7 +2,7 @@
  * @Author: caoYaNan 2419612936@qq.com
  * @Date: 2022-06-20 20:02:13
  * @LastEditors: caoYaNan 2419612936@qq.com
- * @LastEditTime: 2022-06-27 19:53:38
+ * @LastEditTime: 2022-06-30 14:56:08
  * @FilePath: \sizhoushixun\src\components\PetDay\RaiseList.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -19,7 +19,7 @@
                         <img src="https://adopt.wozhua.net/images/img_6.png">
                         <p class="mainTitle">哈比的猫小院</p>
                         <div>
-                            <span class="mainM">￥9.9</span>
+                            <span class="mainM">免费</span>
                             <span class="mainN">剩余：8</span>
                         </div>
                     </router-link>
@@ -29,7 +29,7 @@
                         <img src="https://adopt.wozhua.net/images/img_3.png">
                         <p class="mainTitle">安妮流浪毛孩小院</p>
                         <div>
-                            <span class="mainM">￥9.9</span>
+                            <span class="mainM">免费</span>
                             <span class="mainN">剩余：35</span>
                         </div>
                     </router-link>
@@ -39,7 +39,7 @@
                         <img src="https://adopt.wozhua.net/images/img_7.png">
                         <p class="mainTitle">黄山毛娃娃之家</p>
                         <div>
-                            <span class="mainM">￥9.9</span>
+                            <span class="mainM">免费</span>
                             <span class="mainN">剩余：11</span>
                         </div>
                     </router-link>
@@ -49,7 +49,7 @@
                         <img src="https://adopt.wozhua.net/images/img_1.png">
                         <p class="mainTitle">烟台菩提善缘</p>
                         <div>
-                            <span class="mainM">￥9.9</span>
+                            <span class="mainM">免费</span>
                             <span class="mainN">剩余：0</span>
                         </div>
                     </router-link>
@@ -59,7 +59,7 @@
                         <img src="https://adopt.wozhua.net/images/img_2.png">
                         <p class="mainTitle">天水丑丑妈救助小院</p>
                         <div>
-                            <span class="mainM">￥9.9</span>
+                            <span class="mainM">免费</span>
                             <span class="mainN">剩余：6</span>
                         </div>
                     </router-link>
@@ -69,7 +69,7 @@
                         <img src="https://adopt.wozhua.net/images/img_4.png">
                         <p class="mainTitle">幸运萌宠爱心小屋</p>
                         <div>
-                            <span class="mainM">￥9.9</span>
+                            <span class="mainM">免费</span>
                             <span class="mainN">剩余：15</span>
                         </div>
                     </router-link>
@@ -89,7 +89,7 @@
                         <img src="https://adopt.wozhua.net/images/img_9.png">
                         <p class="mainTitle">无言的爱心小院</p>
                         <div>
-                            <span class="mainM">￥9.9</span>
+                            <span class="mainM">免费</span>
                             <span class="mainN">剩余：30</span>
                         </div>
                     </router-link>
@@ -99,7 +99,7 @@
                         <img src="https://adopt.wozhua.net/images/img_8.png">
                         <p class="mainTitle">滨州王王的猫狗小院</p>
                         <div>
-                            <span class="mainM">￥9.9</span>
+                            <span class="mainM">免费</span>
                             <span class="mainN">剩余：40</span>
                         </div>
                     </router-link>
@@ -109,7 +109,7 @@
                         <img src="https://adopt.wozhua.net/images/img_11.png">
                         <p class="mainTitle">项城流浪狗救助</p>
                         <div>
-                            <span class="mainM">￥9.9</span>
+                            <span class="mainM">免费</span>
                             <span class="mainN">剩余：22</span>
                         </div>
                     </router-link>

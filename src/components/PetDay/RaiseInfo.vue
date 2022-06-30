@@ -10,7 +10,7 @@
             </div>
 
             <div class="mainFew">
-                <p>￥9.90</p>
+                <p>免费</p>
                 <div>
                     <span>哈比的猫小院</span>
                     <router-link to="/home/raiselist/raiseinfo/raisemore">
@@ -48,11 +48,6 @@
                 </div>
             </div>
         </div>
-        <div class="bottom">
-            <span class="bottomA">￥9.9</span>
-            <router-link to="/home/raiselist/raiseinfo/raiseone">
-            <span class="bottomB">领养一只</span></router-link>
-        </div>
     </div>
 </template>
 <script>
@@ -77,7 +72,7 @@
     }
 
     .main {
-        margin-bottom: 120px;
+        margin-bottom: 60px;
 
         .imgMain {
             width: 100%;
