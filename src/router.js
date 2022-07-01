@@ -87,7 +87,7 @@ Vue.use(VueRouter)
 //创建路由对象
 const router = new VueRouter({
 
-    mode:'history',
+    // mode:'history',
 
     routes:[//匹配路由规则
        {path:'/',redirect:'/home'},                 //0.默认
@@ -198,13 +198,14 @@ const router = new VueRouter({
 
        {path:'/sort',component:sort},//7.宠物分类
        {path:'/mypet',component:mypet}, //8.我的宠物
-      //  {
-      //   //这里需要将根目录默认为Home，方便实现用户在保持登录 状态下再次登录时直接跳转至主页面
-      //     path:"/",
-      //     redirect:{
-      //       name:"host"
-      //     }
-      //   },
+
+       {
+        //这里需要将根目录默认为Home，方便实现用户在保持登录 状态下再次登录时直接跳转至主页面
+          path:"/",
+          redirect:{
+            name:"host"
+          }
+        },
         {
           path: "/host",
           name: "host",

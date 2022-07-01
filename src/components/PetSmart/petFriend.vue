@@ -192,7 +192,8 @@ export default {
 				    pinglun:this.pinglun,
 				 },{emulateJSON:true}).then(res=>{
                         // this.reload()
-                 this.$router.go(0)
+                //  this.$router.go(0)
+                //    this.$router.push('/petfrienddetails/:id')
                         
 				   })
 				},
