@@ -60,11 +60,14 @@ export default {
     },
   data() {
         return {
+     
+
             isRouterAlive:true
 
         }
         
     },
+  
     mounted() {
         // this.$bus.$on('hello',(data)=>{
         //     console.log('我是school组件,受到了数据'+data)
