@@ -70,6 +70,7 @@ import ServerInfo from './components/Content/ServerInfo.vue';                 //
 
 import PetSmart from './components/PetSmart/petsmart.vue';         //6.7 宠物智能
 import PetShop from './components/PetSmart/petshop.vue';         //6.7.1 宠物智能--宠物店
+import PetFriend from './components/PetSmart/petFriend.vue';      //6.7.2 宠物智能--宠友信息
 
 import News from './components/AboutPet/news.vue';         //6.3()宠物新闻
 
@@ -210,6 +211,9 @@ const router = new VueRouter({
 
        {path:'/petsmart',component:PetSmart},     //6.7宠物智能
        {path:'/petshop/:id',component:PetShop},     //6.7.1宠物智能--宠物店详情
+       {path:'/petfrienddetails/:id',component:PetFriend},     //6.7.1宠物智能--宠友信息
+
+      
 
        {path:'/news',component:News},     //6.3()宠物新闻
        {path:'/petnews',component:PetNews},     //6.3宠物新闻
@@ -222,13 +226,14 @@ const router = new VueRouter({
 
        {path:'/sort',component:sort},//7.宠物分类
        {path:'/mypet',component:mypet}, //8.我的宠物
-      //  {
-      //   //这里需要将根目录默认为Home，方便实现用户在保持登录 状态下再次登录时直接跳转至主页面
-      //     path:"/",
-      //     redirect:{
-      //       name:"host"
-      //     }
-      //   },
+
+       {
+        //这里需要将根目录默认为Home，方便实现用户在保持登录 状态下再次登录时直接跳转至主页面
+          path:"/",
+          redirect:{
+            name:"host"
+          }
+        },
         {
           path: "/host",
           name: "host",
