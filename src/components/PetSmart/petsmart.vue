@@ -78,33 +78,30 @@
 
               </div>
         </el-tab-pane>
-         <el-tab-pane label="宠友动态" name="three">
-              <div class="center">
-                  <div class="sx">筛选</div>
-                  <ul class="ul">
-                    <li class="li1">
-                      <img class="img22" src="../../images/cy4.webp" >
-                        <div class="texts">
-                            <span class="kg">陪一只猫长大是最快乐的事</span>
-                        </div>
-                   
+         <el-tab-pane  style="" label="宠友动态" name="three">
+                <div class="center">
+                    <ul class="ul3">
+					          <li  class="li3" v-for="item in List" :key="item._id">
+		                    <router-link :to="'/petfrienddetails/'+item._id">
+                         
+		                       <img class="img1" :src="item.img1">
+                            <div class="info">
+                                <p class='title'>{{item.title}}</p>
+                                  <div class="info2">
+                                      <img  class="photo" :src="item.photo" alt="">
+                                      <div class="nichen">{{item.nichen}}</div>
+                                      <span id="i" class="mui-icon-extra mui-icon-extra-heart"></span>
+                                      <div class="click">{{item.click}}</div>
+                                  </div>
+                                   
+                          </div>
+                        </router-link>
                     </li>
-                    <li class="li1">
-                      <img class="img22" src="../../images/cy2.webp" >
-                        <div class="texts">
-                            <span class="kg">看这它慵懒的样子，好幸福，羡慕</span>
-                        </div>
-                   
-                    </li>
-                    <li class="li1">
-                      <img class="img22" src="../../images/cy3.webp" >
-                        <div class="texts">
-                            <span class="kg">狗狗是人类的朋友</span>
-                        </div>
-                   
-                    </li>
-                </ul> 
-              </div>
+			        </ul>
+      
+                </div>  
+                
+
         </el-tab-pane>
     </el-tabs>
 </template>
@@ -114,10 +111,12 @@ export default {
       return {
         activeName: 'first',
         newsList:[],
+        List:[]
       };
     },
      created(){
-        this.getnewslist()
+        this.getnewslist(),
+        this.getnewslist2()
 
     },
     methods: {
@@ -125,6 +124,13 @@ export default {
             this.$http.get('petsmartinfo').then(result=>{
                  console.log(result.body)
                    this.newsList= result.body
+                
+            })
+        },
+        getnewslist2(){
+          this.$http.get('http://36.138.183.223:3000/petfriendinfo').then(result=>{
+                 console.log(result.body)
+                   this.List= result.body
                 
             })
         },
@@ -154,6 +160,7 @@ margin-bottom:20px;
   padding-left:10px;
 }
 .center{
+  margin:0px;
   .header{
 margin-bottom:0px;
 	.mint-swipe{
@@ -281,62 +288,67 @@ margin-bottom:0px;
         height:20px;
 
     }
-  .center{
-    .header{
+    .ul3{
+        margin:0px;
+      padding:0px;
+      width:100%;
+      height:100%;
+      padding-left:8px;
       display:flex;
       flex-direction: row;
+      flex-wrap:wrap;
+ .li3{
 
+  list-style:none;
+  width:46%;
+  // height:150px;
+  // border:1px solid red;
+  border-radius: 5px;
+  margin-right:15px;
+  margin-bottom:10px;
+
+ }
     }
+.img1{
+  width:180px;
+  height:230px;
+  border-radius: 5px;
+}
+.photo{
+  width:30px;
+  height:30px;
+  border-radius: 50%;
+}
+.title{
+  font-size:18px;
+font-weight:600;
+color:#333;
+}
+.info2{
+  display: flex;
+  flex-direction: row;
+}
+.nichen{
+    display:block;
+    width:250px;
+    margin-left:5px;
+}
+#i{
+margin-top:5px;
+color:#808080;
+
+ margin-right:8px;
+ font-size:18px;
+}
+  .nichen,.click{
+font-size:14px;
+color:#808080;
+margin-top:5px;
   }
-  .sx{
-    background-color:snow ;
-    width:390px;
-    margin:auto;
-    height:40px;
-    line-height:40px;
-    text-align: center;
-  }
-          .li1{
-    list-style: none;
+  .click{
     position:relative;
-	border-radius:10px;
-  margin-bottom:15px;
+    right:5px;
+  }
 
-    .img22{
-         width:390px;
-        margin:auto;
-        height:150px;
-	border-radius:10px;
-
-    }
-    .texts{
-      border-radius:0px 0px 10px 10px;
-      position:absolute;
-      margin:auto;
-      height:40px;
-      top:110px;
-      // left:10px;
-      width:390px;
-      // border:1px solid red;
-      color:#fff;
-      background-color: rgba(37, 35, 35, 0.7);
-      padding-top:7px;
-      padding-left:10px;
-      .kg{
-      padding-right:20px;
-
-      }
-      p{
-        display:block;
-        padding-top:5px;
-        padding-bottom:5px;
-        margin-bottom:0px;
-        color:#fff;
-        font-size: 14px;
-        font-weight: 800;
-      }
-         }
-   }
-  
 }
 </style>
