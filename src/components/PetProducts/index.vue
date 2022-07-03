@@ -1,237 +1,321 @@
-
 <template>
-  <div style="margin-top:45px;">
-    <div class="wrapper">
-      <ul class="mui-table-view mui-grid-view mui-grid-9">
-        <li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
-          <span style="font-weight: 700">品牌特卖</span>
+    <div class="index">
+        <!-- 头部 -->
+     <div class="headerbox">
+        <div class="header">
+<span class="headertitle">爱宠之家</span>
+<div class="headerico">
 
-          <a href="#">
-            <img src="../../images/wrapper01.png" alt="" />
-          </a>
-        </li>
-        <li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
-          <span style="font-weight: 700">小剧场</span>
+  <van-icon name="balance-list-o" size="30" color="#fff" style="margin-top:3px;margin-left:3px;" @click="gotoorder"/>
+  <span style="color:#fff;">|</span>
+  <van-icon name="location-o" size="30" color="#fff" @click="gotolocation" />
+  
 
-          <a href="#">
-            <img src="../../images/wrapper02.png" alt="" />
-          </a>
-        </li>
 
-        <li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
-          <span style="font-weight: 700">萌爪联盟</span>
+</div>
 
-          <a href="#">
-            <img src="../../images/wrapper03.png" alt="" />
-          </a>
-        </li>
-        <li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
-          <span style="font-weight: 700">人气产品</span>
+<div class="headerfin">
+<span style="margin:10px 20px;">
+    <van-icon name="like"  color="red" /> 
+    <van-icon name="like" color="red" /> 
+   <span class="fnnumber" style="color:#fff;" >粉丝数:2300</span> 
+    </span>
+</div>
 
-          <a href="#">
-            <img src="../../images/wrapper04.png" alt="" />
-          </a>
+        </div>
+     </div>
+
+        <!-- 导航条 -->
+        <div>
+        
+ 
+
+         
+          
+   <div class="navlist">
+    <van-tabs >
+   <span class="search">
+ <router-link to="/search">
+   <van-icon name="search" size="40" />
+            </router-link>
+           </span>
+  <van-tab title="首页">
+    
+                <div class="goods">
+<ul class="goodslist"  >
+        <li v-for="item in GoodsList" :key="item.id">
+          <router-link :to="'/productinfo/'+item._id">
+         
+
+            <img :src="item.Img" />
+            <span class="goodlisttitle">{{ item.Title }}</span>
+            <span style="color: red">￥{{ item.Price }}</span>
+            <span style="color: lightgray">销售量:{{ item.Quantity }}</span>
+          </router-link>
         </li>
       </ul>
+       </div>
+  </van-tab>
+  <van-tab title="宝贝">
+  <div class="homepage">
+ <img src="https://gw.alicdn.com/imgextra/i4/3435601808/O1CN01cSm2LI1PE6qIgrpkK_!!3435601808.jpg_790x10000Q75.jpg_.webp" alt="">
+ <img src="https://gw.alicdn.com/imgextra/i4/3435601808/O1CN01AKncvP1PE6qVrZy3n_!!3435601808.jpg_790x10000Q75.jpg_.webp" alt="">
+ <img src="https://gw.alicdn.com/imgextra/i3/3435601808/O1CN01ey9zp81PE6qVrXQ3u_!!3435601808.jpg_790x10000Q75.jpg_.webp" alt="">
+      </div>
+     
+  </van-tab>
+  <van-tab title="新品">
+
+     <div class="new">
+      <span>7月1日</span>
+<img src="../../images/baobei01.png" alt="">
+      <span>6月29日</span>
+<img src="../../images/baobei02.png" alt="">
+     <span>6月25日</span>
+<img src="../../images/baobei03.png" alt="">
+
+     </div>
+  </van-tab>
+  <van-tab title="超值">
+          <div class="goods">
+<ul class="goodslist"  >
+        <li v-for="item in GoodsList" :key="item.id">
+          <router-link :to="'/productinfo/'+item._id">
+         
+
+            <img :src="item.Img" />
+            <span class="goodlisttitle">{{ item.Title }}</span>
+            <span style="color: red">￥{{ item.Price }}</span>
+            <span style="color: lightgray">销售量:{{ item.Quantity }}</span>
+          </router-link>
+        </li>
+      </ul>
+      </div>
+  </van-tab>
+</van-tabs>
+
+   </div>
+        </div>
+
+       
     </div>
-    <div class="classify">
-     <router-link to="/petproducts/goods">
-     <h3> 用品小店铺</h3>
-     </router-link>
-    </div>
+
+    
    
-   <div class="wrapper2">
-      <ul class="mui-table-view mui-grid-view mui-grid-9">
-        <li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
-          <router-link to="/petproducts/catsnacks">
-            <span class="iconfont icon-maoliang" style="color:rgb(247,153,159);">
-              <span>猫咪主粮</span>
-            </span>
-          </router-link>
-        </li>
-        <li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
-          <router-link to=""> 
-            <span class="iconfont icon-chongwumao" style="color:rgb(255,213,0);">
-              <span>猫咪零食</span>
-            </span>
-          </router-link>
-        </li>
-        <li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
-          <router-link to="/petproducts/catdaily">
-            <span class="iconfont icon-chongwusheying" style="color:rgb(237,76,165);">
-              <span>猫咪日用</span>
-            </span>
-          </router-link>
-        </li>
-        <li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
-          <router-link to="/petproducts/cattoy">
-            <span class="iconfont icon-chongwulianyi" style="color:rgb(255,95,95);">
-              <span>猫咪玩具</span>
-            </span>
-          </router-link>
-        </li>
-        <li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
-          <router-link to="">
-            <span class="iconfont icon-xiedaichongwu" >
-              <span>狗狗主粮</span>
-            </span>
-          </router-link>
-        </li>
-        <li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
-          <a href="#">
-            <span class="iconfont icon-chongwuwanju" style="color:rgb(255,206,12);">
-              <span>狗狗零食</span>
-            </span>
-          </a>
-        </li>
-        <li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
-          <router-link to="">
-            <span class="iconfont icon-chongwu" style="color:rgb(71,167,221);">
-              <span>狗狗日用</span>
-            </span>
-          </router-link>
-        </li>
-        <li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
-          <router-link to="">
-            <span class="iconfont icon-chongwujiyang" style="color:rgb(187,239,187);">
-              <span>狗狗玩具</span>
-            </span>
-          </router-link>
-        </li>
-      </ul>
-    </div>
-  </div>
 </template>
 <script>
-
-
-
 export default {
-  name: "Classify",
+  name: "Goods",
   data() {
-    return {};
+    return {
+        
+      GoodsList: [],
+          showPopover: false,
+      // 通过 actions 属性来定义菜单选项
+      actions: [{ text: '我的地址' }, { text: '我的订单' }],
+    };
   },
-  components: {
-// Classify
+created() {
+  this.getproductslist()
+},
+
+  methods: {
+    getproductslist() {
+      this.$http
+        .get("products")
+        .then((result) => {
+          console.log(result.body);
+
+          this.GoodsList = result.body;
+        })
+        .catch((err) => {});
+    },
+//    onSelect(action) {
+// if(action[0].text=='我的地址'){
+// this.$router.push('/path')
+// }else if(action[1].text=='我的订单'){
+// this.$router.push('/myorder')
+
+// }
   
+//     }
+gotoorder(){
+  this.$router.push('/path/myorder')
+},
+gotolocation(){
+  this.$router.push('/path')
+}
+    
+ 
+    
   },
-  // created() {
-  //   mui.init({
-  //     swipeBack: true, //启用右滑关闭功能
-  //   })
-  //   var slider = mui("#slider");
-  //   document.getElementById("switch").addEventListener("toggle", function (e) {
-  //     if (e.detail.isActive) {
-  //       slider.slider({
-  //         interval: 5000,
-  //       });
-  //     } else {
-  //       slider.slider({
-  //         interval: 0,
-  //       });
-  //     }
-  //   });
-  // },
 };
 </script>
 <style lang="scss" >
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
-}
-
-.el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
-}
-img {
-  width: 100%;
-}
-
-.wrapper {
-  background-color: #fff;
-  margin: 10px 0 10px 0;
-
-  background-image: radial-gradient(rgb(255, 244, 242), rgb(255, 255, 255));
-}
-
-.mui-table-view.mui-grid-view.mui-grid-9 {
-  //   background-color: rgb(255, 244, 242);
-  background-image: radial-gradient(rgb(255, 244, 242), rgb(255, 255, 255));
-
-  background-image: radial-gradient(#fff4f2, #fff);
-  border: none;
-  border: 11px solid rgb(241, 176, 170);
-  background-color: #fff;
-  border-radius: 15px;
-
-  margin-left: 1%;
-  margin-right: 2%;
-  width: 98%;
-  li {
-    // border: none;
-    width: 50%;
-    height: 90px;
-    background-color: #fff;
-
-    span {
-      margin-left: -99px;
-      color: #000;
-      display: block;
-      margin-top: -1px;
+    .index{
+        margin-top: 40px;
+        
+     height:100%;
+            width:100%;
+  background: url(../../images/shopinfo.png) no-repeat fixed ;
+// background-repeat:no-repeat left top;
+            background-size: cover;
+            // background-attachment: fixed; 
     }
-  }
-
-  img {
-    width: 80px;
-
-    height: 76px;
-    margin-left: 76px;
-    margin-top: -20px;
-  }
+  
+    // 头部
+    .header{
+    //  position: fixed;
+        margin-top: 20px;
+        margin-left: 10px;
+        padding: 20px 0;
+        .headertitle{
+font-size: 28px;
+color: #fff;
+        }
+.headerico{
+    display: inline-block;
+ 
+    margin-left: 187px;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    height: 36px;
+    width: 79px;
 }
 
-.classify {
-  background-color: #fff;
-  width: 100%;
-  height: 60px;
-  h3 {
-    color: black;
-    letter-spacing: 6px;
-    text-align: center;
-    line-height: 60px;
-  }
-}
-.wrapper2 {
-  background-color: #fff;
-  margin: 10px 0 10px 0;
-
-  background-image: radial-gradient(rgb(255, 244, 242), rgb(255, 255, 255));
-.mui-table-view.mui-grid-view.mui-grid-9 {
-  //   background-color: rgb(255, 244, 242);
-  background-image: radial-gradient(rgb(255, 244, 242), rgb(255, 255, 255));
-  border: none;
-  li {
+    }
    
-    width: 47%;
-    margin: 5px;
-    height: 69px;
-    margin-left: 5px;
-    
-    border-radius: 13px;
-
-    span {
-      position: relative;
-      margin-left: -7px;
-      font-size: 20px;
+    // 搜索按钮
+    .search{
+        display: inline-block;
+        // margin-top:10px;
+            top: 3px;
+    position: absolute;
     }
+    // top列表
+    .van-tabs__nav--line{
+        width: 84%;
+        margin-left: 54px;
+        border-radius: 20px;
+    }
+    .van-tab--active {
+   
+    font-weight: 500;
+    font-size: 20px;
+    color: lightblue;
+    }
+    .van-tabs--line .van-tabs__wrap {
+    height: 44px;
+    margin-bottom: 15px;
+    margin-top: 35px;
+}
+    .goods{
+        margin-top: 20px;
+          ul {
+    margin: 0 10px 300px 12px;
+    li {
+     display: inline-block;
+      width: 190px;
+      background-color: snow;
+      box-shadow: 0px 0px 5px 0px #aaa;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      margin-right: 5px;
+      overflow: auto;
+
+      img {
+        width: 190px;
+        height: 100%;
+        border-radius: 10px 10px 0 0;
+      }
+      span {
+        display: inline-block;
+        line-height: 35px;
+        height: 35px;
+        text-align: center;
+        width: 190px;
+        color: black;
+      }
+    }
+    
   }
 
-  img {
-    width: 80px;
-    height: 70px;
-    // background-image: radial-gradient(rgb(255, 244, 242), rgb(255, 255, 255));
+    }
+    .homepage{
+      img{
+        height: 100%;
+        width: 100%;
+        padding: 10px 5px;
+      }
+    }
+    .new{
+      img{
+         height: 100%;
+        width: 100%;
+        padding: 10px 5px;
+      }
+      span{
+        color: gray;
+     
+    margin-left: 10px;
+    font-size: 22px;
+   
+    margin-top: 10px;
+
+      }
+    }
+    .main {
+  input{
+    width: 90%;
+  }
+  .search-btn{
+display: inline-block;
+color: #f1b0aa;
+  }
+  .mainTitle {
+    padding-top: 50px;
+    margin-bottom: 35px;
+    display: inline-block;
+    font-size: 26px;
+    color: #f1b0aa;
+    line-height: 50px;
+  }
+  ul {
+    margin: 0 10px 300px 12px;
+    li {
+     display: inline-block;
+      width: 190px;
+      background-color: snow;
+      box-shadow: 0px 0px 5px 0px #aaa;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      margin-right: 5px;
+      overflow: auto;
+
+      img {
+        width: 190px;
+        height: 100%;
+        border-radius: 10px 10px 0 0;
+      }
+      span {
+        display: inline-block;
+        line-height: 35px;
+        height: 35px;
+        text-align: center;
+        width: 190px;
+        color: black;
+      }
+    }
+    
   }
 }
+.goodslist{
+  height: 200px;
 }
-
+.goodlisttitle{
+  overflow: hidden;
+  text-overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 </style>
-

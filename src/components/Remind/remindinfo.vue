@@ -1,199 +1,130 @@
 <template>
-  <div class="remindinfo">
-    <div>
-      <h2>
-        <img src="../../images/02.png" class="add" />
-        设置时间提醒
-      </h2>
-
+    <div class="remindinfo">
+     <div id="date_time_picker">
  
+    <van-button plain type="primary" @click="showPopFn()">点击选择日期</van-button>
+    <van-field v-model="timeValue" placeholder="选择的日期结果" readonly />
+    <van-popup v-model="show" position="bottom" :style="{ height: '40%' }">
+      <van-datetime-picker v-model="currentDate" type="datetime" @change="changeFn()" @confirm="confirmFn()" @cancel="cancelFn()"  />
+    </van-popup>
  
-<audio loop id="remindmp3">
+  </div>
+  <button @click="close">关闭提醒</button>
+     <audio loop id="remindmp3">
   <source src="../../images/remind.mp3" type="audio/mpeg" >
 
 </audio>
-
     </div>
-    <div class="container">
-      <div class="box fl"></div>
-      <div class="time fl"></div>
-      <div class="clear"></div>
-      <div class="set">
-        <input
-          type="text"
-          name="hour"
-          id="hour"
-          value=""
-          placeholder="时"
-          v-model="h"
-        />
-        <input
-          type="text"
-          name="min"
-          id="min"
-          value=""
-          placeholder="分"
-          v-model="m"
-        />
-        <input
-          type="text"
-          name="sec"
-          id="sec"
-          value=""
-          placeholder="秒"
-          v-model="s"
-        />
-        <button class="fr" type="button" id="btn" @click="btn">设置</button>
-        <div class="clear"></div>
-     <div>
-        <button id="remindstop" @click="remindstop">停止提醒</button>
-     </div>
-      </div>
-    </div>
-  </div>
 </template>
 <script>
-import { MessageBox } from 'mint-ui';
+import mui from '../../lib/mui/js/mui.js' 
 export default {
-  data() {
-    return {
-      h: "",
-      m: "",
-      s: "",
-    };
-  },
-  created() {
-    this.clock();
-  },
+    data() {
+        return {
+                currentDate: new Date(),
+        changeDate: new Date(),
 
-  mounted() {
-    //设置定时器
-    var timer;
-    timer = setInterval(() => {
-      this.clock();
-    }, 500);
-  },
-
-  methods: {
-    clock() {
-      var oBox = document.querySelector(".box");
-      var oTime = document.querySelector(".time");
-
-      var oHour = document.getElementById("hour");
-      var oMin = document.getElementById("min");
-      var oSec = document.getElementById("sec");
-
-      // var h;
-      // var m;
-      // var s;
-
-      var oBtn = document.getElementById("btn");
-
-      var oDate = new Date();
-      var hour = oDate.getHours();
-      var minute = oDate.getMinutes();
-      var second = oDate.getSeconds();
-      if (hour >= 12) {
-        oTime.innerText = "pm";
-        if (hour > 13) {
-          hour = hour - 12;
+              show: false, // 用来显示弹出层
+        timeValue: '',
+        year:'',      //自己要设置的年份
+        month:'',//自己要设置的月
+        day:'',//自己要设置的日期
+        hour:'',//自己要设置的小时
+        minute:"",//自己要设置的分钟
+         shour:'',
+        sminute:"",
         }
-      } else {
-        oTime.innerText = "am";
-      }
-
-      //修改时分秒的格式
-      if (hour < 10) {
-        hour = "0" + hour;
-      }
-      if (minute < 10) {
-        minute = "0" + minute;
-      }
-      if (second < 10) {
-        second = "0" + second;
-      }
-      //修改innertext
-      oBox.innerText = hour + ":" + minute + ":" + second;
-
-      oBtn.onclick = function () {
-        //获取value值
-        this.h = oHour.value;
-        this.m = oMin.value;
-        this.s = oSec.value;
-      };
-      if (hour == this.h && minute == this.m && second == this.s) {
-                //  this.$refs.guideVoice.addEventListener("canplaythrough",()=>{
-                //     this.$refs.guideVoice.play()
-                //  },false)
-                var mp3=document.getElementById('remindmp3')
-                mp3.play()            
-        // document.getElementById("info").innerHTML="<source src='../../images/remind.mp3' type='audio/mpeg'>  "
-        // alert("闹钟响了！")
-// MessageBox('提示', '操作成功');
-        oHour.value = "";
-        oMin.value = "";
-        oSec.value = "";
-      }
     },
-    remindstop(){
-         var mp4=document.getElementById('remindmp3')
-                mp4.pause() 
-    }
+    created() {
+         this.clock()
+console.log(this.shour,this.sminute)
+  
+    },
+    mounted() {
+      var timers
+    timers = setInterval(() => {
+      this.clock();
+    }, 1000)
+
+
   },
-};
+    methods: {
+    showPopFn() {
+        this.show = true;
+      },
+      showPopup() {
+        this.show = true;
+      },
+      changeFn() { // 值变化是触发
+        this.changeDate = this.currentDate // Tue Sep 08 2020 00:00:00 GMT+0800 (中国标准时间)
+
+      },
+     
+      cancelFn(){
+        this.show = true;
+      },
+      // 自己闹钟时间
+      timeFormat(time) { // 时间格式化 2019-09-08
+        this.year = time.getFullYear();
+        this.month = time.getMonth() + 1;
+        this.day = time.getDate();
+         this.hour = time.getHours();
+      this.minute = time.getMinutes();
+  if (this.hour < 10) {
+       this.hour = "0" + this.hour;
+      }
+      if (this.minute < 10) {
+       this.minute = "0" + this.minute;
+      }
+     console.log(this.year + '年' + this.month + '月' + this.day + '日'+this.hour+'时'+this.minute+'分')
+        return this.year + '年' + this.month + '月' + this.day + '日'+this.hour+'时'+this.minute+'分'
+      },
+        confirmFn() { // 确定按钮
+        this.timeValue = this.timeFormat(this.currentDate);
+        this.show = false;
+    
+     	mui.toast('添加成功');
+
+      },
+    
+      clock(){
+        var systemTime=new Date()
+        this.shour=systemTime.getHours()
+       this.sminute=systemTime.getMinutes()
+        if(this.shour<10){
+            this.shour="0"+this.shour;
+        }
+         if (this.sminute < 10) {
+        this.sminute = "0" + this.sminute;
+      }
+
+
+console.log(this.shour,this.sminute)
+         if(this.hour==this.shour&&this.minute==this.sminute){
+            var mp3=document.getElementById('remindmp3')
+             mp3.play() ;           
+            console.log("111")
+            this.timeValue="",
+            this.shour="",
+            this.sminute=""
+        }
+ 
+      },
+        close(){
+    var mp4=document.getElementById('remindmp3')
+                mp4.pause() 
+                console.log('关闭按钮')
+ },
+
+      
+    },
+   
+
+}
 </script>
-<style scoped lang="scss">
-.container {
-  width: 350px;
-  height: 130px;
-  margin: 0 auto;
-  background-color: pink;
-  border: 2px solid #808080;
-  display: block;
-  padding: 50px;
-}
 
-.box {
-  display: inline-block;
-  text-align: center;
-  color: cornflowerblue;
-  font-size: 50px;
-}
-
-.time {
-  display: inline-block;
-  // width: 100px;
-  margin: 0 auto;
-  text-align: center;
-  color: cornflowerblue;
-  font-size: 30px;
-  margin-top: 10px;
-}
-
-.fl {
-  float: left;
-}
-
-.fr {
-  float: right;
-}
-
-.set {
-  width: 260px;
-  color: gray;
-  margin-top: 80px;
-}
-
-.container input {
-  width: 60px;
-  padding: 4px 8px;
-  background-color: rgba(246, 192, 242, 0.7);
-  outline: none;
-}
-
-.container button {
-  margin-top: 6px;
-  background-color: pink;
-  display: inline-block;
-}
+<style lang="scss">
+    .remindinfo{
+        margin-top: 40px;
+    }
 </style>

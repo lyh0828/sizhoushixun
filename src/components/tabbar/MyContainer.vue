@@ -54,10 +54,30 @@
 						<img src="../../images/fuwu.jpg" alt="">
 						<div class="mui-media-body">我的寻物</div></a>
 				</li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4"><a href="#">
-						<img src="../../images/dingdan.jpg" alt="">
-						<div class="mui-media-body">我的订单</div></a>
+
+        
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+                  
+                     <a href="">
+                        	<img src="../../images/dingdan.jpg" alt="">
+						<div class="mui-media-body">我的订单</div>
+                     </a>
+					
+                 
+				</li>	 
+              
+				
+
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+                   
+                             <a href="#">
+                                <img src="../../images/dingdan.jpg" alt="">
+                                <div class="mui-media-body">我的订单</div>
+                            </a>
+                
+                  
 				</li>	
+
 			</ul> 
         </div>
 
@@ -67,10 +87,12 @@
 				<!-- mui-col-xs-4 意思是屏幕窄的时候，12/4=3列 
 					mui-col-sm-3  意思是屏幕大的时候12/3=4列 如果要调成5列，则需要先调成四列，然后改每一列的宽度-->
                 <h4 class="title">我的工具</h4>
+                <router-link to="/fabu">
 				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4"><a href="#">
 						<img src="https://gw.alicdn.com/imgextra/i3/O1CN011LwFHp1KzfsNdSC6i_!!6000000001235-2-tps-76-76.png" alt="">
 						<div class="mui-media-body">官方客服</div></a>
 				</li>
+                </router-link>
 				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4"><a href="#">
 						<img src="https://gw.alicdn.com/imgextra/i1/O1CN01l4vVKs1LiYf4PCH6t_!!6000000001333-2-tps-120-120.png" alt="">
 						<div class="mui-media-body">试用领取</div></a>
@@ -83,6 +105,10 @@
         </div>
     </main>
         <div class="about">
+            <router-link to="/fabu" >
+            <mt-cell title="我的地址"  is-link></mt-cell>
+
+            </router-link>
             <mt-cell title="关于"  is-link></mt-cell>
             <mt-cell title="分享"  is-link></mt-cell>
             <mt-cell title="反馈与建议"  is-link></mt-cell>
