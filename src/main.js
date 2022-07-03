@@ -75,6 +75,8 @@ Vue.component('v-distpicker', VDistpicker);
 import { Popup } from 'mint-ui';
 
 Vue.component(Popup.name, Popup);
+import Chat from 'vue-beautiful-chat'
+Vue.use(Chat)
 //按需引入mint-ui中的组件
 // import { Header } from 'mint-ui';
 //以组件的形式引用给vue

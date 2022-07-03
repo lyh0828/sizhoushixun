@@ -80,13 +80,14 @@ import report from './components/group/report.vue';                            /
 import host from "./components/user/host.vue";
 import login from "./components/user/login.vue";
 import register from './components/user/register.vue';
+import chat from './components/Content/chat.vue';  //聊天
 
 //通过Vue使用路由（手动安装）
 Vue.use(VueRouter)
 //创建路由对象
 const router = new VueRouter({
 
-    mode:'history',
+    // mode:'history',
 
     routes:[//匹配路由规则
        {path:'/',redirect:'/home'},                 //0.默认
@@ -178,7 +179,7 @@ const router = new VueRouter({
        {path:'/home/daylist/perhome/:id',component:perhome},                 //5.1.1宠物日常--详情页--个人主页
        {path:'/home/daylist/dayinfo/:id',component:dayinfo},                 //5.1宠物日常--详情页 
        {path:'/serverinfo',component:ServerInfo},            //6.1服务
-
+       {path:'/chat/:id',component:chat},//聊天
 
        {path:'/petsmart',component:PetSmart},     //6.7宠物智能
        {path:'/petshop/:id',component:PetShop},     //6.7.1宠物智能--宠物店详情
@@ -194,13 +195,14 @@ const router = new VueRouter({
 
        {path:'/sort',component:sort},//7.宠物分类
        {path:'/mypet',component:mypet}, //8.我的宠物
-      //  {
+       
+       {
       //   //这里需要将根目录默认为Home，方便实现用户在保持登录 状态下再次登录时直接跳转至主页面
-      //     path:"/",
-      //     redirect:{
-      //       name:"host"
-      //     }
-      //   },
+          path:"/",
+          redirect:{
+            name:"host"
+          }
+        },
         {
           path: "/host",
           name: "host",
