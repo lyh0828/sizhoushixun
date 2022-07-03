@@ -58,6 +58,7 @@ created() {
         })
         .catch((err) => {});
     },
+ 
     
   },
 };
@@ -83,7 +84,7 @@ color: #f1b0aa;
     line-height: 50px;
   }
   ul {
-    margin: 0 10px 300px -30px;
+    margin: 0 10px 300px 12px;
     li {
      display: inline-block;
       width: 190px;

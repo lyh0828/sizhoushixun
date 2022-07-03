@@ -54,10 +54,18 @@
 						<img src="../../images/fuwu.jpg" alt="">
 						<div class="mui-media-body">我的寻物</div></a>
 				</li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4"><a href="#">
-						<img src="../../images/dingdan.jpg" alt="">
-						<div class="mui-media-body">我的订单</div></a>
-				</li>	
+        
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+                     <router-link  to="/fabu">
+                     <a href="">
+                        	<img src="../../images/dingdan.jpg" alt="">
+						<div class="mui-media-body">我的订单</div>
+                     </a>
+					
+                      </router-link>
+				</li>	 
+              
+				
 			</ul> 
         </div>
 
@@ -83,6 +91,10 @@
         </div>
     </main>
         <div class="about">
+            <router-link to="/fabu" >
+            <mt-cell title="我的地址"  is-link></mt-cell>
+
+            </router-link>
             <mt-cell title="关于"  is-link></mt-cell>
             <mt-cell title="分享"  is-link></mt-cell>
             <mt-cell title="反馈与建议"  is-link></mt-cell>

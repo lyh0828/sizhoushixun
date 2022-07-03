@@ -21,9 +21,12 @@
         
 
      
-        <router-link :to="'/petshopping/shopcart/'+id" class="mui-card-link"
+        <router-link :to="'/petshopping/shopcart/'+id" class="mui-card-link" @click="addshopcart"
           >+加入购物车</router-link
         >
+          <!-- <router-link @click="addtoshopcart(id)" class="mui-card-link"
+          >+加入购物车</router-link
+        > -->
       <!-- <span @click="addshopcart(this.img,this.title,this.price)">+加入购物车</span> -->
       </div>
     </div>
@@ -63,6 +66,16 @@
         <img :src="img3" data-preview-src="" data-preview-group="1" />
       </div>
     </div>
+    <div class="vantcss">
+    <van-goods-action safe-area-inset-bottom='false'>
+  <van-goods-action-icon icon="chat-o" text="客服" color="#ee0a24" />
+  <van-goods-action-icon icon="cart-o" text="购物车" />
+  <van-goods-action-icon icon="star" text="已收藏" color="#ff5000" />
+  <van-goods-action-button type="warning" text="加入购物车" />
+  <van-goods-action-button type="danger" text="立即购买" />
+</van-goods-action>
+    </div>
+
   </div>
 </template>
 
@@ -84,14 +97,16 @@ export default {
     this.getgoodsinfo();
   },
   methods: {
-    // 获取新闻列表数据的方法
+         onClickIcon() {
+      Toast('点击图标');
+    },
+    onClickButton() {
+      Toast('点击按钮');
+    },
+    // 获取详情
     getgoodsinfo() {
       this.$http
-
         .get("products/info/" + '?id='+this.$route.params.id)
-
-        
-
         .then((result) => {
           console.log(result.body)
           this.id=result.body._id;
@@ -104,8 +119,19 @@ export default {
         })
         .catch((err) => {});
     },
+
+//     addtoshopcart(){
+//       localStorage.setItem("shopcart",JSON.stringify(this.$route.params.id))
+// //  this.$http
+// //         .get("/goods/addCart")
+// //         .then((result) => {
+// //           console.log(result.body);
+// //         })
+// //         .catch((err) => {});
+// //     }
     
-  },
+//   },
+  }
 };
 </script>
 
@@ -121,12 +147,16 @@ export default {
   img {
     width: 100%;
     margin-top: -6px;
+    margin-bottom: 10px;
   }
 }
 .price {
   font-size: 20px;
   color: red;
 }
-
+.vantcss{
+  position: fixed;
+  bottom: 30px;
+}
 </style>
 

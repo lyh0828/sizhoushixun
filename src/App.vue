@@ -65,6 +65,11 @@ export default {
         }
         
     },
+    mounted() {
+        // this.$bus.$on('hello',(data)=>{
+        //     console.log('我是school组件,受到了数据'+data)
+        // })
+    },
     methods: {
          reload(){
             this.isRouterAlive=false;
