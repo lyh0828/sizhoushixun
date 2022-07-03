@@ -217,6 +217,7 @@ import mui from '../../lib/mui/js/mui.js';
     margin-top: 40px;
     background-color: snow;
     margin-bottom: 30px;
+    margin-left: 25px;
 
     ul {
         li {
