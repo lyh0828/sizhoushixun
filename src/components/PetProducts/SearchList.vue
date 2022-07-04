@@ -3,24 +3,7 @@
     <div class="headers">
 
       <Header/>
-      <!-- <div class="searchinput">
-    <form
-      action=""
-      onsubmit="return false"
-      style="display: inline-block; background-color: rgb(38, 162, 255)"
-      @keyup.enter="GoToSearchList"
-    >
-      <span>🐕</span>
-      <input
-        type="search"
-        placeholder="搜索您喜欢的产品"
-        v-model="searchValue"
-      />
-      
-      <div class="search-btn" @click="GoToSearchList">搜索</div>
-      
-    </form>
-  </div> -->
+
 
       <ul>
         <li
@@ -105,25 +88,6 @@ export default {
         .then((result) => {
           this.searchList = result.body;
        
-          // this.priceList.push(parseFloat(result.body[0].Price))
-          //  this.priceList.push(parseFloat(result.body[1].Price) )
-          //  this.priceList.push(parseFloat(result.body[2].Price) )
-          //  this.priceList.push(parseFloat(result.body[3].Price) )
-          //  this.priceList.push(parseFloat(result.body[4].Price) )
-          //  this.priceList.push(parseFloat(result.body[5].Price) )
-          //  this.priceList.push(parseFloat(result.body[6].Price))
-          //  this.priceList.push(parseFloat(result.body[7].Price) )
-          //  this.priceList.push(parseFloat(result.body[8].Price) )
-          //  this.priceList.push(parseFloat(result.body[9].Price) )
-          //  this.priceList.push(parseFloat(result.body[10].Price) )
-          //  this.priceList.push(parseFloat(result.body[11].Price) )
-          // for (var i = 0;i <= result.body.length; i++) {
-           
-          //   // console.log(result.body[i].Price)
-          //   this.priceList.push(parseFloat(result.body[i].Price) );
-          
-          // }
-            //console.log(this.priceList)
         
           this.searchList = result.body;        
         })
