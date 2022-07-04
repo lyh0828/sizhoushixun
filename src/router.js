@@ -98,7 +98,7 @@ const router = new VueRouter({
        {path:'/',redirect:'/home'},                 //0.默认
        {path:'/home',component:HomeContainer},      //1.首页
        {path:'/addremind',component:addremind},       //1.1 添加提醒
-       {path:'/remindinfo',component:remindinfo},      //1.1.1 提醒详情页
+       {path:'/remindinfo/:id',component:remindinfo},      //1.1.1 提醒详情页
        {path:'/info',redirect:'/foundinfo' },      //2.发布信息
        {path:'/lostinfo',component:LostInfo},    //2.1 我丢失了的信息登记
        {path:'/foundinfo',component:FoundInfo},       //2.2我捡到了的信息登记

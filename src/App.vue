@@ -46,10 +46,12 @@
 				<span class="mui-tab-label">我的</span>
 			</router-link>
 		</nav>
+      
     </div>
 </template>
 
 <script>
+
 export default {
     name:'App',
     components:{},
@@ -79,7 +81,8 @@ export default {
             this.$nextTick(function(){
                 this.isRouterAlive=true;
             })
-        }
+        },
+     
     },
     
 }
