@@ -5,58 +5,58 @@
               <img src="../../images/02.png" class="add">
            
         <ul>
-            <li>
-                <router-link to="/remindinfo">
-                     <img src="../../images/remind01.png" alt="">
+            <li >
+                <router-link to="/remindinfo" v-model='jianzhijia' @click="jianzhijia">
+                     <img  src="../../images/remind01.png" alt="">
                 </router-link>
             </li>
             <li>
-               <router-link to="/remindinfo">
+               <router-link to="/remindinfo" v-model="xiumao">
                      <img src="../../images/remind02.png" alt="">
                 </router-link>
             </li>
             <li>
-               <router-link to="/remindinfo">
+               <router-link to="/remindinfo" v-model="huanshui">
                      <img src="../../images/remind03.png" alt="">
                 </router-link>
             </li>
             <li>
-               <router-link to="/remindinfo">
+               <router-link to="/remindinfo" v-model="tianliang">
                      <img src="../../images/remind04.png" alt="">
                 </router-link>
             </li>
               <li>
-               <router-link to="/remindinfo">
+               <router-link to="/remindinfo" v-model="qingli">
                      <img src="../../images/remind05.png" alt="">
                 </router-link>
             </li>
             <li>
-                <router-link to="/remindinfo">
+                <router-link to="/remindinfo" v-model="yimiao">
                      <img src="../../images/remind06.png" alt="">
                 </router-link>
             </li>
             <li>
-               <router-link to="/remindinfo">
+               <router-link to="/remindinfo" v-model="tijian">
                      <img src="../../images/remind07.png" alt="">
                 </router-link>
             </li>
             <li>
-                <router-link to="/remindinfo">
+                <router-link to="/remindinfo" v-model="maiyao">
                      <img src="../../images/remind08.png" alt="">
                 </router-link>
             </li>
               <li>
-               <router-link to="/remindinfo">
+               <router-link to="/remindinfo" v-model="jueyu">
                      <img src="../../images/remind09.png" alt="">
                 </router-link>
             </li>
             <li>
-                <router-link to="/remindinfo">
+                <router-link to="/remindinfo" v-model="shuaya">
                      <img src="../../images/remind10.png" alt="">
                 </router-link>
             </li>
             <li>
-               <router-link to="/remindinfo">
+               <router-link to="/remindinfo" >
                      <img src="../../images/remind11.png" alt="">
                 </router-link>
             </li>
@@ -90,7 +90,17 @@
 </template>
 <script>
 export default {
-    
+    data() {
+        return {
+            jianzhijia:'剪指甲',
+        }
+    },
+    methods: {
+        jianzhijia(){
+          localStorage.setItem("jianzhijia", JSON.stringify(this.jianzhijia)); //存储到浏览器中
+
+        }
+    },
 }
 </script>
 <style lang="scss" scoped>

@@ -2,7 +2,7 @@
  * @Author: caoYaNan 2419612936@qq.com
  * @Date: 2022-06-15 15:02:28
  * @LastEditors: caoYaNan 2419612936@qq.com
- * @LastEditTime: 2022-06-29 14:41:06
+ * @LastEditTime: 2022-07-03 22:49:27
  * @FilePath: \sizhoushixun\src\router.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -43,7 +43,13 @@ import CatDaily from './components/PetProducts/CatDaily.vue';               //4.
 import CatToy from './components/PetProducts/CatToy.vue';               //4.1宠物用品--猫玩具
 import info from './components/ProductInfo/info.vue';                //4.1.1宠物用品详情
 import shopcart from './components/PetShopping/shopcart.vue';                //4.1.1宠物用品详情
-import order from './components/PetShopping/order.vue';                //4.1.1宠物用品详情
+import Path from './components/PetShopping/Path.vue'
+import order from './components/PetShopping/order.vue';  
+import detail from './components/PetShopping/detail.vue';  
+import myorder from './components/PetShopping/myorder.vue';  
+
+import pathindex from './components/PetShopping/pathindex.vue'              //4.1.1宠物用品详情
+import pathlist from './components/PetShopping/pathlist.vue'
 import daylist from './components/PetDay/DayList.vue';                      //5宠物日常
 import dayinfo from './components/PetDay/DayInfo.vue';                      //5.1宠物日常--详情页
 import perhome from './components/PetDay/PerHone.vue';                      //5.1.1宠物日常--详情页--个人主页
@@ -82,11 +88,14 @@ import host from "./components/user/host.vue";
 import login from "./components/user/login.vue";
 import register from './components/user/register.vue';
 
+import chat from './components/Content/chat.vue';  //聊天
+
+
+import myorderinfo from './components/PetShopping/myorderinfo.vue'
 //通过Vue使用路由（手动安装）
 Vue.use(VueRouter)
 //创建路由对象
 const router = new VueRouter({
-
     // mode:'history',
 
     routes:[//匹配路由规则
@@ -101,6 +110,7 @@ const router = new VueRouter({
        {path:'/petclaimeddetails/:id',component:PetClaimedDetails},       //2.1.1.1 每一个宠物的详细信息     
        {path:'/goodscomments',component:Goodscomments},   //2.1.1.1.1展示留言
        {path:'/addcomments',component:Addcomments},   //2.1.1.1.1进行添加留言
+       {path:'/myorderinfo',component:myorderinfo},   //2.1.1.1.1进行添加留言
 
        {path:'/petlost',component:PetLost},            //2.1.2宠物丢失
     //    {path:'/resiger',component:resiger} ,          //3注册
@@ -152,9 +162,30 @@ const router = new VueRouter({
         { path: '/petproducts/catsnacks', component: CatSnacks },    //4.1宠物用品--猫粮
         { path: '/petproducts/catdaily', component: CatDaily },    //4.1宠物用品--猫日用
         { path: '/petproducts/cattoy', component: CatToy },   //4.1宠物用品--猫玩具
+        { path: '/petshopping/order', component: order },   
      
-        { path: '/petshopping/order/:id', component: order },   //4.1.1宠物用品提交订单
+        { path: '/petshopping/order/:id', component: order },   
+        { path: '/petshopping/detail/:id', component: detail },   //4.1.1宠物用品提交订单
         
+        { path: '/path', component: Path,
+        children:[
+            {
+                path: "/",
+                name: "index",
+                component: pathindex,
+            },
+            {
+                path: "pathlist",
+                name: "pathlist",
+                component: pathlist,
+            },
+            {
+                path: "myorder",
+                name: "myorder",
+                component: myorder,
+            }
+        ] },                 //5宠物日常
+
         { path: '/home/daylist', component: daylist },                 //5宠物日常
         { path: '/home/daylist/dayinfo/:id', component: dayinfo },       //5.1宠物日常--详情页
         { path: '/home/daylist/perhome/:id', component: perhome },       //5.1.1宠物日常--详情页--个人主页
@@ -179,7 +210,7 @@ const router = new VueRouter({
        {path:'/home/daylist/perhome/:id',component:perhome},                 //5.1.1宠物日常--详情页--个人主页
        {path:'/home/daylist/dayinfo/:id',component:dayinfo},                 //5.1宠物日常--详情页 
        {path:'/serverinfo',component:ServerInfo},            //6.1服务
-
+       {path:'/chat/:id',component:chat},//聊天
 
        {path:'/petsmart',component:PetSmart},     //6.7宠物智能
        {path:'/petshop/:id',component:PetShop},     //6.7.1宠物智能--宠物店详情
@@ -223,6 +254,8 @@ const router = new VueRouter({
           component:register
             
         }
+
+        
 
     ],
     linkActiveClass: 'mui-active'

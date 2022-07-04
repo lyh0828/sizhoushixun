@@ -2,7 +2,7 @@
  * @Author: caoYaNan 2419612936@qq.com
  * @Date: 2022-06-17 10:19:48
  * @LastEditors: caoYaNan 2419612936@qq.com
- * @LastEditTime: 2022-06-29 14:56:03
+ * @LastEditTime: 2022-07-03 22:59:28
  * @FilePath: \sizhoushixun\src\components\PetDay\DayList.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -63,6 +63,7 @@ export default {
     margin-top: 40px;
     margin-bottom: 50px;
     ul {
+        margin-left: 12px;
         li {
             list-style: none;
         }
@@ -126,6 +127,7 @@ export default {
             margin: 0 10px 0px -30px;
             background-color: #FCF5F0;
             overflow:hidden;
+            margin-left: 12px;
             li {
                 float: left;
                 width: 190px;

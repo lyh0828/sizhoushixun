@@ -41,7 +41,7 @@ Vue.component(Backtop);
  //设置API请求的根路径
 
  //Vue.http.options.root="http://localhost:4000/"
- //Vue.http.options.root="http://localhost:8000/"
+//  Vue.http.options.root="http://localhost:8000/"
 
  Vue.http.options.root="http://36.133.47.7:4000/"
 
@@ -55,11 +55,19 @@ import './css/sass/index.scss';
 //mui的导入
 
 
-
-
-
 import './lib/mui/css/icons-extra.css';
 import './lib/mui/css/mui.css';
+
+// 导入vant
+import Vant from 'vant'; 
+import 'vant/lib/index.css';
+Vue.use(Vant)
+// 引入地图组件
+import BaiduMap from 'vue-baidu-map'
+Vue.use(BaiduMap, {
+  // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
+  ak: 'iR8dSw5MMixdYGoXYlf84pjeizKNkIwF'
+})
 
 
 import echarts from 'echarts'
@@ -75,15 +83,21 @@ Vue.component('v-distpicker', VDistpicker);
 import { Popup } from 'mint-ui';
 
 Vue.component(Popup.name, Popup);
+import Chat from 'vue-beautiful-chat'
+Vue.use(Chat)
 //按需引入mint-ui中的组件
 // import { Header } from 'mint-ui';
 //以组件的形式引用给vue
 // Vue.component(Header.name,Header)
 
+
 // 创建vue实例
-const vm = new Vue({
+new Vue({
     el:'#app',
     render: c=>c(app),
     // 挂载路由
-    router
+    router,
+    beforeCreate(){
+        Vue.prototype.$bus=this //安装全局事件总线
+    }
 }) 
