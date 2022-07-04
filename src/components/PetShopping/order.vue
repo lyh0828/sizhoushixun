@@ -10,7 +10,7 @@
           class="topay"
           v-model="choiceaddressinfo"
           >选择地址
-         <!-- 选择好的信息填充位置 -->
+          <!-- 选择好的信息填充位置 -->
           <ul>
             <li>
               <span
@@ -34,11 +34,23 @@
           :style="{ height: '70%' }"
         >
           <ul class="userinfolist">
-            <li v-for="item in addressList" :key="item.id"  @click="useaddress(item._id)" style="margin-top:40px;margin-left:20px;border-bottom:1px solid lightgray;padding-bottom:10px;">
+            <li
+              v-for="item in addressList"
+              :key="item.id"
+              @click="useaddress(item._id)"
+              style="
+                margin-top: 40px;
+                margin-left: 20px;
+                border-bottom: 1px solid lightgray;
+                padding-bottom: 10px;
+              "
+            >
               <van-icon name="https://b.yzcdn.cn/vant/icon-demo-1126.png" />
               <div>
-                <span class="name" style="font-size:20px;">{{ item.name }}</span>
-                <span class="tel" style="color:gray;">{{ item.tel }}</span>
+                <span class="name" style="font-size: 20px">{{
+                  item.name
+                }}</span>
+                <span class="tel" style="color: gray">{{ item.tel }}</span>
               </div>
               <div>
                 <span class="active" v-if="item.isDefault == 1">[默认]</span>
@@ -47,7 +59,6 @@
                   }}{{ item.addressDetail }}</span
                 >
               </div>
-            
             </li>
           </ul>
 
@@ -55,7 +66,6 @@
         </van-popup>
         <!-- </div> -->
         <!-- 添加地址 -->
-
       </div>
       <!-- 支付方式 -->
       <div class="payment">
@@ -78,7 +88,6 @@
         </div>
       </div>
 
-   
       <!-- 商品信息部分 -->
       <div class="goods">
         <ul>
@@ -96,15 +105,14 @@
           </li>
         </ul>
       </div>
-      <h4 style="margin-left:10px;">备注</h4>
-         <div class="mui-input-row" style="margin: 10px 5px">
-            <textarea
-              id="textarea"
-              rows="5"
-              placeholder="选填，请先和商家协商一致，付款后商家可见"
-            ></textarea>
-          </div>
-
+      <h4 style="margin-left: 10px">备注</h4>
+      <div class="mui-input-row" style="margin: 10px 5px">
+        <textarea
+          id="textarea"
+          rows="5"
+          placeholder="选填，请先和商家协商一致，付款后商家可见"
+        ></textarea>
+      </div>
     </section>
     <!-- 底部 提交订单 -->
     <footer>
@@ -116,7 +124,6 @@
         <em>￥{{ sum }}</em>
       </div>
 
-      <!-- <div class="topay">提交订单</div> -->
       <van-cell is-link @click="showPopup" class="topay">提交订单</van-cell>
       <van-popup
         id="vanpopup"
@@ -140,7 +147,6 @@
         <button class="paymentok" @click="paymentok">确认付款</button>
       </van-popup>
     </footer>
-    
   </div>
 </template>
 <script>
@@ -153,7 +159,7 @@ export default {
 
   data() {
     return {
-      addaddress:false,
+      addaddress: false,
       choiceaddressinfo: "", //收货信息位置
       addressList: [],
       showinfo: false,
@@ -165,7 +171,7 @@ export default {
       errorInfo: "",
       showKeyboard: true,
       show: false,
-    
+
       name: "",
       tel: "",
       province: "",
@@ -177,10 +183,9 @@ export default {
       title: "",
       price: "",
       img: "",
-     
+
       sheetVisible: false,
       actions: [],
-    
     };
   },
   // meta: {
@@ -271,7 +276,7 @@ export default {
       // this.$router.push({
       //   name: "pathlist",
       // });
-      this.addaddress=true;
+      this.addaddress = true;
     },
     // 点击使用地址的事件
     useaddress(id) {
@@ -299,19 +304,19 @@ export default {
           this.addressList = result.body;
         })
         .catch((err) => {});
-         this.showinfo = false;
+      this.showinfo = false;
     },
-// 底部 提交订单按钮事件
+    // 底部 提交订单按钮事件
     showPopup() {
       this.show = true;
     },
-  //  点击确认付款的事件
+    //  点击确认付款的事件
     paymentok() {
       // this.showmima = !this.showmima;
       // this.show2 = !this.show2;
 
       Toast("付款成功");
-        this.show = false;
+      this.show = false;
     },
 
     showPop() {
@@ -599,18 +604,17 @@ span.mui-icon {
 }
 
 // 地址弹出框
-.path{
-.useinfolist{
-  padding: 20px;
-  .userinfo{
-  background-color: red;
-  padding: 20px;
-  border-bottom: 1px solid lightgray;
+.path {
+  .useinfolist {
+    padding: 20px;
+    .userinfo {
+      background-color: red;
+      padding: 20px;
+      border-bottom: 1px solid lightgray;
+    }
+  }
+  .active {
+    color: red;
+  }
 }
-}
-.active{
-  color: red;
-}
-}
-
 </style>

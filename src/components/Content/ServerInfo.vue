@@ -10,14 +10,17 @@
           <img src="../../images/fw1.png" />
         </div>
         <div class="dialog">
-          <el-button type="text" @click="dialogVisible = true"><img class="fw2" src="../../images/fw2.png" /></el-button>
+          <router-link :to="'/chat/'+item._id">
+            <img class="fw2" src="../../images/fw2.png" />
+          </router-link>
+          <!-- <el-button type="text" @click="dialogVisible = true"><img class="fw2" src="../../images/fw2.png" /></el-button>
           <el-dialog title="请输入您的问题" :visible.sync="dialogVisible" width="100%" :before-close="handleClose">
             <span>请问一个月大的猫不吃东西怎么办？才断奶没几天，朋友那儿抱的，买了脱脂羊奶也不喝，猫粮也不吃，喂它也不吃，怎么办？在线求助！</span>
             <span slot="footer" class="dialog-footer">
               <el-button @click="dialogVisible = false">取 消</el-button>
               <el-button type="primary" @click="dialogVisible = false" >确 定</el-button >
             </span>
-          </el-dialog>
+          </el-dialog> -->
         </div>
       </div>
       <div class="pingjia">
@@ -50,13 +53,13 @@ export default {
     this.getserverlist();
   },
   methods: {
-    handleClose(done) {
-      this.$confirm("确认关闭？")
-        .then((_) => {
-          done();
-        })
-        .catch((_) => {});
-    },
+    // handleClose(done) {
+    //   this.$confirm("确认关闭？")
+    //     .then((_) => {
+    //       done();
+    //     })
+    //     .catch((_) => {});
+    // },
     //获取社区论坛信息的方法
     getserverlist() {
       this.$http.get("serverinfos").then((result) => {

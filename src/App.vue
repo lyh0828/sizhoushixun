@@ -23,9 +23,6 @@
                     </button>
                 </div>
         </header>
-
-        <!-- <mt-header fixed title="爱宠之家平台"></mt-header> -->
-        
         <!-- 中间内容 -->
         <transition mode="out-in">
             <router-view v-if="isRouterAlive"></router-view>
@@ -46,10 +43,16 @@
 				<span class="mui-tab-label">我的</span>
 			</router-link>
 		</nav>
+         <audio loop id="remindmp3">
+  <source src="./images/remind.mp3" type="audio/mpeg" >
+
+</audio>
+      
     </div>
 </template>
 
 <script>
+
 export default {
     name:'App',
     components:{},
@@ -60,11 +63,14 @@ export default {
     },
   data() {
         return {
+     
+
             isRouterAlive:true
 
         }
         
     },
+  
     mounted() {
         // this.$bus.$on('hello',(data)=>{
         //     console.log('我是school组件,受到了数据'+data)
@@ -76,7 +82,8 @@ export default {
             this.$nextTick(function(){
                 this.isRouterAlive=true;
             })
-        }
+        },
+     
     },
     
 }

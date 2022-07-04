@@ -1,96 +1,47 @@
 <template>
     <div class="addremind">
-       
+       <h3 style="margin:20px auto;">添加提醒</h3>
         
-              <img src="../../images/02.png" class="add">
+              <!-- <img src="../../images/02.png" class="add"> -->
            
         <ul>
-            <li>
-                <router-link to="/remindinfo">
-                     <img src="../../images/remind01.png" alt="">
+            
+            <li v-for="item in remindList" :key="item.id">
+              
+                <router-link :to="'/remindinfo/'+item._id">
+                     <img  :src="item.img" alt="" class="remindimg">
+                     <span class="remindname">{{item.name}}</span>
                 </router-link>
+              
             </li>
-            <li>
-               <router-link to="/remindinfo">
-                     <img src="../../images/remind02.png" alt="">
-                </router-link>
-            </li>
-            <li>
-               <router-link to="/remindinfo">
-                     <img src="../../images/remind03.png" alt="">
-                </router-link>
-            </li>
-            <li>
-               <router-link to="/remindinfo">
-                     <img src="../../images/remind04.png" alt="">
-                </router-link>
-            </li>
-              <li>
-               <router-link to="/remindinfo">
-                     <img src="../../images/remind05.png" alt="">
-                </router-link>
-            </li>
-            <li>
-                <router-link to="/remindinfo">
-                     <img src="../../images/remind06.png" alt="">
-                </router-link>
-            </li>
-            <li>
-               <router-link to="/remindinfo">
-                     <img src="../../images/remind07.png" alt="">
-                </router-link>
-            </li>
-            <li>
-                <router-link to="/remindinfo">
-                     <img src="../../images/remind08.png" alt="">
-                </router-link>
-            </li>
-              <li>
-               <router-link to="/remindinfo">
-                     <img src="../../images/remind09.png" alt="">
-                </router-link>
-            </li>
-            <li>
-                <router-link to="/remindinfo">
-                     <img src="../../images/remind10.png" alt="">
-                </router-link>
-            </li>
-            <li>
-               <router-link to="/remindinfo">
-                     <img src="../../images/remind11.png" alt="">
-                </router-link>
-            </li>
-            <li>
-               <router-link to="/remindinfo">
-                     <img src="../../images/remind12.png" alt="">
-                </router-link>
-            </li>
-              <li>
-               <router-link to="/remindinfo">
-                     <img src="../../images/remind13.png" alt="">
-                </router-link>
-            </li>
-            <li>
-                <router-link to="/remindinfo">
-                     <img src="../../images/remind14.png" alt="">
-                </router-link>
-            </li>
-            <li>
-               <router-link to="/remindinfo">
-                     <img src="../../images/remind15.png" alt="">
-                </router-link>
-            </li>
-            <li>
-               <router-link to="/remindinfo">
-                     <img src="../../images/remind16.png" alt="">
-                </router-link>
-            </li>
+              
+         
+      
         </ul>
     </div>
 </template>
 <script>
 export default {
-    
+    data() {
+        return {
+         remindList:[],
+        }
+    },
+    created() {
+        this.addremind()
+    },
+    methods: {
+           addremind() {
+      this.$http
+        .get("addremind")
+        .then((result) => {
+          console.log(result.body);
+
+          this.remindList = result.body;
+        })
+        .catch((err) => {});
+    },
+    },
 }
 </script>
 <style lang="scss" scoped>
@@ -98,7 +49,7 @@ export default {
         margin-top:45px;
         height: 660px;
         background-color: rgb(252, 245, 229);
-        background-image: url('../../images/remindback.png');
+        // background-image: url('../../images/remindback.png');
         .add{
             display: inline-block;
             width: 50px;
@@ -117,10 +68,21 @@ export default {
         }
         li{
             display: inline-block;
-            padding: 4px;
+            padding: 6px;
+            width: 103px;
         }
         img{
             width: 90px;
         }
     }
+    .remindimg{
+        border-radius: 50%;
+        background-color: rgb(251, 221, 194);
+        // display: inline-block;
+    }
+.remindname{
+    display: block;
+    padding: 0 20px;
+}
+    
 </style>

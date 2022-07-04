@@ -87,6 +87,10 @@ import report from './components/group/report.vue';                            /
 import host from "./components/user/host.vue";
 import login from "./components/user/login.vue";
 import register from './components/user/register.vue';
+
+import chat from './components/Content/chat.vue';  //聊天
+
+
 import myorderinfo from './components/PetShopping/myorderinfo.vue'
 //通过Vue使用路由（手动安装）
 Vue.use(VueRouter)
@@ -98,7 +102,7 @@ const router = new VueRouter({
        {path:'/',redirect:'/home'},                 //0.默认
        {path:'/home',component:HomeContainer},      //1.首页
        {path:'/addremind',component:addremind},       //1.1 添加提醒
-       {path:'/remindinfo',component:remindinfo},      //1.1.1 提醒详情页
+       {path:'/remindinfo/:id',component:remindinfo},      //1.1.1 提醒详情页
        {path:'/info',redirect:'/foundinfo' },      //2.发布信息
        {path:'/lostinfo',component:LostInfo},    //2.1 我丢失了的信息登记
        {path:'/foundinfo',component:FoundInfo},       //2.2我捡到了的信息登记
@@ -206,7 +210,7 @@ const router = new VueRouter({
        {path:'/home/daylist/perhome/:id',component:perhome},                 //5.1.1宠物日常--详情页--个人主页
        {path:'/home/daylist/dayinfo/:id',component:dayinfo},                 //5.1宠物日常--详情页 
        {path:'/serverinfo',component:ServerInfo},            //6.1服务
-
+       {path:'/chat/:id',component:chat},//聊天
 
        {path:'/petsmart',component:PetSmart},     //6.7宠物智能
        {path:'/petshop/:id',component:PetShop},     //6.7.1宠物智能--宠物店详情
