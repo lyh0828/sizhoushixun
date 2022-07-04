@@ -164,8 +164,7 @@
               <!-- 百度地图 -->
                 <baidu-map
                   class="map bm-view"
-                  @ready="handler"
-               
+                  @ready="handler"            
                   :center="center"
                   :zoom="15"
                   :map-click="false"
@@ -215,9 +214,7 @@
           </van-card>
         </div>
       </van-tab>
-    
-      	
-    </van-tabs>
+      </van-tabs>
   </div>
 </template>
 <script>
@@ -234,32 +231,17 @@ export default {
     };
   },
   methods: {
-    // handler ({BMap, map}) {
-    //   console.log(BMap, map)
-    //   this.center.lng = 116.404
-    //   this.center.lat = 39.915
-    //   this.zoom = 15
-    // },
      handler: function({ BMap, map }) {
-
+      // var map=new BMap.Map("container")
       map.enableScrollWheelZoom(true); //开启滚轮缩放
-
       // map.centerAndZoom('青岛市', 13)
-
       const hide = alert("是否允许进行定位", 0);
-
       const _this = this;
-
       const geolocation = new BMap.Geolocation();
-
       geolocation.getCurrentPosition(
-
         function(r) {
-
           setTimeout(hide, 1000);
-
           console.log(r);
-
           _this.center = { lng: r.longitude, lat: r.latitude }; // 设置center属性值
 
           // _this.autoLocationPoint = { lng: r.longitude, lat: r.latitude }        // 自定义覆盖物
@@ -307,7 +289,7 @@ getCurlocation() { // 获取浏览器当前定位
       console.log(e.point);
 
       console.log(this.position);
-
+// 创建地理编码实例
       const gc = new this.BMap.Geocoder();
 
       gc.getLocation(e.point, function(rs) {
