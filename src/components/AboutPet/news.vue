@@ -9,12 +9,11 @@
                 <div class="mui-media-body">
                  <div class="title">{{item.title}}</div> 
                   <p class='mui-ellipsis'>
-                                    <span>事件地点:{{item.address}}</span>
-                                
+                                    <span class="t">事件地点<span  class="t1">{{item.address}}</span></span>
                                     <br>
-                                    <span >时间:{{item.time }}</span>
+                                    <span class="t">时间<span  class="t1">{{item.time }}</span></span>
                                     <br>
-                                    <span >点赞{{item.click}}</span>
+                                    <span class="t">点赞<span  class="t1">{{item.click}}</span></span>
                                 </p>
                 </div>
               </router-link>
@@ -131,6 +130,11 @@ margin-bottom:10px;
          white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+}
+.t1{
+
+margin-left:10px;
+
 }
 
 </style>

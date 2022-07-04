@@ -152,12 +152,8 @@ export default {
                                 element.src="../../images/s.png";
                             }
                         },
-         getPetInfo2(){
-            this.$http.get("http://36.138.183.223:3000/pinglun").then(result=>{
-                console.log(result.body)
-                 this.pinglunlist=result.body
-            })
-        },
+
+        //从后台获取宠友动态详情信息
         getPetInfo(){
             this.$http.get("http://36.138.183.223:3000/petfriendinfo/show?id="+this.$route.params.id).then(result=>{
                 console.log(result.body)
@@ -175,6 +171,14 @@ export default {
 
             })
         },
+        //从后台获取自己评论的信息
+         getPetInfo2(){
+            this.$http.get("http://36.138.183.223:3000/pinglun").then(result=>{
+                console.log(result.body)
+                 this.pinglunlist=result.body
+            })
+        },
+        //从后台获取别人评论的信息
          getPetInfo3(){
             this.$http.get("http://36.138.183.223:3000/pinglun2").then(result=>{
                 console.log(result.body)
@@ -182,7 +186,7 @@ export default {
             })
         },
 
-        //点发布评论
+        //点发布评论---增加评论(当前用户的评论)
         addInfo(){
             var btnArray = ['否', '是'];
             mui.confirm('添加这条信息，确认？', '添加', btnArray, (e)=> {
@@ -205,6 +209,7 @@ export default {
         },'div')
 
 				},
+        //删除自己发布的评论
         del(id){
 				var btnArray = ['否', '是'];
 				mui.confirm('删除这条信息，确认？', '删除', btnArray, (e)=> {
