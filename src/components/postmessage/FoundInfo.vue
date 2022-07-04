@@ -143,24 +143,18 @@ export default {
       console.log(e.target.files[0].name);
       // 判断是不是规定格式
       // let name  =  e.target.files[0].name
-
       // 获取到第一张图片
       let file = e.target.files[0]
-
       // 创建文件读取对象
       var reader = new FileReader()
       var that = this 
-
       //  将文件读取为DataURL
       reader.readAsDataURL(file)
-
       // 读取成功调用方法
       reader.onload = e => {
         console.log('读取成功');
-
         // e.target.result 获取 读取成功后的  文件DataURL
         that.imageUrl = e.target.result
-
         // 如果要将图片上传服务器，就在这里调用后台方法
       }
 
