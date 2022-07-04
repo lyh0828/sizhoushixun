@@ -1,5 +1,6 @@
 <template>
     <div class="content">
+        <!-- 父组件 -->
         <cmt-box  @func='getGoodsComments'></cmt-box>
         <ul class='list-group'>
 				 <li class='list-group-item' v-for='item in list' :key="item.id">
@@ -16,12 +17,10 @@
                     </p>
 				 </li>
 		</ul>
-     
     </div>
 </template>
-
 <script>
-import icomponent from './Addcomments.vue';
+import icomponent from './Addcomments.vue'; //引入子组件
 export default {
     data(){
         return{
@@ -38,10 +37,8 @@ export default {
                     this.list=result.body
             })
         },
-        getGoodsComments( data1,data2,data3){
-
+        getGoodsComments( data1,data2,data3){//父组件获取到的子组件的数据
             this.list.unshift({species:data1,details:data2,found_time:data3})
-    
         }
         
     },
