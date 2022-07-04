@@ -95,16 +95,16 @@ export default {
             this.$http.get("petclamiedinfo/show?id="+this.$route.params.id).then(result=>{
                 console.log(result.body)
                 // if(result.body.status===0){
-                     this.id=result.body._id
-                      this.details=result.body.details
-                       this.found_address=result.body.found_address
-                        this.found_time=result.body.found_time
-                         this.gender=result.body.gender
-                          this.img=result.body.img
-                           this.species=result.body.species
-                            this.tel=result.body.tel
-                             this.weixin=result.body.weixin
-                               this.title=result.body.title
+                  this.id=result.body._id
+                  this.details=result.body.details
+                  this.found_address=result.body.found_address
+                  this.found_time=result.body.found_time
+                  this.gender=result.body.gender
+                  this.img=result.body.img
+                  this.species=result.body.species
+                  this.tel=result.body.tel
+                  this.weixin=result.body.weixin
+                  this.title=result.body.title
             })
         },
       copy() {

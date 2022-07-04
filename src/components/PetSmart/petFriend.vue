@@ -350,6 +350,7 @@ hr{
     #i{
         font-size:20px;
         // color:red;
+        color:#4c82d9;
         position: relative;
         top:-60px;
         left:350px;
@@ -357,8 +358,8 @@ hr{
     #del{
         position: relative;
         top:-10px;
-        left:320px;
-
+        left:323px;
+        color:red;
     }
     #mt{
         position: relative;

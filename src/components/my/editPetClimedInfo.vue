@@ -185,10 +185,10 @@ export default {
             })
         },
 
-
+//修改页面的发布按钮
        addInfo(){
 					this.$http.post('petclamiedinfo/edit',{
- id:this.id,
+                    id:this.id,
 					title:this.title,
 					species:this.species,
 					gender:this.gender,
@@ -198,14 +198,10 @@ export default {
                     img:this.imageUrl,
                     tel:this.tel,
                     weixin:this.weixin
-
-				 }).then(res=>{
-
 				 },{emulateJSON:true}).then(res=>{
 
                         this.reload()
 			
-					
 					// this.list=res.body
 				   })
 				}

@@ -45,7 +45,7 @@ export default {
         }
         
     },
-components:{
+    components:{
 				'cmt-box':icomponent
 			},
     filters:{
