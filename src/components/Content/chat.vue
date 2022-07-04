@@ -272,7 +272,6 @@
   .main {
     width: 100%;
     margin-top: 40px;
-    // height: 100vh;
     background: linear-gradient(
         180deg,
         rgba(149, 179, 212, 1) 0%,
