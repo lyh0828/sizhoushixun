@@ -2,7 +2,7 @@
  * @Author: caoYaNan 2419612936@qq.com
  * @Date: 2022-06-15 15:02:28
  * @LastEditors: caoYaNan 2419612936@qq.com
- * @LastEditTime: 2022-06-29 14:41:06
+ * @LastEditTime: 2022-07-03 22:49:27
  * @FilePath: \sizhoushixun\src\router.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -96,7 +96,6 @@ import myorderinfo from './components/PetShopping/myorderinfo.vue'
 Vue.use(VueRouter)
 //创建路由对象
 const router = new VueRouter({
-
     // mode:'history',
 
     routes:[//匹配路由规则

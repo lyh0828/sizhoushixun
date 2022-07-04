@@ -188,7 +188,7 @@ export default {
             img {
                 float: left;
                 height: 85px;
-                margin-left: -15px;
+                margin-left: 4px;
                 border-radius: 10px;
             }
 
