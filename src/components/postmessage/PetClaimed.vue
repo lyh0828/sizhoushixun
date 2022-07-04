@@ -22,14 +22,33 @@
             <a  class="search-btn" @click="qita">其他宠物 </a>
        </div>
        <div class="switch">
-            <p class="switch-tip">是否隐藏已被认领的宠物</p>
-            <mt-switch v-model="value"></mt-switch>
+            <p class="switch-tip">是否只显示已被认领的宠物</p>
+            <mt-switch v-model="value" @change="turn"></mt-switch>
        </div>
         <div class="container">
 			<div>
 				<h4 class="title">宠物认领</h4>  
                 <ul class="mui-table-view mui-grid-view ">
-					<li class="mui-table-view-cell mui-media mui-col-xs-6" v-for="item in search(keywords)" :key="item._id">
+                  <li class="mui-table-view-cell mui-media mui-col-xs-6" >
+		                
+		                    <img class="mui-media-object"  src="https://img1.baidu.com/it/u=2766854106,3610915481&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1656349200&t=809d0dc958e364385c595cc4bc3">
+                    
+                            <div class="info">
+                                <div >
+                                   <p class="title">捡到了狗</p> 
+                                </div>
+                                <div class="time_sex">
+                                    <div class="sex-btn">
+                                        <p class='sex'>宠物性别:母</p>
+                                             <a  class="search-btn" >已认领</a>
+                                    </div>
+                                    <p class='time'>时间:2022/6/30</p>
+                                    <p class='address'>捡到地点:路上</p>
+                                </div>
+                            </div>
+                       
+                    </li>
+					<li   v-show="isShow"   class="mui-table-view-cell mui-media mui-col-xs-6" v-for="item in search(keywords)" :key="item._id">
 		                 <router-link :to="'/petclaimeddetails/'+item._id">
                          
 		                    <img class="mui-media-object" :src="item.img">
@@ -42,7 +61,7 @@
                                     <div class="sex-btn">
                                         <p class='sex'>宠物性别:{{item.gender}}</p>
       
-                                             <a  class="search-btn" >认领中 </a>
+                                             <a  class="search-btn" >认领中</a>
                                        
                                        
                                     </div>
@@ -52,6 +71,7 @@
                             </div>
                         </router-link>
                     </li>
+
 				</ul>
 			</div>
 		</div>
@@ -63,9 +83,11 @@ export default {
     data(){
         return{
             PetInfoList:[],
-            value:true,
+            value:false,
             name:'',
-            keywords:''
+            keywords:'',
+            isShow:'true'
+
         }
     },
     created(){
@@ -105,6 +127,11 @@ export default {
         qita(){
             this.keywords='小乌龟'
         },
+        //
+        turn(checked){
+            console.log(checked)
+            this.isShow=checked;
+        }
       
     },
      filters:{
@@ -116,7 +143,7 @@ export default {
 </script>
 <style  lang="scss" scoped>
 .center{
-      background-color:#f4f4f4;
+      background-color:#efeff4;
 }
 .search{
     position: relative;
@@ -202,7 +229,7 @@ export default {
         margin-left: 20px;
     }
     .mui-table-view{
-        background-color:#F4F4F4;
+        background-color:#efeff4;
         padding-left:15px;
 
         margin-bottom:20px;
@@ -211,10 +238,10 @@ export default {
         // height:1000px;
     }
     .mui-table-view:before {
-         background-color:#F4F4F4;
+         background-color:#efeff4;
     }
     .mui-table-view::after {
-  background-color: #F4F4F4;
+  background-color: #efeff4;
 }
     .mui-table-view-cell.mui-media.mui-col-xs-6{
         // border:1px solid red;
@@ -249,7 +276,7 @@ export default {
                 flex-direction: row;
             }
             .search-btn{
-                margin-left:20px;
+                margin-left:10px;
                 width:75px;
                 height:38px;
                 border-radius: 20px;
