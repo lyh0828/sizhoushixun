@@ -69,7 +69,7 @@
                 // }
             })
         },
-            getnewslist2(){
+   getnewslist2(){
             this.$http.get('lostinfos').then(result=>{
                  console.log(result.body)
                 // if(result.body.status===0){
