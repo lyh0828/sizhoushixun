@@ -22,7 +22,7 @@
             <a  class="search-btn" @click="qita">其他宠物 </a>
        </div>
        <div class="switch">
-            <p class="switch-tip">是否显示已被认领的宠物</p>
+            <p class="switch-tip">只显示正在认领的宠物</p>
             <mt-switch v-model="value" @change="turn"></mt-switch>
        </div>
         <div class="container">
