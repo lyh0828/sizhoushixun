@@ -5,15 +5,10 @@
         <div class="header">
 <span class="headertitle">爱宠之家</span>
 <div class="headerico">
-
   <van-icon name="balance-list-o" size="30" color="#fff" style="margin-top:3px;margin-left:3px;" @click="gotoorder"/>
   <span style="color:#fff;">|</span>
   <van-icon name="location-o" size="30" color="#fff" @click="gotolocation" />
-  
-
-
 </div>
-
 <div class="headerfin">
 <span style="margin:10px 20px;">
     <van-icon name="like"  color="red" /> 
@@ -25,13 +20,8 @@
         </div>
      </div>
 
-        <!-- 导航条 -->
-        <div>
-        
- 
-
-         
-          
+        <!-- 导航条 及各部分内容 -->
+        <div>   
    <div class="navlist">
     <van-tabs >
    <span class="search">
@@ -39,15 +29,12 @@
    <van-icon name="search" size="40" />
             </router-link>
            </span>
-  <van-tab title="首页">
-    
+  <van-tab title="首页">   
                 <div class="goods">
 <ul class="goodslist"  >
         <li v-for="item in GoodsList" :key="item.id">
-          <router-link :to="'/productinfo/'+item._id">
-         
-
-            <img :src="item.Img" />
+          <router-link :to="'/productinfo/'+item._id">         
+           <img :src="item.Img" />
             <span class="goodlisttitle">{{ item.Title }}</span>
             <span style="color: red">￥{{ item.Price }}</span>
             <span style="color: lightgray">销售量:{{ item.Quantity }}</span>
@@ -111,8 +98,7 @@ export default {
         
       GoodsList: [],
           showPopover: false,
-      // 通过 actions 属性来定义菜单选项
-      actions: [{ text: '我的地址' }, { text: '我的订单' }],
+    
     };
   },
 created() {

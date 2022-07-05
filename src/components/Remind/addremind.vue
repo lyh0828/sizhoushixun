@@ -1,22 +1,15 @@
 <template>
     <div class="addremind">
-       <h3 style="margin:20px auto;">添加提醒</h3>
-        
-              <!-- <img src="../../images/02.png" class="add"> -->
-           
-        <ul>
-            
-            <li v-for="item in remindList" :key="item.id">
-              
+       <h3 style="margin:30px; padding-top:20px;">添加提醒</h3>                          
+        <ul>    
+            <li v-for="item in remindList" :key="item.id">             
                 <router-link :to="'/remindinfo/'+item._id">
                      <img  :src="item.img" alt="" class="remindimg">
                      <span class="remindname">{{item.name}}</span>
                 </router-link>
               
             </li>
-              
-         
-      
+                  
         </ul>
     </div>
 </template>
@@ -72,7 +65,8 @@ export default {
             width: 103px;
         }
         img{
-            width: 90px;
+            width: 80px;
+            padding: 7px;
         }
     }
     .remindimg{

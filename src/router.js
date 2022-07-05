@@ -39,7 +39,7 @@ import SearchList from './components/PetProducts/SearchList.vue';     //4.1 搜�
 
 
 import CatSnacks from './components/PetProducts/CatSnacks.vue';               //4.1宠物用品--猫粮
-import CatDaily from './components/PetProducts/CatDaily.vue';               //4.1宠物用品--猫日用
+
 import CatToy from './components/PetProducts/CatToy.vue';               //4.1宠物用品--猫玩具
 import info from './components/ProductInfo/info.vue';                //4.1.1宠物用品详情
 import shopcart from './components/PetShopping/shopcart.vue';                //4.1.1宠物用品详情
@@ -123,7 +123,7 @@ const router = new VueRouter({
         { path: '/petproducts/goods', component: Goods },    //4.宠物用品销售
 
         { path: '/petproducts/catsnacks', component: CatSnacks },    //4.1宠物用品--猫粮
-        { path: '/petproducts/catdaily', component: CatDaily },    //4.1宠物用品--猫日用
+      
         { path: '/petproducts/cattoy', component: CatToy },   //4.1宠物用品--猫玩具
         { path: '/productinfo', component: info },   //4.1.1宠物用品详情
         { path: '/petshopping/shopcart', component: shopcart },   //4.1.1宠物用品详情
@@ -160,7 +160,7 @@ const router = new VueRouter({
        
 
         { path: '/petproducts/catsnacks', component: CatSnacks },    //4.1宠物用品--猫粮
-        { path: '/petproducts/catdaily', component: CatDaily },    //4.1宠物用品--猫日用
+     
         { path: '/petproducts/cattoy', component: CatToy },   //4.1宠物用品--猫玩具
         { path: '/petshopping/order', component: order },   
      

@@ -7,7 +7,8 @@
         <div class="waitpay">
      <div class="waitl">
     <span style="font-size:26px;font-weight:700;">等待买家付款</span>
-    <span style="display:block;color:gray;padding:10px;">剩23小时59分自动关闭</span>
+    <van-count-down :time="time"  format=" HH 时 mm 分 ss 秒" auto-start  style="color:gray;padding:10px;"/>
+    <!-- <span style="display:block;color:gray;padding:10px;">剩23小时59分自动关闭</span> -->
     </div>
     <div class="payaddress">
         <van-icon name="location" color="red" style="margin-top:10px; margin-left:10px; " size='30'/>
@@ -17,7 +18,8 @@
 </div>
 <div class="orderid">
 <span style="margin-left:20px;margin-top:10px;">订单编号：</span>
-<span style="position:absolute; right:10px;">1123455544322</span>
+<input type="text" v-model="orderid" style="border:none; width:70%; text-align:right;">
+<!-- <span style="position:absolute; right:10px;" >{{orderid}}</span> -->
 <div class="jiaoyi">
     <span style="margin-left:20px;">交易快照</span>
     <span style="color:gray; right:10px; position:absolute;">发生交易争议时，可作为判断依据</span>
@@ -222,15 +224,28 @@
 export default {
   data() {
     return {
+      citylocation:'',
       show: false,
       autoLocationPoint: { lng: 0, lat: 0 },
       initLocation: false,
       center: { lng: 0, lat: 0 },
       zoom: 15,
       activeName: "a",
-    };
+      month:'',
+      day:'',
+      hour:'',
+      minutes:"",
+      seconds:"",
+      orderid:'',
+       time: 24 * 60 * 60 * 1000,
+
+};
+  },
+  created() {
+    this.randomNumber()
   },
   methods: {
+    // 百度地图的方法
      handler: function({ BMap, map }) {
       // var map=new BMap.Map("container")
       map.enableScrollWheelZoom(true); //开启滚轮缩放
@@ -242,6 +257,7 @@ export default {
         function(r) {
           setTimeout(hide, 1000);
           console.log(r);
+      //  this.citylocation= r.address.city
           _this.center = { lng: r.longitude, lat: r.latitude }; // 设置center属性值
 
           // _this.autoLocationPoint = { lng: r.longitude, lat: r.latitude }        // 自定义覆盖物
@@ -265,8 +281,8 @@ export default {
       this.map = map;
 
     },
-
-getCurlocation() { // 获取浏览器当前定位
+// 获取浏览器当前定位
+getCurlocation() { 
             if (!this.BMap) return false
             let BMap = this.BMap
             let geolocation = new BMap.Geolocation()
@@ -275,6 +291,7 @@ getCurlocation() { // 获取浏览器当前定位
                 _this.map_center = r.point
                 _this.shop_lng = r.point.lng
                 _this.shop_lat = r.point.lat
+               
             })
         },
 
@@ -305,12 +322,36 @@ getCurlocation() { // 获取浏览器当前定位
       });
 
     },
-
-  
-
     showPopup() {
       this.show = true;
     },
+    randomNumber(){
+      const now =new Date()
+      this.month=now.getMonth()+1;
+      this.day=now.getDate();
+      this.hour=now.getHours();
+      this.minutes=now.getMinutes();
+      this.seconds=now.getSeconds();
+      if(this.hour<10){
+        this.hour?'0'+this.hour:this.hour
+      }
+       if(this.month<10){
+        this.month?'0'+this.month:this.month
+      }
+       if(this.day<10){
+        this.day?'0'+this.day:this.day
+      }
+       if(this.minutes<10){
+        this.minutes?'0'+this.minutes:this.minutes
+      }
+       if(this.seconds<10){
+        this.seconds?'0'+this.seconds:this.seconds
+      }
+      let orderCode=now.getFullYear().toString()+this.month+this.day+this.hour+this.minutes+this.seconds
+    +(Math.round(Math.random()*1000000))
+    this.orderid=orderCode;
+    }
+    
   },
 };
 </script>
@@ -399,7 +440,7 @@ getCurlocation() { // 获取浏览器当前定位
     border-radius: 10px;
 }
 .orderid{
-     height: 85px;
+     height: 128px;
     background-color: #fff;
     border-radius: 10px;
     margin-top: 20px;

@@ -90,11 +90,11 @@
           </router-link>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
-          <router-link to="/petproducts/catdaily">
+          <!-- <router-link to="/petproducts/catdaily"> -->
             <span class="iconfont icon-chongwusheying" style="color:rgb(237,76,165);">
               <span>猫咪日用</span>
             </span>
-          </router-link>
+          <!-- </router-link> -->
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
           <router-link to="/petproducts/cattoy">
