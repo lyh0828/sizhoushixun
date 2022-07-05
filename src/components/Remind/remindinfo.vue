@@ -119,7 +119,6 @@ console.log(this.shour,this.sminute)
         this.shour=systemTime.getHours()
        this.sminute=systemTime.getMinutes()
            this.ssecond = systemTime.getSeconds();
-
 console.log(this.shour,this.sminute)
          if(this.hour==this.shour&&this.minute==this.sminute&&this.ssecond==0){
             var mp3=document.getElementById('remindmp3')
