@@ -22,17 +22,15 @@
             <a  class="search-btn" @click="qita">其他宠物 </a>
        </div>
        <div class="switch">
-            <p class="switch-tip">是否只显示已被认领的宠物</p>
+            <p class="switch-tip">只显示正在认领的宠物</p>
             <mt-switch v-model="value" @change="turn"></mt-switch>
        </div>
         <div class="container">
 			<div>
 				<h4 class="title">宠物认领</h4>  
                 <ul class="mui-table-view mui-grid-view ">
-                  <li class="mui-table-view-cell mui-media mui-col-xs-6" >
-		                
+                    <li  v-show="isShow"   class="mui-table-view-cell mui-media mui-col-xs-6" >
 		                    <img class="mui-media-object"  src="https://img1.baidu.com/it/u=2766854106,3610915481&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1656349200&t=809d0dc958e364385c595cc4bc3">
-                    
                             <div class="info">
                                 <div >
                                    <p class="title">捡到了狗</p> 
@@ -48,9 +46,10 @@
                             </div>
                        
                     </li>
-					<li   v-show="isShow"   class="mui-table-view-cell mui-media mui-col-xs-6" v-for="item in search(keywords)" :key="item._id">
+
+					<li  class="mui-table-view-cell mui-media mui-col-xs-6" v-for="item in search(keywords)" :key="item._id">
+
 		                 <router-link :to="'/petclaimeddetails/'+item._id">
-                         
 		                    <img class="mui-media-object" :src="item.img">
             
                             <div class="info">
@@ -86,7 +85,7 @@ export default {
             value:false,
             name:'',
             keywords:'',
-            isShow:'true'
+            isShow:'false'
 
         }
     },
