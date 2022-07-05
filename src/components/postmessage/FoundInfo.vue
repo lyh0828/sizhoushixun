@@ -7,64 +7,43 @@
             <router-link to="/foundinfo"  >
                  <button  type="button" class="mui-btn mui-active">
 					我捡到了
-			</button>
+			    </button>
             </router-link>
-
            <router-link to="/lostinfo" >
                 <button type="button" class="mui-btn">
                     我丢失了
-            </button>
+                </button>
            </router-link>
         </div>
 
-            <div class="info-messages">
-                <div class="mui-input-row">
+        <div class="info-messages">
+            <div class="mui-input-row">
                 <label>标题</label>
                 <input type="text" class="mui-input-clear" placeholder="请输入" v-model='title' data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
-			    </div>
-                <hr>
-                <!-- <div class="line"></div> -->
-                <div class="mui-input-row">
-                   <label>宠物种类</label>
-                <!-- <select class="species">
-						<option value="cat">猫咪</option>
-						<option value="dog">狗狗</option>
-                        <option value="qita">其他爱宠</option>
-				</select> -->
-                <input type="text" class="mui-input-clear" placeholder="请输入" v-model='species' data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
-
 			</div>
             <hr>
-            <!-- <div class="line"></div> -->
+            <div class="mui-input-row">
+                <label>宠物种类</label>
+                 <input type="text" class="mui-input-clear" placeholder="请输入" v-model='species' data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+			</div>
+            <hr>
             <div class="mui-input-row">
                 <label>宠物性别</label>
                 <div class="sexcontainer">
                      <input class="sex" type="radio" name="sex" value="公"  v-model='gender'>公
                      <input class="sex"  type="radio" name="sex" value="母"  v-model='gender'>母 
                 </div>
-                  
-                 <!-- <select class="species">
-						<option value="cat">公</option>
-						<option value="dog">母</option>
-				</select> -->
 			</div>
             <hr>
-            <!-- <div class="line"></div> -->
             <div class="mui-input-row">
                 <label>捡到的地点</label>
                 <input type="text" class="mui-input-clear" placeholder="请输入" data-input-clear="5" v-model="found_address"><span class="mui-icon mui-icon-clear mui-hidden"></span>
 			</div>
             <hr>
-            <!-- <div class="line"></div> -->
             <div class="mui-input-row">
                 <label>捡到的时间</label>
-                <el-date-picker
-      v-model="found_time"
-      value-format="timestamp"
-      type="datetime"
-      placeholder="选择日期时间"
-     >
-    </el-date-picker>
+                <!-- element时间选择器 -->
+                <el-date-picker v-model="found_time" value-format="timestamp" type="datetime" placeholder="选择日期时间"></el-date-picker>
 			</div>
             <hr>
             <!-- <div class="line"></div> -->
@@ -77,9 +56,11 @@
         <div class="photos">
             <p class="title">请上传图片</p>
             <hr>
+            <!-- 上传图片并显示出来 -->
                 <div class="file">
                     <input type="file" class="update" accept="image/*" @change="change($event)"  ref="updata">
                     <img :src="imageUrl?imageUrl:baseImg" alt="" class="img">
+                    <!-- imageUrl:"" 刚进入页面，空字符串转为布尔值为false，则：src="baseImg"  baseImg为默认的图片，一进页面就展示 -->
                 </div>
         </div>
         <div class="phone">
@@ -128,7 +109,7 @@ export default {
             baseImg:'', //默认的图片
             details:'',
             found_address:'',
-              found_time:'',
+            found_time:'',
             gender:'',
             // img:'',
             species:'',
@@ -136,31 +117,33 @@ export default {
             weixin:'',
             title:'',
         }
-    
+    },
+      created(){
+        this.baseImg=require('../../images/photo.jpg')//进入页面就展示默认的图片
     },
     methods:{
            change(e) {
-      console.log(e.target.files[0].name);
-      // 判断是不是规定格式
-      // let name  =  e.target.files[0].name
-      // 获取到第一张图片
-      let file = e.target.files[0]
-      // 创建文件读取对象
-      var reader = new FileReader()
-      var that = this 
-      //  将文件读取为DataURL
-      reader.readAsDataURL(file)
-      // 读取成功调用方法
-      reader.onload = e => {
-        console.log('读取成功');
-        // e.target.result 获取 读取成功后的  文件DataURL
-        that.imageUrl = e.target.result
-        // 如果要将图片上传服务器，就在这里调用后台方法
-      }
+            console.log(e.target)
+            console.log(e.target.files[0].name);//获取到图片的名字
+            // 获取到第一张图片
+            let file = e.target.files[0]
+            // 创建文件读取对象
+            var reader = new FileReader()
+            var that = this 
+            //  将文件读取为DataURL
+            reader.readAsDataURL(file)
+            // 读取成功调用方法
+            reader.onload = e => {
+                console.log('读取成功');
+                // e.target.result 获取 读取成功后的  文件DataURL
+                that.imageUrl = e.target.result
+                // 如果要将图片上传服务器，就在这里调用后台方法
+            }
 
      },
-        addInfo(){
-					this.$http.post('petclamiedinfo/new',{
+     //点发布按钮，进行添加数据，走post请求
+    addInfo(){
+				this.$http.post('petclamiedinfo/new',{
 					title:this.title,
 					species:this.species,
 					gender:this.gender,
@@ -171,38 +154,18 @@ export default {
                     tel:this.tel,
                     weixin:this.weixin
 				 },{emulateJSON:true}).then(res=>{
-					// if(res.body.status==0)
-					// {
-					// 	window.history.back(-1);
-					// 	alert('成功');
-					// }
-					// else{alert('失败')}
-                        //  this.$router.push("/petclaimed")
 
                         this.reload()
-					
-					// this.list=res.body
+				
 				   })
 				}
-
-    },
-    created(){
-        this.baseImg=require('../../images/photo.jpg')
     }
+  
 
 }
 </script>
 
 <style  lang="scss" scoped>
-
-// .v-enter,.v-leave-to{
-// 				opacity: 0;
-// 				transform: translateX(50px);
-// 			}
-// 			.v-enter-active,.v-leave-active{
-// 				transition: all 0.5s ease;
-// 			}
-
 .info-header{
     margin-right:10px;
     margin-left:15px;

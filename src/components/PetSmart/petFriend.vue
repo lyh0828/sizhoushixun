@@ -5,8 +5,7 @@
                 <a href="#/petsmart"> <img  :src="photo"></a>
                
                 <div class="p2">
-                    <p>{{nichen}}</p>
-                   
+                    <p>{{nichen}}</p>                  
                     <p class="address"> <span id="ia" class="mui-icon mui-icon-location"></span>{{address}}</p>
                 </div>
                 <div class="btn">
@@ -71,8 +70,7 @@
                   <div class="p1">
                         <img  :src="item.photo">
                          <p class="name">{{item.sname2}}</p>
-                  </div>
-                    
+                  </div>   
                     <p class="pl">{{item.pinglun2}}</p>
                      <a class="active" ><span id="i" class="mui-icon-extra mui-icon-extra-heart"></span></a>
                     <mt-button id="mt"  @click.native="sheetVisible = true" class="btn"> 
@@ -80,10 +78,7 @@
                     </mt-button>
                     <mt-actionsheet :actions="actions" v-model="sheetVisible"></mt-actionsheet>
                   <div class="hr"></div>
-
                 </ul>
-
-               
             </div>
        </div>                 
     </div>
@@ -113,6 +108,7 @@ export default {
            sname2:'',
            pinglun2:'',
            pinglunlist2:'',
+
         sheetVisible: false,
         actions: []
 
@@ -136,8 +132,9 @@ export default {
 
     },
     created(){
-        this.getPetInfo2();
+    
         this.getPetInfo();
+        this.getPetInfo2();
         this.getPetInfo3();
 
     },
@@ -155,12 +152,8 @@ export default {
                                 element.src="../../images/s.png";
                             }
                         },
-         getPetInfo2(){
-            this.$http.get("http://36.138.183.223:3000/pinglun").then(result=>{
-                console.log(result.body)
-                 this.pinglunlist=result.body
-            })
-        },
+
+        //从后台获取宠友动态详情信息
         getPetInfo(){
             this.$http.get("http://36.138.183.223:3000/petfriendinfo/show?id="+this.$route.params.id).then(result=>{
                 console.log(result.body)
@@ -178,27 +171,46 @@ export default {
 
             })
         },
+        //从后台获取自己评论的信息
+         getPetInfo2(){
+            this.$http.get("http://36.138.183.223:3000/pinglun").then(result=>{
+                console.log(result.body)
+                 this.pinglunlist=result.body
+            })
+        },
+        //从后台获取别人评论的信息
          getPetInfo3(){
             this.$http.get("http://36.138.183.223:3000/pinglun2").then(result=>{
                 console.log(result.body)
                  this.pinglunlist2=result.body
             })
         },
-        //点发布评论
 
+        //点发布评论---增加评论(当前用户的评论)
         addInfo(){
-					this.$http.post('http://36.138.183.223:3000/pinglun/new',{
+            var btnArray = ['否', '是'];
+            mui.confirm('添加这条信息，确认？', '添加', btnArray, (e)=> {
+            if (e.index == 1) {
+                mui.toast('成功',{ duration:'short', type:'div' })
+                this.$http.post('http://36.138.183.223:3000/pinglun/new',{
                     sname:this.sname,
 				    pinglun:this.pinglun,
 				 },{emulateJSON:true}).then(res=>{
                         // this.reload()
-                //  this.$router.go(0)
-                //    this.$router.push('/petfrienddetails/:id')
+                        // this.$router.go(0)
+                        window.location.reload();
                         
-				   })
+				   });
+                this.reload()
+                
+            } else {
+                    mui.toast('已取消',{ duration:'short', type:'div' })
+            }
+        },'div')
+
 				},
+        //删除自己发布的评论
         del(id){
-               
 				var btnArray = ['否', '是'];
 				mui.confirm('删除这条信息，确认？', '删除', btnArray, (e)=> {
 					if (e.index == 1) {

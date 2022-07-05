@@ -4,6 +4,7 @@
     <el-tab-pane label="宠物店" name="first">
          <div class="center">
             <div class="header">
+              <!-- 轮播图 -->
                  <mt-swipe :auto="2000">
                     <mt-swipe-item>
                       <img src="../../images/h1.webp" alt="">
@@ -120,6 +121,7 @@ export default {
 
     },
     methods: {
+      //获取宠物店信息
     getnewslist(){
             this.$http.get('petsmartinfo').then(result=>{
                  console.log(result.body)
@@ -127,6 +129,7 @@ export default {
                 
             })
         },
+        //获取宠友动态信息
         getnewslist2(){
           this.$http.get('http://36.138.183.223:3000/petfriendinfo').then(result=>{
                  console.log(result.body)

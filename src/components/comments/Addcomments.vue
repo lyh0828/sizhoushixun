@@ -1,5 +1,6 @@
 <template >
 <div class="content">
+    <!-- 子组件 -->
      <a class="i"><span class="mui-icon mui-icon-pengyouquan"></span></a>留言
      <p></p>
     <div class='form-group'>
@@ -29,20 +30,9 @@ export default {
        }
    },
    methods:{
-       
        add(){
-        //    var comment={
-        //        id:Date.now(),
-		// 	    user:this.user,
-		// 		content:this.content,
-        //         time:this.time
-        //    };
-        //    var list=JSON.parse(localStorage.getItem('cmts')||'[]');
-		//    list.unshift(comment);
-		//    localStorage.setItem('cmts',JSON.stringify(list));
-        //    this.$emit('func')
            this.$emit('func',this.user,this.content,this.time)
-        //    window.history.back(-1);
+        //    子组件通过方法把数据传给父组件
        }
    }
 }
