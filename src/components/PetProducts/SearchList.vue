@@ -18,7 +18,7 @@
             <i
               class="iconfont icon-arrow_up_fat"
               :class="item.status == 1 ? 'active' : ''"
-           
+         
             ></i>
             <i
               class="iconfont icon-arrow_down_fat"
@@ -54,12 +54,16 @@ import Header from "../PetProducts/Header.vue";
 export default {
   data() {
     return {
+      sortFlag:true,
+      // page:1,
+      // pageSize:22,
         searchValue: this.$route.query.key || "",
       searchArr: [],
       // searchValue:'',
      Title:"",
       newList:[],
       searchList: [],
+      // 综合，销量，价格的数据
       headerList: {
         currentIndex: 0,
         data: [
@@ -80,24 +84,46 @@ export default {
      this.searchArr = JSON.parse(localStorage.getItem("searchList"));
     this.GetData();
   },
+computed:{
+// orderBy(){
+//   // 知道当前是哪一个对象
+//   let obj=this.headerList.data[this.headerList.currentIndex]
+// // 针对于状态 判断是升序还是降序
+// let val=obj.status=='1'?'1':'-1';
+// return{
+//   [obj.key]:val
+// }
 
+// }
+},
   methods: {
     GetData() {
+      // var param={
+      //   page:this.page,
+      //   pageSize:this.pageSize,
+      //   sort:this.sortFlag?1:-1
+      // }
       this.$http
         .get("products")
         .then((result) => {
+          
           this.searchList = result.body;
        
         
-          this.searchList = result.body;        
+            
         })
         .catch((err) => {});
     },
+//     sortGoods(){
+// this.sortFlag=!this.sortFlag;
+// this.GetData()
+//     },
 
     // 切换综合，销量，价格高亮
     changeTab(index) {
       // console.log(index)
       this.headerList.currentIndex = index;
+
       let item = this.headerList.data[index];
       //  取消所有的状态值
       this.headerList.data.forEach((v, i) => {
@@ -109,6 +135,8 @@ export default {
       if (index == this.headerList.currentIndex) {
         item.status = item.status == 1 ? 2 : 1;
       }
+      this.sortFlag=!this.sortFlag;
+this.page=1;
       // 发送数据请求进行数据排序
       this.GetData();
     },
@@ -234,6 +262,7 @@ section ul {
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 0;
+      margin-bottom: 50px;
   // margin-left: -40px;
 }
 section ul li {
