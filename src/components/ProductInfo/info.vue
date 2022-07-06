@@ -27,7 +27,7 @@
   
       </div>
     </div>
-
+<!-- mui列表UI -->
     <div class="mui-card" style="margin-bottom: 35px">
       <ul class="mui-table-view">
         <li class="mui-table-view-cell">
@@ -56,6 +56,7 @@
         </li>
       </ul>
     </div>
+    <!-- 图片 -->
     <div class="mui-content">
       <div class="mui-content-padded">
         <img :src="img1" data-preview-src="" data-preview-group="1" />

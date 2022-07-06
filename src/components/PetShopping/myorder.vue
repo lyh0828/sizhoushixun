@@ -258,10 +258,10 @@ export default {
         function(r) {
           setTimeout(hide, 1000);
           console.log(r);
-      //  this.citylocation= r.address.city
-          _this.center = { lng: r.longitude, lat: r.latitude }; // 设置center属性值
+      
+          _this.center = { lng: r.longitude, lat: r.latitude }; // 设置center属性值 获取经纬度
 
-          // _this.autoLocationPoint = { lng: r.longitude, lat: r.latitude }        // 自定义覆盖物
+                 // 自定义覆盖物
 
           _this.initLocation = true;
 

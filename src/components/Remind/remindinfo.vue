@@ -115,11 +115,13 @@ console.log(this.shour,this.sminute)
       },
     
       clock(){
+        // 获取当前系统事件
         var systemTime=new Date()
         this.shour=systemTime.getHours()
        this.sminute=systemTime.getMinutes()
            this.ssecond = systemTime.getSeconds();
 console.log(this.shour,this.sminute)
+// 判断语句 系统时间与设定时间相同触发
          if(this.hour==this.shour&&this.minute==this.sminute&&this.ssecond==0){
             var mp3=document.getElementById('remindmp3')
              mp3.play() ;           
@@ -128,10 +130,11 @@ console.log(this.shour,this.sminute)
             this.shour="",
             this.sminute=""
             // this.showdia=true
+            // vant中dialog全局方法
           this.$dialog.alert({
          title: "提醒", //加上标题
          message: this.name+"时间到了", //改变弹出框的内容
-         showCancelButton: true //展示取水按钮
+         showCancelButton: true //展示取消按钮
 })
 .then(() => { //点击确认按钮后的调用
           var mp4=document.getElementById('remindmp3')
@@ -146,11 +149,7 @@ console.log(this.shour,this.sminute)
         }
  
       },
-        close(){
-    var mp4=document.getElementById('remindmp3')
-                mp4.pause() 
-                console.log('关闭按钮')
- },
+      
 
       
     },
