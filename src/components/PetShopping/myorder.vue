@@ -252,6 +252,7 @@ export default {
       // map.centerAndZoom('青岛市', 13)
       const hide = alert("是否允许进行定位", 0);
       const _this = this;
+      console.log(_this)
       const geolocation = new BMap.Geolocation();
       geolocation.getCurrentPosition(
         function(r) {

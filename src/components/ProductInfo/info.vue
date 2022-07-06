@@ -15,19 +15,16 @@
         </div>
       </div>
       <div class="mui-card-footer">
-
-        <a class="mui-card-link">❤推荐</a>
-
-        
-
-     
+<van-cell title="❤推荐" @click="showShare = true" />
+<van-share-sheet
+  v-model="showShare"
+  title="立即分享给好友"
+  :options="options"
+  @select="onSelect"
+/>
         <router-link :to="'/petshopping/shopcart/'+id" class="mui-card-link" @click="addshopcart"
-          >+加入购物车</router-link
-        >
-          <!-- <router-link @click="addtoshopcart(id)" class="mui-card-link"
-          >+加入购物车</router-link
-        > -->
-      <!-- <span @click="addshopcart(this.img,this.title,this.price)">+加入购物车</span> -->
+          >+加入购物车</router-link>
+  
       </div>
     </div>
 
@@ -80,6 +77,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -90,7 +88,15 @@ export default {
       img1: "",
       img2: "",
       img3: "",
-      shopcartList:[]
+      shopcartList:[],
+        showShare: false,
+      options: [
+        { name: '微信', icon: 'wechat' },
+        { name: '微博', icon: 'weibo' },
+        { name: '复制链接', icon: 'link' },
+        { name: '分享海报', icon: 'poster' },
+        { name: '二维码', icon: 'qrcode' },
+      ],
     };
   },
   created() {
@@ -103,7 +109,7 @@ export default {
     onClickButton() {
       Toast('点击按钮');
     },
-    // 获取详情
+    // 获取商品详情
     getgoodsinfo() {
       this.$http
         .get("products/info/" + '?id='+this.$route.params.id)
@@ -119,18 +125,13 @@ export default {
         })
         .catch((err) => {});
     },
+     onSelect(option) {
+      Toast(option.name);
+      this.showShare = false;
+    },
+  
 
-//     addtoshopcart(){
-//       localStorage.setItem("shopcart",JSON.stringify(this.$route.params.id))
-// //  this.$http
-// //         .get("/goods/addCart")
-// //         .then((result) => {
-// //           console.log(result.body);
-// //         })
-// //         .catch((err) => {});
-// //     }
-    
-//   },
+
   }
 };
 </script>
@@ -149,6 +150,10 @@ export default {
     margin-top: -6px;
     margin-bottom: 10px;
   }
+}
+.van-cell {
+  width: 40%;
+  color: rgb(66, 137, 255);
 }
 .price {
   font-size: 20px;

@@ -19,13 +19,13 @@
 
         </div>
      </div>
-
         <!-- 导航条 及各部分内容 -->
         <div>   
    <div class="navlist">
     <van-tabs >
    <span class="search">
  <router-link to="/search">
+ <!-- vant组件 -->
    <van-icon name="search" size="40" />
             </router-link>
            </span>
@@ -48,8 +48,7 @@
  <img src="https://gw.alicdn.com/imgextra/i4/3435601808/O1CN01cSm2LI1PE6qIgrpkK_!!3435601808.jpg_790x10000Q75.jpg_.webp" alt="">
  <img src="https://gw.alicdn.com/imgextra/i4/3435601808/O1CN01AKncvP1PE6qVrZy3n_!!3435601808.jpg_790x10000Q75.jpg_.webp" alt="">
  <img src="https://gw.alicdn.com/imgextra/i3/3435601808/O1CN01ey9zp81PE6qVrXQ3u_!!3435601808.jpg_790x10000Q75.jpg_.webp" alt="">
-      </div>
-     
+      </div>   
   </van-tab>
   <van-tab title="新品">
 
@@ -83,12 +82,8 @@
 
    </div>
         </div>
-
        
-    </div>
-
-    
-   
+    </div> 
 </template>
 <script>
 export default {
@@ -97,7 +92,7 @@ export default {
     return {
         
       GoodsList: [],
-          showPopover: false,
+     showPopover: false,
     
     };
   },
