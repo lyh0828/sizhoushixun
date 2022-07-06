@@ -133,6 +133,7 @@ export default {
         }
       
     },
+    //日期过滤器
      filters:{
         dateFormat:function renderTime(date){
         var dates = new Date(date).toJSON();

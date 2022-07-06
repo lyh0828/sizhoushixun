@@ -2,14 +2,12 @@
     <div class="container">
        <div class="content">
             <div class="container1">
-                    <p class="i"><span class="mui-icon-extra mui-icon-extra-share"></span></p>
-                    
-                    <img  :src="img">
-                    <div class="title">
-                        <p class="t1">{{title}}</p>
-                        <p class="t2">{{danwei}}</p>
-                    </div>
-                    
+                <p class="i"><span class="mui-icon-extra mui-icon-extra-share"></span></p>
+                <img  :src="img">
+                <div class="title">
+                    <p class="t1">{{title}}</p>
+                    <p class="t2">{{danwei}}</p>
+                </div>  
             </div>
             <div class="container2">
                   <p class="p1">服务{{cishu}}次</p>
@@ -45,6 +43,7 @@ export default {
         this.getPetInfo();
     },
     methods:{
+        //每一个宠物店详细信息请求
         getPetInfo(){
             this.$http.get("petsmartinfo/show?id="+this.$route.params.id).then(result=>{
                 console.log(result.body)
