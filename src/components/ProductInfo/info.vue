@@ -22,19 +22,9 @@
   :options="options"
   @select="onSelect"
 />
- 
-
-        
-
-     
         <router-link :to="'/petshopping/shopcart/'+id" class="mui-card-link" @click="addshopcart"
-          >+加入购物车</router-link
-        >
+          >+加入购物车</router-link>
   
-          <!-- <router-link @click="addtoshopcart(id)" class="mui-card-link"
-          >+加入购物车</router-link
-        > -->
-      <!-- <span @click="addshopcart(this.img,this.title,this.price)">+加入购物车</span> -->
       </div>
     </div>
 
@@ -91,8 +81,6 @@
 export default {
   data() {
     return {
-     
-
       id:"",
       title: "",
       price: "",
@@ -113,22 +101,6 @@ export default {
   },
   created() {
     this.getgoodsinfo();
-     //指的是要做分享的页面的url送过去，请求成功才能拿到
-    let url = location.href.split('#')[0];
-    this.$axios({
-       url:'/use/shareurl',//请求微信分享的接口地址
-       method:'post',
-       data:url,
-    }).then(res=>{
-      if(res.data.success){
-        //这些配置参数必填项，后面去调微信的pai是需要传的。
-        this.appId = res.data.appId;
-        this.timestamp = res.data.timestamp;
-        this.noncstr = res.data.noncstr;
-        this.signatureInfo = res.dacta.signatureInfo;
-      }
-    }).catch(err=>{console.log(err)})
-
   },
   methods: {
          onClickIcon() {
@@ -137,7 +109,7 @@ export default {
     onClickButton() {
       Toast('点击按钮');
     },
-    // 获取详情
+    // 获取商品详情
     getgoodsinfo() {
       this.$http
         .get("products/info/" + '?id='+this.$route.params.id)
@@ -157,13 +129,6 @@ export default {
       Toast(option.name);
       this.showShare = false;
     },
-  
-   
-     
-      
-         
-       
- 
   
 
 
