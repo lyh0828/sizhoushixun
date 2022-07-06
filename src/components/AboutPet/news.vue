@@ -58,6 +58,7 @@
 
     },
     methods: {
+  // 获取热点新闻列表数据
     getnewslist(){
             this.$http.get('http://36.138.183.223:3000/petnewsinfo').then(result=>{
                  console.log(result.body)
@@ -68,6 +69,7 @@
                 // }
             })
         },
+  //获取话题新闻列表数据
    getnewslist2(){
             this.$http.get('lostinfos').then(result=>{
                  console.log(result.body)
@@ -83,6 +85,7 @@
         console.log(tab, event);
       }
     },
+    
     filters:{
         dateFormat:function renderTime(date){
         var dates = new Date(date).toJSON();

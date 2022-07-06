@@ -81,6 +81,7 @@
         <div class="photos">
             <p class="title">请上传图片</p>
             <hr>
+            <!-- 上传多张图片相关代码 -->
             <!-- <el-form ref="form" :model="Form" label-width="80px">
              <el-upload class="a" action="students/new" list-type="picture-card"  :auto-upload="true" :limit="4" :before-upload="beforeProductUpload" :on-exceed="handleExceed">
              <i slot="default" class="el-icon-plus"></i> -->
@@ -196,31 +197,24 @@ export default {
     methods: {
          change(e) {
       console.log(e.target.files[0].name);
-      // 判断是不是规定格式
       // let name  =  e.target.files[0].name
-
       // 获取到第一张图片
       let file = e.target.files[0]
-
       // 创建文件读取对象
       var reader = new FileReader()
       var that = this 
-
       //  将文件读取为DataURL
       reader.readAsDataURL(file)
-
       // 读取成功调用方法
       reader.onload = e => {
         console.log('读取成功');
-
         // e.target.result 获取 读取成功后的  文件DataURL
         that.imageUrl = e.target.result
 
-        // 如果要将图片上传服务器，就在这里调用后台方法
       }
 
      },
-       
+       //下面为上传多张图片相关代码---没成功，先注释
     //  handleRemove(file,fileList) {
     //     console.log(file,fileList);
     //   },
@@ -249,6 +243,8 @@ export default {
     //     })
          
     //   },
+
+//点发布按钮，进行添加数据，走post请求
      addInfo(){
         // console.log(this.Form.imageUrl)
         var form = {

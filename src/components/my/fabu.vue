@@ -23,6 +23,7 @@
                             <a class="color"><span class="mui-icon mui-icon-trash" @click="del(item._id)"></span></a> 
                         
                             <span class="kg"></span>
+                            <!-- 修改功能跳转 -->
                             <router-link :to="'/editPetClimedInfo/'+item._id" >
                                 <a><span class="mui-icon mui-icon-compose" ></span></a>
                             </router-link>
@@ -46,7 +47,7 @@ export default {
         this.getnewslist()
     },
     methods:{
-
+// 删除功能
         del(id) {
                 // console.log(this.month)
 				var btnArray = ['否', '是'];
@@ -63,6 +64,7 @@ export default {
 					}
 				},'div')
 			} ,
+        // 获取发布页面数据
         getnewslist(){
             this.$http.get('petclamiedinfo').then(result=>{
                  console.log(result.body)
@@ -72,13 +74,7 @@ export default {
                 //     console.log('数据加载失败')
                 // }
             })
-        },
-        // del(id){
-        //     this.$http.get('petclamiedinfo/delete', {params: {id: id}}).then(function(res){
-		// 				this.newsList=res.body
-		// 			})
-        // },
-
+        }
     },
     
     filters:{
