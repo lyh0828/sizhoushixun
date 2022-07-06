@@ -283,18 +283,18 @@ export default {
 
     },
 // 获取浏览器当前定位
-getCurlocation() { 
-            if (!this.BMap) return false
-            let BMap = this.BMap
-            let geolocation = new BMap.Geolocation()
-            let _this = this
-            geolocation.getCurrentPosition(function(r) {
-                _this.map_center = r.point
-                _this.shop_lng = r.point.lng
-                _this.shop_lat = r.point.lat
+// getCurlocation() { 
+//             if (!this.BMap) return false
+//             let BMap = this.BMap
+//             let geolocation = new BMap.Geolocation()
+//             let _this = this
+//             geolocation.getCurrentPosition(function(r) {
+//                 _this.map_center = r.point
+//                 _this.shop_lng = r.point.lng
+//                 _this.shop_lat = r.point.lat
                
-            })
-        },
+//             })
+//         },
 
     // 拖动结束后
 
