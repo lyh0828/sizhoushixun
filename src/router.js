@@ -260,6 +260,7 @@ const router = new VueRouter({
     ],
     linkActiveClass: 'mui-active'
 })
+// 前置守卫
 router.beforeEach(function(to,from,next) {
     if(to.path === '/host') {
         const token = localStorage.getItem('s')

@@ -2,6 +2,7 @@
   <div class="serveContainer">
     <span></span>
     <!-- <img class="serve-img" src="../../images/fw4.png" alt=""> -->
+    <!-- 循环 -->
     <div class="content" v-for="item in serverList" :key="item._id">
       <div class="avatar">
         <img :src="item.avatar" alt="" />
@@ -60,7 +61,7 @@ export default {
     //     })
     //     .catch((_) => {});
     // },
-    //获取社区论坛信息的方法
+    //获取服务信息的方法
     getserverlist() {
       this.$http.get("serverinfos").then((result) => {
         console.log(result.body);
