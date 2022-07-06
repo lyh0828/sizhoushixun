@@ -111,6 +111,7 @@
     },
     watch: {},
     methods: {
+      // 获取id的方法
          getchat(){
             this.$http.get("serverinfos/chat?id=" + this.$route.params.id).then(result =>{
                 console.log(result.body)
@@ -215,7 +216,7 @@
       clickRobot(val, id) {
         this.sentMsgById(val, id);
       },
-      // 结束语
+      // 机器人自动回复结束语
       endMsg() {
         let happyEnding = {
           type: "leftinfo",
