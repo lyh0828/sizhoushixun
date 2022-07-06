@@ -191,7 +191,7 @@ export default {
             var btnArray = ['否', '是'];
             mui.confirm('添加这条信息，确认？', '添加', btnArray, (e)=> {
             if (e.index == 1) {
-                mui.toast('成功',{ duration:'short', type:'div' })
+                mui.toast('添加成功',{ duration:'short', type:'div' })
                 this.$http.post('http://36.138.183.223:3000/pinglun/new',{
                     sname:this.sname,
 				    pinglun:this.pinglun,
@@ -233,7 +233,7 @@ export default {
        mui.toast('再想想',{ duration:'short', type:'div' })
       },
     say(){
-              mui.toast('即将跳转',{ duration:'short', type:'div' })
+      mui.toast('即将跳转',{ duration:'short', type:'div' })
 
       }
 

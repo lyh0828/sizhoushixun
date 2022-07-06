@@ -118,18 +118,16 @@ export default {
      created(){
         this.getnewslist(),
         this.getnewslist2()
-
     },
     methods: {
-      //获取宠物店信息
+    //获取宠物店信息
     getnewslist(){
             this.$http.get('petsmartinfo').then(result=>{
                  console.log(result.body)
                    this.newsList= result.body
-                
             })
         },
-        //获取宠友动态信息
+    //获取宠友动态信息
         getnewslist2(){
           this.$http.get('http://36.138.183.223:3000/petfriendinfo').then(result=>{
                  console.log(result.body)

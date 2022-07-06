@@ -23,6 +23,7 @@
        </div>
        <div class="switch">
             <p class="switch-tip">只显示正在认领的宠物</p>
+            <!-- 开关功能 -->
             <mt-switch v-model="value" @change="turn"></mt-switch>
        </div>
         <div class="container">
@@ -49,6 +50,7 @@
 
 					<li  class="mui-table-view-cell mui-media mui-col-xs-6" v-for="item in search(keywords)" :key="item._id">
 
+                        <!--  走详情页-->
 		                 <router-link :to="'/petclaimeddetails/'+item._id">
 		                    <img class="mui-media-object" :src="item.img">
             
@@ -93,6 +95,7 @@ export default {
         this.getPetInfo();
     },
     methods:{
+        //获取宠物认领列表页数据
         getPetInfo(){
             this.$http.get("petclamiedinfo").then(result=>{
                 console.log(result.body)
@@ -117,6 +120,7 @@ export default {
 					})
 					return newList;
 				},
+        //点击按钮实现的操作
         cat(){
             this.keywords='猫'
         },
@@ -126,13 +130,14 @@ export default {
         qita(){
             this.keywords='小乌龟'
         },
-        //
+        //开关功能
         turn(checked){
             console.log(checked)
             this.isShow=checked;
         }
       
     },
+    //日期过滤器
      filters:{
         dateFormat:function renderTime(date){
         var dates = new Date(date).toJSON();

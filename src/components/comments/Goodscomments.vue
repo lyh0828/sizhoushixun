@@ -31,6 +31,7 @@ export default {
         this.show()
     },
     methods:{
+        //别人的留言
         show(){
                 this.$http.get("petclamiedinfo").then(result=>{
                 console.log(result.body)
@@ -39,12 +40,12 @@ export default {
         },
         getGoodsComments( data1,data2,data3){//父组件获取到的子组件的数据
             this.list.unshift({species:data1,details:data2,found_time:data3})
-        }
-        
+        }  
     },
     components:{
 				'cmt-box':icomponent
 			},
+            // 时间过滤器
     filters:{
         dateFormat:function renderTime(date){
         var dates = new Date(date).toJSON();

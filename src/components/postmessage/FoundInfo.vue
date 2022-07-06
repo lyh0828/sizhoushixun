@@ -137,7 +137,6 @@ export default {
                 console.log('读取成功');
                 // e.target.result 获取 读取成功后的  文件DataURL
                 that.imageUrl = e.target.result
-                // 如果要将图片上传服务器，就在这里调用后台方法
             }
 
      },

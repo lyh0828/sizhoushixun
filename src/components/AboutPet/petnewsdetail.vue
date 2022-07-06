@@ -18,7 +18,6 @@
     </div>
 </template>
 <script>
-// import mui from '../../lib/mui/js/mui.js' 
 export default {
      data(){
         return{
@@ -29,32 +28,13 @@ export default {
            img:'',
            click:'',
            title:'',
-            // sheetVisible: false,
-            //  actions: []
-
         }
     },
-    // mounted() {
-    //   this.actions = [
-    //     {
-    //     name: '复制',
-    //     method: this.copy
-    //      }, 
-    //     {
-    //     name: '呼叫',
-    //     method: this.call
-    //     },
-    //      {
-    //     name: '添加到手机通讯录',
-    //     method: this.add
-    //     }
-    //  ]
-
-    // },
     created(){
         this.getPetInfo();
     },
     methods:{
+      //获取热点新闻详情数据
         getPetInfo(){
             this.$http.get("http://36.138.183.223:3000/petnewsinfo/show?id="+this.$route.params.id).then(result=>{
                 console.log(result.body)
@@ -69,17 +49,6 @@ export default {
 
             })
         },
-      //     copy() {
-      //  mui.toast('复制成功',{ duration:'short', type:'div' })
-      // },
-      // call() {
-      //          mui.toast('即将跳转',{ duration:'short', type:'div' })
-
-      // },
-      // add(){
-      //         mui.toast('即将跳转',{ duration:'short', type:'div' })
-
-      // }
     },
      filters:{
         dateFormat:function renderTime(date){

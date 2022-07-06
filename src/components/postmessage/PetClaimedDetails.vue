@@ -28,7 +28,7 @@
               </div>
               <div class="content3">
                 <p class="tip">认领请联系|留言</p>
-
+                <!-- 点击手机号从底部弹出行动表 -->
                 <mt-button  @click.native="sheetVisible = true" class="btn">
                     <span class="mui-icon mui-icon-phone"></span>
                     <span class="title">{{tel}}</span>
@@ -69,6 +69,7 @@ export default {
 
         }
     },
+    // 行动表相关代码
         mounted() {
       this.actions = [
         {
@@ -84,13 +85,13 @@ export default {
         method: this.add
         }
      ]
-
     },
     created(){
         this.getPetInfo();
     },
 
     methods:{
+      //获取每个宠物认领对应的详情数据
         getPetInfo(){
             this.$http.get("petclamiedinfo/show?id="+this.$route.params.id).then(result=>{
                 console.log(result.body)
