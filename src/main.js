@@ -39,7 +39,8 @@ Vue.component(Backtop);
  //将VueResource安装到vue
  Vue.use(VueResource)
  //设置API请求的根路径
-
+// import axios from 'axios'
+// Vue.prototype.$axios=axios;
  //Vue.http.options.root="http://localhost:4000/"
 //  Vue.http.options.root="http://localhost:8000/"
 
@@ -95,6 +96,7 @@ Vue.use(Chat)
 new Vue({
     el:'#app',
     render: c=>c(app),
+    axios,
     // 挂载路由
     router,
     beforeCreate(){

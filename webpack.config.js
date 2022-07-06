@@ -26,7 +26,8 @@ module.exports = {
         // 实例化插件 用于检测src下的js文件
         new ESLintPlugin({
             context:path.resolve(__dirname,'src')
-        })
+        }),
+        
     ],
     performance: {
         hints: false

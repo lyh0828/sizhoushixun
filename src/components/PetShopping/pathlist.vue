@@ -25,10 +25,20 @@ export default {
   methods: {
     // 点击保存触发
     onSave(content) {
-content.isDefault=content.isDefault=true?1:0;
-console.log(content)
+// content.isDefault=content.isDefault=true?1:0;
+// var form={
+//   name:this.name,
+//   tel:this.tel,
+//   province:this.province,
+//   city:this.city,
+//   country:this.country,
+//   isDefault:this.isDefault
+// }
+
+content.isDefault=content.isDefault==true?1:0;
+
 this.$http.post(
-'shopinfo/new',content
+'shopinfo/new',content,{token:true}
 
 ).then(res=>{
    console.log(res.body)

@@ -1,7 +1,6 @@
-<<<<<<< HEAD:src/components/tabbar/resiger.vue
 
-=======
->>>>>>> 0bb9b8426aaea1ebf89c0bb3cab3b7c1ee74304b:src/components/tabbar/resiger1.vue
+
+
 <template>
   <div class="r">
     <mt-header fixed title="注册"></mt-header>
