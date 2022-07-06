@@ -75,6 +75,7 @@
           },
         ],
         timer: null,
+        // 机器人的问题
         robotQuestion: [
           { id: 1, content: "什么是副产品，对宠物有害吗？", index: 1 },
           { id: 2, content: "想为宠物提供家庭自制粮，应该联系谁？", index: 2 },
@@ -86,6 +87,7 @@
           },
           { id: 5, content: "给狗狗看病该去兽医站还是宠物医院？", index: 5 },
         ],
+        // 机器人回复的答案
         robotAnswer: [
           {
             id: 1,
@@ -104,6 +106,7 @@
         ],
       };
     },
+    // 生命周期
     created() {
         this.getchat();
       this.showTimer();
