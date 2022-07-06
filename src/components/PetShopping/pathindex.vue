@@ -28,7 +28,7 @@
 <script>
 // import mui from '../../lib/mui/js/mui.js' 
 export default {
-  inject:["reload"],
+  inject:["reload"],// 注入reload变量
   data() {
     return {
       addressList: [],
@@ -65,7 +65,7 @@ export default {
 						this.addressList=res.body
               this.$router.push('/path')
 					});
-                        this.reload()
+                        this.reload() //页面刷新
                      
 					} 
 				

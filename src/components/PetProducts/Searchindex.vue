@@ -11,6 +11,7 @@
         <li v-for="(item, index) in searchArr" :key="index">{{ item }}</li>
       </ul>
     </div>
+    <!-- 热门搜索列表--假数据 -->
     <div class="search-history">
       <h2>
         <i class="iconfont icon-shijian"></i>
