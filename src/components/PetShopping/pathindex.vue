@@ -2,7 +2,7 @@
   <div class="pathindex">
     <section>
       <ul>
-        <li v-for="item in addressList" :key="item.id">
+        <li v-for="item in addressList" :key="item.id" >
           <van-icon name="https://b.yzcdn.cn/vant/icon-demo-1126.png" />
           <div>
             <span class="name">{{ item.name }}</span>
@@ -16,12 +16,16 @@
             >
           </div>
           <div class="delete">
+            
+              <!-- <span  @click="golist(item)">编辑</span> -->
+          <router-link :to="'/path/pathedit/'+item._id">编辑</router-link>
+           
             <span @click="deleteaddress(item._id)">删除</span>
           </div>
         </li>
       </ul>
 
-      <div class="addpath" @click="golist">添加地址</div>
+      <div class="addpath" @click="golist('add')">添加地址</div>
     </section>
   </div>
 </template>
@@ -31,11 +35,14 @@ export default {
   inject:["reload"],// 注入reload变量
   data() {
     return {
+    
       addressList: [],
     };
   },
   created() {
     this.getaddress();
+
+   
 
   },
   methods: {
@@ -49,14 +56,17 @@ export default {
  this.addressList = result.body;
 
          
-         console.log( this.addressList[0].isDefault)
+        //  console.log( this.addressList[0].isDefault)
         })
         .catch((err) => {});
     },
     // 添加地址按钮
-    golist() {
+    golist(option) {
       this.$router.push({
         name: "pathlist",
+        params:{
+          key:JSON.stringify(option)
+        }
       });
     },
     // 删除
@@ -67,7 +77,8 @@ export default {
 					});
                         this.reload() //页面刷新
                      
-					} 
+					} ,
+     
 				
       // this.$http
       //   .get("shopinfo/delete", { params: { id: id } })
@@ -135,13 +146,14 @@ section {
 }
 .delete {
   display: inline-block;
-  margin-left: 326px;
+  margin-left: 270px;
   margin-top: 11px;
   span {
     color: rgb(38, 162, 255);
 
     // margin-left: 345px;
-    font-size: 20px;
+    font-size: 18px;
   }
 }
+
 </style>

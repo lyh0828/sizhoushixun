@@ -2,33 +2,52 @@
   <div class="myorder">
     <div><h4>我的订单</h4></div>
     <van-tabs v-model="activeName">
-        <!-- 待付款 -->
+      <!-- 待付款 -->
       <van-tab title="待付款" name="a">
         <div class="waitpay">
-     <div class="waitl">
-    <span style="font-size:26px;font-weight:700;">等待买家付款</span>
-    <van-count-down :time="time"  format=" HH 时 mm 分 ss 秒" auto-start  style="color:gray;padding:10px;"/>
-    <!-- <span style="display:block;color:gray;padding:10px;">剩23小时59分自动关闭</span> -->
-    </div>
-    <div class="payaddress">
-        <van-icon name="location" color="red" style="margin-top:10px; margin-left:10px; " size='30'/>
-<span style="margin-top:10px;display:block;margin-left:20px;">刘双双 134223244555</span>
-<span style="display:block; padding:10px;margin-left:20px;">天津市 东丽区</span>
-    
-</div>
-<div class="orderid">
-<span style="margin-left:20px;margin-top:10px;">订单编号：</span>
-<input type="text" v-model="orderid" style="border:none; width:70%; text-align:right;">
-<!-- <span style="position:absolute; right:10px;" >{{orderid}}</span> -->
-<div class="jiaoyi">
-    <span style="margin-left:20px;">交易快照</span>
-    <span style="color:gray; right:10px; position:absolute;">发生交易争议时，可作为判断依据</span>
-</div>
-</div>
-<div class="paymentbtn">
-    <button>修改地址</button>
-    <button>继续付款</button>
-</div>
+          <div class="waitl">
+            <span style="font-size: 26px; font-weight: 700">等待买家付款</span>
+            <van-count-down
+              :time="time"
+              format=" HH 时 mm 分 ss 秒"
+              auto-start
+              style="color: gray; padding: 10px"
+            />
+            <!-- <span style="display:block;color:gray;padding:10px;">剩23小时59分自动关闭</span> -->
+          </div>
+          <div class="payaddress">
+            <van-icon
+              name="location"
+              color="red"
+              style="margin-top: 10px; margin-left: 10px"
+              size="30"
+            />
+            <span style="margin-top: 10px; display: block; margin-left: 20px"
+              >刘双双 134223244555</span
+            >
+            <span style="display: block; padding: 10px; margin-left: 20px"
+              >天津市 东丽区</span
+            >
+          </div>
+          <div class="orderid">
+            <span style="margin-left: 20px; margin-top: 10px">订单编号：</span>
+            <input
+              type="text"
+              v-model="orderid"
+              style="border: none; width: 70%; text-align: right"
+            />
+            <!-- <span style="position:absolute; right:10px;" >{{orderid}}</span> -->
+            <div class="jiaoyi">
+              <span style="margin-left: 20px">交易快照</span>
+              <span style="color: gray; right: 10px; position: absolute"
+                >发生交易争议时，可作为判断依据</span
+              >
+            </div>
+          </div>
+          <div class="paymentbtn">
+            <button>修改地址</button>
+            <button>继续付款</button>
+          </div>
         </div>
       </van-tab>
       <!-- 待发货 -->
@@ -163,10 +182,10 @@
                 position="bottom"
                 :style="{ height: '90%' }"
               >
-              <!-- 百度地图 -->
+                <!-- 百度地图 -->
                 <baidu-map
                   class="map bm-view"
-                  @ready="handler"            
+                  @ready="handler"
                   :center="center"
                   :zoom="15"
                   :map-click="false"
@@ -178,8 +197,7 @@
                       animation="BMAP_ANIMATION_BOUNCE"
                       :position="center"
                       @dragend="dragend"
-                      ></bm-marker
-                    >
+                    ></bm-marker>
                   </div>
                 </baidu-map>
 
@@ -216,143 +234,126 @@
           </van-card>
         </div>
       </van-tab>
-      </van-tabs>
+    </van-tabs>
   </div>
 </template>
 <script>
-
 export default {
   data() {
     return {
-      citylocation:'',
+      citylocation: "",
       show: false,
       autoLocationPoint: { lng: 0, lat: 0 },
       initLocation: false,
       center: { lng: 0, lat: 0 },
       zoom: 15,
       activeName: "a",
-      month:'',
-      day:'',
-      hour:'',
-      minutes:"",
-      seconds:"",
-      orderid:'',
-       time: 24 * 60 * 60 * 1000,
-
-};
+      month: "",
+      day: "",
+      hour: "",
+      minutes: "",
+      seconds: "",
+      orderid: "",
+      time: 24 * 60 * 60 * 1000,
+    };
   },
   created() {
-    this.randomNumber()
+    this.randomNumber();
   },
   methods: {
     // 百度地图的方法
-     handler: function({ BMap, map }) {
+    handler: function ({ BMap, map }) {
       // var map=new BMap.Map("container")
       map.enableScrollWheelZoom(true); //开启滚轮缩放
-      // map.centerAndZoom('青岛市', 13)
       const hide = alert("是否允许进行定位", 0);
       const _this = this;
-      console.log(_this)
+      console.log('11111')
+      console.log(_this);
       const geolocation = new BMap.Geolocation();
       geolocation.getCurrentPosition(
-        function(r) {
+        function (r) {
           setTimeout(hide, 1000);
           console.log(r);
-      
           _this.center = { lng: r.longitude, lat: r.latitude }; // 设置center属性值 获取经纬度
-
-                 // 自定义覆盖物
-
+          // 自定义覆盖物
           _this.initLocation = true;
-
         },
-
         { enableHighAccuracy: true }
-
       );
 
- 
-
       window.map = map;
-
       // 赋值，方便调用，本节被用到
-
       this.BMap = BMap;
-
       this.map = map;
-
     },
-// 获取浏览器当前定位
-getCurlocation() { 
-            if (!this.BMap) return false
-            let BMap = this.BMap
-            let geolocation = new BMap.Geolocation()
-            let _this = this
-            geolocation.getCurrentPosition(function(r) {
-                _this.map_center = r.point
-                _this.shop_lng = r.point.lng
-                _this.shop_lat = r.point.lat
-               
-            })
-        },
+    // 获取浏览器当前定位
+    // getCurlocation() {
+    //   if (!this.BMap) return false;
+    //   let BMap = this.BMap;
+    //   let geolocation = new BMap.Geolocation();
+    //   let _this = this;
+    //   geolocation.getCurrentPosition(function (r) {
+    //     _this.map_center = r.point;
+    //     _this.shop_lng = r.point.lng;
+    //     _this.shop_lat = r.point.lat;
+    //   });
+    // },
 
     // 拖动结束后
 
     dragend(e) {
-
       this.position = e.point;
-
-      const _this = this;
-
-      console.log(e.point);
-
+      const _this = this; 
+    // 获取经纬度
+      console.log(e.point);    
+          // 获取经纬度
       console.log(this.position);
-// 创建地理编码实例
+      // 创建地理编码实例
       const gc = new this.BMap.Geocoder();
-
-      gc.getLocation(e.point, function(rs) {
-
+      gc.getLocation(e.point, function (rs) {
+          //  打印出拖拽后的地点,城市,区
         console.log(rs);
 
-        // var addComp = rs.addressComponents
+      
 
-        // this.addr = addComp.province + ', ' + addComp.city + ', ' + addComp.district + ', ' + addComp.street + ', ' + addComp.streetNumber
-
-        _this.addr = rs.address;
-
+       _this.addr = rs.address;
       });
-
     },
     showPopup() {
       this.show = true;
     },
-    randomNumber(){
-      const now =new Date()
-      this.month=now.getMonth()+1;
-      this.day=now.getDate();
-      this.hour=now.getHours();
-      this.minutes=now.getMinutes();
-      this.seconds=now.getSeconds();
-      if(this.hour<10){
-        this.hour?'0'+this.hour:this.hour
+    randomNumber() {
+      const now = new Date();
+      this.month = now.getMonth() + 1;
+      this.day = now.getDate();
+      this.hour = now.getHours();
+      this.minutes = now.getMinutes();
+      this.seconds = now.getSeconds();
+      if (this.hour < 10) {
+        this.hour ? "0" + this.hour : this.hour;
       }
-       if(this.month<10){
-        this.month?'0'+this.month:this.month
+      if (this.month < 10) {
+        this.month ? "0" + this.month : this.month;
       }
-       if(this.day<10){
-        this.day?'0'+this.day:this.day
+      if (this.day < 10) {
+        this.day ? "0" + this.day : this.day;
       }
-       if(this.minutes<10){
-        this.minutes?'0'+this.minutes:this.minutes
+      if (this.minutes < 10) {
+        this.minutes ? "0" + this.minutes : this.minutes;
       }
-       if(this.seconds<10){
-        this.seconds?'0'+this.seconds:this.seconds
+      if (this.seconds < 10) {
+        this.seconds ? "0" + this.seconds : this.seconds;
       }
-      let orderCode=now.getFullYear().toString()+this.month+this.day+this.hour+this.minutes+this.seconds
-    +(Math.round(Math.random()*1000000))
-    this.orderid=orderCode;
-    }
-    
+      let orderCode =
+        now.getFullYear().toString() +
+        this.month +
+        this.day +
+        this.hour +
+        this.minutes +
+        this.seconds +
+        Math.round(Math.random() * 1000000);
+      this.orderid = orderCode;
+    },
   },
 };
 </script>
@@ -432,32 +433,32 @@ getCurlocation() {
 }
 
 // 待付款
-.waitpay{
-    margin-top: 20px;
+.waitpay {
+  margin-top: 20px;
 }
-.payaddress{
-    height: 120px;
-    background-color: #fff;
-    border-radius: 10px;
+.payaddress {
+  height: 120px;
+  background-color: #fff;
+  border-radius: 10px;
 }
-.orderid{
-     height: 128px;
-    background-color: #fff;
-    border-radius: 10px;
-    margin-top: 20px;
-    padding: 12px;
+.orderid {
+  height: 128px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 12px;
 }
-.paymentbtn{
-    float: right;
-    margin-top: 10px;
-    button{
-        height: 45px;
-        width: 108px;
-        font-size: 16px;
-        border-radius: 20px;
-    }
+.paymentbtn {
+  float: right;
+  margin-top: 10px;
+  button {
+    height: 45px;
+    width: 108px;
+    font-size: 16px;
+    border-radius: 20px;
+  }
 }
-.jiaoyi{
-    margin-top:20px;
+.jiaoyi {
+  margin-top: 20px;
 }
 </style>
