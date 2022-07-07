@@ -11,15 +11,16 @@
           <div>
             <span class="active" v-if="item.isDefault == 1">[默认]</span>
             <span
-              >{{ item.province }} {{ item.city }} {{ item.country
+              >{{ item.province }} {{ item.city }} {{ item.county
               }}{{ item.addressDetail }}</span
             >
           </div>
           <div class="delete">
             
               <!-- <span  @click="golist(item)">编辑</span> -->
+              <van-icon name="edit" />
           <router-link :to="'/path/pathedit/'+item._id">编辑</router-link>
-           
+          <van-icon name="delete-o" />
             <span @click="deleteaddress(item._id)">删除</span>
           </div>
         </li>

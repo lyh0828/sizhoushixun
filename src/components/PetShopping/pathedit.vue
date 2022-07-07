@@ -14,35 +14,25 @@
     /> -->
     <div class="editaddress">
       <div class="editinfo">
-  <span>姓名</span>  <input type="text" v-model="name" >
+        <span>姓名</span> <input type="text" v-model="name" />
       </div>
-    <div class="editinfo">
-        <span>电话</span>    <input type="text" v-model="tel" >
+      <div class="editinfo">
+        <span>电话</span> <input type="text" v-model="tel" />
+      </div>
+      <div class="editquyu">
+        <span>地区</span> <input type="text" v-model="province" />
+        <input type="text" v-model="city" />
+        <input type="text" v-model="county" />
+      </div>
+      <div class="editinfo">
+        <span>详细地址</span>
+        <input type="text" v-model="addressDetail" />
+      </div>
     </div>
-    <div class="editquyu">
-        <span>地区</span>    <input type="text" v-model="province" >
-                        <input type="text" v-model="city" >
-    <input type="text" v-model="country" >
 
-
-    </div>
-    <div class="editinfo">
-      <span>详细地址</span>
-    <input type="text" v-model="addressDetail" >
-
-    </div>
-    </div>
-  
- 
-
-
-<router-link to="/path">
-   <button @click="updateaddress" class="editbtn">保存</button>
-</router-link>
-
-
-
-
+    <router-link to="/path">
+      <button @click="updateaddress" class="editbtn">保存</button>
+    </router-link>
   </div>
 </template>
 <script>
@@ -52,26 +42,24 @@ export default {
   inject: ["reload"],
   data() {
     return {
-   name:'',
-   tel:"",
-   province:'',
-   city:'',
-   country:'',
-addressDetail:'',
-   pathStatus:false,
+      id: "",
+      name: "",
+      tel: "",
+      province: "",
+      city: "",
+      county: "",
+      addressDetail: "",
+      pathStatus: false,
 
-        
-  
       areaList,
       searchResult: [],
     };
   },
   created() {
-    if(this.$route.params.key=='add'){
-      this.pathStatus=true
-    }
+    // if(this.$route.params.key=='add'){
+    //   this.pathStatus=true
+    // }
     this.getaddressinfo()
-    
   },
   methods: {
     // 点击保存触发
@@ -88,39 +76,44 @@ addressDetail:'',
     //     (err) => {}
     //   );
     // },
-       getaddressinfo(){
-        
-            this.$http.get("shopinfo/edit/"+'?id='+this.$route.params.id).then(result=>{
-                console.log(result.body)
-                // if(result.body.status===0){
-                    //  this.AddressInfo.id=result.body._id,
-                     this.name=result.body.name,
-                     this.tel=result.body.tel,
-                     this.province=result.body.province,
-                     this.city=result.body.city,
-                     this.country=result.body.country,
-                     this.addressDetail=result.body.addressDetail
-                    
-            })
-        },
-     
-        updateaddress(){
-		this.$http.post('shopinfo/edit',{
-                    id:this.id,
-					name:this.name,
-					tel:this.tel,
-					province:this.province,
-					city:this.city,
-					county:this.county,
-                    addressDetail:this.addressDetail,
-               
-				 },{emulateJSON:true}).then(res=>{
+    getaddressinfo() {
+      this.$http
+        .get("shopinfo/edit/" + "?id=" + this.$route.params.id)
+        .then((result) => {
+          console.log(result.body);
+          // if(result.body.status===0){
+          //  this.AddressInfo.id=result.body._id,
+          this.id = result.body._id;
+          this.name = result.body.name,
+            (this.tel = result.body.tel),
+            (this.province = result.body.province),
+            (this.city = result.body.city),
+            (this.county = result.body.county),
+            (this.addressDetail = result.body.addressDetail);
+        });
+    },
 
-                        this.reload()
-			
-					// this.list=res.body
-				   })
-        }
+    updateaddress() {
+      this.$http
+        .post(
+          "shopinfo/edit",
+          {
+            id: this.id,
+            name: this.name,
+            tel: this.tel,
+            province: this.province,
+            city: this.city,
+            county: this.county,
+            addressDetail: this.addressDetail,
+          },
+          { emulateJSON: true }
+        )
+        .then((res) => {
+          this.reload();
+
+          // this.list=res.body
+        });
+    },
   },
 };
 </script>
@@ -134,53 +127,53 @@ addressDetail:'',
   background-color: rgb(38, 162, 255);
   border: rgb(38, 162, 255);
 }
-.editaddress{
+.editaddress {
   height: 270px;
   width: 94%;
   margin-left: 12px;
   background-color: #fff;
-  margin-top:53px;
+  margin-top: 53px;
   border-radius: 20px;
-  div{
+  div {
     border-bottom: 1px solid lightgrey;
     width: 86%;
     margin-left: 25px;
   }
 }
-.editinfo{
-  span{
+.editinfo {
+  span {
     padding-left: 10px;
     color: #646566;
   }
-  input{
+  input {
     border: none;
     width: 50%;
     margin-left: 20px;
   }
 }
-.editquyu{
-  input:first-child{
+.editquyu {
+  input:first-child {
     width: 27%;
     border: none;
-        margin-left: 15px;
+    margin-left: 15px;
   }
-  input{
-      width: 25%;
+  input {
+    width: 25%;
     border: none;
   }
-  span{
+  span {
     padding-left: 10px;
 
-      color: #646566;
+    color: #646566;
   }
 }
-.editbtn{
+.editbtn {
   width: 90%;
   margin-left: 20px;
- background-color: rgb(38, 162, 255);
+  background-color: rgb(38, 162, 255);
   border: rgb(38, 162, 255);
   color: #fff;
-  margin-top:20px;
+  margin-top: 20px;
   height: 50px;
   border-radius: 45px;
 }
