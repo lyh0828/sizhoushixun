@@ -85,39 +85,19 @@ export default {
     this.GetData();
   },
 computed:{
-// orderBy(){
-//   // 知道当前是哪一个对象
-//   let obj=this.headerList.data[this.headerList.currentIndex]
-// // 针对于状态 判断是升序还是降序
-// let val=obj.status=='1'?'1':'-1';
-// return{
-//   [obj.key]:val
-// }
 
-// }
 },
   methods: {
+
     GetData() {
-      // var param={
-      //   page:this.page,
-      //   pageSize:this.pageSize,
-      //   sort:this.sortFlag?1:-1
-      // }
       this.$http
         .get("products")
-        .then((result) => {
-          
-          this.searchList = result.body;
-       
-        
-            
+        .then((result) => {  
+          this.searchList = result.body;    
         })
         .catch((err) => {});
     },
-//     sortGoods(){
-// this.sortFlag=!this.sortFlag;
-// this.GetData()
-//     },
+
 
     // 切换综合，销量，价格高亮
     changeTab(index) {
@@ -140,7 +120,7 @@ this.page=1;
       // 发送数据请求进行数据排序
       this.GetData();
     },
-
+// 搜索功能，根据关键词
 search(searchValue) {
 				console.log(searchValue)
 				var newList = []
@@ -153,45 +133,45 @@ search(searchValue) {
 				return newList
 			},
           // 搜索按钮的方法
-    GoToSearchList() {
-      console.log(this.searchValue);
+    //      GoToSearchList() {
+    //   console.log(this.searchValue);
     
-      //  如果搜索的关键词为空，则不跳转
-      if (!this.searchValue) return;
-      //  判断之前有没有搜索的本地存储
-      if (!localStorage.getItem("searchList")) {
-        localStorage.setItem("searchList", "[]");
-      } else {
-        this.searchArr = JSON.parse(localStorage.getItem("searchList"));
-      }
-      // 增加数据
-      this.searchArr.unshift(this.searchValue);
-      // 给本地存储赋值
-      localStorage.setItem("searchList", JSON.stringify(this.searchArr));
-     //   路径如果没有变化不跳转
-    if(this.searchValue===this.$route.query.key) return
-     // 跳转页面
-      this.$router.push({
-        name: "list",
-        query: {
-          key: this.searchValue,
-        },
-      });
-    },
+    //   //  如果搜索的关键词为空，则不跳转
+    //   if (!this.searchValue) return;
+    //   //  判断之前有没有搜索的本地存储
+    //   if (!localStorage.getItem("searchList")) {
+    //     localStorage.setItem("searchList", "[]");
+    //   } else {
+    //     this.searchArr = JSON.parse(localStorage.getItem("searchList"));
+    //   }
+    //   // 增加数据
+    //   this.searchArr.unshift(this.searchValue);
+    //   // 给本地存储赋值
+    //   localStorage.setItem("searchList", JSON.stringify(this.searchArr));
+    //  //   路径如果没有变化不跳转
+    // if(this.searchValue===this.$route.query.key) return
+    //  // 跳转页面
+    //   this.$router.push({
+    //     name: "list",
+    //     query: {
+    //       key: this.searchValue,
+    //     },
+    //   });
+    // },
     // 清除历史记录
-    deleteStorage() {
-      MessageBox({
-        title: "提示",
-        message: "确定执行此操作?",
-        showCancelButton: true,
-      }).then((res) => {
-        if (res == "confirm") {
-          localStorage.removeItem("searchList");
-          //清除数据
-          this.searchArr = [];
-        }
-      });
-    },
+    // deleteStorage() {
+    //   MessageBox({
+    //     title: "提示",
+    //     message: "确定执行此操作?",
+    //     showCancelButton: true,
+    //   }).then((res) => {
+    //     if (res == "confirm") {
+    //       localStorage.removeItem("searchList");
+    //       //清除数据
+    //       this.searchArr = [];
+    //     }
+    //   });
+    // },
     
    
 

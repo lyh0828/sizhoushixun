@@ -152,6 +152,7 @@ export default {
     this.sum = this.price;
   },
   mounted() {
+    // 全选与取消全选
     var j_cbAll = document.getElementById("j_cbAll");
     var j_tbs = document.getElementById("j_tb").getElementsByTagName("input");
     j_cbAll.onclick = function () {
@@ -172,19 +173,17 @@ export default {
             break;
           }
         }
-        j_cbAll.checked = flag;
         // 3.把flag变量赋给全选按钮，
+        j_cbAll.checked = flag;
       };
     }
   },
   methods: {
     add() {
-  
       this.number += 1;
       this.sum = this.price * this.number;
       localStorage.setItem("number", JSON.stringify(this.number)); //存储到浏览器中
-        localStorage.setItem("sum", JSON.stringify(this.sum)); //存储到浏览器中
-
+      localStorage.setItem("sum", JSON.stringify(this.sum)); //存储到浏览器中
     },
     subtraction() {
       if (this.number > 1) {
@@ -192,11 +191,11 @@ export default {
         this.sum = this.price * this.number;
         localStorage.setItem("number", JSON.stringify(this.number)); //存储到浏览器中
         localStorage.setItem("sum", JSON.stringify(this.sum)); //存储到浏览器中
-
       } else {
         this.number == 1;
       }
     },
+    // 获取加入购物车的数据
     getcartinfo() {
       this.$http
         .get("products/shopcart/" + "?id=" + this.$route.params.id)
@@ -226,10 +225,6 @@ export default {
     },
     gotosum() {
       if (this.checked) {
-        // Toast('请至少选择一件商品')
-        // this.$router.push({
-        //   name:
-        // })
         this.$message.error(res.msg || "请至少选择一个商品");
       }
     },

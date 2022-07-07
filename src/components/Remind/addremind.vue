@@ -2,6 +2,7 @@
     <div class="addremind">
        <h3 style="margin:30px; padding-top:20px;">添加提醒</h3>                          
         <ul>    
+            <!-- 遍历数据 -->
             <li v-for="item in remindList" :key="item.id">             
                 <router-link :to="'/remindinfo/'+item._id">
                      <img  :src="item.img" alt="" class="remindimg">

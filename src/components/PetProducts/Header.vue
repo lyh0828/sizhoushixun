@@ -12,9 +12,9 @@
         placeholder="搜索您喜欢的产品"
         v-model="searchValue"
       />
-      <!-- <router-link to="/search/list" > -->
+     <!-- 搜索按钮 -->
       <div class="search-btn" @click="GoToSearchList">搜索</div>
-      <!-- </router-link> -->
+   
     </form>
   </div>
 </template>
@@ -32,8 +32,7 @@ export default {
   methods: {
     // 搜索按钮的方法
     GoToSearchList() {
-      console.log(this.searchValue);
-    
+      console.log(this.searchValue); 
       //  如果搜索的关键词为空，则不跳转
       if (!this.searchValue) return;
       //  判断之前有没有搜索的本地存储
