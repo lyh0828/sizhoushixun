@@ -43,7 +43,9 @@ import CatSnacks from './components/PetProducts/CatSnacks.vue';               //
 import CatToy from './components/PetProducts/CatToy.vue';               //4.1宠物用品--猫玩具
 import info from './components/ProductInfo/info.vue';                //4.1.1宠物用品详情
 import shopcart from './components/PetShopping/shopcart.vue';                //4.1.1宠物用品详情
-import Path from './components/PetShopping/Path.vue'
+import Path from './components/PetShopping/Path.vue';
+import pathedit from './components/PetShopping/pathedit.vue';
+
 import order from './components/PetShopping/order.vue';  
 import detail from './components/PetShopping/detail.vue';  
 import myorder from './components/PetShopping/myorder.vue';  
@@ -183,8 +185,9 @@ const router = new VueRouter({
                 path: "myorder",
                 name: "myorder",
                 component: myorder,
-            }
+            },
         ] },                 //5宠物日常
+        { path: '/path/pathedit/:id', component: pathedit },                 //5宠物日常
 
         { path: '/home/daylist', component: daylist },                 //5宠物日常
         { path: '/home/daylist/dayinfo/:id', component: dayinfo },       //5.1宠物日常--详情页
