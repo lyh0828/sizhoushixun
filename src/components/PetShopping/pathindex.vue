@@ -147,7 +147,7 @@ section {
 }
 .delete {
   display: inline-block;
-  margin-left: 270px;
+  margin-left: 245px;
   margin-top: 11px;
   span {
     color: rgb(38, 162, 255);
