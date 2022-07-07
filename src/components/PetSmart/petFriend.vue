@@ -196,10 +196,7 @@ export default {
                     sname:this.sname,
 				    pinglun:this.pinglun,
 				 },{emulateJSON:true}).then(res=>{
-                        // this.reload()
-                        // this.$router.go(0)
-                        window.location.reload();
-                        
+                    console.log(res.body)
 				   });
                 this.reload()
                 

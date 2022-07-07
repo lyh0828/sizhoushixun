@@ -153,10 +153,10 @@ export default {
                     tel:this.tel,
                     weixin:this.weixin
 				 },{emulateJSON:true}).then(res=>{
-
-                        this.reload()
-				
+                    console.log(res.body)
+                    this.reload()
 				   })
+                  
 				}
     }
   
