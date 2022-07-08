@@ -8,12 +8,15 @@
           <span class="title-hn">{{name}}</span>
         </div>
         <div id="content" class="content">
+          <!-- 1.遍历info数组获取内容 -->
           <div v-for="(item,index) in info" :key="index">
+                     <!-- 2.根据表达式的真假切换元素的显示状态 -leftinfo  true-->
             <div class="info_r info_default" v-if="item.type == 'leftinfo'">
-              <!-- <span class="circle circle_r"></span> -->
               <img :src="avatar"  class="logo" />
               <div class="con_r con_text">
+                <!-- 3.遍历输出info内容 -->
                 <div>{{item.content}}</div>
+                <!-- 4.遍历问题 -->
                 <div v-for="(item2,index) in item.question" :key="index">
                   <div class="con_que" @click="clickRobot(item2.content,item2.id)">
                     <div class="czkj-question-msg">
@@ -25,7 +28,7 @@
               </div>
               <div class="time_r">{{item.time}}</div>
             </div>
- 
+            <!-- 5.判断 false -->
             <div class="info_l" v-if="item.type == 'rightinfo'">
               <div class="con_r con_text">
                 <span class="con_l">{{item.content}}</span>
@@ -132,15 +135,21 @@
       sentMsg() {
         clearTimeout(this.timer);
         this.showTimer();
+        // trim()去除字符串头尾空格  
         let text = this.customerText.trim();
+        // 判断输入的内容是否为空
         if (text != "") {
+          // 不为空，执行
           var obj = {
             type: "rightinfo",
             time: this.getTodayTime(),
             content: text,
           };
+          //将obj中的内容push到info中
           this.info.push(obj);
+          // 用户输入内容执行appendRobotMsg()方法
           this.appendRobotMsg(this.customerText);
+          // 将用户输入过的内容清空
           this.customerText = "";
           this.$nextTick(() => {
             var contentHeight = document.getElementById("content");
@@ -149,12 +158,17 @@
         }
       },
       // 机器人回答消息
+         // 传入输入的内容
       appendRobotMsg(text) {
         clearTimeout(this.timer);
         this.showTimer();
+        // 清空输入内容前后空白
         text = text.trim();
+        // 定义一个机器人回复答案内容设为空
         let answerText = "";
-        let flag;
+        // 设置一个flag值为false
+        let flag=false;
+        // 根据indexOf检索机器人自动回复答案与输入的内容是否有重复  indexOf如果要检索的字符串值没有出现，则该方法返回 -1。
         for (let i = 0; i < this.robotAnswer.length; i++) {
           if (this.robotAnswer[i].content.indexOf(text) != -1) {
             flag = true;
@@ -162,6 +176,7 @@
             break;
           }
         }
+        // flag=false  不执行
         if (flag) {
           let obj = {
             type: "leftinfo",
@@ -172,39 +187,50 @@
           };
           this.info.push(obj);
         } else {
+          // 执行
           answerText = "您可能想问：";
           let obj = {
             type: "leftinfo",
             time: this.getTodayTime(),
             name: "robot",
             content: answerText,
+            // 机器人回复问题
             question: this.robotQuestion,
           };
+          // obj  push到info数组中
           this.info.push(obj);
         }
+        // this.$nextTick这个方法作用是，当数据被修改后使用这个方法，会回调获取更新后的dom再渲染出来
         this.$nextTick(() => {
+          // 根据id获取它的内容
           var contentHeight = document.getElementById("content");
+          // 展示机器人问题的内容
           contentHeight.scrollTop = contentHeight.scrollHeight;
         });
       },
+      // question 的id
       sentMsgById(val, id) {
         clearTimeout(this.timer);
         this.showTimer();
- 
+        // 答案内容过滤  问题和答案的id是否相等，相等的将答案存在robotById数组里
         let robotById = this.robotAnswer.filter((item) => {
           return item.id == id;
         });
+        // leftinfo
         let obj_l = {
           type: "leftinfo",
           time: this.getTodayTime(),
           name: "robot",
+          // answer的内容
           content: robotById[0].content,
           question: [],
         };
+        // rightinfo
         let obj_r = {
           type: "rightinfo",
           time: this.getTodayTime(),
           name: "robot",
+          // question的内容
           content: val,
           question: [],
         };
@@ -227,6 +253,7 @@
           content: "感谢您的光临!如果还有什么问题，欢迎随时与我联系!期待您下次光临!",
           question: [],
         };
+        // 将happyEnding push到info数组中
         this.info.push(happyEnding);
         this.$nextTick(() => {
           var contentHeight = document.getElementById("content");
@@ -235,6 +262,7 @@
  
       },
       showTimer() {
+        // 定时器
         this.timer = setTimeout(this.endMsg, 1000*60);
       },
       getTodayTime() {
